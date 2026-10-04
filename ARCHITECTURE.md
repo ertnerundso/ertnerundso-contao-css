@@ -28,7 +28,7 @@ src/
     │   ├── buttons.css               # Buttons (.button), text links (.text-link), interactive states
     │   ├── cards.css                 # Service cards (.service-card), index cards (.index-card), news cards
     │   ├── forms.css                 # Form inputs, labels, fieldsets, checkboxes, status messages
-    │   └── media.css                 # Image cards, aspect ratios, figures, captions
+    │   └── motion.css                # Reveal, split-line and reduced-motion states
     │
     ├── 04-sections/
     │   ├── hero.css                  # Hero section composition
@@ -97,3 +97,15 @@ Layer order: `foundation`, `layout`, `components`, `sections`, `cms`.
 1. Edit source CSS in `src/styles/`.
 2. Run `npm run audit:css` to verify zero duplicate property warnings or broken tokens.
 3. Run `npm run export:staging-css` to build `site.css` into the public delivery repository.
+
+## Reproducible delivery
+
+The private source modules mirror the cleaned CSS introduced in delivery commit
+`499ed1a`. Keep both repositories in sibling directories named
+`ertnerundso-contao-frontend` and `ertnerundso-contao-css`. Run the source audit,
+format check and build before exporting. Commit both generated CSS files.
+Never delete previous immutable releases: a Contao template may still use them.
+
+The directory tree above describes feature ownership; the source import order
+is authoritative within each cascade layer. Shared media rules currently live
+with their sections, and legal page rules live in `05-cms/contao.css`.
