@@ -12,6 +12,7 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Maximale Inhaltsbreite, gemeinsame Raster, Header-Höhe | `css/layout.css` |
 | Höhe des aufgeklappten Menüs / Größe des Menüknopfs | `--layout-menu-height` / `--layout-menu-control-size` in `css/layout.css` |
 | Menüfarbe / Geschwindigkeit / Verkleinerung der Seite | `--color-menu-*` in `css/base.css` / `--motion-menu-*` in `css/motion.css` |
+| Footer-Hintergrund / Textfarbe | `--color-footer-surface` / `--color-footer-text` in `css/base.css` |
 | Seitenränder und Abstand zwischen Bereichen | `--space-gutter` / `--space-section` in `css/base.css` |
 | Anordnung eines Bereichs, auch auf dem Handy | Etwa `css/hero.css`, `css/cards.css`, `css/contact.css` |
 | Button-Rundung / Pfeilfeld-Rundung | `--radius-button` / `--radius-button-arrow` in `css/base.css` |

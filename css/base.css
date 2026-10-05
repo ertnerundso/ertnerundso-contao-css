@@ -26,6 +26,8 @@
     --color-menu-surface: var(--color-primary);
     --color-menu-text: var(--color-on-dark);
     --color-menu-muted: var(--color-on-dark);
+    --color-footer-surface: var(--color-primary);
+    --color-footer-text: var(--color-on-dark);
     --color-primary-surface: #f0f4ff;
     --color-transparent: transparent;
     --color-link-on-dark: #a9bcff;

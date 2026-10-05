@@ -65,14 +65,13 @@
 @layer layout {
   /* --- FOOTER --- */
   .footer-brand img {
-    filter: invert(1);
+    filter: none;
   }
   .site-main img {
     border-radius: var(--radius-md);
   }
   /* --- HEADER UND MENÜ --- */
-  .header-nav a:hover,
-  .footer-nav a:hover {
+  .header-nav a:hover {
     color: var(--color-primary);
   }
   .site-header {
@@ -148,18 +147,23 @@
     color: var(--color-menu-text);
   }
   .footer-brand p {
-    color: var(--color-muted);
+    color: var(--color-footer-text);
   }
   .footer-bottom {
-    border-top: 1px solid var(--color-border);
-    color: var(--color-muted);
+    color: var(--color-footer-text);
   }
   .site-footer {
-    color: var(--color-text);
-    background: var(--color-background);
+    color: var(--color-footer-text);
+    background: var(--color-footer-surface);
   }
   .footer-nav .micro {
-    color: var(--color-primary);
+    color: var(--color-footer-text);
+  }
+  .site-footer a:is(:hover, :focus-visible) {
+    color: var(--color-footer-text);
+  }
+  .site-footer a:focus-visible {
+    outline-color: var(--color-footer-text);
   }
   @media (prefers-reduced-motion: reduce) {
     .js-ready [data-reveal] {
