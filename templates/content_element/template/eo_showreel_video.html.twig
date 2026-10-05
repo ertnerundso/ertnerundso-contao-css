@@ -1,0 +1,9 @@
+{% extends "@Contao/content_element/template.html.twig" %}
+
+{% block content %}
+  <video controls muted loop playsinline preload="metadata" poster="/files/site/hero-poster.jpg" aria-label="ERTNER&SO Showreel">
+    <source src="{{ keys.video_url|default('https://ertnerundso.b-cdn.net/HERO/2603_Webseite_Hero_02_1.mp4') }}" type="video/mp4">
+    {{ keys.fallback|default('Ihr Browser unterstützt dieses Video nicht.') }}
+  </video>
+  <button class="showreel-action" type="button" aria-label="{{ keys.play_label|default('Film mit Ton abspielen') }}" title="{{ keys.play_label|default('Film mit Ton abspielen') }}"><span aria-hidden="true">▶</span></button>
+{% endblock %}

@@ -1,0 +1,9 @@
+<div class="layout_full news-detail block">
+    {{ text.invoke()|raw }}
+</div>
+
+{% set schemaOrg = getSchemaOrgData.invoke() %}
+{% if hasText.invoke() %}
+    {% set schemaOrg = schemaOrg|merge({text: text.invoke()|html_to_plain_text}) %}
+{% endif %}
+{% do add_schema_org(schemaOrg) %}

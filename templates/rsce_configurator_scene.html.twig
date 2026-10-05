@@ -1,0 +1,25 @@
+<section class="configurator-scene" aria-labelledby="configurator-scene-title">
+    <div class="configurator-scene-sticky">
+        <div class="configurator-scene-heading shell">
+            <span class="micro">{{ eyebrow }}</span>
+            <h2 id="configurator-scene-title">{{ sceneTitle }}</h2>
+            <div class="configurator-scene-intro">
+                <p><strong>{{ introLead }}</strong> {{ introText }}</p>
+                <p>{{ detailText }}</p>
+            </div>
+        </div>
+        <div class="configurator-scene-content shell">
+            <div class="configurator-scene-media">
+                <img class="configurator-scene-still" src="/clean/assets/configurator-laptop-poster.jpg" width="1280" height="1024" alt="{{ sceneTitle|e('html_attr') }}" loading="lazy" decoding="async">
+                <video class="configurator-scene-video" muted playsinline preload="metadata" poster="/clean/assets/configurator-laptop-start.jpg" aria-hidden="true" tabindex="-1">
+                    <source src="/clean/assets/configurator-laptop.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="configurator-scene-cards">
+                <div class="configurator-scene-card"><span class="micro">01</span><h3>{{ cardOneTitle }}</h3><p>{{ cardOneText }}</p><p>{{ cardOneDetail }}</p></div>
+                <div class="configurator-scene-card"><span class="micro">02</span><h3>{{ cardTwoTitle }}</h3><p>{{ cardTwoText }}</p><p>{{ cardTwoDetail }}</p></div>
+                <div class="configurator-scene-card"><span class="micro">03</span><h3>{{ cardThreeTitle }}</h3><p>{{ cardThreeText }}</p><p>{{ cardThreeDetail }}</p></div>
+            </div>
+        </div>
+    </div>
+</section>

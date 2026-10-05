@@ -1,0 +1,14 @@
+<div class="service-card">
+    <div class="content-text">
+        <div class="rte"><span class="micro">{{ eyebrow }}</span></div>
+    </div>
+    <div class="content-text">
+        <div class="rte"><h3>{{ cardTitle }}</h3><p>{{ description }}</p></div>
+    </div>
+    <div class="card-end content-text">
+        <div class="rte"><span class="micro">{{ detail }}</span><span aria-hidden="true" class="card-arrow">↗</span></div>
+    </div>
+    <div class="card-link-overlay content-hyperlink">
+        <a href="{{ link|insert_tag_raw|e('html_attr') }}" aria-label="{{ linkLabel|e('html_attr') }}">{{ linkLabel }}</a>
+    </div>
+</div>

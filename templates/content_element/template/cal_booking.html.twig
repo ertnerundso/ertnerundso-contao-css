@@ -1,0 +1,18 @@
+{% extends "@Contao/content_element/template.html.twig" %}
+
+{% block content %}
+    {% set booking_url = keys.booking_url|default('https://cal.ertnerundso.de/eunds/30min') %}
+    <section class="eo-booking" id="termin" aria-labelledby="eo-booking-title">
+        <div class="eo-booking-inner">
+            <div class="eo-booking-copy">
+                <p class="eo-eyebrow">{{ keys.label|default('DISCOVERY CALL') }}</p>
+                <h2 id="eo-booking-title">{{ keys.heading|default('Lieber direkt sprechen?') }}</h2>
+                <p>{{ keys.copy|default('Buchen Sie ein unverbindliches Gespräch über Ihr Produkt und Ihre Ziele.') }}</p>
+            </div>
+            <div class="eo-cal-shell" data-eo-cal-url="{{ booking_url }}">
+                <div id="eo-cal-inline" class="eo-cal-inline" aria-label="{{ keys.calendar_label|default('Termin auswählen') }}"></div>
+                <a class="eo-cal-fallback" href="{{ booking_url }}" target="_blank" rel="noopener noreferrer">{{ keys.link_text|default('Termin in neuem Tab öffnen') }} ↗</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

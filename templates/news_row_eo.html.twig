@@ -1,0 +1,6 @@
+<article class="journal-row">
+  <h3>{{ linkHeadline|sanitize_html('contao') }}</h3>
+  {% if teaser|default('') %}<p class="journal-excerpt">{{ teaser|striptags|u.truncate(150, '…') }}</p>{% endif %}
+  <span class="micro row-category">JOURNAL</span>
+  <span class="row-arrow" aria-hidden="true">↗</span>
+</article>

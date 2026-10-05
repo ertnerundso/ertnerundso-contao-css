@@ -1,0 +1,8 @@
+<article class="index-card news-card">
+    {% if addImage %}
+        {{ include('@Contao/image.html.twig') }}
+    {% endif %}
+    <span class="micro">{{ archive.id in [1, 2] ? (archive.id == 2 ? 'WORK' : 'ARBEITEN') : 'JOURNAL' }}</span>
+    <h2>{{ linkHeadline|sanitize_html('contao') }}</h2>
+    <span class="text-link">{{ archive.id in [2, 4] ? 'View' : 'Ansehen' }} <span aria-hidden="true">↗</span></span>
+</article>

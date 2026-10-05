@@ -1,0 +1,75 @@
+{% set currentPath = app.request.pathInfo %}
+{% set english = currentPath == '/en' or currentPath starts with '/en/' %}
+{% set hasTranslation = english or currentPath == '/' or currentPath == '/arbeiten' or currentPath starts with '/arbeiten/' or currentPath == '/journal' or currentPath starts with '/journal/' or currentPath == '/kontakt' or currentPath starts with '/kontakt/' %}
+{% set languageSwitchPath = english ? (currentPath|slice(3)|default('/')) : (hasTranslation ? '/en' ~ currentPath : '/en/') %}
+<!doctype html>
+<html lang="{{ english ? 'en' : 'de' }}">
+<head>
+    <meta charset="{{ charset }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="{{ robots }}">
+    <meta name="description" content="{{ description|u.truncate(320, '…') }}">
+    <title>{{ title }}</title>
+    <base href="{{ base }}">
+    {% for metaTag in metaTags|default %}<meta{{ metaTag }}>{% endfor %}
+    {% for linkTag in linkTags|default %}<link{{ linkTag }}>{% endfor %}
+    {% if canonical|default %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+    <link rel="icon" href="/clean/assets/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="/clean/assets/sk-modernist-light.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/clean/assets/sk-modernist-regular.woff2" as="font" type="font/woff2" crossorigin>
+    {{ stylesheets|raw }}
+    <link rel="stylesheet" href="https://ertnerundso.github.io/ertnerundso-contao-src/site.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    {{ mooScripts|raw }}
+    {{ head|raw|insert_tag_html }}
+</head>
+<body id="top" class="{{ app.request.attributes.get('parameters') ? 'is-news-detail' : '' }}">
+{{ contao_sections('top') }}
+<a class="skip-link" href="#main">{{ english ? 'Skip to content' : 'Zum Inhalt' }}</a>
+<header class="site-header">
+    <div class="shell header-inner">
+        <a class="brand" href="{{ english ? '/en/' : '/' }}" aria-label="ERTNER&SO {{ english ? 'home' : 'Startseite' }}"><img src="/clean/assets/logo.svg" alt="ERTNER&SO" width="148" height="15"></a>
+        <nav class="header-nav" aria-label="{{ english ? 'Main navigation' : 'Hauptnavigation' }}">
+            {% if header %}
+                {{ header|raw }}
+            {% else %}
+                <a href="{{ english ? '/en/arbeiten/' : '/arbeiten/' }}">{{ english ? 'Work' : 'Arbeiten' }}</a>
+                <a href="{{ english ? '/en/#leistungen' : '/#leistungen' }}">{{ english ? 'Services' : 'Leistungen' }}</a>
+                <a href="{{ english ? '/en/journal/' : '/journal/' }}">Journal</a>
+                <a href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'Contact' : 'Kontakt' }}</a>
+            {% endif %}
+        </nav>
+        <div class="header-actions">
+            <a class="lang-link" href="{{ languageSwitchPath }}" hreflang="{{ english ? 'de' : 'en' }}">{{ english ? 'DE' : 'EN' }}</a>
+            <a class="button" href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'Enquire' : 'Anfragen' }}</a>
+            <button class="menu-toggle" type="button" aria-label="{{ english ? 'Open menu' : 'Menü öffnen' }}" aria-controls="site-menu" aria-expanded="false"><span class="menu-lines" aria-hidden="true"><i></i><i></i><i></i></span></button>
+        </div>
+    </div>
+</header>
+<div class="menu-panel" id="site-menu" aria-hidden="true" inert>
+    <div class="shell menu-panel-inner">
+        <div class="menu-panel-top"><a class="brand" href="{{ english ? '/en/' : '/' }}" aria-label="ERTNER&SO {{ english ? 'home' : 'Startseite' }}"><img src="/clean/assets/logo.svg" alt="ERTNER&SO" width="148" height="15"></a><button class="menu-close" type="button" aria-label="{{ english ? 'Close menu' : 'Menü schließen' }}">×</button></div>
+        <nav class="menu-panel-nav" aria-label="{{ english ? 'Full screen navigation' : 'Vollbild-Navigation' }}"><a href="{{ english ? '/en/arbeiten/' : '/arbeiten/' }}">{{ english ? 'WORK' : 'ARBEITEN' }}</a><a href="{{ english ? '/en/journal/' : '/journal/' }}">JOURNAL</a><a href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'CONTACT' : 'KONTAKT' }}</a></nav>
+        <div class="menu-panel-bottom"><div><a href="{{ languageSwitchPath }}" hreflang="{{ english ? 'de' : 'en' }}">{{ english ? 'DE' : 'EN' }}</a><a href="/impressum/">IMPRESSUM</a><a href="/datenschutz/">DATENSCHUTZ</a><a href="/agb/">AGB</a></div><a class="button" href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'ENQUIRE' : 'ANFRAGEN' }}</a></div>
+    </div>
+</div>
+{{ contao_sections('before') }}
+<main class="site-main" id="main">{{ main|raw }}{{ contao_sections('main') }}</main>
+{{ contao_sections('after') }}
+<footer class="site-footer">
+    <div class="shell">
+        <div class="footer-top">
+            <div class="footer-brand"><a href="{{ english ? '/en/' : '/' }}"><img src="/clean/assets/logo.svg" alt="ERTNER&SO" width="190" height="19"></a><p>{{ english ? 'We make technology understandable.' : 'Wir machen Technik verständlich.' }}</p></div>
+            <nav class="footer-nav" aria-label="{{ english ? 'Services' : 'Leistungen' }}"><span class="micro">{{ english ? 'SERVICES' : 'LEISTUNGEN' }}</span><a href="{{ english ? '/en/#leistungen' : '/#leistungen' }}">{{ english ? 'Explainer films' : 'Erklärfilme' }}</a><a href="{{ english ? '/en/#leistungen' : '/#leistungen' }}">{{ english ? 'Assembly guides' : 'Montageanleitungen' }}</a><a href="{{ english ? '/en/#leistungen' : '/#leistungen' }}">{{ english ? 'Configurators' : 'Konfiguratoren' }}</a></nav>
+            <nav class="footer-nav" aria-label="Studio"><span class="micro">STUDIO</span><a href="{{ english ? '/en/arbeiten/' : '/arbeiten/' }}">{{ english ? 'Work' : 'Arbeiten' }}</a><a href="{{ english ? '/en/journal/' : '/journal/' }}">Journal</a><a href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'Contact' : 'Kontakt' }}</a></nav>
+            <nav class="footer-nav" aria-label="{{ english ? 'Contact' : 'Kontakt' }}"><span class="micro">{{ english ? 'CONTACT' : 'KONTAKT' }}</span><a href="mailto:projects@ertnerundso.com">projects@ertnerundso.com</a><a href="https://cal.ertnerundso.de/eunds/30min" target="_blank" rel="noopener">{{ english ? 'Book a call' : 'Termin buchen' }}</a></nav>
+        </div>
+        <div class="footer-bottom"><span>© ERTNER&SO · Braunfels, DE</span><span><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/agb/">AGB</a></span></div>
+    </div>
+</footer>
+{{ contao_sections('bottom') }}
+<span class="cursor-dot" aria-hidden="true"></span>
+<script src="https://ertnerundso.github.io/ertnerundso-contao-src/dist/site.js" type="module" crossorigin="anonymous"></script>
+{{ mootools|raw|insert_tag_html }}
+{{ jsonLdScripts|raw }}
+</body>
+</html>
