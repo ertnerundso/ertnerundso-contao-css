@@ -109,3 +109,17 @@ Never delete previous immutable releases: a Contao template may still use them.
 The directory tree above describes feature ownership; the source import order
 is authoritative within each cascade layer. Shared media rules currently live
 with their sections, and legal page rules live in `05-cms/contao.css`.
+
+## Typography: Major Third
+
+Typography now uses a 1rem base and a 1.25 ratio. `--type-step-*` tokens
+define the fixed scale; semantic hero, section, card, small-title, display,
+quote and menu roles provide responsive sizes. Heading role bounds are scale
+steps; their intermediate values are fluid between 20rem and 90rem viewport
+width. Body copy, inputs and buttons use the base; compact labels use the
+first smaller step.
+
+This is an intentional typography design change after the structural
+refactoring. Font sizes and line wrapping change. Do not restore the old
+numeric font-size aliases or the scoped desktop hero override. Keep colors,
+spacing, selector names and runtime hooks independent of the type scale.
