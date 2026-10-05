@@ -50,7 +50,7 @@
     /* H4: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
     --font-h4-family: "SK Modernist", Arial, sans-serif;
-    --font-h4-weight: 700;
+    --font-h4-weight: 400;
     --font-h4-min: 1.25rem;
     --font-h4-max: var(--font-step-4);
     --font-h4-size: clamp(var(--font-h4-min), var(--font-fluid-4), var(--font-h4-max));
@@ -58,7 +58,7 @@
     /* H5: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
     --font-h5-family: "SK Modernist", Arial, sans-serif;
-    --font-h5-weight: 700;
+    --font-h5-weight: 400;
     --font-h5-min: 1.125rem;
     --font-h5-max: var(--font-step-5);
     --font-h5-size: clamp(var(--font-h5-min), var(--font-fluid-5), var(--font-h5-max));
@@ -66,7 +66,7 @@
     /* H6: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
     --font-h6-family: "SK Modernist", Arial, sans-serif;
-    --font-h6-weight: 700;
+    --font-h6-weight: 400;
     --font-h6-min: 1.0625rem;
     --font-h6-max: var(--font-step-6);
     --font-h6-size: clamp(var(--font-h6-min), var(--font-fluid-6), var(--font-h6-max));
