@@ -525,8 +525,8 @@
     }
   }
   @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
-    .configurator-scene.is-scroll-ready .configurator-scene-cards {
-      transform: translateY(1.5rem);
+    .configurator-scene-card-reveal {
+      transform: translateY(var(--motion-configurator-card-offset));
     }
   }
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {

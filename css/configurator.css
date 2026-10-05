@@ -50,7 +50,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  width: min(100%, 70rem);
+  width: min(100%, var(--layout-configurator-cards-max));
 }
 .configurator-scene-card {
   min-height: 10.9375rem;
@@ -89,7 +89,8 @@
     justify-content: center;
   }
   .configurator-scene.is-scroll-ready .configurator-scene-media {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
+    min-height: 0;
     height: 65svh;
     max-height: 45rem;
     margin-top: var(--space-position-8svh);
@@ -100,7 +101,11 @@
   .configurator-scene.is-scroll-ready .configurator-scene-video {
     display: block;
   }
-  .configurator-scene.is-scroll-ready .configurator-scene-cards {
+  /* Der Reveal-Container umfasst auch die außen liegenden Kreuze. */
+  .configurator-scene-card-reveal {
+    width: min(100%, calc(var(--layout-configurator-cards-max) + var(--space-frame-marker-half) * 2));
+    padding: var(--space-frame-marker-half);
+    flex: 0 0 auto;
     max-height: 0;
     overflow: hidden;
   }

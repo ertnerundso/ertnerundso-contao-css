@@ -482,8 +482,10 @@
     border-block: 0;
   }
   /* Dezente Trennlinien innerhalb der offenen Raster. */
-  .question-list .question:not(:last-child) {
-    border-bottom: var(--layout-frame-stroke) dashed var(--color-frame-line);
+  /* Contao umschließt jedes details mit content-text/rte; Trenner folgen den Listenzeilen. */
+  .question-list > .question:not(:first-child),
+  .question-list > :not(:first-child) .question {
+    border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
   }
   :is(.journal .journal-list, .work-track) > :is(.journal-row, .work-card) + :is(.journal-row, .work-card) {
     border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
@@ -967,7 +969,7 @@
     .configurator-scene.is-scroll-ready .configurator-scene-sticky {
       background: var(--color-on-dark);
     }
-    .configurator-scene.is-scroll-ready .configurator-scene-cards {
+    .configurator-scene-card-reveal {
       opacity: 0;
     }
   }

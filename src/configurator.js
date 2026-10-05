@@ -19,6 +19,7 @@ export function initConfigurator(runtime) {
       ]),
     );
     let trigger;
+    let cardReveal;
     const restore = () => {
       trigger?.kill();
       configuratorScene.classList.remove('is-scroll-ready');
@@ -26,6 +27,8 @@ export function initConfigurator(runtime) {
         if (style === null) element.removeAttribute('style');
         else element.setAttribute('style', style);
       }
+      if (cardReveal?.parentNode) cardReveal.replaceWith(cards);
+      cardReveal = null;
     };
     runtime.cleanup(restore);
     const clamp = (value) => Math.max(0, Math.min(1, value));
@@ -40,6 +43,10 @@ export function initConfigurator(runtime) {
       configuratorVideo.style.transform = motion.value(
         'motion-configurator-transform-start',
       );
+      cardReveal = document.createElement('div');
+      cardReveal.className = 'configurator-scene-card-reveal';
+      cards.before(cardReveal);
+      cardReveal.append(cards);
       configuratorScene.classList.add('is-scroll-ready');
       trigger = ScrollTrigger.create({
         trigger: configuratorScene,
@@ -73,9 +80,13 @@ export function initConfigurator(runtime) {
           heading.style.transform = `translateY(${-progress * motion.pixels('motion-configurator-heading-offset')}px)`;
           media.style.height = `${motion.number('motion-configurator-height-start') - reveal * motion.number('motion-configurator-height-range')}svh`;
           media.style.marginTop = `${motion.number('motion-configurator-margin-start') * (1 - reveal)}svh`;
-          cards.style.maxHeight = `${reveal * cards.scrollHeight}px`;
-          cards.style.opacity = String(reveal);
-          cards.style.transform = `translateY(${(1 - reveal) * motion.pixels('motion-configurator-card-offset')}px)`;
+          // Höhe einschließlich Rahmen und Kreuz-Abständen; der innere Rahmen bleibt unbeschnitten.
+          const padding = getComputedStyle(cardReveal);
+          const revealHeight = cards.getBoundingClientRect().height +
+            parseFloat(padding.paddingTop) + parseFloat(padding.paddingBottom);
+          cardReveal.style.maxHeight = reveal >= 1 ? 'none' : `${reveal * revealHeight}px`;
+          cardReveal.style.opacity = String(reveal);
+          cardReveal.style.transform = `translateY(${(1 - reveal) * motion.pixels('motion-configurator-card-offset')}px)`;
         },
       });
       ScrollTrigger.refresh();
