@@ -288,6 +288,10 @@
   }
 }
 @layer layout {
+  .site-footer a:is(:hover, :focus-visible) {
+    text-decoration: underline;
+    text-underline-offset: var(--space-xs);
+  }
   .intro {
     text-align: center;
   }
