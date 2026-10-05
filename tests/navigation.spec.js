@@ -26,11 +26,19 @@ for (const width of [390, 1440]) {
     await expect(page.locator('.header-nav')).toBeHidden();
     await expect(page.locator('.header-actions > .button')).toBeHidden();
     await expect(page.locator('.header-actions > .lang-link')).toBeHidden();
+    await expect(page.locator('.menu-panel-bottom > .button')).toBeHidden();
+    expect(await page.locator('.menu-panel-nav a').allTextContents())
+      .toEqual(['Arbeiten', 'Journal', 'Kontakt', 'Leistungen']);
+    expect(await page.locator('.menu-panel-bottom > div a').allTextContents())
+      .toEqual(['EN', 'Impressum', 'Datenschutz', 'AGB']);
     await expect(page.locator('.page-shell > .before-content')).toHaveCount(1);
     await expect(page.locator('.page-shell > .after-content')).toHaveCount(1);
     await expect(page.locator('.page-shell > .site-footer')).toHaveCount(1);
     const before = await page.locator('.page-shell').boundingBox();
     await page.locator('.menu-toggle').click();
+    const buttonColor = await page.locator('.hero-actions > .button')
+      .evaluate((element) => getComputedStyle(element).backgroundColor);
+    await expect(page.locator('.menu-panel')).toHaveCSS('background-color', buttonColor);
     await expect(page.locator('.menu-panel')).toHaveAttribute('aria-modal', 'true');
     await expect(page.locator('.page-shell')).toHaveAttribute('inert', '');
     await expect(page.locator('.site-header')).toHaveAttribute('inert', '');
@@ -43,7 +51,7 @@ for (const width of [390, 1440]) {
     await page.keyboard.press('Shift+Tab');
     await expect(page.locator('.menu-panel-top .brand')).toBeFocused();
     await page.keyboard.press('Shift+Tab');
-    await expect(page.locator('.menu-panel-bottom > .button')).toBeFocused();
+    await expect(page.locator('.menu-panel-bottom > div a').last()).toBeFocused();
     await page.locator('.menu-dismiss').click();
     await expect(page.locator('.menu-toggle')).toBeFocused();
     await expect(page.locator('.page-shell')).not.toHaveAttribute('inert', '');
@@ -71,7 +79,7 @@ test('opening at a scrolled position preserves the viewport and pointer focus do
 });
 
 test('the menu scrolls independently on a short screen and anchor links close it', async ({ page }) => {
-  await page.setViewportSize({ width: 760, height: 360 });
+  await page.setViewportSize({ width: 760, height: 280 });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   const errors = await start(page);
   await page.locator('.menu-toggle').click();

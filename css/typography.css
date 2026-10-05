@@ -255,6 +255,15 @@
     font-weight: var(--font-h2-weight);
     line-height: var(--font-h2-line-height);
   }
+  .menu-panel-nav,
+  .menu-panel-bottom {
+    text-transform: none;
+  }
+  .menu-panel-nav a:hover,
+  .menu-panel-bottom a:hover {
+    text-decoration: underline;
+    text-underline-offset: var(--space-xs);
+  }
   a {
     text-decoration: none;
   }
