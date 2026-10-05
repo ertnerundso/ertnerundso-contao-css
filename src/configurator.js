@@ -1,5 +1,6 @@
 /* Vorhandenes Video-Scrubbing im Konfigurator.
    Verhalten: config.js; Gestaltung/Zeiten: motion.css und base.css. */
+import { createScrollProgress } from './scroll-progress.js';
 export function initConfigurator(runtime) {
   if (runtime.reduceMotion) return;
   const { ScrollTrigger, config, motion, listen, smallScreen, media } = runtime;
@@ -20,7 +21,9 @@ export function initConfigurator(runtime) {
     );
     let trigger;
     let cardReveal;
+    let progressIndicator;
     const restore = () => {
+      progressIndicator?.destroy();
       trigger?.kill();
       configuratorScene.classList.remove('is-scroll-ready');
       for (const [element, style] of initialStyles) {
@@ -48,13 +51,17 @@ export function initConfigurator(runtime) {
       cards.before(cardReveal);
       cardReveal.append(cards);
       configuratorScene.classList.add('is-scroll-ready');
+      progressIndicator = createScrollProgress(runtime, { de: 'Konfigurator', en: 'Configurator' });
       trigger = ScrollTrigger.create({
+        ...progressIndicator.callbacks,
         trigger: configuratorScene,
         start: () => `top top+=${runtime.headerHeight}`,
         end: config.triggers.configurator.end,
         refreshPriority: config.triggers.configurator.refreshPriority,
         invalidateOnRefresh: true,
-        onUpdate: ({ progress }) => {
+        onUpdate: (self) => {
+          progressIndicator.update(self);
+          const { progress } = self;
           const frame =
             clamp(progress / config.configurator.videoProgress) *
             (configuratorVideo.duration - config.configurator.endMargin);
@@ -89,6 +96,7 @@ export function initConfigurator(runtime) {
           cardReveal.style.transform = `translateY(${(1 - reveal) * motion.pixels('motion-configurator-card-offset')}px)`;
         },
       });
+      progressIndicator.update(trigger);
       ScrollTrigger.refresh();
     };
     if (configuratorVideo.readyState >= 1) enable();

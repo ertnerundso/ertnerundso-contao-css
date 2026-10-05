@@ -12,6 +12,7 @@
 @import "./css/buttons.css" layer(components);
 @import "./css/cards.css" layer(components);
 @import "./css/frames.css" layer(components);
+@import "./css/scroll-progress.css" layer(components);
 @import "./css/containers.css" layer(components);
 @import "./css/forms.css" layer(components);
 @import "./css/media.css" layer(components);

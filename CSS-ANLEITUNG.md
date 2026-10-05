@@ -8,6 +8,8 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Normaler Text und Textvarianten | `css/typography.css`, bei LESEN / TEXTVARIANTEN |
 | Gemeinsame Farben, Abstände, Rundungen, Schatten | `css/base.css` |
 | Farbe, Hintergrund, Rand, Schatten eines Elements | `css/surfaces.css` |
+| Rechte Scroll-Skala: Größe / Position / Anzahl Striche | `--layout-scroll-progress-*` in `css/layout.css` / `css/scroll-progress.css` / `scrollProgress.ticks` in `src/config.js` |
+| Scroll-Skala: wandernde Markierung | `--motion-scroll-progress-*` in `css/motion.css` |
 | Animationen, Übergänge und Bewegungswerte | `css/motion.css` |
 | Maximale Inhaltsbreite, gemeinsame Raster, Header-Höhe | `css/layout.css` |
 | Höhe des aufgeklappten Menüs / Größe des Menüknopfs | `--layout-menu-height` / `--layout-menu-control-size` in `css/layout.css` |

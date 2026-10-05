@@ -191,6 +191,14 @@
   }
 }
 @layer components {
+  /* Weiße Striche mit Differenz-Mischung bleiben auf hellen und dunklen Medien sichtbar. */
+  .section-scroll-progress {
+    mix-blend-mode: difference;
+  }
+  .section-scroll-progress-tick {
+    background: var(--color-scroll-progress);
+  }
+
   /* --- BUTTONS UND LINKS --- */
   .hero-work-link,
   .text-link,

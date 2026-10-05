@@ -17,6 +17,8 @@ export const config = {
     visibilityThreshold: 0.45,
     preloadMargin: '250px 0px',
   },
+  // Rechte Scroll-Skala: Anzahl der Striche; Gestaltung in CSS.
+  scrollProgress: { ticks: 52 },
   hero: { scrollRange: 1.25 },
   showreel: {
     scrollRange: 5.3,

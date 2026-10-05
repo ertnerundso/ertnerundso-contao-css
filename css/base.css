@@ -3,6 +3,7 @@
 @layer foundation {
   :root {
     /* FARBEN: Website und vorhandene Medienflächen */
+    --color-scroll-progress: var(--color-on-dark);
     --color-primary: #2455ed;
     --color-primary-hover: #173fc3;
     --color-secondary: #09090b;
