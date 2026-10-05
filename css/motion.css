@@ -233,6 +233,9 @@
     --motion-reduced-duration: 0.01ms;
     /* BUTTONS: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-buttons-transition: background 0.2s, border-color 0.2s, color 0.2s;
+    /* BUTTONS: Pfeil und Text gleiten gemeinsam; Werte hier anpassen. */
+    --motion-button-duration: 0.45s;
+    --motion-button-ease: cubic-bezier(0.22, 1, 0.36, 1);
     /* IMAGE: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-image-zoom-transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     /* CARD: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
@@ -351,6 +354,20 @@
   .index-card:hover .text-link {
     transform: none;
   }
+  .button--arrow {
+    transition: none;
+  }
+  .button--arrow.is-button-ready {
+    transition:
+      var(--motion-buttons-transition),
+      padding-inline-start var(--motion-button-duration) var(--motion-button-ease),
+      padding-inline-end var(--motion-button-duration) var(--motion-button-ease);
+  }
+  .is-button-ready .button-arrow {
+    transition:
+      var(--motion-buttons-transition),
+      inset-inline-start var(--motion-button-duration) var(--motion-button-ease);
+  }
   .service-card.featured img {
     transition: var(--motion-image-zoom-transition);
   }
@@ -438,10 +455,7 @@
   .testimonial-project-link a {
     transition: var(--motion-link-transition);
   }
-  .testimonial-switch-button,
-  :is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink)::after,
-  :is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a::after,
-  .contact-form .widget-submit.button button::after {
+  .testimonial-switch-button {
     transition: var(--motion-buttons-transition);
   }
   .client-reference-logo img {

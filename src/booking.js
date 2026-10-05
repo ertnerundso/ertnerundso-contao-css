@@ -1,5 +1,6 @@
 /* Kalenderintegration und lokaler Fehlerzustand.
    Verhalten: config.js; Gestaltung/Zeiten: motion.css und base.css. */
+import { enhanceButton } from './buttons.js';
 export function initBooking(runtime) {
   const { config, motion } = runtime;
   const booking = document.querySelector('[data-cal-inline]');
@@ -37,6 +38,7 @@ export function initBooking(runtime) {
       link.rel = 'noopener';
       link.textContent =
         document.documentElement.lang === 'en' ? 'Book a meeting' : 'Termin buchen';
+      enhanceButton(link);
       booking.replaceChildren(message, link);
     };
     const ready = new MutationObserver(() => {

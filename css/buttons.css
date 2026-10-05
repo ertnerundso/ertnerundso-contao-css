@@ -19,6 +19,10 @@
 }
 :is(
   .content-hyperlink.button,
+  .content-hyperlink.btn,
+  .content-hyperlink.btn--primary,
+  .content-hyperlink.btn--secondary,
+  .content-hyperlink.btn--text,
   .content-hyperlink.hero-contact,
   .content-hyperlink.hero-work-link,
   .content-hyperlink.text-link,
@@ -26,14 +30,18 @@
 ) {
   padding: 0;
 }
-:is(
+:where(
     .content-hyperlink.button,
+    .content-hyperlink.btn,
+    .content-hyperlink.btn--primary,
+    .content-hyperlink.btn--secondary,
+    .content-hyperlink.btn--text,
     .content-hyperlink.hero-contact,
     .content-hyperlink.hero-work-link,
-    .content-hyperlink.text-link
+    .content-hyperlink.text-link,
+    .contact-form .widget-submit.button
   )
-  > a,
-.contact-form .widget-submit.button button {
+  > :is(a, button) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -47,23 +55,63 @@
   padding: 0;
   justify-content: start;
 }
-:is(.content-hyperlink.text-link, .content-hyperlink.hero-work-link) > a {
+:is(
+    .content-hyperlink.text-link,
+    .content-hyperlink.hero-work-link,
+    .content-hyperlink.btn--text
+  ) > a {
   min-height: 0;
   padding: 0;
 }
-:is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink),
-:is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a,
-.contact-form .widget-submit.button button {
-  justify-content: space-between;
-  gap: var(--space-lg);
-  padding-inline-end: var(--space-xs);
+/* Das Pfeilfeld sitzt nur auf dem Link/Knopf, nie zusätzlich auf seinem CMS-Container.
+   Gleich große vertauschte Innenabstände halten die Button-Breite beim Hover stabil. */
+.button--arrow {
+  position: relative;
+  justify-content: start;
+  overflow: hidden;
+  padding-inline-start: var(--button-padding, var(--space-lg));
+  padding-inline-end: calc(
+    var(--space-button-arrow) + var(--button-padding, var(--space-lg))
+  );
 }
-:is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink)::after,
-:is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a::after,
-.contact-form .widget-submit.button button::after {
+.button-label {
+  pointer-events: none;
+}
+.button-arrow {
+  position: absolute;
   display: grid;
-  flex: none;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: var(--space-button-arrow);
+  height: var(--space-button-arrow);
+  inset-inline-start: calc(
+    var(--space-full) - var(--space-button-arrow) - var(--space-xs)
+  );
+  pointer-events: none;
+}
+.button-arrow::before {
+  display: block;
+  width: var(--layout-button-icon-size);
+  height: var(--layout-button-icon-size);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .button--arrow:focus-visible:not(:disabled, [aria-disabled="true"]) {
+    padding-inline-start: calc(
+      var(--space-button-arrow) + var(--button-padding, var(--space-lg))
+    );
+    padding-inline-end: var(--button-padding, var(--space-lg));
+  }
+  .button--arrow:focus-visible:not(:disabled, [aria-disabled="true"]) .button-arrow {
+    inset-inline-start: var(--space-xs);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button--arrow:hover:not(:disabled, [aria-disabled="true"]) {
+    padding-inline-start: calc(
+      var(--space-button-arrow) + var(--button-padding, var(--space-lg))
+    );
+    padding-inline-end: var(--button-padding, var(--space-lg));
+  }
+  .button--arrow:hover:not(:disabled, [aria-disabled="true"]) .button-arrow {
+    inset-inline-start: var(--space-xs);
+  }
 }

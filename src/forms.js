@@ -1,5 +1,6 @@
 /* Kontaktformular und Sicherheitsprüfung.
    Verhalten: config.js; Gestaltung/Zeiten: motion.css und base.css. */
+import { setButtonLabel } from './buttons.js';
 export function initForms(runtime) {
   const { config, listen } = runtime;
   const contactForm = document.querySelector('.contact-form form');
@@ -103,7 +104,7 @@ export function initForms(runtime) {
           return;
         }
         submit.disabled = true;
-        submit.textContent = english ? 'Sending …' : 'Wird gesendet …';
+        setButtonLabel(submit, english ? 'Sending …' : 'Wird gesendet …');
         status.hidden = true;
         try {
           const response = await fetch(config.contact.endpoint, {
@@ -126,7 +127,7 @@ export function initForms(runtime) {
               ? 'Thank you. Your enquiry has arrived.'
               : 'Danke! Ihre Anfrage ist angekommen.',
           );
-          submit.textContent = english ? 'Sent' : 'Gesendet';
+          setButtonLabel(submit, english ? 'Sent' : 'Gesendet');
         } catch {
           window.turnstile?.reset();
           showStatus(
@@ -136,7 +137,7 @@ export function initForms(runtime) {
             true,
           );
           submit.disabled = false;
-          submit.textContent = initialLabel;
+          setButtonLabel(submit, initialLabel);
         }
       },
       { capture: true },

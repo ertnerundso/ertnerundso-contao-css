@@ -74,6 +74,9 @@
     --color-shadow-soft: rgba(9, 9, 11, 0.035);
     --color-shadow-hover: rgba(9, 9, 11, 0.065);
     /* ABSTÄNDE: Kleine Grundskala; gutter und section steuern die gesamte Seite */
+    --space-full: 100%;
+    /* Platz für das quadratische Button-Pfeilfeld. */
+    --space-button-arrow: 2.25rem;
     --space-xxs: 0.125rem;
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
@@ -131,6 +134,8 @@
     --space-position-6vw: 6vw;
     --space-position-13vh: 13vh;
     /* RADIEN: Einheitliche Rundungen */
+    --radius-button: 0.5rem;
+    --radius-button-arrow: 0.25rem;
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 1rem;

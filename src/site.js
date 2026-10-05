@@ -18,6 +18,7 @@ import { initScene } from './scene-loader.js';
 import { initForms } from './forms.js';
 import { initBooking } from './booking.js';
 import { initTestimonials } from './testimonials.js';
+import { initButtons } from './buttons.js';
 
 const runtime = createRuntime();
 const motionModules = new Set([
@@ -42,6 +43,7 @@ for (const initialize of [
   initWork,
   initPointer,
   initScene,
+  initButtons,
   initForms,
   initBooking,
   initTestimonials,

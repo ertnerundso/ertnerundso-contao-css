@@ -313,6 +313,7 @@
     white-space: nowrap;
   }
   /* --- BUTTONS UND LINKS --- */
+  .button--arrow,
   .content-hyperlink.button > a,
   .hero-actions > .content-hyperlink.hero-contact > a,
   .contact-form .widget-submit.button button {
