@@ -64,13 +64,14 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  padding-block: var(--space-frame-marker-half);
   margin-top: clamp(var(--space-xl), var(--space-position-5vh), var(--space-3xl));
   margin-bottom: clamp(var(--space-xl), var(--space-position-5vh), var(--space-3xl));
 }
 .work-track {
   display: flex;
   align-items: center;
-  gap: clamp(var(--space-3xl), var(--space-position-7vw), var(--space-5xl));
+  gap: 0;
   width: max-content;
   padding-left: var(--space-content-offset);
   padding-right: var(--space-gutter);
@@ -84,7 +85,7 @@
   width: clamp(20rem, 23vw, 25.625rem);
   height: min(100%, 28.4375rem);
   min-height: 0;
-  padding: 0;
+  padding: var(--space-lg);
   margin: 0;
   display: block;
 }
@@ -210,7 +211,6 @@
   }
   .work-track {
     height: 100%;
-    gap: var(--space-xl);
   }
   .work .work-card {
     width: min(78vw, 25.625rem);

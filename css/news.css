@@ -33,7 +33,7 @@
 .mod_newslist.news-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-sm);
+  gap: 0;
   max-width: var(--layout-container-max);
   margin: 0 auto var(--space-section);
   padding-inline: var(--space-gutter);

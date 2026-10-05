@@ -14,6 +14,7 @@
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 0;
   margin-top: var(--space-4xl);
 }
 .step {
@@ -25,7 +26,6 @@
 @media (max-width: 760px) {
   .steps {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
     margin-top: var(--space-3xl);
   }
   .step h3 {

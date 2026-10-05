@@ -11,6 +11,8 @@
 .service-card.featured {
   grid-row: span 2;
   padding: 0;
+  margin-block: var(--space-lg);
+  margin-inline-end: var(--space-md);
 }
 .service-card.featured img {
   width: 100%;
@@ -63,11 +65,11 @@
   overflow: hidden;
 }
 .service-grid {
-  padding-block: var(--space-lg);
   display: grid;
   grid-template-columns: 1.32fr 0.82fr 0.82fr;
   grid-template-rows: minmax(18.75rem, auto) minmax(16.25rem, auto);
-  gap: var(--space-md);
+  /* Zusammenhängende Zellen: Trennlinien werden nicht durch Grid-Abstände unterbrochen. */
+  gap: 0;
 }
 .service-card {
   position: relative;
@@ -82,9 +84,6 @@
   position: absolute;
   inset: auto 0 0;
   padding: clamp(var(--space-lg), var(--space-position-3-2vw), var(--space-2xl));
-}
-.steps {
-  gap: 0;
 }
 .step {
   padding: var(--space-lg)
@@ -121,7 +120,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    gap: var(--space-sm);
   }
   .service-card,
   .service-card.featured {
@@ -130,6 +128,7 @@
   .service-card.featured {
     height: 29.375rem;
     grid-row: auto;
+    margin-inline-end: 0;
   }
 }
 @media (max-width: 520px) {
