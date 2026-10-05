@@ -1,0 +1,22 @@
+name: Check frontend behavior
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run check:css
+      - run: npm run build:js
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser

@@ -1,68 +1,38 @@
-# ERTNER&SO CSS architecture
+# ERTNER&SO frontend architecture
 
-## Source and delivery
+The architecture follows the owner's interview decisions recorded in `AGENTS.md`. Main is not modified until an explicit merge approval. Two reviewable stages separate typography/foundations from layout, component consolidation and JavaScript modules.
 
-The short root `site.css` directly imports 30 modules: six system files and 24 structure-only component/section files. Contao continues to load this entry point through GitHub Pages. There is no generated CSS, build step, secondary entry point or nested import chain.
+## CSS ownership
 
-## Exclusive ownership
+All 30 modules stay directly in `css/`. Root `site.css` imports them directly: six systems and 24 structural files. No CSS compilation or nested imports are introduced.
 
-| File | Owns |
+| System | Exclusive responsibility |
 | --- | --- |
-| `base.css` | Palette, spacing, radius and shadow custom properties: `--color-*`, `--space-*`, `--radius-*`, `--shadow-*` |
-| `typography.css` | All font faces, typography, headings, body text, text alignment/decoration, wrapping, counters and lists, including component and responsive text rules |
-| `surfaces.css` | All backgrounds, colors, borders, radii, shadows, masks, filters, overlays, opacity, cursor and visibility states; literal palette values come from base |
-| `motion.css` | All transitions, animations, transforms and scroll behavior; shared `--motion-*` values |
-| `layout.css` | Element structure, page skeleton, containers, common grids and `--layout-*` values |
-| `responsive.css` | Existing cross-component responsive structure; breakpoint inventory in its header |
-| Every other file in `css/` | Structure only: positioning, dimensions, grid/flex, overflow, object fit, stacking, pointer behavior, and spacing through `--space-*` |
+| `base.css` | `--color-*`, `--space-*`, `--radius-*`, `--shadow-*` |
+| `typography.css` | Font faces, `--font-*`, all typography applications |
+| `surfaces.css` | Colors, surfaces, borders, shadows, filters, masks, opacity and visibility |
+| `motion.css` | `--motion-*`, effects, animation and transition applications |
+| `layout.css` | Page structure, containers, common grids, `--layout-*` |
+| `responsive.css` | General responsive structure |
 
-Components must not contain typography, paint or motion declarations, even when their values use variables. For example, `font-size: var(--font-h1)` still belongs in typography. Optional `--font-*` tokens also belong in typography. Every CSS file is validated against this ownership, including Contao wrappers and page styles. Animation keyframes belong in motion, including their animated opacity/filter effects; their colors still reference the base palette.
+Every other CSS file owns structure only, including section/page/Contao files. Spacing references `--space-*`; typography and paint declarations are rejected even when they reference variables. Specific responsive structure remains with its component. Paint and motion media rules remain in their corresponding systems.
 
-`containers.css` holds shared card/list/table structure formerly mixed into surfaces. `media.css` holds cursor/reveal-line/project-media structure formerly mixed into motion. Their positions preserve the structural cascade. No HTML classes were introduced or renamed.
+The five existing priority layers remain `foundation`, `layout`, `components`, `sections`, `cms`. Systems contain original named blocks; components have flat layered imports. The layer mechanism preserves the priority of states while permitting deliberate design simplification.
 
-Spacing values are centralized, including legacy exact values required to preserve appearance. The base scale uses `--space-xs` through `--space-6xl`. Additional numeric names denote rem values at a reference root size of 16px; explicit px/em/percentage names retain those units. Complex values have feature names. Do not round or convert existing values as part of an architecture change.
+## Global typography
 
-Typography uses direct readable font values in its single owner. There is no separate fonts or variables file. Colors, radii and shadows use shared tokens; transformations and their timing live in motion.
+Each heading level has exactly one application rule and its own family, weight, minimum/maximum size, fluid size and line-height settings. All headings start in genuine SK Modernist Bold 700, loaded from the repository. Component heading overrides are forbidden, including overrides in typography itself.
 
-## Cascade preservation
+The maximum sizes derive from a 1.33 modular scale anchored to the 1.0625rem body size. Fluid values use clamp; minimum sizes compress the mobile hierarchy while keeping h6 at body size. Each min/max and family/weight can be edited independently. Browser tests check consistency across contexts, actual font loading, the desktop ratio and live changes to h1 settings.
 
-The five existing layers remain ordered as `foundation`, `layout`, `components`, `sections`, `cms`. These priorities are independent of file responsibility.
+IBM Plex Sans uses the original variable-font source converted to WOFF2, supporting weights 100–700. SK Modernist faces 300/400/700 and IBM Plex Mono 400 retain their supplied webfonts. Library/license files remain in assets/fonts. Relative font URLs resolve against the imported CSS file, so both local previews and Pages delivery use the same repository assets.
 
-System files are imported without an additional import layer and contain explicit blocks for their original layers. A system can therefore own both foundation defaults and later section or CMS overrides. Keep original layer ownership and source order within each layer when moving rules, including shorthand/longhand ordering.
+Non-heading text variants have explicit roles: lead, small, caption, label, quote and button. Existing semantic classes retain their mapping. Aliases are excluded from real h1–h6 elements, so a text helper cannot override a heading level.
 
-Structure-only files are imported with `layer(...)` and contain plain rules. The root imports first the six systems, then the components in their original structural order. Different files own disjoint property groups; system blocks preserve the previous priority of the extracted styles. Do not wrap a system import in an additional layer or append unlayered overrides.
+## Validation and deployment
 
-The refactor starts from main commit `313b6aa`. All 2,057 non-custom-property declarations retain their selectors, media contexts, values after token expansion, importance and per-property layer order. Existing token definitions and responsive overrides are preserved, with the documented namespace renames below.
+`npm run check:css` tests ownership guardrails and checks all imports, layers, registered breakpoints, token references, exactly one global rule per heading, and repository-relative asset existence. `npm run test:browser` runs local browser fixtures. `npm run build:js` preserves the existing JavaScript compilation workflow.
 
-## Responsive rules and runtime hooks
+CI runs checks on pull requests. Browser fixtures are local and do not contact real form/booking services. They do not claim to be a full authenticated Contao rendering test. During the second stage, behavior tests cover the module and layout changes.
 
-Normal CSS custom properties cannot supply media-query conditions. Existing conditions remain literal, with width thresholds 360, 520, 760/761 and 1000px, height thresholds 720/800px, and user-preference queries. Width registration is checked in `scripts/css-architecture.mjs`. Do not convert max-width rules to min-width without separately verifying boundary behavior.
-
-Typography media rules stay in typography; paint media rules in surfaces; motion preference rules in motion. Shared structural media rules stay in responsive. Feature-specific structural media rules stay in their component.
-
-Preserve every status class, data attribute and JavaScript hook. Runtime `--showreel-scrim` retains its local fallback. Existing optional `--button-height`, `--button-padding` and `--stack-gap` remain supported at the consuming element. New spacing hooks `--space-button-padding` and `--space-stack-gap` take priority and fall back to their legacy equivalents. Legacy spacing hooks are allowed only in these compatibility fallbacks.
-
-Internal shared token names now use consistent namespaces:
-
-| Previous name | Current name |
-| --- | --- |
-| `--container-max` | `--layout-container-max` |
-| `--container-gutter` | `--space-gutter` |
-| `--section-space` | `--space-section` |
-| `--grid-gap` | `--space-grid` |
-| `--column-gap` | `--space-columns` |
-| `--content-offset` | `--space-content-offset` |
-| `--transition-fast`, `--transition-smooth`, `--transition-slow` | `--motion-fast`, `--motion-smooth`, `--motion-slow` |
-
-## Validation and maintenance
-
-```sh
-npm ci
-npm run check:css
-```
-
-This read-only command runs guardrail tests and validates syntax, all file imports, system/component property ownership, cascade layers, spacing/palette references, registered width breakpoints, defined tokens or runtime fallbacks, and absolute asset URLs. GitHub Actions checks pull requests and main. The checker lives in `scripts/validate-css.mjs`; the property ownership map is in `scripts/css-architecture.mjs`.
-
-During the migration, full-source declaration comparison and browser computed-style comparisons cover breakpoint boundaries, menu/hover/focus states, reduced/default motion, enlarged root fonts, short viewports and runtime hooks. These local regression fixtures do not replace checking the complete authenticated Contao site when changing its design.
-
-Keep `CSS-ANLEITUNG.md` accurate. Add clear German editing-point comments. All imported assets retain their existing absolute URLs. Source-controlled templates and assets still need the separate staging synchronization described in README.
+Main publishes CSS/JS/assets through Pages after explicit approval. Template copies in templates require separate approved synchronization to staging; repository changes do not update Contao templates or CMS records automatically. Customer uploads and CMS-managed media remain on Contao.

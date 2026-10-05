@@ -15,8 +15,8 @@
     {% for linkTag in linkTags|default %}<link{{ linkTag }}>{% endfor %}
     {% if canonical|default %}<link rel="canonical" href="{{ canonical }}">{% endif %}
     <link rel="icon" href="/clean/assets/favicon.svg" type="image/svg+xml">
-    <link rel="preload" href="/clean/assets/sk-modernist-light.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/clean/assets/sk-modernist-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/fonts/sk-modernist-bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/fonts/ibm-plex-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
     {{ stylesheets|raw }}
     <link rel="stylesheet" href="https://ertnerundso.github.io/ertnerundso-contao-src/site.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     {{ mooScripts|raw }}

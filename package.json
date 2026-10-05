@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "check:css": "node --test scripts/validate-css.test.mjs && node scripts/check-css.mjs",
-    "build:js": "esbuild src/site.js --bundle --splitting --minify --format=esm --target=es2020 --outdir=dist --entry-names=site --chunk-names=chunks/[name]-[hash]"
+    "build:js": "esbuild src/site.js --bundle --splitting --minify --format=esm --target=es2020 --outdir=dist --entry-names=site --chunk-names=chunks/[name]-[hash]",
+    "test:browser": "playwright test"
   },
   "dependencies": {
     "gsap": "^3.13.0",
@@ -12,6 +13,7 @@
     "three": "^0.180.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "esbuild": "^0.25.0",
     "postcss": "^8.5.28",
     "postcss-value-parser": "^4.2.0"

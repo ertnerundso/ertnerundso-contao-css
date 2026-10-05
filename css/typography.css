@@ -1,265 +1,304 @@
-/* SYSTEM / TYPOGRAFIE: ALLE Schriften und Textregeln, auch für einzelne Bereiche.
-   Suche den Bereich, z. B. „Startseite / Hero“. Schriftgrößen und Schriftstärken hier ändern. */
+/* SYSTEM / TYPOGRAFIE: Hier sämtliche Schriften bearbeiten.
+   Jeder h1–h6-Block gilt auf der gesamten Website. Keine Bereichs-Ausnahmen.
+   Anleitung: CSS-ANLEITUNG.md. Font-Dateien liegen in assets/fonts/. */
 @layer foundation {
+  :root {
+    /* LESEN: Standardtext, etwa 17px bei einer Browser-Grundschrift von 16px */
+    --font-body-family: "IBM Plex Sans", Arial, sans-serif;
+    --font-body-size: 1.0625rem;
+    --font-body-weight: 400;
+    --font-body-line-height: 1.6;
+    /* SKALA: 1.33 ändert die Desktop-Abstufung. clamp() hält mobile Texte lesbar. */
+    --font-scale: 1.33;
+    --font-fluid-base: calc(0.375rem + 0.8vw);
+    --font-step-6: var(--font-body-size);
+    --font-fluid-6: var(--font-fluid-base);
+    --font-step-5: calc(var(--font-step-6) * var(--font-scale));
+    --font-fluid-5: calc(var(--font-fluid-6) * var(--font-scale));
+    --font-step-4: calc(var(--font-step-5) * var(--font-scale));
+    --font-fluid-4: calc(var(--font-fluid-5) * var(--font-scale));
+    --font-step-3: calc(var(--font-step-4) * var(--font-scale));
+    --font-fluid-3: calc(var(--font-fluid-4) * var(--font-scale));
+    --font-step-2: calc(var(--font-step-3) * var(--font-scale));
+    --font-fluid-2: calc(var(--font-fluid-3) * var(--font-scale));
+    --font-step-1: calc(var(--font-step-2) * var(--font-scale));
+    --font-fluid-1: calc(var(--font-fluid-2) * var(--font-scale));
+    /* H1: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
+     Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
+    --font-h1-family: "SK Modernist", Arial, sans-serif;
+    --font-h1-weight: 700;
+    --font-h1-min: 2.375rem;
+    --font-h1-max: var(--font-step-1);
+    --font-h1-size: clamp(
+      var(--font-h1-min),
+      var(--font-fluid-1),
+      var(--font-h1-max)
+    );
+    --font-h1-line-height: 1.06;
+    /* H2: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
+     Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
+    --font-h2-family: "SK Modernist", Arial, sans-serif;
+    --font-h2-weight: 700;
+    --font-h2-min: 1.875rem;
+    --font-h2-max: var(--font-step-2);
+    --font-h2-size: clamp(
+      var(--font-h2-min),
+      var(--font-fluid-2),
+      var(--font-h2-max)
+    );
+    --font-h2-line-height: 1.1;
+    /* H3: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
+     Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
+    --font-h3-family: "SK Modernist", Arial, sans-serif;
+    --font-h3-weight: 700;
+    --font-h3-min: 1.5rem;
+    --font-h3-max: var(--font-step-3);
+    --font-h3-size: clamp(
+      var(--font-h3-min),
+      var(--font-fluid-3),
+      var(--font-h3-max)
+    );
+    --font-h3-line-height: 1.15;
+    /* H4: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
+     Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
+    --font-h4-family: "SK Modernist", Arial, sans-serif;
+    --font-h4-weight: 700;
+    --font-h4-min: 1.25rem;
+    --font-h4-max: var(--font-step-4);
+    --font-h4-size: clamp(
+      var(--font-h4-min),
+      var(--font-fluid-4),
+      var(--font-h4-max)
+    );
+    --font-h4-line-height: 1.2;
+    /* H5: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
+     Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
+    --font-h5-family: "SK Modernist", Arial, sans-serif;
+    --font-h5-weight: 700;
+    --font-h5-min: 1.125rem;
+    --font-h5-max: var(--font-step-5);
+    --font-h5-size: clamp(
+      var(--font-h5-min),
+      var(--font-fluid-5),
+      var(--font-h5-max)
+    );
+    --font-h5-line-height: 1.25;
+    /* H6: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
+     Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
+    --font-h6-family: "SK Modernist", Arial, sans-serif;
+    --font-h6-weight: 700;
+    --font-h6-min: 1.0625rem;
+    --font-h6-max: var(--font-step-6);
+    --font-h6-size: clamp(
+      var(--font-h6-min),
+      var(--font-fluid-6),
+      var(--font-h6-max)
+    );
+    --font-h6-line-height: 1.3;
+    /* TEXTVARIANTEN: Einleitung, kleine Texte, Beschriftung, Zitat und Buttons */
+    --font-lead-size: clamp(1.125rem, calc(1rem + 0.4vw), 1.375rem);
+    --font-lead-line-height: 1.5;
+    --font-small-size: 0.9375rem;
+    --font-caption-size: 0.75rem;
+    --font-label-family: "IBM Plex Mono", monospace;
+    --font-label-size: 0.6875rem;
+    --font-label-line-height: 1.5;
+    --font-button-size: 1rem;
+    --font-button-weight: 600;
+    --font-quote-size: var(--font-h3-size);
+  }
+  /* SCHRIFTDATEIEN: verfügbare Schnitte. 700 ist die echte Bold-Datei. */
+  @font-face {
+    font-family: "SK Modernist";
+    src: url("../assets/fonts/sk-modernist-light.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "SK Modernist";
+    src: url("../assets/fonts/sk-modernist-regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "SK Modernist";
+    src: url("../assets/fonts/sk-modernist-bold.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "IBM Plex Sans";
+    src: url("../assets/fonts/ibm-plex-sans-variable.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 100 700;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "IBM Plex Mono";
+    src: url("../assets/fonts/ibm-plex-mono.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  body {
+    font-family: var(--font-body-family);
+    font-size: var(--font-body-size);
+    font-weight: var(--font-body-weight);
+    line-height: var(--font-body-line-height);
+    -webkit-font-smoothing: antialiased;
+  }
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font: inherit;
+  }
+  /* H1: Die einzige Anwendungsregel dieser Überschriftenstufe. */
+  h1,
+  :where(.h1, .display):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-h1-family);
+    font-size: var(--font-h1-size);
+    font-weight: var(--font-h1-weight);
+    line-height: var(--font-h1-line-height);
+  }
+  /* H2: Die einzige Anwendungsregel dieser Überschriftenstufe. */
+  h2,
+  :where(.h2, .section-heading):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-h2-family);
+    font-size: var(--font-h2-size);
+    font-weight: var(--font-h2-weight);
+    line-height: var(--font-h2-line-height);
+  }
+  /* H3: Die einzige Anwendungsregel dieser Überschriftenstufe. */
+  h3,
+  :where(.h3):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-h3-family);
+    font-size: var(--font-h3-size);
+    font-weight: var(--font-h3-weight);
+    line-height: var(--font-h3-line-height);
+  }
+  /* H4: Die einzige Anwendungsregel dieser Überschriftenstufe. */
+  h4,
+  :where(.h4):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-h4-family);
+    font-size: var(--font-h4-size);
+    font-weight: var(--font-h4-weight);
+    line-height: var(--font-h4-line-height);
+  }
+  /* H5: Die einzige Anwendungsregel dieser Überschriftenstufe. */
+  h5,
+  :where(.h5):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-h5-family);
+    font-size: var(--font-h5-size);
+    font-weight: var(--font-h5-weight);
+    line-height: var(--font-h5-line-height);
+  }
+  /* H6: Die einzige Anwendungsregel dieser Überschriftenstufe. */
+  h6,
+  :where(.h6):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-h6-family);
+    font-size: var(--font-h6-size);
+    font-weight: var(--font-h6-weight);
+    line-height: var(--font-h6-line-height);
+  }
+  /* Einleitung: vorhandene Klassen bleiben als verständliche Zuordnung erhalten. */
+  :where(
+    .text-lead,
+    .hero-lede,
+    .work-subtitle,
+    .intro .body-copy,
+    .inner-hero > p
+  ):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-size: var(--font-lead-size);
+    line-height: var(--font-lead-line-height);
+  }
+  :where(
+    .text-small,
+    .service-card p,
+    .index-card p,
+    .form-status,
+    .error,
+    .form-consent,
+    .testimonial-company p,
+    .footer-bottom
+  ):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-size: var(--font-small-size);
+  }
+  :where(
+    .text-caption,
+    figcaption,
+    .testimonial-project-link,
+    .row-category
+  ):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-size: var(--font-caption-size);
+  }
+  :where(
+    .text-label,
+    .micro,
+    .step-no,
+    .work-count,
+    .card-number,
+    .lang-link,
+    .field label,
+    .contact-form label,
+    .contact-form legend
+  ):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-label-family);
+    font-size: var(--font-label-size);
+    line-height: var(--font-label-line-height);
+  }
+  :where(
+    .button,
+    .btn,
+    .btn--primary,
+    .btn--secondary,
+    .btn--text,
+    .hero-contact,
+    .hero-work-link,
+    .text-link,
+    .journal-slider-controls button
+  ):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-body-family);
+    font-size: var(--font-button-size);
+    font-weight: var(--font-button-weight);
+    line-height: var(--font-label-line-height);
+  }
+  :where(.testimonial-quote, blockquote):not(:where(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-h3-family);
+    font-size: var(--font-quote-size);
+    line-height: var(--font-h3-line-height);
+  }
+  /* Links in Buttons sollen die zentrale Einstellung übernehmen. */
+  .content-hyperlink > a {
+    font: inherit;
+  }
+  .menu-panel-nav a {
+    font-family: var(--font-h2-family);
+    font-size: var(--font-h2-size);
+    font-weight: var(--font-h2-weight);
+    line-height: var(--font-h2-line-height);
+  }
   /* Grundregeln — foundation */
   a {
     text-decoration: none;
   }
   /* Allgemeine Texte und Schriften — foundation */
-  @font-face {
-    font-family: Modernist;
-    src: url(https://staging.ertnerundso.de/clean/assets/sk-modernist-light.woff2)
-      format("woff2");
-    font-weight: 300;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: Modernist;
-    src: url(https://staging.ertnerundso.de/clean/assets/sk-modernist-regular.woff2)
-      format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: Plex;
-    src: url(https://staging.ertnerundso.de/clean/assets/ibm-plex-sans.woff2)
-      format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: PlexMono;
-    src: url(https://staging.ertnerundso.de/clean/assets/ibm-plex-mono.woff2)
-      format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
   body {
-    font-family: Plex, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  button,
-  input,
-  textarea {
-    font: inherit;
-  }
   .micro {
-    font:
-      400 0.6875rem/1.5 PlexMono,
-      monospace;
     text-transform: uppercase;
     letter-spacing: 0;
-  }
-  .body-copy {
-    font-size: 1.0625rem;
-    line-height: 1.6;
-  }
-  @media (max-width: 760px) {
-    .body-copy {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
   }
   main h1,
   main h2,
   main h3,
   main h4 {
-    font-family: Modernist, Arial, sans-serif;
-    font-weight: 300;
     letter-spacing: 0;
-  }
-  main h1 {
-    font-size: clamp(3rem, 5.3vw, 5.25rem);
-    line-height: 1.04;
-  }
-  @media (max-width: 760px) {
-    main h1 {
-      font-size: clamp(2.375rem, 10vw, 3.625rem);
-      line-height: 1.04;
-    }
-  }
-  main h2 {
-    font-size: clamp(2.375rem, 4.1vw, 4rem);
-    line-height: 1.08;
-  }
-  @media (max-width: 760px) {
-    main h2 {
-      font-size: clamp(2.1875rem, 8.5vw, 3rem);
-      line-height: 1.08;
-    }
-  }
-  main h3 {
-    font-size: clamp(1.6875rem, 2.35vw, 2.25rem);
-    line-height: 1.12;
-  }
-  @media (max-width: 760px) {
-    main h3 {
-      font-size: clamp(1.625rem, 6.5vw, 2.125rem);
-      line-height: 1.12;
-    }
-  }
-  main h4 {
-    font-size: clamp(1.4375rem, 2vw, 1.875rem);
-    line-height: 1.15;
-  }
-  @media (max-width: 760px) {
-    main h4 {
-      font-size: 1.5625rem;
-      line-height: 1.15;
-    }
-  }
-  .hero h1,
-  .inner-hero h1,
-  .legal-hero-body h1,
-  .news-detail > .news-intro h1 {
-    font-size: clamp(3rem, 5.3vw, 5.25rem);
-    line-height: 1.04;
-  }
-  @media (max-width: 760px) {
-    .hero h1,
-    .inner-hero h1,
-    .legal-hero-body h1,
-    .news-detail > .news-intro h1 {
-      font-size: clamp(2.375rem, 10vw, 3.625rem);
-      line-height: 1.04;
-    }
-  }
-  .section-head h2,
-  .section-heading,
-  .intro .section-heading,
-  .showreel-lead h2,
-  .work-heading h2,
-  .statement-copy h2,
-  .process-header h2,
-  .questions-intro h2,
-  .contact-column h2,
-  .benefits-lead h2,
-  .benefits-impact h3,
-  .journal .section-heading,
-  .booking-block h2,
-  .content-section h2,
-  .legal-section h2,
-  .contact-band h2,
-  .contact-band-copy > .content-text h2 {
-    font-size: clamp(2.375rem, 4.1vw, 4rem);
-    line-height: 1.08;
-  }
-  @media (max-width: 760px) {
-    .section-head h2,
-    .section-heading,
-    .intro .section-heading,
-    .showreel-lead h2,
-    .work-heading h2,
-    .statement-copy h2,
-    .process-header h2,
-    .questions-intro h2,
-    .contact-column h2,
-    .benefits-lead h2,
-    .benefits-impact h3,
-    .journal .section-heading,
-    .booking-block h2,
-    .content-section h2,
-    .legal-section h2,
-    .contact-band h2,
-    .contact-band-copy > .content-text h2 {
-      font-size: clamp(2.1875rem, 8.5vw, 3rem);
-      line-height: 1.08;
-    }
-  }
-  html.showreel-motion .benefits-lead h2,
-  html.showreel-motion .benefits-impact h3 {
-    font-size: clamp(2.375rem, 4.1vw, 4rem);
-  }
-  @media (max-width: 760px) {
-    html.showreel-motion .benefits-lead h2,
-    html.showreel-motion .benefits-impact h3 {
-      font-size: clamp(2.1875rem, 8.5vw, 3rem);
-    }
-  }
-  .service-card h3,
-  .index-card h2,
-  .index-card:has(img) h2,
-  .journal-row h3,
-  .step h3,
-  .question summary,
-  .showreel-outro h3,
-  .content-section h3,
-  .legal-section .rte h3 {
-    font-size: clamp(1.6875rem, 2.35vw, 2.25rem);
-    line-height: 1.12;
-  }
-  @media (max-width: 760px) {
-    .service-card h3,
-    .index-card h2,
-    .index-card:has(img) h2,
-    .journal-row h3,
-    .step h3,
-    .question summary,
-    .showreel-outro h3,
-    .content-section h3,
-    .legal-section .rte h3 {
-      font-size: clamp(1.625rem, 6.5vw, 2.125rem);
-      line-height: 1.12;
-    }
-  }
-  .benefit-column h4,
-  .contact-meta h2 {
-    font-size: clamp(1.4375rem, 2vw, 1.875rem);
-    line-height: 1.15;
-  }
-  @media (max-width: 760px) {
-    .benefit-column h4,
-    .contact-meta h2 {
-      font-size: 1.5625rem;
-      line-height: 1.15;
-    }
-  }
-  .body-copy,
-  .hero-lede,
-  .process-header p,
-  .legal-section .rte p,
-  .news-detail .rte p,
-  .content-section p {
-    font-family: Plex, Arial, sans-serif;
-    font-size: 1.0625rem;
-    font-weight: 400;
-    line-height: 1.6;
-  }
-  @media (max-width: 760px) {
-    .body-copy,
-    .hero-lede,
-    .process-header p,
-    .legal-section .rte p,
-    .news-detail .rte p,
-    .content-section p {
-      font-family: Plex, Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.6;
-    }
-  }
-  .service-card p,
-  .step p,
-  .benefit-column .rte p,
-  .question p {
-    font-family: Plex, Arial, sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 400;
-    line-height: 1.55;
-  }
-  .micro,
-  .step-no,
-  .work-meta,
-  .work-card figcaption,
-  .showreel-caption {
-    font-family: PlexMono, monospace;
-    font-size: 0.6875rem;
-    font-weight: 400;
-    line-height: 1.5;
-  }
-  .menu-panel-nav a {
-    font-family: Modernist, Arial, sans-serif;
-    font-weight: 300;
   }
 }
 @layer layout {
@@ -267,128 +306,10 @@
   .intro {
     text-align: center;
   }
-  .intro .display {
-    font-size: clamp(2.625rem, 5.7vw, 5.625rem);
-  }
-  .section-head h2,
-  .section-heading {
-    font:
-      300 clamp(2.4375rem, 4.8vw, 4.625rem)/1.04 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .hero h1 {
-    font-size: clamp(3.625rem, 5.4vw, 5.5rem);
-  }
   /* Gemeinsame Bildschirmregeln — layout */
-  @media (max-width: 760px) {
-    .header-nav {
-      font-size: 1.0625rem;
-    }
-    .hero .body-copy {
-      font-size: 0.9375rem;
-    }
-    .intro .display {
-      font-size: clamp(2.5rem, 9vw, 3.75rem);
-    }
-    .section-head h2 {
-      font-size: 2.875rem;
-    }
-    .statement-copy h2 {
-      font-size: 3.0625rem;
-    }
-    .work-card h3 {
-      font-size: 2.75rem;
-    }
-    .journal-row h3 {
-      font-size: 1.6875rem;
-    }
-    .footer-bottom {
-      line-height: 1.7;
-    }
-    .inner-hero h1 {
-      font-size: 3.5625rem;
-    }
-  }
-  @media (max-width: 520px) {
-    .hero-actions .text-link {
-      font-size: 0.8125rem;
-    }
-    .contact-band h2 {
-      font-size: 3.1875rem;
-    }
-  }
-  @media (max-width: 760px) and (max-height: 720px) {
-    .hero h1 {
-      font-size: clamp(2.6875rem, 11vw, 3.375rem);
-    }
-    .hero .body-copy {
-      font-size: 0.875rem;
-      line-height: 1.45;
-    }
-  }
-  @media (max-width: 760px) {
-    .menu-panel-nav a {
-      font-size: clamp(3.125rem, 13vw, 5.625rem);
-    }
-    .hero h1 {
-      font-size: clamp(2.5rem, 9vw, 4.375rem);
-    }
-    .hero-work-link,
-    .hero-contact {
-      font-size: 0.625rem;
-    }
-    .intro .section-heading {
-      font-size: clamp(2.375rem, 9vw, 3.75rem);
-    }
-    .work-heading h2 {
-      font-size: clamp(2.5rem, 9vw, 3.875rem);
-    }
-    .work-subtitle {
-      font-size: 1rem;
-    }
-    .contact-band h2 {
-      font-size: clamp(2.9375rem, 10vw, 4.375rem);
-    }
-  }
-  @media (max-width: 520px) {
-    .hero h1 {
-      font-size: clamp(2.25rem, 9.1vw, 3.25rem);
-    }
-    .menu-panel-nav a {
-      font-size: clamp(3rem, 13vw, 4.5rem);
-    }
-  }
-  @media (min-width: 761px) {
-    .hero h1 {
-      font-size: clamp(3rem, 3.8vw, 4.25rem);
-    }
-  }
-  @media (max-width: 760px) {
-    .work .work-card figcaption {
-      font-size: 0.75rem;
-    }
-    .work .work-card figcaption:before {
-      font-size: 2.375rem;
-    }
-  }
   /* Kopfbereich — layout */
   .header-nav {
-    font-size: 0.8125rem;
-  }
-  .lang-link {
-    font:
-      0.6875rem PlexMono,
-      monospace;
-  }
-  .menu-toggle {
-    font-size: 1.25rem;
-  }
-  .header-nav {
     counter-reset: header-item;
-    font:
-      400 0.6875rem/1.2 PlexMono,
-      monospace;
     text-transform: uppercase;
   }
   .header-nav :is(a, strong) {
@@ -396,33 +317,7 @@
     counter-increment: header-item;
   }
   /* Aufklappbares Menü — layout */
-  .menu-close {
-    font:
-      300 2.125rem/1 Modernist,
-      sans-serif;
-  }
-  .menu-panel-nav a {
-    font:
-      300 clamp(3.625rem, 8vw, 8.75rem)/0.92 Modernist,
-      sans-serif;
-  }
-  .menu-panel-bottom > div a {
-    font:
-      0.6875rem PlexMono,
-      monospace;
-  }
   /* Fußbereich — layout */
-  .footer-brand p {
-    font-size: 0.875rem;
-  }
-  .footer-nav {
-    font-size: 0.8125rem;
-  }
-  .footer-bottom {
-    font:
-      0.6875rem PlexMono,
-      monospace;
-  }
 }
 @layer components {
   /* Buttons und Links — components */
@@ -432,17 +327,12 @@
   .menu-panel-bottom .button,
   .contact-band .button,
   .contact-form .widget-submit.button {
-    font:
-      400 0.875rem/1.2 Plex,
-      Arial,
-      sans-serif;
     text-transform: none;
     white-space: nowrap;
   }
   .content-hyperlink.button > a,
   .hero-actions > .content-hyperlink.hero-contact > a,
   .contact-form .widget-submit.button button {
-    font: inherit;
     text-decoration: none;
     text-transform: none;
   }
@@ -452,236 +342,60 @@
   .text-link,
   .content-hyperlink.text-link,
   .index-card .text-link {
-    font:
-      400 0.875rem/1.3 Plex,
-      Arial,
-      sans-serif;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: var(--space-0-26em);
   }
   .hero-actions > .content-hyperlink.hero-work-link > a,
   .content-hyperlink.text-link > a {
-    font: inherit;
     text-decoration: inherit;
   }
   /* Karten — components */
-  .service-card h3 {
-    font:
-      300 clamp(1.6875rem, 2.4vw, 2.375rem)/1.1 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .service-card p {
-    font:
-      0.9375rem/1.55 Plex,
-      Arial,
-      sans-serif;
-  }
-  .card-arrow {
-    font-size: 1.625rem;
-  }
-  .index-card:has(img) h2 {
-    font-size: clamp(1.5rem, 2.2vw, 2.125rem);
-  }
   /* Gemeinsame Karten und Tabellen — components */
   main th,
   main td {
     text-align: left;
-    font:
-      400 0.9375rem/1.55 Plex,
-      Arial,
-      sans-serif;
   }
   @media (max-width: 760px) {
-    .hero h1,
     .inner-hero h1,
     .legal-hero-body h1,
     .news-detail > .news-intro h1 {
-      font-size: clamp(2.375rem, 10vw, 3.625rem);
-    }
-    .inner-hero h1,
-    .legal-hero-body h1,
-    .news-detail > .news-intro h1 {
-      font-size: clamp(1.875rem, 8.3vw, 3.0625rem);
       hyphens: none;
       overflow-wrap: normal;
     }
-    .section-head h2,
-    .section-heading,
-    .intro .section-heading,
-    .showreel-lead h2,
-    .work-heading h2,
-    .statement-copy h2,
-    .process-header h2,
-    .questions-intro h2,
-    .contact-column h2,
-    .benefits-lead h2,
-    .benefits-impact h3,
-    .booking-block h2,
-    .content-section h2,
-    .legal-section h2 {
-      font-size: clamp(2.1875rem, 8.5vw, 3rem);
-    }
-    .service-card h3,
-    .index-card h2,
-    .journal-row h3,
-    .step h3,
-    .question summary {
-      font-size: clamp(1.625rem, 6.5vw, 2.125rem);
-    }
   }
   /* Formularfelder — components */
-  .form-consent {
-    font-size: 0.8125rem;
-    line-height: 1.5;
-  }
   .form-consent a {
     text-decoration: underline;
   }
-  .form-status {
-    font-size: 0.875rem;
-    line-height: 1.5;
-  }
-  .contact-meta h2 {
-    font:
-      300 clamp(1.875rem, 3.2vw, 3rem)/1.1 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .contact-meta p:not(.micro) {
-    font-size: 1rem;
-  }
-  :is(
-    .input,
-    .field input,
-    .field textarea,
-    .contact-form .widget input[type="email"],
-    .contact-form .widget textarea
-  ) {
-    font:
-      400 1rem/1.5 Plex,
-      Arial,
-      sans-serif;
-  }
   /* Reveal, Cursor und Projektmedien — components */
-  .project-visual figcaption {
-    font:
-      0.75rem/1.5 Plex,
-      Arial,
-      sans-serif;
-  }
-  .project-visual figcaption .micro {
-    font-size: 0.625rem;
-  }
 }
 @layer sections {
   /* STARTSEITE / HERO: Hauptüberschrift, Text und Links — sections */
   .hero h1,
   .display {
-    font:
-      300 clamp(3.5rem, 6.9vw, 7rem)/0.98 Modernist,
-      Arial,
-      sans-serif;
     letter-spacing: 0;
   }
   /* Hauptüberschrift: Schriftstärke, Größe, Zeilenhöhe und Schriftfamilie */
   .hero h1 {
-    font:
-      400 clamp(3rem, 5.3vw, 5.25rem)/1.06 Modernist,
-      Arial,
-      sans-serif;
     text-transform: none;
     text-wrap: balance;
   }
-  @media (max-width: 760px) {
-    .hero h1 {
-      font:
-        400 clamp(2.375rem, 10vw, 3.625rem)/1.06 Modernist,
-        Arial,
-        sans-serif;
-    }
-  }
   /* Hauptüberschrift auf großen Bildschirmen: Hier die Größe ändern. */
-  @media (min-width: 1000px) {
-    .hero h1 {
-      font-size: clamp(3.25rem, 4vw, 4.375rem);
-    }
-  }
   .hero-work-link,
   .hero-contact {
     text-transform: uppercase;
   }
-  @media (max-width: 360px) {
-    .hero h1 {
-      font-size: clamp(2rem, 10.8vw, 2.25rem);
-    }
-    .hero-lede {
-      font-size: 0.8125rem;
-      line-height: 1.4;
-    }
-  }
   /* Statement — sections */
   .statement-copy h2 {
-    font:
-      300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
     text-wrap: balance;
   }
-  @media (max-width: 760px) {
-    .statement-copy h2 {
-      font:
-        300 clamp(2.1875rem, 8.5vw, 3rem)/1.08 Modernist,
-        Arial,
-        sans-serif;
-    }
-  }
   /* Projekte und Montage — sections */
-  .work-card .work-no {
-    font:
-      0.75rem PlexMono,
-      monospace;
-  }
-  .work-card h3 {
-    font:
-      300 clamp(2.75rem, 5vw, 4.75rem)/1 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .work-card .work-bottom span {
-    font:
-      0.75rem PlexMono,
-      monospace;
-  }
-  .work-card .work-bottom .work-arrow {
-    font-size: 1.9375rem;
-  }
-  .work-index {
-    font:
-      0.6875rem PlexMono,
-      monospace;
-  }
   .work-heading h2 {
-    font:
-      300 clamp(2.25rem, 4.5vw, 4.3125rem)/1.05 Modernist,
-      sans-serif;
     text-transform: uppercase;
   }
   .work-subtitle {
-    font:
-      400 1.0625rem/1.6 Plex,
-      Arial,
-      sans-serif;
     text-transform: none;
-  }
-  @media (max-width: 760px) {
-    .work-subtitle {
-      font:
-        400 1rem/1.6 Plex,
-        Arial,
-        sans-serif;
-    }
   }
   .work-card {
     counter-increment: montage-step;
@@ -690,77 +404,12 @@
     counter-reset: montage-step;
   }
   .work .work-card figcaption {
-    font:
-      400 1rem/1.2 PlexMono,
-      monospace;
     text-transform: uppercase;
-  }
-  .work .work-card figcaption:before {
-    font:
-      italic 300 3rem/0.9 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .work-meta {
-    font:
-      0.6875rem PlexMono,
-      monospace;
   }
   .manual-book-header h2 {
-    font:
-      300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
     text-transform: uppercase;
   }
-  @media (max-width: 760px) {
-    .manual-book-header h2 {
-      font:
-        300 clamp(2.1875rem, 8.5vw, 3rem)/1.08 Modernist,
-        Arial,
-        sans-serif;
-    }
-  }
-  .manual-book-copy p {
-    font:
-      400 1.0625rem/1.6 Plex,
-      Arial,
-      sans-serif;
-  }
-  @media (max-width: 760px) {
-    .manual-book-copy p {
-      font:
-        400 1rem/1.6 Plex,
-        Arial,
-        sans-serif;
-    }
-  }
-  .manual-book-copy strong {
-    font-weight: 500;
-  }
-  @media (max-width: 760px) {
-    .manual-book-header h2 {
-      font-size: clamp(2.1875rem, 8.5vw, 3rem);
-    }
-  }
   /* Prozess — sections */
-  .step-no {
-    font:
-      1rem PlexMono,
-      monospace;
-  }
-  .step h3 {
-    font:
-      300 clamp(1.6875rem, 2.6vw, 2.5625rem)/1.13 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .step p {
-    font:
-      0.9375rem/1.55 Plex,
-      Arial,
-      sans-serif;
-  }
   /* Showreel — sections */
   .showreel {
     text-align: left;
@@ -770,67 +419,20 @@
   }
   .showreel-lead .section-heading {
     text-transform: none;
-    font-size: clamp(2.375rem, 4.4vw, 4.625rem);
   }
   .showreel-film-copy {
     text-align: center;
   }
-  .showreel-film-copy strong {
-    font:
-      300 clamp(2.625rem, 5vw, 5.5rem)/1.03 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .showreel-action span {
-    font-size: 1.5625rem;
-    line-height: 1;
-  }
   .showreel-outro {
     text-align: center;
   }
-  .showreel-outro h3 {
-    font:
-      300 clamp(2.25rem, 4.5vw, 4.375rem)/1.05 Modernist,
-      Arial,
-      sans-serif;
-  }
   .showreel-caption {
-    font:
-      0.6875rem/1.5 PlexMono,
-      monospace;
     text-align: left;
   }
-  @media (max-width: 760px) {
-    .showreel-lead .section-heading {
-      font-size: clamp(2.25rem, 9vw, 3.4375rem);
-    }
-  }
   .showreel-lead h2 {
-    font:
-      300 clamp(2.375rem, 4.4vw, 4.625rem)/1.04 Modernist,
-      Arial,
-      sans-serif;
     text-transform: none;
   }
   /* Contao-Sektionsbausteine — sections */
-  .service-card .content-text > .rte > p.micro {
-    font:
-      0.6875rem/1.5 PlexMono,
-      monospace;
-  }
-  .service-card .card-end .micro {
-    font:
-      0.6875rem PlexMono,
-      monospace;
-  }
-  .service-card .card-end .card-arrow {
-    font-size: 1.625rem;
-  }
-  .work-card figcaption {
-    font:
-      0.6875rem PlexMono,
-      monospace;
-  }
   .journal-list {
     counter-reset: home-journal;
   }
@@ -843,51 +445,19 @@
   .questions-intro > .content-hyperlink.button a {
     text-decoration: none;
   }
-  @media (max-width: 760px) {
-    .showreel-lead h2 {
-      font-size: clamp(2.25rem, 9vw, 3.4375rem);
-    }
-  }
   /* Contao-Formulare — sections */
-  .questions-intro h2,
-  .contact-column h2,
-  .contact-meta h2 {
-    font:
-      300 clamp(2.4375rem, 4.8vw, 4.625rem)/1.04 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .contact-meta h2 {
-    font-size: clamp(1.875rem, 3.2vw, 3rem);
-  }
   .contact-hero-actions > .content-hyperlink.button a {
     text-decoration: none;
   }
   .contact-form .widget label,
   .contact-form .widget legend {
-    font:
-      0.6875rem PlexMono,
-      monospace;
     text-transform: uppercase;
   }
-  .contact-form .widget-checkbox span {
-    font:
-      0.8125rem/1.5 Plex,
-      Arial,
-      sans-serif;
-  }
   .contact-form .widget-checkbox span label {
-    font:
-      0.8125rem/1.5 Plex,
-      Arial,
-      sans-serif;
     text-transform: none;
   }
   .contact-form .widget-checkbox a {
     text-decoration: underline;
-  }
-  .contact-form .form-status {
-    font-size: 0.875rem;
   }
   .booking-block .content-hyperlink a {
     text-decoration: underline;
@@ -898,43 +468,9 @@
     white-space: nowrap;
   }
   /* Vorteile — sections */
-  .benefits-lead h2 {
-    font:
-      300 clamp(3rem, 5.2vw, 5.125rem)/1.05 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .benefits-lead .body-copy {
-    font-size: clamp(1rem, 1.15vw, 1.125rem);
-  }
-  .benefits-impact h3 {
-    font:
-      300 clamp(2rem, 3.6vw, 3.5rem)/1.1 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .benefit-column h4 {
-    font:
-      300 clamp(1.5625rem, 2.15vw, 2.125rem)/1.15 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .benefit-column .rte p {
-    font:
-      0.9375rem/1.5 Plex,
-      Arial,
-      sans-serif;
-  }
   html.showreel-motion .benefits-lead,
   html.showreel-motion .benefits-impact {
     text-align: center;
-  }
-  html.showreel-motion .benefits-lead h2,
-  html.showreel-motion .benefits-impact h3 {
-    font:
-      300 clamp(2.3125rem, 3.65vw, 3.6875rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
   }
   html.showreel-motion .benefits-lead .body-copy {
     text-align: center;
@@ -942,42 +478,16 @@
   html.showreel-motion .benefits-table {
     text-align: left;
   }
-  @media (max-width: 760px) {
-    .benefits-lead h2 {
-      font-size: clamp(2.625rem, 9vw, 3.625rem);
-    }
-    .benefits-impact h3 {
-      font-size: clamp(2.125rem, 7.5vw, 3rem);
-    }
-    .benefit-column h4 {
-      font-size: 1.8125rem;
-    }
-  }
   /* Kundenstimmen — sections */
   .testimonial-quote p {
-    font:
-      300 clamp(2.25rem, 3.6vw, 3.75rem)/1.16 Modernist,
-      Arial,
-      sans-serif;
     text-wrap: balance;
   }
-  .testimonial-company p {
-    font:
-      400 0.9375rem/1.5 Plex,
-      Arial,
-      sans-serif;
-  }
   .testimonial-project-link a {
-    font:
-      400 0.9375rem/1.5 Plex,
-      Arial,
-      sans-serif;
     text-decoration: underline;
     text-underline-offset: var(--space-5);
   }
   @media (max-width: 760px) {
     .testimonial-quote p {
-      font-size: clamp(1.9375rem, 7.7vw, 2.5rem);
       overflow-wrap: break-word;
     }
   }
@@ -985,279 +495,67 @@
     text-align: center;
   }
   .client-references-heading h2 {
-    font:
-      300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
     text-align: center;
     text-wrap: balance;
   }
   @media (max-width: 360px) {
     .testimonial-quote p {
-      font-size: 1.6875rem;
       overflow-wrap: break-word;
     }
   }
   /* Journal — sections */
-  .journal-row .micro {
-    font-size: 0.625rem;
-  }
   .journal-row h3 {
-    font:
-      300 clamp(1.5rem, 2.5vw, 2.25rem)/1.1 Modernist,
-      Arial,
-      sans-serif;
     overflow-wrap: anywhere;
-  }
-  .journal-row .row-arrow {
-    font-size: 1.6875rem;
   }
   .journal .journal-list article.journal-row {
     counter-increment: home-journal;
   }
-  .journal .journal-row .row-category {
-    font:
-      400 0.6875rem/1.4 PlexMono,
-      monospace;
-  }
   .journal .journal-row h3 {
-    font:
-      300 clamp(1.625rem, 2.1vw, 2.125rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
     overflow-wrap: anywhere;
   }
   .journal .journal-excerpt {
-    font:
-      400 0.9375rem/1.5 Plex,
-      Arial,
-      sans-serif;
     -webkit-line-clamp: 3;
-  }
-  .journal .journal-row .row-arrow {
-    font-size: 1.5625rem;
-    line-height: 1;
-  }
-  .journal-slider-controls button {
-    font:
-      400 1.4375rem/1 Plex,
-      Arial,
-      sans-serif;
   }
   /* Konfigurator — sections */
   .configurator-scene-heading {
     text-align: center;
   }
   .configurator-scene-heading h2 {
-    font:
-      300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
     text-wrap: balance;
-  }
-  @media (max-width: 760px) {
-    .configurator-scene-heading h2 {
-      font:
-        300 clamp(2.1875rem, 8.5vw, 3rem)/1.08 Modernist,
-        Arial,
-        sans-serif;
-    }
   }
   .configurator-scene-intro {
     text-align: left;
-  }
-  .configurator-scene-intro p {
-    font:
-      400 1.0625rem/1.6 Plex,
-      Arial,
-      sans-serif;
-  }
-  @media (max-width: 760px) {
-    .configurator-scene-intro p {
-      font:
-        400 1rem/1.6 Plex,
-        Arial,
-        sans-serif;
-    }
-  }
-  .configurator-scene-intro strong {
-    font-weight: 500;
-  }
-  .configurator-scene-card h3 {
-    font:
-      300 clamp(1.4375rem, 2vw, 1.875rem)/1.1 Modernist,
-      Arial,
-      sans-serif;
-  }
-  @media (max-width: 760px) {
-    .configurator-scene-card h3 {
-      font:
-        300 1.5625rem/1.1 Modernist,
-        Arial,
-        sans-serif;
-    }
-  }
-  .configurator-scene-card p {
-    font:
-      400 0.9375rem/1.5 Plex,
-      Arial,
-      sans-serif;
   }
   /* Kontakt und Fragen — sections */
   .contact-band {
     text-align: center;
   }
-  .contact-band h2 {
-    font:
-      300 clamp(3rem, 6.3vw, 5.875rem)/1.02 Modernist,
-      sans-serif;
-  }
-  .contact-band-copy > p:last-child {
-    font-size: 0.75rem;
-  }
   .hero-lede {
-    font:
-      1.0625rem/1.55 Plex,
-      Arial,
-      sans-serif;
     text-wrap: pretty;
   }
   .question summary {
     list-style: none;
-    font:
-      300 clamp(1.5rem, 2.4vw, 2.125rem)/1.14 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .question summary:after {
-    font:
-      300 2rem/1 Modernist,
-      sans-serif;
-  }
-  .question p {
-    font:
-      1rem/1.6 Plex,
-      Arial,
-      sans-serif;
-  }
-  @media (max-width: 760px) {
-    .hero-lede {
-      font-size: 0.875rem;
-      line-height: 1.45;
-    }
-  }
-  @media (max-width: 520px) {
-    .hero-lede {
-      font-size: 0.8125rem;
-    }
-    .hero-contact,
-    .hero-work-link {
-      font-size: 0.625rem;
-    }
   }
 }
 @layer cms {
   /* Innenseiten — cms */
-  .inner-hero h1 {
-    font:
-      300 clamp(3.4375rem, 7.3vw, 7rem)/1 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .content-section h2 {
-    font:
-      300 clamp(2.125rem, 3.9vw, 3.75rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .content-section p,
-  .legal-content p,
-  .legal-content li {
-    font:
-      1.0625rem/1.68 Plex,
-      Arial,
-      sans-serif;
-  }
-  .content-section h3 {
-    font:
-      300 1.875rem/1.15 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .index-card h2 {
-    font:
-      300 clamp(1.625rem, 2.5vw, 2.4375rem)/1.12 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .legal-content h2 {
-    font:
-      300 2.25rem Modernist,
-      Arial,
-      sans-serif;
-  }
-  .legal-content h3 {
-    font:
-      300 1.75rem Modernist,
-      Arial,
-      sans-serif;
-  }
   .legal-content a {
     text-decoration: underline;
   }
-  .booking-block h2 {
-    font:
-      300 clamp(2.5rem, 5vw, 4.375rem)/1.05 Modernist,
-      Arial,
-      sans-serif;
-  }
   .field label {
-    font:
-      0.6875rem PlexMono,
-      monospace;
     text-transform: uppercase;
   }
   /* News — cms */
-  .news-detail > .news-intro h1 {
-    font:
-      300 clamp(3.4375rem, 7.3vw, 7rem)/1 Modernist,
-      Arial,
-      sans-serif;
-  }
-  .news-detail > .news-intro .rte {
-    font:
-      1.0625rem/1.68 Plex,
-      Arial,
-      sans-serif;
-  }
   .news-grid .news-card h2 a {
     text-decoration: none;
   }
-  .news-detail > .content-section .rte p,
-  .news-detail > .content-section .rte li {
-    font:
-      1.0625rem/1.68 Plex,
-      Arial,
-      sans-serif;
-  }
   /* Contao-Inhalte — cms */
-  .contact-band-copy > .content-text h2 {
-    font:
-      300 clamp(3rem, 6.3vw, 5.875rem)/1.02 Modernist,
-      sans-serif;
-  }
   .contact-band-copy > .content-hyperlink a {
     text-decoration: none;
   }
   .contact-band-copy > .content-hyperlink.text-link a {
     text-decoration: underline;
     text-underline-offset: var(--space-5);
-  }
-  .contact-band-copy .contact-note p {
-    font:
-      0.75rem/1.6 Plex,
-      Arial,
-      sans-serif;
   }
   .hero-actions > .content-hyperlink a {
     text-decoration: none;
@@ -1268,50 +566,22 @@
   }
   /* Impressum und Datenschutz — cms */
   .legal-hero-kicker .rte p {
-    font:
-      400 0.6875rem/1.5 PlexMono,
-      monospace;
     text-transform: uppercase;
   }
   .legal-hero-body h1 {
-    font:
-      300 clamp(3.4375rem, 7.3vw, 7rem)/1 Modernist,
-      Arial,
-      sans-serif;
     hyphens: auto;
     overflow-wrap: anywhere;
-  }
-  .legal-hero-body .rte p {
-    font:
-      clamp(1rem, 1.2vw, 1.1875rem)/1.6 Plex,
-      Arial,
-      sans-serif;
   }
   .legal-section h2 {
-    font:
-      300 clamp(2.125rem, 3.9vw, 3.75rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
     hyphens: auto;
     overflow-wrap: anywhere;
   }
-  .legal-section .rte p {
-    font:
-      1.0625rem/1.68 Plex,
-      Arial,
-      sans-serif;
-  }
   .legal-section .rte h3 {
-    font:
-      300 1.875rem/1.15 Modernist,
-      Arial,
-      sans-serif;
     hyphens: auto;
     overflow-wrap: anywhere;
   }
   @media (max-width: 760px) {
     .legal-hero-body h1 {
-      font-size: clamp(2.375rem, 10.7vw, 3.5625rem);
       hyphens: manual;
       overflow-wrap: normal;
     }
