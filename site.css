@@ -1,7 +1,5 @@
 /* Website-Einstieg: Bearbeite die thematischen Dateien in css/. */
 @layer foundation, layout, components, sections, cms;
-@import "./css/fonts.css" layer(foundation);
-@import "./css/variables.css" layer(foundation);
 @import "./css/base.css" layer(foundation);
 @import "./css/typography.css" layer(foundation);
 @import "./css/layout.css" layer(layout);

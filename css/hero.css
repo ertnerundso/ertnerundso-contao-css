@@ -44,11 +44,6 @@
   overflow: hidden;
   border-radius: 0 0 0.5rem 0.5rem;
 }
-@media (min-width: 1000px) {
-  .hero {
-    --type-hero: clamp(3.25rem, 4vw, 4.375rem);
-  }
-}
 .hero-media {
   inset: 0;
   z-index: 0;
@@ -72,15 +67,31 @@
   flex-direction: column;
   justify-content: space-between;
 }
+/* STARTSEITE: Hauptüberschrift — Schrift und Größe */
 .hero h1 {
   font:
-    400 var(--type-hero)/1.06 Modernist,
+    400 clamp(3rem, 5.3vw, 5.25rem)/1.06 Modernist,
     Arial,
     sans-serif;
   text-transform: none;
   max-width: 38.125rem;
   text-wrap: balance;
   margin: clamp(4.75rem, 10vh, 8.4375rem) 0 0;
+}
+/* Hauptüberschrift auf Handy und kleinem Tablet */
+@media (max-width: 760px) {
+  .hero h1 {
+    font:
+      400 clamp(2.375rem, 10vw, 3.625rem)/1.06 Modernist,
+      Arial,
+      sans-serif;
+  }
+}
+/* Hauptüberschrift auf großen Bildschirmen: Hier font-size ändern. */
+@media (min-width: 1000px) {
+  .hero h1 {
+    font-size: clamp(3.25rem, 4vw, 4.375rem);
+  }
 }
 .hero-actions {
   align-self: flex-end;
@@ -120,12 +131,7 @@
       #000 70%,
       transparent 100%
     );
-    mask-image: linear-gradient(
-      to bottom,
-      #000 0%,
-      #000 70%,
-      transparent 100%
-    );
+    mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
   }
 }
 @media (max-width: 360px) {

@@ -1,34 +1,132 @@
-/* Überschriften und gemeinsame Typografie — Layer: foundation */
+/* SCHRIFTEN UND ALLGEMEINE TEXTE
+   1. Schriftdateien: @font-face und src.
+   2. Normaler Text: body, .body-copy, .micro.
+   3. Allgemeine Überschriften: main h1, main h2, main h3, main h4.
+   Spezielle Überschriften bleiben in ihrer Sektion, z. B. hero.css.
+   clamp(kleinste Größe, Bildschirmanteil, größte Größe) passt Größen fließend an.
+   1rem entspricht bei der üblichen Browser-Einstellung 16px. */
+
+/* 1. Schriftdateien */
+@font-face {
+  font-family: Modernist;
+  src: url(https://staging.ertnerundso.de/clean/assets/sk-modernist-light.woff2)
+    format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: Modernist;
+  src: url(https://staging.ertnerundso.de/clean/assets/sk-modernist-regular.woff2)
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Plex;
+  src: url(https://staging.ertnerundso.de/clean/assets/ibm-plex-sans.woff2)
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: PlexMono;
+  src: url(https://staging.ertnerundso.de/clean/assets/ibm-plex-mono.woff2)
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* 2. Normaler Text */
+body {
+  font-family: Plex, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+.micro {
+  font:
+    400 0.6875rem/1.5 PlexMono,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+.body-copy {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .body-copy {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+/* 3. Allgemeine Überschriften und Textgruppen */
 main h1,
 main h2,
 main h3,
 main h4 {
-  font-family: var(--font-display);
+  font-family: Modernist, Arial, sans-serif;
   font-weight: 300;
   letter-spacing: 0;
 }
 main h1 {
-  font-size: var(--type-hero);
+  font-size: clamp(3rem, 5.3vw, 5.25rem);
   line-height: 1.04;
 }
+@media (max-width: 760px) {
+  main h1 {
+    font-size: clamp(2.375rem, 10vw, 3.625rem);
+    line-height: 1.04;
+  }
+}
 main h2 {
-  font-size: var(--type-section);
+  font-size: clamp(2.375rem, 4.1vw, 4rem);
   line-height: 1.08;
 }
+@media (max-width: 760px) {
+  main h2 {
+    font-size: clamp(2.1875rem, 8.5vw, 3rem);
+    line-height: 1.08;
+  }
+}
 main h3 {
-  font-size: var(--type-card);
+  font-size: clamp(1.6875rem, 2.35vw, 2.25rem);
   line-height: 1.12;
 }
+@media (max-width: 760px) {
+  main h3 {
+    font-size: clamp(1.625rem, 6.5vw, 2.125rem);
+    line-height: 1.12;
+  }
+}
 main h4 {
-  font-size: var(--type-small-title);
+  font-size: clamp(1.4375rem, 2vw, 1.875rem);
   line-height: 1.15;
+}
+@media (max-width: 760px) {
+  main h4 {
+    font-size: 1.5625rem;
+    line-height: 1.15;
+  }
 }
 .hero h1,
 .inner-hero h1,
 .legal-hero-body h1,
 .news-detail > .news-intro h1 {
-  font-size: var(--type-hero);
+  font-size: clamp(3rem, 5.3vw, 5.25rem);
   line-height: 1.04;
+}
+@media (max-width: 760px) {
+  .hero h1,
+  .inner-hero h1,
+  .legal-hero-body h1,
+  .news-detail > .news-intro h1 {
+    font-size: clamp(2.375rem, 10vw, 3.625rem);
+    line-height: 1.04;
+  }
 }
 .section-head h2,
 .section-heading,
@@ -47,12 +145,40 @@ main h4 {
 .legal-section h2,
 .contact-band h2,
 .contact-band-copy > .content-text h2 {
-  font-size: var(--type-section);
+  font-size: clamp(2.375rem, 4.1vw, 4rem);
   line-height: 1.08;
+}
+@media (max-width: 760px) {
+  .section-head h2,
+  .section-heading,
+  .intro .section-heading,
+  .showreel-lead h2,
+  .work-heading h2,
+  .statement-copy h2,
+  .process-header h2,
+  .questions-intro h2,
+  .contact-column h2,
+  .benefits-lead h2,
+  .benefits-impact h3,
+  .journal .section-heading,
+  .booking-block h2,
+  .content-section h2,
+  .legal-section h2,
+  .contact-band h2,
+  .contact-band-copy > .content-text h2 {
+    font-size: clamp(2.1875rem, 8.5vw, 3rem);
+    line-height: 1.08;
+  }
 }
 html.showreel-motion .benefits-lead h2,
 html.showreel-motion .benefits-impact h3 {
-  font-size: var(--type-section);
+  font-size: clamp(2.375rem, 4.1vw, 4rem);
+}
+@media (max-width: 760px) {
+  html.showreel-motion .benefits-lead h2,
+  html.showreel-motion .benefits-impact h3 {
+    font-size: clamp(2.1875rem, 8.5vw, 3rem);
+  }
 }
 .service-card h3,
 .index-card h2,
@@ -63,13 +189,34 @@ html.showreel-motion .benefits-impact h3 {
 .showreel-outro h3,
 .content-section h3,
 .legal-section .rte h3 {
-  font-size: var(--type-card);
+  font-size: clamp(1.6875rem, 2.35vw, 2.25rem);
   line-height: 1.12;
+}
+@media (max-width: 760px) {
+  .service-card h3,
+  .index-card h2,
+  .index-card:has(img) h2,
+  .journal-row h3,
+  .step h3,
+  .question summary,
+  .showreel-outro h3,
+  .content-section h3,
+  .legal-section .rte h3 {
+    font-size: clamp(1.625rem, 6.5vw, 2.125rem);
+    line-height: 1.12;
+  }
 }
 .benefit-column h4,
 .contact-meta h2 {
-  font-size: var(--type-small-title);
+  font-size: clamp(1.4375rem, 2vw, 1.875rem);
   line-height: 1.15;
+}
+@media (max-width: 760px) {
+  .benefit-column h4,
+  .contact-meta h2 {
+    font-size: 1.5625rem;
+    line-height: 1.15;
+  }
 }
 .body-copy,
 .hero-lede,
@@ -77,17 +224,30 @@ html.showreel-motion .benefits-impact h3 {
 .legal-section .rte p,
 .news-detail .rte p,
 .content-section p {
-  font-family: var(--font-body);
-  font-size: var(--type-body);
+  font-family: Plex, Arial, sans-serif;
+  font-size: 1.0625rem;
   font-weight: 400;
-  line-height: var(--leading-body);
+  line-height: 1.6;
+}
+@media (max-width: 760px) {
+  .body-copy,
+  .hero-lede,
+  .process-header p,
+  .legal-section .rte p,
+  .news-detail .rte p,
+  .content-section p {
+    font-family: Plex, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
 }
 .service-card p,
 .step p,
 .benefit-column .rte p,
 .question p {
-  font-family: var(--font-body);
-  font-size: var(--type-card-body);
+  font-family: Plex, Arial, sans-serif;
+  font-size: 0.9375rem;
   font-weight: 400;
   line-height: 1.55;
 }
@@ -96,8 +256,8 @@ html.showreel-motion .benefits-impact h3 {
 .work-meta,
 .work-card figcaption,
 .showreel-caption {
-  font-family: var(--font-mono);
-  font-size: var(--type-meta);
+  font-family: PlexMono, monospace;
+  font-size: 0.6875rem;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -131,6 +291,6 @@ html.showreel-motion .benefits-impact h3 {
   vertical-align: 1px;
 }
 .menu-panel-nav a {
-  font-family: var(--font-display);
+  font-family: Modernist, Arial, sans-serif;
   font-weight: 300;
 }

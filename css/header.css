@@ -63,7 +63,9 @@
 }
 .header-nav {
   counter-reset: header-item;
-  font: 400 0.6875rem/1.2 var(--font-mono);
+  font:
+    400 0.6875rem/1.2 PlexMono,
+    monospace;
   text-transform: uppercase;
 }
 .header-nav :is(a, strong) {

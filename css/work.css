@@ -126,8 +126,19 @@
   max-width: 44ch;
   margin: var(--space-lg) 0 0;
   color: var(--color-text-soft);
-  font: 400 var(--type-body)/var(--leading-body) var(--font-body);
+  font:
+    400 1.0625rem/1.6 Plex,
+    Arial,
+    sans-serif;
   text-transform: none;
+}
+@media (max-width: 760px) {
+  .work-subtitle {
+    font:
+      400 1rem/1.6 Plex,
+      Arial,
+      sans-serif;
+  }
 }
 .work-viewport {
   flex: 1;
@@ -175,14 +186,19 @@
   gap: var(--space-md);
   margin: 0;
   color: var(--color-text);
-  font: 400 1rem/1.2 var(--font-mono);
+  font:
+    400 1rem/1.2 PlexMono,
+    monospace;
   text-transform: uppercase;
 }
 .work .work-card figcaption:before {
   content: counter(montage-step, decimal-leading-zero);
   flex: none;
   color: var(--color-primary);
-  font: italic 300 3rem/0.9 var(--font-display);
+  font:
+    italic 300 3rem/0.9 Modernist,
+    Arial,
+    sans-serif;
 }
 .work .work-card img {
   grid-row: 2;
@@ -238,10 +254,18 @@
 .manual-book-header h2 {
   margin: 0;
   font:
-    300 var(--type-section)/1.08 Modernist,
+    300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
     Arial,
     sans-serif;
   text-transform: uppercase;
+}
+@media (max-width: 760px) {
+  .manual-book-header h2 {
+    font:
+      300 clamp(2.1875rem, 8.5vw, 3rem)/1.08 Modernist,
+      Arial,
+      sans-serif;
+  }
 }
 .manual-book-player {
   margin: 0;
@@ -271,9 +295,17 @@
   margin: 0;
   color: var(--color-muted);
   font:
-    400 var(--type-body)/1.6 Plex,
+    400 1.0625rem/1.6 Plex,
     Arial,
     sans-serif;
+}
+@media (max-width: 760px) {
+  .manual-book-copy p {
+    font:
+      400 1rem/1.6 Plex,
+      Arial,
+      sans-serif;
+  }
 }
 .manual-book-copy strong {
   color: var(--color-text);
@@ -292,7 +324,7 @@
     margin-bottom: 1.0625rem;
   }
   .manual-book-header h2 {
-    font-size: var(--type-section);
+    font-size: clamp(2.1875rem, 8.5vw, 3rem);
   }
   .manual-book-player {
     padding-top: 0;

@@ -73,7 +73,9 @@
   order: -1;
   margin-bottom: auto;
   color: var(--color-primary);
-  font: 400 var(--type-meta)/1.4 var(--font-mono);
+  font:
+    400 0.6875rem/1.4 PlexMono,
+    monospace;
 }
 .journal .journal-row .row-category:before {
   content: counter(home-journal, decimal-leading-zero) " / ";
@@ -81,7 +83,10 @@
 .journal .journal-row h3 {
   width: 100%;
   margin: var(--space-xl) 0 var(--space-md);
-  font: 300 clamp(1.625rem, 2.1vw, 2.125rem)/1.08 var(--font-display);
+  font:
+    300 clamp(1.625rem, 2.1vw, 2.125rem)/1.08 Modernist,
+    Arial,
+    sans-serif;
   overflow-wrap: anywhere;
 }
 .journal .journal-row h3 a:after {
@@ -98,7 +103,10 @@
   margin: 0 0 var(--space-lg);
   overflow: hidden;
   color: var(--color-text-soft);
-  font: 400 var(--type-card-body)/var(--leading-compact) var(--font-body);
+  font:
+    400 0.9375rem/1.5 Plex,
+    Arial,
+    sans-serif;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
@@ -128,7 +136,10 @@
   border-radius: 50%;
   background: var(--color-background);
   color: var(--color-text);
-  font: 400 1.4375rem/1 var(--font-body);
+  font:
+    400 1.4375rem/1 Plex,
+    Arial,
+    sans-serif;
   cursor: pointer;
 }
 .journal-slider-controls button:hover:not(:disabled),

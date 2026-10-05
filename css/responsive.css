@@ -330,7 +330,7 @@
     font-size: clamp(2.5rem, 9vw, 3.875rem);
   }
   .work-subtitle {
-    font-size: var(--type-body);
+    font-size: 1rem;
   }
   .work-viewport {
     flex: none;

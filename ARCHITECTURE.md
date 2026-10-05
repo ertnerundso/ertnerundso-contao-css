@@ -2,8 +2,8 @@
 
 ## Active source and delivery
 
-The root `site.css` is the editable, 32-line entry point. It declares the layer
-order and imports 30 thematic modules from `css/`. The active Contao template
+The root `site.css` is the editable, 30-line entry point. It declares the layer
+order and imports 28 thematic modules from `css/`. The active Contao template
 continues to load this entry point through GitHub Pages; the browser loads the
 modules directly. There is no generated stylesheet and no CSS build step.
 
@@ -27,9 +27,11 @@ combining such rules without checking the cascade can change the design.
 
 ## Module ownership
 
-- `fonts.css`: `@font-face` and font resources.
-- `variables.css`: global `:root` tokens, including their mobile overrides.
-- `base.css` and `typography.css`: element defaults, common text rules and headings.
+- `typography.css`: `@font-face`, font resources, body text and general headings.
+- `base.css`: global colors, spacing and layout settings, followed by element defaults.
+  Font families, sizes and line heights use direct CSS values; there is no
+  `fonts.css` or `variables.css` indirection. Feature-specific typography stays
+  in its feature file, with direct responsive values.
 - `layout.css`, `header.css`, `navigation.css`, `footer.css`: structural rules.
 - `responsive.css`: existing shared responsive and accessibility overrides.
 - `buttons.css`, `cards.css`, `surfaces.css`, `forms.css`, `motion.css`: shared components.
@@ -45,8 +47,10 @@ file for each small change; edit the existing owner instead.
 ## Maintenance rules
 
 1. Edit feature rules in `css/`; edit root `site.css` only to manage imports.
-2. Define global tokens only in `variables.css`. Scoped feature variables can
-   remain in the relevant component. Reuse existing color and motion tokens.
+2. Keep shared color, spacing and layout settings at the top of `base.css`.
+   Use direct font families, sizes and line heights where the text is styled.
+   Keep font resources and general text defaults together in `typography.css`.
+   Preserve mobile values and the desktop hero size when moving text rules.
 3. Keep existing classes and JavaScript hooks, including `.is-open`, `.is-active`,
    `.js-ready`, `[hidden]` and data attributes.
 4. Keep responsive rules with their feature where their cascade permits it.
@@ -73,7 +77,13 @@ Change a module, commit and push. GitHub Pages publishes the source files
 directly; no bundling or CSS generation is required. Keep `site.css` and `css/`
 together when deploying elsewhere. Local previews require an HTTP server.
 
-Direct imports cause separate requests for the 30 modules. Keep imports flat
+Direct imports cause separate requests for the 28 modules. Keep imports flat
 and ordered; do not introduce extra import chains. The Contao template URL,
 font/image URLs and every existing rule remain unchanged. Template and asset
 deployment still follow `README.md`.
+
+## Beginner editing guide
+
+`CSS-ANLEITUNG.md` is the owner-facing guide. Keep its file map and examples
+accurate when changing CSS ownership. Add plain German comments at common
+editing points instead of introducing another layer of typography aliases.

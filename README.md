@@ -5,10 +5,17 @@ the JavaScript source, fixed frontend assets, and copies of the active Contao
 templates for `staging.ertnerundso.de`. It does not contain the Contao database,
 CMS-managed content or customer uploads.
 
+## Einfach CSS bearbeiten
+
+Die deutsche [CSS-Anleitung](CSS-ANLEITUNG.md) zeigt dir, welche Datei du
+für welche Änderung öffnest. Schriften und allgemeine Texte stehen gemeinsam
+in `css/typography.css`. Farben und gemeinsame Einstellungen stehen oben
+in `css/base.css`. Schriftgrößen verwenden direkte Werte.
+
 ## Live delivery
 
 - The root `site.css` is the short, editable stylesheet entry point. It imports
-  the 30 thematic files in `css/` directly into their cascade layers.
+  the 28 thematic files in `css/` directly into their cascade layers.
 - The Contao page template continues to load that root `site.css` from GitHub
   Pages. The browser then loads its imported modules from the same repository.
   Edit a module, commit and push: no CSS build or generated bundle is required.
@@ -37,7 +44,7 @@ validation, run `npm ci` once and `npm run check:css` after editing. To add a
 module, add its import in the root `site.css` at the appropriate position
 within its existing layer. Keep asset URLs absolute.
 
-The browser fetches the 30 modules separately, so this delivery uses more CSS
+The browser fetches the 28 modules separately, so this delivery uses more CSS
 requests than a combined bundle. All imports are direct children of `site.css`;
 there is no second entry point or nested import chain. If copying CSS to another
 server, copy both `site.css` and the complete `css/` directory, keeping the same
@@ -45,7 +52,7 @@ relative paths. Open local previews through an HTTP server, not a file URL.
 
 | Area | Modules in `css/` |
 | --- | --- |
-| Foundation | `fonts.css`, `variables.css`, `base.css`, `typography.css` |
+| Foundation | `base.css`, `typography.css` |
 | Layout | `layout.css`, `responsive.css`, `header.css`, `navigation.css`, `footer.css` |
 | Components | `buttons.css`, `cards.css`, `surfaces.css`, `forms.css`, `motion.css` |
 | Sections | `hero.css`, `statement.css`, `work.css`, `process.css`, `showreel.css`, `benefits.css`, `testimonials.css`, `journal.css`, `configurator.css`, `contact.css` |
@@ -56,5 +63,8 @@ The split preserves every selector, declaration, media condition and their
 order from commit `2bbaa56`. Shared overrides remain in their existing layers
 and order, even where they affect several features. Responsive rules generally
 remain next to their feature; existing cross-feature rules live in
-`responsive.css`. This change does not rename typography tokens or alter fonts.
+`responsive.css`. Typography now uses direct values instead of font, size and line-height tokens.
+The simplification preserves font resources, responsive sizes and existing
+class names. `fonts.css` and `variables.css` have been merged into the two
+foundation files.
 See `ARCHITECTURE.md` for the cascade and maintenance rules.
