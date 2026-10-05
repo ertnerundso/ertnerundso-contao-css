@@ -1,62 +1,321 @@
-/* Reveal-Animationen, Textzeilen und Cursor — Layer: components */
-[data-reveal] {
-  opacity: 1;
+/* SYSTEM / BEWEGUNG: ALLE Transitions, Animationen und Transformationen.
+   Zeitwerte und Übergänge stehen hier. JavaScript-Zustände und Reduced Motion bleiben erhalten. */
+@layer foundation {
+  /* Gemeinsame Werte: exakte Bestandswerte, ohne Änderung der Darstellung. */
+  :root {
+    --motion-reduced-duration: 0.01ms;
+    --motion-header-transition: background-color 0.18s ease, color 0.18s ease;
+    --motion-buttons-transition: background 0.2s, border-color 0.2s, color 0.2s;
+    --motion-cards-transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-cards-transition-2: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-cards-transition-3:
+      box-shadow 0.3s, border-color 0.3s, transform 0.3s;
+    --motion-cards-transition-4: opacity 0.35s;
+    --motion-cards-transition-5:
+      background 0.25s, border-color 0.25s, box-shadow 0.25s;
+    --motion-forms-transition: border-color 0.2s, box-shadow 0.2s;
+    --motion-cursor-transition: width 0.2s, height 0.2s, opacity 0.2s;
+    --motion-work-transition: transform 0.7s ease;
+    --motion-testimonials-transition: color 0.18s ease;
+    --motion-testimonials-transition-2: opacity 0.18s ease;
+    --motion-journal-transition: padding 0.25s, color 0.2s;
+    --motion-journal-transition-2:
+      transform 0.22s ease, border-color 0.22s ease;
+    --motion-contact-transition: transform 0.3s;
+    --motion-contact-transition-2: opacity 0.4s, transform 0.5s, color 0.2s;
+    --motion-contact-transition-delay: 0.06s;
+    --motion-contact-transition-delay-2: 0.12s;
+  }
+  /* Grundregeln — foundation */
+  :root {
+    --motion-fast: 0.18s ease;
+    --motion-smooth: 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-slow: 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
-.js-ready [data-reveal] {
-  opacity: 0;
-  transform: translateY(2.1875rem);
+@layer layout {
+  /* Gemeinsame Bildschirmregeln — layout */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *:before,
+    *:after {
+      animation-duration: var(
+        --motion-reduced-duration
+      ) !important;
+      transition-duration: var(
+        --motion-reduced-duration
+      ) !important;
+      scroll-behavior: auto !important;
+    }
+    .js-ready [data-reveal] {
+      transform: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .menu-panel {
+      transition: none;
+    }
+    .work-viewport {
+      scroll-behavior: auto;
+    }
+  }
+  /* Kopfbereich — layout */
+  .header-nav a,
+  .footer-nav a {
+    transition: color var(--motion-fast);
+  }
+  .site-header {
+    transition: height var(--motion-smooth);
+  }
+  .header-nav :is(a, strong) {
+    transition: var(--motion-header-transition);
+  }
+  /* Aufklappbares Menü — layout */
+  .menu-panel {
+    transition:
+      opacity var(--motion-smooth),
+      visibility var(--motion-smooth);
+  }
+  .menu-panel-nav a:hover {
+    transform: translate(0.75rem);
+  }
 }
-.split-line {
-  display: block;
-  overflow: hidden;
+@layer components {
+  /* Buttons und Links — components */
+  .button,
+  .btn,
+  .hero-contact,
+  .menu-panel-bottom .button,
+  .contact-band .button,
+  .contact-form .widget-submit.button {
+    transition: var(--motion-buttons-transition);
+  }
+  .button:hover,
+  .btn:hover,
+  .hero-contact:hover,
+  .menu-panel-bottom .button:hover,
+  .contact-band .button:hover,
+  .contact-form .widget-submit.button:hover {
+    transform: none;
+  }
+  .button.outline:hover,
+  .btn--secondary:hover,
+  .hero-work-link:hover,
+  .text-link:hover,
+  .content-hyperlink.text-link:hover,
+  .index-card:hover .text-link {
+    transform: none;
+  }
+  /* Karten — components */
+  .service-card {
+    transform-style: preserve-3d;
+  }
+  .service-card.featured img {
+    transition: var(--motion-cards-transition);
+  }
+  .card-arrow {
+    transition: var(--motion-cards-transition-2);
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .service-card.featured:hover img {
+      transform: scale(1.045);
+    }
+    .service-card:hover .card-arrow {
+      transform: translate(0.25rem, -0.25rem);
+    }
+  }
+  .service-card {
+    transition: var(--motion-cards-transition-3);
+  }
+  .service-card:not(.featured):before {
+    transition: var(--motion-cards-transition-4);
+  }
+  .index-card {
+    transition: var(--motion-cards-transition-5);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .service-card,
+    .service-card:before,
+    .index-card,
+    .button {
+      transition: none;
+    }
+  }
+  /* Formularfelder — components */
+  :is(
+    .input,
+    .field input,
+    .field textarea,
+    .contact-form .widget input[type="email"],
+    .contact-form .widget textarea
+  ) {
+    transition: var(--motion-forms-transition);
+  }
+  /* Reveal, Cursor und Projektmedien — components */
+  .js-ready [data-reveal] {
+    transform: translateY(2.1875rem);
+  }
+  .cursor-dot {
+    transition: var(--motion-cursor-transition);
+  }
 }
-.split-line-inner {
-  display: block;
+@layer sections {
+  /* Startseite / Hero — sections */
+  .hero-media img {
+    transform: scale(0.84);
+    transform-origin: center bottom;
+  }
+  @media (min-width: 761px) {
+    .hero-media img {
+      transform: translate(clamp(6.5625rem, 10vw, 11.5625rem)) scale(0.84);
+    }
+  }
+  @media (max-width: 760px) {
+    .hero-media img {
+      transform: scale(0.78);
+    }
+  }
+  @media (max-width: 360px) {
+    .hero-media img {
+      transform: scale(1);
+    }
+  }
+  /* Projekte und Montage — sections */
+  .work-image {
+    transition: var(--motion-work-transition);
+  }
+  .work-card:hover .work-image {
+    transform: scale(1.045);
+  }
+  .work-progress i {
+    transform: scaleX(0.06);
+    transform-origin: left;
+  }
+  /* Showreel — sections */
+  .showreel-film-copy {
+    transform: translate(-50%, -50%);
+  }
+  .showreel-action {
+    transform: translate(-50%, -50%);
+    transition:
+      background var(--motion-fast),
+      transform var(--motion-fast);
+  }
+  .showreel-action span {
+    transform: translate(2px);
+  }
+  .showreel-action:hover {
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+  html.showreel-motion .showreel-frame {
+    transform: translate(-50%);
+  }
+  html.showreel-motion .showreel-phone-overlay {
+    transform: translate(-50%, -50%);
+  }
+  /* Kundenstimmen — sections */
+  .testimonial-project-link a {
+    transition: var(--motion-testimonials-transition);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .testimonial-project-link a {
+      transition: none;
+    }
+  }
+  .client-reference-logo img {
+    transition: var(--motion-testimonials-transition-2);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .client-reference-logo img {
+      transition: none;
+    }
+  }
+  /* Journal — sections */
+  .journal-row {
+    transition: var(--motion-journal-transition);
+  }
+  .journal .journal-list article.journal-row {
+    transition: var(--motion-journal-transition-2);
+  }
+  .journal .journal-list article.journal-row:hover {
+    transform: translateY(-0.25rem);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .journal .journal-list article.journal-row {
+      transition: none;
+    }
+  }
+  /* Konfigurator — sections */
+  .configurator-scene-media > * {
+    transform: translate(-50%, -50%);
+  }
+  @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+    .configurator-scene.is-scroll-ready .configurator-scene-cards {
+      transform: translateY(1.5rem);
+    }
+  }
+  /* Kontakt und Fragen — sections */
+  .site-progress span {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  .hero-message,
+  .hero-actions,
+  .hero-media img {
+    will-change: opacity, transform;
+  }
+  .question summary:after {
+    transition: var(--motion-contact-transition);
+  }
+  .question[open] summary:after {
+    transform: rotate(45deg);
+  }
+  .menu-panel-nav a {
+    transform: translateY(1.5rem);
+    transition: var(--motion-contact-transition-2);
+  }
+  .menu-panel.is-open .menu-panel-nav a {
+    transform: translateY(0);
+  }
+  .menu-panel.is-open .menu-panel-nav a:nth-child(2) {
+    transition-delay: var(--motion-contact-transition-delay);
+  }
+  .menu-panel.is-open .menu-panel-nav a:nth-child(3) {
+    transition-delay: var(--motion-contact-transition-delay-2);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-message,
+    .hero-actions,
+    .hero-media img {
+      will-change: auto;
+    }
+    .menu-panel-nav a,
+    .menu-panel.is-open .menu-panel-nav a {
+      transform: none;
+      transition: none;
+    }
+  }
+  .index-card img {
+    transition: var(--motion-cards-transition);
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .index-card:hover img {
+      transform: scale(1.045);
+    }
+  }
 }
-.cursor-dot {
-  position: fixed;
-  z-index: 150;
-  left: 0;
-  top: 0;
-  width: 1.125rem;
-  height: 1.125rem;
-  border-radius: 50%;
-  border: 1px solid var(--color-primary);
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  opacity: 0;
-  transition:
-    width 0.2s,
-    height 0.2s,
-    opacity 0.2s;
-}
-.cursor-dot.is-active {
-  width: 3.625rem;
-  height: 3.625rem;
-  opacity: 0.55;
-}
-.project-visual {
-  margin: 0 0 var(--section-space);
-}
-.project-visual img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 49.375rem;
-  object-fit: cover;
-  background: var(--color-background);
-}
-.project-visual figcaption {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.25rem;
-  padding-top: 1rem;
-  color: var(--color-muted);
-  font:
-    0.75rem/1.5 Plex,
-    Arial,
-    sans-serif;
-}
-.project-visual figcaption .micro {
-  font-size: 0.625rem;
+@layer cms {
+  /* Contao-Inhalte — cms */
+  .hero-motion-video {
+    transform: scale(0.84);
+    transform-origin: center bottom;
+  }
+  @media (min-width: 761px) {
+    .hero-motion-video {
+      transform: translate(clamp(3.4375rem, 6vw, 6.5625rem)) scale(0.84);
+    }
+  }
 }

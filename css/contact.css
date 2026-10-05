@@ -1,50 +1,40 @@
-/* Kontaktband, Fragen und ergänzende Interaktionszustände — Layer: sections */
+/* KOMPONENTE / STRUKTUR: Kontakt und Fragen.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Kontakt und Fragen — sections */
 .contact-band {
-  padding-block: var(--section-space);
+  padding-block: var(--space-section);
 }
 .contact-band .text-link {
-  color: #fff;
-  margin-left: 1.75rem;
+  margin-left: var(--space-28);
 }
 .contact-band {
-  text-align: center;
-  color: #fff;
-  padding-block-start: var(--section-space);
+  padding-block-start: var(--space-section);
   overflow: hidden;
 }
 .contact-band-copy {
   position: relative;
   z-index: 1;
-  padding: 0 var(--container-gutter);
-}
-.contact-band .micro {
-  color: #9eb4ff;
+  padding: 0 var(--space-gutter);
 }
 .contact-band h2 {
-  font:
-    300 clamp(3rem, 6.3vw, 5.875rem)/1.02 Modernist,
-    sans-serif;
   max-width: 53.125rem;
-  margin: 1.1875rem auto 1.625rem;
+  margin: var(--space-contact-margin);
 }
 .contact-band-copy > p:last-child {
-  font-size: 0.75rem;
-  color: var(--color-muted);
-  margin: 1.1875rem 0 0;
+  margin: var(--space-contact-margin-2);
 }
 .contact-band-image {
   width: 100%;
   height: clamp(20.625rem, 46vw, 48.75rem);
   object-fit: cover;
   object-position: center;
-  background: #030304;
-  margin-top: 0.5rem;
-  border-radius: 0.5rem 0.5rem 0 0;
+  margin-top: var(--space-sm);
 }
 .site-progress {
   position: fixed;
   z-index: 110;
-  top: 4.6875rem;
+  top: var(--space-75);
   left: 0;
   right: 0;
   height: 2px;
@@ -54,13 +44,10 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: left center;
 }
 .hero-message {
   max-width: 38.75rem;
-  margin-top: clamp(4.5rem, 10vh, 8.4375rem);
+  margin-top: var(--space-contact-margin-top);
 }
 .hero-message h1 {
   margin: 0;
@@ -68,148 +55,81 @@
 .hero-lede {
   max-width: 25.625rem;
   margin: var(--space-xl) 0 0;
-  font:
-    1.0625rem/1.55 Plex,
-    Arial,
-    sans-serif;
-  color: var(--color-text-soft);
-  text-wrap: pretty;
-}
-.hero-message,
-.hero-actions,
-.hero-media img {
-  will-change: opacity, transform;
 }
 .questions {
   padding-top: 0;
-  background: #fff;
 }
 .questions-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  gap: clamp(3.75rem, 9vw, 9.375rem);
+  gap: var(--space-contact-gap);
   align-items: start;
 }
 .questions-layout > div:first-child {
   position: sticky;
-  top: 8.25rem;
+  top: var(--space-132);
 }
 .questions .section-heading {
   max-width: 37.5rem;
-  margin: 1rem 0 1.5625rem;
+  margin: var(--space-contact-margin-3);
 }
 .questions .body-copy {
   max-width: 25rem;
-  margin: 0 0 2rem;
-}
-.question-list {
-  border-top: 1px solid var(--color-border);
-}
-.question {
-  border-bottom: 1px solid var(--color-border);
+  margin: var(--space-contact-margin-4);
 }
 .question summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.375rem;
-  list-style: none;
-  padding: 1.625rem 0;
-  cursor: pointer;
-  font:
-    300 clamp(1.5rem, 2.4vw, 2.125rem)/1.14 Modernist,
-    Arial,
-    sans-serif;
+  gap: var(--space-22);
+  padding: var(--space-contact-padding);
 }
 .question summary::-webkit-details-marker {
   display: none;
 }
 .question summary:after {
-  content: "+";
   flex: none;
-  color: var(--color-primary);
-  font:
-    300 2rem/1 Modernist,
-    sans-serif;
-  transition: transform 0.3s;
-}
-.question[open] summary:after {
-  transform: rotate(45deg);
-}
-.question summary:hover {
-  color: var(--color-primary);
 }
 .question p {
   max-width: 36.875rem;
-  margin: 0 0 1.8125rem;
-  color: var(--color-text-soft);
-  font:
-    1rem/1.6 Plex,
-    Arial,
-    sans-serif;
+  margin: var(--space-contact-margin-5);
 }
 .contact-hero-actions {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: var(--space-28);
   flex-wrap: wrap;
-  margin-top: 2.625rem;
-}
-.contact-hero-actions .text-link {
-  color: var(--color-text);
-}
-.contact-hero-actions .text-link:hover {
-  color: var(--color-primary);
+  margin-top: var(--space-42);
 }
 #anfrage,
 #termin {
-  scroll-margin-top: 6.5625rem;
-}
-.menu-panel-nav a {
-  opacity: 0;
-  transform: translateY(1.5rem);
-  transition:
-    opacity 0.4s,
-    transform 0.5s,
-    color 0.2s;
-}
-.menu-panel.is-open .menu-panel-nav a {
-  opacity: 1;
-  transform: translateY(0);
-}
-.menu-panel.is-open .menu-panel-nav a:nth-child(2) {
-  transition-delay: 0.06s;
-}
-.menu-panel.is-open .menu-panel-nav a:nth-child(3) {
-  transition-delay: 0.12s;
+  scroll-margin-top: var(--space-105);
 }
 @media (max-width: 760px) {
   .site-progress {
-    top: 3.9375rem;
+    top: var(--space-63);
   }
   .hero-message {
-    margin-top: 1.5625rem;
+    margin-top: var(--space-25);
     max-width: 88%;
   }
   .hero-lede {
-    font-size: 0.875rem;
-    line-height: 1.45;
     max-width: 18.75rem;
-    margin-top: 1rem;
+    margin-top: var(--space-md);
   }
   .questions-layout {
     grid-template-columns: 1fr;
-    gap: 3.4375rem;
+    gap: var(--space-55);
   }
   .questions-layout > div:first-child {
     position: static;
   }
   .question summary {
-    padding: 1.4375rem 0;
+    padding: var(--space-contact-padding-2);
   }
   .contact-hero-actions {
-    margin-top: 2rem;
-    gap: 1.25rem;
+    margin-top: var(--space-xl);
+    gap: var(--space-20);
   }
 }
 @media (max-width: 520px) {
@@ -218,34 +138,8 @@
   }
   .hero-lede {
     max-width: 16.875rem;
-    font-size: 0.8125rem;
   }
   .hero-actions {
-    gap: 0.625rem;
-  }
-  .hero-contact,
-  .hero-work-link {
-    font-size: 0.625rem;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-message,
-  .hero-actions,
-  .hero-media img {
-    will-change: auto;
-  }
-  .menu-panel-nav a,
-  .menu-panel.is-open .menu-panel-nav a {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-.index-card img {
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .index-card:hover img {
-    transform: scale(1.045);
+    gap: var(--space-10);
   }
 }

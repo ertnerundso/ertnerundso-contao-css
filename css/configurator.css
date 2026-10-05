@@ -1,60 +1,28 @@
-/* Konfigurator und Video-Szene — Layer: sections */
+/* KOMPONENTE / STRUKTUR: Konfigurator.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Konfigurator — sections */
 .configurator-scene {
   position: relative;
-  background: #fff;
   margin-block-start: var(--space-2xl);
-  padding-block: var(--section-space);
+  padding-block: var(--space-section);
 }
 .configurator-scene-sticky {
   position: relative;
 }
-.configurator-scene-heading {
-  text-align: center;
-}
 .configurator-scene-heading h2 {
   max-width: 65.625rem;
-  margin: 1.25rem auto 1.625rem;
-  font:
-    300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
-    Arial,
-    sans-serif;
-  text-wrap: balance;
-}
-@media (max-width: 760px) {
-  .configurator-scene-heading h2 {
-    font:
-      300 clamp(2.1875rem, 8.5vw, 3rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
-  }
+  margin: var(--space-configurator-margin);
 }
 .configurator-scene-intro {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--column-gap);
+  gap: var(--space-columns);
   max-width: 66.25rem;
   margin-inline: auto;
-  text-align: left;
 }
 .configurator-scene-intro p {
   margin: 0;
-  color: var(--color-text-soft);
-  font:
-    400 1.0625rem/1.6 Plex,
-    Arial,
-    sans-serif;
-}
-@media (max-width: 760px) {
-  .configurator-scene-intro p {
-    font:
-      400 1rem/1.6 Plex,
-      Arial,
-      sans-serif;
-  }
-}
-.configurator-scene-intro strong {
-  color: var(--color-text);
-  font-weight: 500;
 }
 .configurator-scene-content {
   display: flex;
@@ -69,14 +37,12 @@
 }
 .configurator-scene-media > * {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: var(--space-50percent);
+  top: var(--space-50percent);
   width: auto;
   max-width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: brightness(1.012);
 }
 .configurator-scene-video {
   display: none;
@@ -84,38 +50,18 @@
 .configurator-scene-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--grid-gap);
+  gap: var(--space-grid);
   width: min(100%, 70rem);
 }
 .configurator-scene-card {
   min-height: 10.9375rem;
   padding: var(--space-lg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
 }
 .configurator-scene-card h3 {
   margin: var(--space-md) 0 var(--space-sm);
-  font:
-    300 clamp(1.4375rem, 2vw, 1.875rem)/1.1 Modernist,
-    Arial,
-    sans-serif;
-}
-@media (max-width: 760px) {
-  .configurator-scene-card h3 {
-    font:
-      300 1.5625rem/1.1 Modernist,
-      Arial,
-      sans-serif;
-  }
 }
 .configurator-scene-card p {
   margin: 0;
-  color: var(--color-text-soft);
-  font:
-    400 0.9375rem/1.5 Plex,
-    Arial,
-    sans-serif;
 }
 .configurator-scene-card p + p {
   margin-top: var(--space-xs);
@@ -123,21 +69,20 @@
 @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
   .configurator-scene.is-scroll-ready {
     height: 260vh;
-    margin-block-start: var(--section-space);
+    margin-block-start: var(--space-section);
     padding: 0;
   }
   .configurator-scene.is-scroll-ready .configurator-scene-sticky {
     position: sticky;
-    top: 4.75rem;
+    top: var(--space-76);
     height: calc(100svh - 4.75rem);
     overflow: hidden;
-    background: #fff;
   }
   .configurator-scene.is-scroll-ready .configurator-scene-heading {
     position: absolute;
     z-index: 1;
     inset-inline: 0;
-    top: clamp(2.125rem, 5svh, 4.75rem);
+    top: var(--space-configurator-top);
     pointer-events: none;
   }
   .configurator-scene.is-scroll-ready .configurator-scene-content {
@@ -148,7 +93,7 @@
     flex: 0 0 auto;
     height: 65svh;
     max-height: 45rem;
-    margin-top: 8svh;
+    margin-top: var(--space-configurator-margin-top);
   }
   .configurator-scene.is-scroll-ready .configurator-scene-still {
     display: none;
@@ -159,8 +104,6 @@
   .configurator-scene.is-scroll-ready .configurator-scene-cards {
     max-height: 0;
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(1.5rem);
   }
 }
 @media (max-width: 760px) {

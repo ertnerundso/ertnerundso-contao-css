@@ -1,56 +1,108 @@
-/* Grid, Abschnittsabstände und gemeinsame Layout-Regeln — Layer: layout */
-.section,
-.section-padding {
-  padding-block: var(--section-space);
-}
-.grid-2-col {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--column-gap);
-}
-.flex-stack {
-  display: flex;
-  flex-direction: column;
-  gap: var(--stack-gap, var(--space-lg));
-}
-@media (max-width: 760px) {
-  .grid-2-col {
-    grid-template-columns: minmax(0, 1fr);
+/* SYSTEM / SEITENRASTER: Grundstruktur, Container und gemeinsame Layout-Regeln.
+   Abstände verwenden die Werte aus base.css. */
+@layer foundation {
+  /* Grundregeln — foundation */
+  :root {
+    --layout-container-max: 96rem;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  :focus-visible {
+    outline-offset: var(--space-xs);
+  }
+  .skip-link {
+    position: absolute;
+    z-index: 200;
+    left: var(--space-12);
+    top: var(--space-negative-60);
+    padding: var(--space-12);
+  }
+  .skip-link:focus {
+    top: var(--space-12);
+  }
+  .shell,
+  .container {
+    width: 100%;
+    max-width: var(--layout-container-max);
+    margin-inline: auto;
+    padding-inline: var(--space-gutter);
+  }
+  /* Allgemeine Texte und Schriften — foundation */
+  :where(
+      .intro,
+      .showreel-lead,
+      .section-head,
+      .statement-copy,
+      .manual-book-header,
+      .work-heading,
+      .process-header,
+      .questions-intro,
+      .benefits-lead,
+      .client-references-label,
+      .configurator-scene-heading,
+      .testimonial-feature-label,
+      .contact-band-copy,
+      .inner-hero,
+      .legal-hero-body,
+      .booking-block,
+      .contact-column
+    )
+    .micro:before {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-inline-end: var(--space-10);
+    vertical-align: var(--space-1px);
   }
 }
-.intro {
-  text-align: center;
-}
-.intro .display {
-  font-size: clamp(2.625rem, 5.7vw, 5.625rem);
-  max-width: 70rem;
-  margin: 1.5rem auto 1.75rem;
-}
-.intro .body-copy {
-  margin-inline: auto;
-}
-.section-head {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 1.875rem;
-  margin-bottom: 3.4375rem;
-}
-.section-head h2,
-.section-heading {
-  font:
-    300 clamp(2.4375rem, 4.8vw, 4.625rem)/1.04 Modernist,
-    Arial,
-    sans-serif;
-  margin: 0.75rem 0 0;
-}
-.brand img,
-.footer-brand img {
-  filter: invert(1);
-}
-.hero-copy {
-  max-width: 40.625rem;
-}
-.hero h1 {
-  font-size: clamp(3.625rem, 5.4vw, 5.5rem);
+@layer layout {
+  /* Seitenraster — layout */
+  .section,
+  .section-padding {
+    padding-block: var(--space-section);
+  }
+  .grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-columns);
+  }
+  .flex-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-stack-gap, var(--stack-gap, var(--space-lg)));
+  }
+  @media (max-width: 760px) {
+    .grid-2-col {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+  .intro .display {
+    max-width: 70rem;
+    margin: var(--space-layout-margin);
+  }
+  .intro .body-copy {
+    margin-inline: auto;
+  }
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-30);
+    margin-bottom: var(--space-55);
+  }
+  .section-head h2,
+  .section-heading {
+    margin: var(--space-layout-margin-2);
+  }
+  .hero-copy {
+    max-width: 40.625rem;
+  }
 }

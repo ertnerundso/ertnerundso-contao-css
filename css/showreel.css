@@ -1,19 +1,20 @@
-/* Intro, Showreel und Showreel-Bewegungszustände — Layer: sections */
+/* KOMPONENTE / STRUKTUR: Showreel.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Showreel — sections */
 .hero + .intro {
-  padding-top: var(--section-space);
+  padding-top: var(--space-section);
 }
 .intro .section-heading {
   max-width: 61.875rem;
-  margin: 1.125rem auto 1.75rem;
+  margin: var(--space-showreel-margin);
 }
 .intro .body-copy {
   max-width: 41.875rem;
   margin: 0 auto;
-  color: var(--color-text-soft);
 }
 .showreel {
-  margin-top: clamp(4.6875rem, 8vw, 8.125rem);
-  text-align: left;
+  margin-top: var(--space-showreel-margin-top);
 }
 .showreel video {
   display: block;
@@ -21,27 +22,16 @@
   aspect-ratio: 16/9;
   max-height: 46.25rem;
   object-fit: cover;
-  background: #101114;
-  border-radius: 0.5rem;
 }
 .showreel-caption {
-  margin-top: 1rem;
-}
-.showreel-section {
-  background: var(--color-background);
+  margin-top: var(--space-md);
 }
 .showreel-stage {
   position: relative;
-  background: var(--color-background);
-}
-.showreel-lead {
-  text-align: center;
 }
 .showreel-lead .section-heading {
   max-width: 58.125rem;
-  margin: 1rem auto 1.375rem;
-  text-transform: none;
-  font-size: clamp(2.375rem, 4.4vw, 4.625rem);
+  margin: var(--space-showreel-margin-2);
 }
 .showreel-lead .body-copy {
   max-width: 40.625rem;
@@ -49,57 +39,38 @@
 }
 .showreel-frame {
   position: relative;
-  width: min(calc(100% - 2 * var(--container-gutter)), 75rem);
+  width: min(calc(100% - 2 * var(--space-gutter)), 75rem);
   aspect-ratio: 16/9;
-  margin: clamp(4.375rem, 8vw, 8.125rem) auto 0;
+  margin: var(--space-showreel-margin-3);
   overflow: hidden;
-  border-radius: 0.5rem;
-  background: #101114;
   isolation: isolate;
 }
 .showreel-frame video {
   display: block;
   position: absolute;
-  left: -0.25rem;
-  top: -0.25rem;
+  left: var(--space-negative-4);
+  top: var(--space-negative-4);
   width: calc(100% + 0.5rem);
   height: calc(100% + 0.5rem);
   object-fit: cover;
-  border-radius: inherit;
-  background: #101114;
 }
 .showreel-frame:after {
-  content: "";
   position: absolute;
   z-index: 1;
   inset: 0;
-  border-radius: inherit;
-  background: #000;
-  opacity: var(--showreel-scrim, 0);
   pointer-events: none;
 }
 .showreel-film-copy {
   display: none;
   position: absolute;
   z-index: 2;
-  left: 50%;
-  top: 50%;
+  left: var(--space-50percent);
+  top: var(--space-50percent);
   width: min(80%, 54.375rem);
-  transform: translate(-50%, -50%);
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 2px 1.75rem rgba(0, 0, 0, 0.55);
-}
-.showreel-film-copy .micro {
-  color: #c3d0ff;
 }
 .showreel-film-copy strong {
   display: block;
-  margin-top: 1.25rem;
-  font:
-    300 clamp(2.625rem, 5vw, 5.5rem)/1.03 Modernist,
-    Arial,
-    sans-serif;
+  margin-top: var(--space-20);
 }
 .showreel-phone-overlay {
   display: none;
@@ -107,51 +78,26 @@
 .showreel-action {
   position: absolute;
   z-index: 4;
-  left: 50%;
-  top: 50%;
+  left: var(--space-50percent);
+  top: var(--space-50percent);
   display: grid;
   place-items: center;
   width: 4.375rem;
   height: 4.375rem;
   padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: #fff;
-  color: #111;
-  box-shadow: 0 0.5rem 1.75rem #0000003d;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  transition:
-    background var(--transition-fast),
-    transform var(--transition-fast);
-}
-.showreel-action span {
-  font-size: 1.5625rem;
-  line-height: 1;
-  transform: translate(2px);
-}
-.showreel-action:hover {
-  background: #e8eeff;
-  transform: translate(-50%, -50%) scale(1.06);
 }
 .showreel-action:focus-visible {
-  outline: 0.1875rem solid #2b58ee;
-  outline-offset: 0.25rem;
+  outline-offset: var(--space-xs);
 }
 .showreel-action[hidden] {
   display: none;
 }
 .showreel-outro {
   max-width: 46.875rem;
-  margin: clamp(5rem, 9vw, 8.75rem) auto 0;
-  text-align: center;
+  margin: var(--space-showreel-margin-4);
 }
 .showreel-outro h3 {
-  font:
-    300 clamp(2.25rem, 4.5vw, 4.375rem)/1.05 Modernist,
-    Arial,
-    sans-serif;
-  margin: 0.875rem 0 1.25rem;
+  margin: var(--space-showreel-margin-5);
 }
 .showreel-outro .body-copy {
   max-width: 35rem;
@@ -160,13 +106,8 @@
 .showreel-caption {
   display: flex;
   justify-content: space-between;
-  gap: 1.25rem;
-  margin: 2.125rem auto 0;
-  font:
-    0.6875rem/1.5 PlexMono,
-    monospace;
-  color: var(--color-muted);
-  text-align: left;
+  gap: var(--space-20);
+  margin: var(--space-showreel-margin-6);
 }
 html.showreel-motion .showreel-section {
   padding: 0;
@@ -178,7 +119,7 @@ html.showreel-motion .showreel-stage {
 html.showreel-motion .showreel-lead {
   position: absolute;
   z-index: 1;
-  top: clamp(7.5rem, 15vh, 11.875rem);
+  top: var(--space-showreel-top);
   left: 0;
   right: 0;
   width: 100%;
@@ -186,46 +127,36 @@ html.showreel-motion .showreel-lead {
 html.showreel-motion .showreel-frame {
   position: absolute;
   z-index: 3;
-  left: 50%;
-  top: 72%;
+  left: var(--space-50percent);
+  top: var(--space-72percent);
   width: min(70vw, 80rem);
   height: 61vh;
   aspect-ratio: auto;
   margin: 0;
   overflow: visible;
-  transform: translate(-50%);
 }
 html.showreel-motion .showreel-film-copy,
 html.showreel-motion .showreel-phone-overlay {
   display: block;
-  opacity: 0;
-}
-html.showreel-motion .showreel-action {
-  visibility: hidden;
-  opacity: 0;
 }
 html.showreel-motion .showreel-phone-overlay {
   position: absolute;
   z-index: 3;
-  left: 50%;
-  top: 50%;
+  left: var(--space-50percent);
+  top: var(--space-50percent);
   width: 145.02%;
   height: auto;
   max-width: none;
-  transform: translate(-50%, -50%);
-  clip-path: inset(18% 10% 18% 10%);
   pointer-events: none;
 }
 html.showreel-motion .showreel-outro {
   position: absolute;
   z-index: 1;
-  top: 11%;
-  left: var(--container-gutter);
-  right: var(--container-gutter);
+  top: var(--space-11percent);
+  left: var(--space-gutter);
+  right: var(--space-gutter);
   max-width: none;
   margin: 0;
-  opacity: 0;
-  visibility: hidden;
 }
 html.showreel-motion .showreel-outro h3 {
   max-width: 53.125rem;
@@ -233,7 +164,7 @@ html.showreel-motion .showreel-outro h3 {
 }
 html.showreel-motion .showreel-outro .body-copy {
   position: absolute;
-  top: 82vh;
+  top: var(--space-showreel-top-2);
   left: 0;
   right: 0;
   max-width: 38.125rem;
@@ -243,26 +174,22 @@ html.showreel-motion .showreel-caption {
 }
 @media (max-width: 760px) {
   .showreel-section {
-    padding-block: 6.875rem;
-  }
-  .showreel-lead .section-heading {
-    font-size: clamp(2.25rem, 9vw, 3.4375rem);
+    padding-block: var(--space-110);
   }
   .showreel-frame {
     top: auto !important;
-    width: calc(100% - 2 * var(--container-gutter)) !important;
-    border-width: 0 !important;
-    margin-top: 4.0625rem;
+    width: calc(100% - 2 * var(--space-gutter)) !important;
+    margin-top: var(--space-65);
   }
   .showreel-frame video {
     object-fit: cover;
   }
   .showreel-outro {
-    padding-inline: var(--container-gutter);
-    margin-top: 4.6875rem;
+    padding-inline: var(--space-gutter);
+    margin-top: var(--space-75);
   }
   .showreel-caption {
-    padding-inline: var(--container-gutter);
+    padding-inline: var(--space-gutter);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -271,13 +198,8 @@ html.showreel-motion .showreel-caption {
   }
 }
 .showreel-lead h2 {
-  font:
-    300 clamp(2.375rem, 4.4vw, 4.625rem)/1.04 Modernist,
-    Arial,
-    sans-serif;
   max-width: 58.125rem;
-  margin: 1rem auto 1.375rem;
-  text-transform: none;
+  margin: var(--space-showreel-margin-2);
 }
 .showreel-phone-overlay figure {
   margin: 0;
@@ -288,12 +210,9 @@ html.showreel-motion .showreel-caption {
   height: auto;
   max-width: none;
 }
-.showreel-phone-overlay {
-  filter: brightness(1.04);
-}
 .showreel-caption .rte {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: 1.25rem;
+  gap: var(--space-20);
 }

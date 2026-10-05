@@ -1,6 +1,9 @@
-/* Hero und Hero-Medien — Layer: sections */
+/* KOMPONENTE / STRUKTUR: Startseite / Hero.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Startseite / Hero — sections */
 .site-main {
-  padding-top: 4.75rem;
+  padding-top: var(--space-76);
 }
 .hero {
   position: relative;
@@ -17,32 +20,23 @@
   pointer-events: none;
   width: 100%;
   height: 100%;
-  opacity: 0.8;
 }
 .hero h1,
 .display {
-  font:
-    300 clamp(3.5rem, 6.9vw, 7rem)/0.98 Modernist,
-    Arial,
-    sans-serif;
-  margin: 1.25rem 0 1.75rem;
-  letter-spacing: 0;
+  margin: var(--space-hero-margin);
 }
 .hero .body-copy {
   max-width: 28.125rem;
-  color: var(--color-text-soft);
 }
 .hero-actions {
-  margin-top: 2.25rem;
+  margin-top: var(--space-36);
 }
 .hero {
   height: calc(100svh - 4.75rem);
   min-height: 37.5rem;
   max-height: none;
-  background: var(--color-background);
   display: block;
   overflow: hidden;
-  border-radius: 0 0 0.5rem 0.5rem;
 }
 .hero-media {
   inset: 0;
@@ -67,72 +61,20 @@
   flex-direction: column;
   justify-content: space-between;
 }
-/* STARTSEITE: Hauptüberschrift — Schrift und Größe */
 .hero h1 {
-  font:
-    400 clamp(3rem, 5.3vw, 5.25rem)/1.06 Modernist,
-    Arial,
-    sans-serif;
-  text-transform: none;
   max-width: 38.125rem;
-  text-wrap: balance;
-  margin: clamp(4.75rem, 10vh, 8.4375rem) 0 0;
-}
-/* Hauptüberschrift auf Handy und kleinem Tablet */
-@media (max-width: 760px) {
-  .hero h1 {
-    font:
-      400 clamp(2.375rem, 10vw, 3.625rem)/1.06 Modernist,
-      Arial,
-      sans-serif;
-  }
-}
-/* Hauptüberschrift auf großen Bildschirmen: Hier font-size ändern. */
-@media (min-width: 1000px) {
-  .hero h1 {
-    font-size: clamp(3.25rem, 4vw, 4.375rem);
-  }
+  margin: var(--space-hero-margin-2);
 }
 .hero-actions {
   align-self: flex-end;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin: 0 0 clamp(2.125rem, 6vh, 4.875rem);
+  gap: var(--space-12);
+  margin: var(--space-hero-margin-3);
 }
 .hero-work-link,
 .hero-contact {
-  gap: 1.125rem;
-  text-transform: uppercase;
-}
-.hero-media img {
-  transform: scale(0.84);
-  transform-origin: center bottom;
-  filter: brightness(1.05);
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    #000 0%,
-    #000 73%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(to bottom, #000 0%, #000 73%, transparent 100%);
-}
-@media (min-width: 761px) {
-  .hero-media img {
-    transform: translate(clamp(6.5625rem, 10vw, 11.5625rem)) scale(0.84);
-  }
-}
-@media (max-width: 760px) {
-  .hero-media img {
-    transform: scale(0.78);
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      #000 0%,
-      #000 70%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(to bottom, #000 0%, #000 70%, transparent 100%);
-  }
+  gap: var(--space-18);
 }
 @media (max-width: 360px) {
   .hero {
@@ -144,28 +86,22 @@
     max-width: 100%;
   }
   .hero-message {
-    margin-top: 1.25rem;
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 10.8vw, 2.25rem);
+    margin-top: var(--space-20);
   }
   .hero-lede {
     max-width: 100%;
-    font-size: 0.8125rem;
-    line-height: 1.4;
-    margin-top: 1rem;
+    margin-top: var(--space-md);
   }
   .hero-media {
-    inset: 42% 0 0;
+    inset: var(--space-hero-inset);
   }
   .hero-media img {
     position: relative;
-    top: -3.75rem;
+    top: var(--space-negative-60);
     object-fit: cover;
     object-position: center bottom;
-    transform: scale(1);
   }
   .hero-actions {
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-20);
   }
 }
