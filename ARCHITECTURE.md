@@ -1,89 +1,68 @@
 # ERTNER&SO CSS architecture
 
-## Active source and delivery
+## Source and delivery
 
-The root `site.css` is the editable, 30-line entry point. It declares the layer
-order and imports 28 thematic modules from `css/`. The active Contao template
-continues to load this entry point through GitHub Pages; the browser loads the
-modules directly. There is no generated stylesheet and no CSS build step.
+The short root `site.css` directly imports 30 modules: six system files and 24 structure-only component/section files. Contao continues to load this entry point through GitHub Pages. There is no generated CSS, build step, secondary entry point or nested import chain.
 
-The old `src/styles/` layout in the separate frontend repository is not the
-source for this delivery. Do not export that older CSS over the owner's current
-stylesheet. The modular split starts from this repository's owner-maintained
-`site.css` at commit `2bbaa56`.
+## Exclusive ownership
 
-## Cascade order
+| File | Owns |
+| --- | --- |
+| `base.css` | Palette, spacing, radius and shadow custom properties: `--color-*`, `--space-*`, `--radius-*`, `--shadow-*` |
+| `typography.css` | All font faces, typography, headings, body text, text alignment/decoration, wrapping, counters and lists, including component and responsive text rules |
+| `surfaces.css` | All backgrounds, colors, borders, radii, shadows, masks, filters, overlays, opacity, cursor and visibility states; literal palette values come from base |
+| `motion.css` | All transitions, animations, transforms and scroll behavior; shared `--motion-*` values |
+| `layout.css` | Element structure, page skeleton, containers, common grids and `--layout-*` values |
+| `responsive.css` | Existing cross-component responsive structure; breakpoint inventory in its header |
+| Every other file in `css/` | Structure only: positioning, dimensions, grid/flex, overflow, object fit, stacking, pointer behavior, and spacing through `--space-*` |
 
-The layers are `foundation`, `layout`, `components`, `sections`, `cms`.
-Each import in the root `site.css` explicitly names its layer. Modules contain
-plain rules; do not put imports or layer wrappers inside them. `@import` applies
-each module to its named layer, preserving the original order. Only the root
-entry point determines the order within a layer.
+Components must not contain typography, paint or motion declarations, even when their values use variables. For example, `font-size: var(--font-h1)` still belongs in typography. Optional `--font-*` tokens also belong in typography. Every CSS file is validated against this ownership, including Contao wrappers and page styles. Animation keyframes belong in motion, including their animated opacity/filter effects; their colors still reference the base palette.
 
-Preserve existing layer ownership when moving a rule. For example, the
-`contao-components.css` and `contao-forms.css` rules remain in `sections`, while
-`contao.css` remains in `cms`. A selector can be overridden in another layer;
-combining such rules without checking the cascade can change the design.
+`containers.css` holds shared card/list/table structure formerly mixed into surfaces. `media.css` holds cursor/reveal-line/project-media structure formerly mixed into motion. Their positions preserve the structural cascade. No HTML classes were introduced or renamed.
 
-## Module ownership
+Spacing values are centralized, including legacy exact values required to preserve appearance. The base scale uses `--space-xs` through `--space-6xl`. Additional numeric names denote rem values at a reference root size of 16px; explicit px/em/percentage names retain those units. Complex values have feature names. Do not round or convert existing values as part of an architecture change.
 
-- `typography.css`: `@font-face`, font resources, body text and general headings.
-- `base.css`: global colors, spacing and layout settings, followed by element defaults.
-  Font families, sizes and line heights use direct CSS values; there is no
-  `fonts.css` or `variables.css` indirection. Feature-specific typography stays
-  in its feature file, with direct responsive values.
-- `layout.css`, `header.css`, `navigation.css`, `footer.css`: structural rules.
-- `responsive.css`: existing shared responsive and accessibility overrides.
-- `buttons.css`, `cards.css`, `surfaces.css`, `forms.css`, `motion.css`: shared components.
-- Named section files such as `hero.css`, `showreel.css`, `work.css`, `journal.css`,
-  `configurator.css` and `contact.css`: feature rules and their responsive states.
-- `contao-components.css` and `contao-forms.css`: existing section-layer CMS wrappers.
-- `pages.css`, `news.css`, `contao.css`, `legal.css`: page and CMS-layer overrides.
+Typography uses direct readable font values in its single owner. There is no separate fonts or variables file. Colors, radii and shadows use shared tokens; transformations and their timing live in motion.
 
-The full list is in `README.md`. Some legacy shared selectors intentionally
-remain together to preserve their original order. Do not add a new override
-file for each small change; edit the existing owner instead.
+## Cascade preservation
 
-## Maintenance rules
+The five existing layers remain ordered as `foundation`, `layout`, `components`, `sections`, `cms`. These priorities are independent of file responsibility.
 
-1. Edit feature rules in `css/`; edit root `site.css` only to manage imports.
-2. Keep shared color, spacing and layout settings at the top of `base.css`.
-   Use direct font families, sizes and line heights where the text is styled.
-   Keep font resources and general text defaults together in `typography.css`.
-   Preserve mobile values and the desktop hero size when moving text rules.
-3. Keep existing classes and JavaScript hooks, including `.is-open`, `.is-active`,
-   `.js-ready`, `[hidden]` and data attributes.
-4. Keep responsive rules with their feature where their cascade permits it.
-   Preserve the current breakpoint conditions when reorganizing rules.
-5. Use `rem` for new typography and spacing; keep unitless line heights.
-   Do not mechanically convert existing values during a structural split.
-6. Avoid new duplicate declarations. Existing intentional overrides are
-   preserved; consolidation requires checking specificity, layers and order.
-7. Keep font and image URLs absolute so the imported modules
-   resolve the existing assets correctly.
+System files are imported without an additional import layer and contain explicit blocks for their original layers. A system can therefore own both foundation defaults and later section or CMS overrides. Keep original layer ownership and source order within each layer when moving rules, including shorthand/longhand ordering.
 
-## Validation and delivery
+Structure-only files are imported with `layer(...)` and contain plain rules. The root imports first the six systems, then the components in their original structural order. Different files own disjoint property groups; system blocks preserve the previous priority of the extracted styles. Do not wrap a system import in an additional layer or append unlayered overrides.
+
+The refactor starts from main commit `313b6aa`. All 2,057 non-custom-property declarations retain their selectors, media contexts, values after token expansion, importance and per-property layer order. Existing token definitions and responsive overrides are preserved, with the documented namespace renames below.
+
+## Responsive rules and runtime hooks
+
+Normal CSS custom properties cannot supply media-query conditions. Existing conditions remain literal, with width thresholds 360, 520, 760/761 and 1000px, height thresholds 720/800px, and user-preference queries. Width registration is checked in `scripts/css-architecture.mjs`. Do not convert max-width rules to min-width without separately verifying boundary behavior.
+
+Typography media rules stay in typography; paint media rules in surfaces; motion preference rules in motion. Shared structural media rules stay in responsive. Feature-specific structural media rules stay in their component.
+
+Preserve every status class, data attribute and JavaScript hook. Runtime `--showreel-scrim` retains its local fallback. Existing optional `--button-height`, `--button-padding` and `--stack-gap` remain supported at the consuming element. New spacing hooks `--space-button-padding` and `--space-stack-gap` take priority and fall back to their legacy equivalents. Legacy spacing hooks are allowed only in these compatibility fallbacks.
+
+Internal shared token names now use consistent namespaces:
+
+| Previous name | Current name |
+| --- | --- |
+| `--container-max` | `--layout-container-max` |
+| `--container-gutter` | `--space-gutter` |
+| `--section-space` | `--space-section` |
+| `--grid-gap` | `--space-grid` |
+| `--column-gap` | `--space-columns` |
+| `--content-offset` | `--space-content-offset` |
+| `--transition-fast`, `--transition-smooth`, `--transition-slow` | `--motion-fast`, `--motion-smooth`, `--motion-slow` |
+
+## Validation and maintenance
 
 ```sh
 npm ci
 npm run check:css
 ```
 
-The check validates CSS syntax, complete module coverage, explicit layer order,
-unique direct imports and absolute asset URLs. It does not write any files.
-GitHub Actions runs the check on pull requests and on `main`.
+This read-only command runs guardrail tests and validates syntax, all file imports, system/component property ownership, cascade layers, spacing/palette references, registered width breakpoints, defined tokens or runtime fallbacks, and absolute asset URLs. GitHub Actions checks pull requests and main. The checker lives in `scripts/validate-css.mjs`; the property ownership map is in `scripts/css-architecture.mjs`.
 
-Change a module, commit and push. GitHub Pages publishes the source files
-directly; no bundling or CSS generation is required. Keep `site.css` and `css/`
-together when deploying elsewhere. Local previews require an HTTP server.
+During the migration, full-source declaration comparison and browser computed-style comparisons cover breakpoint boundaries, menu/hover/focus states, reduced/default motion, enlarged root fonts, short viewports and runtime hooks. These local regression fixtures do not replace checking the complete authenticated Contao site when changing its design.
 
-Direct imports cause separate requests for the 28 modules. Keep imports flat
-and ordered; do not introduce extra import chains. The Contao template URL,
-font/image URLs and every existing rule remain unchanged. Template and asset
-deployment still follow `README.md`.
-
-## Beginner editing guide
-
-`CSS-ANLEITUNG.md` is the owner-facing guide. Keep its file map and examples
-accurate when changing CSS ownership. Add plain German comments at common
-editing points instead of introducing another layer of typography aliases.
+Keep `CSS-ANLEITUNG.md` accurate. Add clear German editing-point comments. All imported assets retain their existing absolute URLs. Source-controlled templates and assets still need the separate staging synchronization described in README.

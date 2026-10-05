@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check:css": "node scripts/check-css.mjs",
+    "check:css": "node --test scripts/validate-css.test.mjs && node scripts/check-css.mjs",
     "build:js": "esbuild src/site.js --bundle --splitting --minify --format=esm --target=es2020 --outdir=dist --entry-names=site --chunk-names=chunks/[name]-[hash]"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.25.0",
-    "postcss": "^8.5.28"
+    "postcss": "^8.5.28",
+    "postcss-value-parser": "^4.2.0"
   }
 }

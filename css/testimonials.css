@@ -1,12 +1,14 @@
-/* Kundenstimmen und Referenzlogos — Layer: sections */
+/* KOMPONENTE / STRUKTUR: Kundenstimmen.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Kundenstimmen — sections */
 .testimonial-feature {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  row-gap: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  row-gap: var(--space-testimonials-row-gap);
   align-items: center;
-  max-width: var(--container-max);
-  padding-block: var(--section-space);
-  background: var(--color-background);
+  max-width: var(--layout-container-max);
+  padding-block: var(--space-section);
 }
 .testimonial-feature-label {
   grid-column: 1 / -1;
@@ -24,12 +26,6 @@
 }
 .testimonial-quote p {
   max-width: none;
-  color: var(--color-text);
-  font:
-    300 clamp(2.25rem, 3.6vw, 3.75rem)/1.16 Modernist,
-    Arial,
-    sans-serif;
-  text-wrap: balance;
 }
 .testimonial-signature {
   display: flex;
@@ -50,15 +46,9 @@
   max-width: 100%;
   max-height: 3.25rem;
   object-fit: contain;
-  filter: grayscale(1) brightness(0.35);
 }
 .testimonial-company p {
   margin: 0;
-  color: var(--color-muted);
-  font:
-    400 0.9375rem/1.5 Plex,
-    Arial,
-    sans-serif;
 }
 .testimonial-project-link {
   grid-column: 2;
@@ -66,27 +56,15 @@
 }
 .testimonial-project-link a {
   display: inline-block;
-  color: var(--color-text);
-  font:
-    400 0.9375rem/1.5 Plex,
-    Arial,
-    sans-serif;
-  text-decoration: underline;
-  text-underline-offset: 0.3125rem;
-  transition: color 0.18s ease;
-}
-.testimonial-project-link a:hover {
-  color: var(--color-primary);
 }
 .testimonial-project-link a:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 0.25rem;
+  outline-offset: var(--space-xs);
 }
 .news-detail > .testimonial-feature {
   width: 100%;
-  max-width: var(--container-max);
+  max-width: var(--layout-container-max);
   margin-inline: auto;
-  padding-inline: var(--container-gutter);
+  padding-inline: var(--space-gutter);
 }
 @media (max-width: 760px) {
   .testimonial-feature {
@@ -99,10 +77,6 @@
   .testimonial-project-link {
     grid-column: 1;
   }
-  .testimonial-quote p {
-    font-size: clamp(1.9375rem, 7.7vw, 2.5rem);
-    overflow-wrap: break-word;
-  }
   .testimonial-signature figure {
     height: 3.625rem;
   }
@@ -113,65 +87,41 @@
     justify-self: start;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .testimonial-project-link a {
-    transition: none;
-  }
-}
 .client-references {
-  padding-block: var(--section-space);
-  background: var(--color-background);
+  padding-block: var(--space-section);
 }
 .client-references-inner {
   max-width: 106.25rem;
 }
 .client-references-label .micro {
   margin: 0;
-  text-align: center;
 }
 .client-references-heading h2 {
   margin: var(--space-lg) 0 0;
-  font:
-    300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
-    Arial,
-    sans-serif;
-  text-align: center;
-  text-wrap: balance;
 }
 .client-references-grid {
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
-  column-gap: clamp(var(--space-lg), 5vw, var(--space-4xl));
-  row-gap: clamp(var(--space-2xl), 6vw, var(--space-4xl));
-  margin-block-start: clamp(var(--space-3xl), 7vw, var(--space-5xl));
-  padding-block: clamp(var(--space-2xl), 5vw, var(--space-4xl));
-  border-block: 1px dashed #b9c1cb;
+  column-gap: var(--space-testimonials-column-gap);
+  row-gap: var(--space-testimonials-row-gap-2);
+  margin-block-start: var(--space-testimonials-margin-block-start);
+  padding-block: var(--space-testimonials-padding-block);
 }
 .client-references-grid:before,
 .client-references-grid:after {
-  content: "";
   position: absolute;
-  inset-inline: -0.875rem;
+  inset-inline: var(--space-negative-14);
   z-index: 1;
   height: 1.75rem;
   pointer-events: none;
-  background:
-    linear-gradient(var(--color-text), var(--color-text)) left 0.875rem center /
-      1px 1.75rem no-repeat,
-    linear-gradient(var(--color-text), var(--color-text)) left center / 1.75rem
-      1px no-repeat,
-    linear-gradient(var(--color-text), var(--color-text)) right 0.875rem
-      center / 1px 1.75rem no-repeat,
-    linear-gradient(var(--color-text), var(--color-text)) right center / 1.75rem
-      1px no-repeat;
 }
 .client-references-grid:before {
-  top: -0.875rem;
+  top: var(--space-negative-14);
 }
 .client-references-grid:after {
-  bottom: -0.875rem;
+  bottom: var(--space-negative-14);
 }
 .client-reference-logo,
 .client-reference-logo figure {
@@ -188,12 +138,6 @@
   height: clamp(2.625rem, 4.5vw, 4.375rem);
   max-width: 11.875rem;
   object-fit: contain;
-  filter: grayscale(1) brightness(0);
-  opacity: 0.67;
-  transition: opacity 0.18s ease;
-}
-.client-reference-logo:hover img {
-  opacity: 1;
 }
 @media (max-width: 760px) {
   .client-references-grid {
@@ -214,16 +158,5 @@
   .client-reference-logo img {
     height: 3rem;
     max-width: 8.125rem;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .client-reference-logo img {
-    transition: none;
-  }
-}
-@media (max-width: 360px) {
-  .testimonial-quote p {
-    font-size: 1.6875rem;
-    overflow-wrap: break-word;
   }
 }

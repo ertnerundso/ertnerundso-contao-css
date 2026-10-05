@@ -1,114 +1,56 @@
-/* Rechtstexte und abschließende CMS-Anpassungen — Layer: cms */
+/* KOMPONENTE / STRUKTUR: Impressum und Datenschutz.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Impressum und Datenschutz — cms */
 .legal-hero-kicker {
-  padding-top: clamp(7.5rem, 14vw, 13.125rem);
+  padding-top: var(--space-legal-padding-top);
 }
 .legal-hero-kicker .rte p {
   margin: 0;
-  font:
-    400 0.6875rem/1.5 PlexMono,
-    monospace;
-  text-transform: uppercase;
-  color: var(--color-primary);
 }
 .legal-hero-body {
-  padding-bottom: 6.875rem;
+  padding-bottom: var(--space-110);
 }
 .legal-hero-body h1 {
-  font:
-    300 clamp(3.4375rem, 7.3vw, 7rem)/1 Modernist,
-    Arial,
-    sans-serif;
   max-width: 68.75rem;
-  margin: 1.0625rem 0 1.625rem;
-  hyphens: auto;
-  overflow-wrap: anywhere;
+  margin: var(--space-pages-margin);
 }
 .legal-hero-body .rte p {
   max-width: 48.75rem;
-  font:
-    clamp(1rem, 1.2vw, 1.1875rem)/1.6 Plex,
-    Arial,
-    sans-serif;
-  color: var(--color-text-soft);
   margin: 0;
 }
 .legal-section {
-  padding-block: 5rem;
-  border-top: 1px solid var(--color-border);
+  padding-block: var(--space-80);
   display: grid;
   grid-template-columns: minmax(13.75rem, 0.6fr) minmax(0, 1.4fr);
-  gap: clamp(2.1875rem, 7vw, 7.5rem);
+  gap: var(--space-pages-gap);
 }
 .legal-section h2 {
-  font:
-    300 clamp(2.125rem, 3.9vw, 3.75rem)/1.08 Modernist,
-    Arial,
-    sans-serif;
   margin: 0;
-  hyphens: auto;
-  overflow-wrap: anywhere;
 }
 .legal-section .rte {
   max-width: 50rem;
   min-width: 0;
 }
-.legal-section .rte p {
-  font:
-    1.0625rem/1.68 Plex,
-    Arial,
-    sans-serif;
-  color: var(--color-text-soft);
-}
 .legal-section .rte p:first-child {
   margin-top: 0;
 }
-.legal-section .rte h3 {
-  font:
-    300 1.875rem/1.15 Modernist,
-    Arial,
-    sans-serif;
-  hyphens: auto;
-  overflow-wrap: anywhere;
-}
 .legal-section:last-child {
-  padding-bottom: var(--section-space);
+  padding-bottom: var(--space-section);
 }
 @media (max-width: 760px) {
   .legal-hero-kicker {
-    padding-top: 5.9375rem;
+    padding-top: var(--space-95);
   }
   .legal-hero-body {
-    padding-bottom: 4.0625rem;
-  }
-  .legal-hero-body h1 {
-    font-size: clamp(2.375rem, 10.7vw, 3.5625rem);
-    hyphens: manual;
-    overflow-wrap: normal;
+    padding-bottom: var(--space-65);
   }
   .legal-section {
     grid-template-columns: 1fr;
-    gap: 1.125rem;
-    padding-block: 3.4375rem;
+    gap: var(--space-18);
+    padding-block: var(--space-55);
   }
-}
-.booking-frame {
-  border-radius: var(--radius-md);
-}
-.contact-meta a {
-  text-decoration: underline;
-  text-underline-offset: 0.27em;
-}
-.inner-hero h1,
-.content-section h2,
-.content-section h3 {
-  hyphens: auto;
-  overflow-wrap: anywhere;
 }
 .split-line {
   max-width: 100%;
-  white-space: normal;
-}
-.split-line-inner {
-  hyphens: auto;
-  overflow-wrap: anywhere;
 }

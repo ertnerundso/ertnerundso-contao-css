@@ -6,7 +6,7 @@ on:
     paths:
       - 'css/**'
       - 'site.css'
-      - 'scripts/check-css.mjs'
+      - 'scripts/**'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/check-css.yml'
@@ -14,7 +14,7 @@ on:
     paths:
       - 'css/**'
       - 'site.css'
-      - 'scripts/check-css.mjs'
+      - 'scripts/**'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/check-css.yml'

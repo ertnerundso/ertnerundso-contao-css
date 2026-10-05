@@ -1,0 +1,40 @@
+/* KOMPONENTE / STRUKTUR: Cursor, Textzeilen und Projektmedien.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Reveal, Cursor und Projektmedien — components */
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+.split-line-inner {
+  display: block;
+}
+.cursor-dot {
+  position: fixed;
+  z-index: 150;
+  left: 0;
+  top: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  pointer-events: none;
+}
+.cursor-dot.is-active {
+  width: 3.625rem;
+  height: 3.625rem;
+}
+.project-visual {
+  margin: 0 0 var(--space-section);
+}
+.project-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 49.375rem;
+  object-fit: cover;
+}
+.project-visual figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-20);
+  padding-top: var(--space-md);
+}

@@ -1,0 +1,101 @@
+/* KOMPONENTE / STRUKTUR: Gemeinsame Karten, Listen und Tabellen.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Gemeinsame Karten und Tabellen — components */
+.site-progress,
+.work-progress {
+  display: none;
+}
+.steps,
+.benefits-table,
+.question-list,
+.journal-list {
+  gap: var(--space-md);
+}
+.journal-list,
+.question-list {
+  display: grid;
+}
+.step,
+.step:first-child,
+.step:last-child,
+.benefit-column,
+.benefit-column + .benefit-column {
+  padding: var(--space-surfaces-padding);
+}
+.step {
+  min-height: 15.625rem;
+}
+.step h3 {
+  min-height: 2.24em;
+  margin: var(--space-surfaces-margin);
+}
+.benefit-column:before {
+  display: none;
+}
+.benefit-column h4 {
+  margin: var(--space-surfaces-margin-2);
+}
+.journal-row,
+.journal-list article.journal-row {
+  padding: var(--space-surfaces-padding-2);
+}
+.journal-row:hover {
+  padding-left: var(--space-28);
+}
+.question {
+  padding-inline: var(--space-27);
+}
+.question summary {
+  padding-block: var(--space-lg);
+}
+.index-grid,
+.mod_newslist.news-grid {
+  gap: var(--space-md);
+}
+.news-grid .news-card figure {
+  width: 100%;
+  margin: var(--space-surfaces-margin-3);
+}
+.work-card {
+  overflow: visible;
+}
+.work-card img {
+  height: 100%;
+}
+main table {
+  width: 100%;
+  border-spacing: 0;
+  overflow: hidden;
+}
+main th,
+main td {
+  padding: var(--space-surfaces-padding-3);
+  vertical-align: top;
+}
+@media (max-width: 760px) {
+  .steps,
+  .benefits-table,
+  .question-list,
+  .journal-list {
+    gap: var(--space-12);
+  }
+  .step,
+  .step:first-child,
+  .step:last-child,
+  .benefit-column,
+  .benefit-column + .benefit-column {
+    padding: var(--space-27);
+    min-height: 0;
+  }
+  .journal-row,
+  .journal-list article.journal-row {
+    padding: var(--space-surfaces-padding-4);
+  }
+  .journal-row:hover {
+    padding-left: var(--space-18);
+  }
+  .question {
+    padding-inline: var(--space-22);
+  }
+}

@@ -1,17 +1,19 @@
-/* Website-Einstieg: Bearbeite die thematischen Dateien in css/. */
+/* Website-Einstieg: System-Dateien regeln Gestaltung, Komponenten nur Struktur. */
 @layer foundation, layout, components, sections, cms;
-@import "./css/base.css" layer(foundation);
-@import "./css/typography.css" layer(foundation);
-@import "./css/layout.css" layer(layout);
-@import "./css/responsive.css" layer(layout);
+@import "./css/base.css";
+@import "./css/typography.css";
+@import "./css/surfaces.css";
+@import "./css/motion.css";
+@import "./css/layout.css";
+@import "./css/responsive.css";
 @import "./css/header.css" layer(layout);
 @import "./css/navigation.css" layer(layout);
 @import "./css/footer.css" layer(layout);
 @import "./css/buttons.css" layer(components);
 @import "./css/cards.css" layer(components);
-@import "./css/surfaces.css" layer(components);
+@import "./css/containers.css" layer(components);
 @import "./css/forms.css" layer(components);
-@import "./css/motion.css" layer(components);
+@import "./css/media.css" layer(components);
 @import "./css/hero.css" layer(sections);
 @import "./css/statement.css" layer(sections);
 @import "./css/work.css" layer(sections);

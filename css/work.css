@@ -1,41 +1,22 @@
-/* Projektgalerie und Montagevideo — Layer: sections */
+/* KOMPONENTE / STRUKTUR: Projekte und Montage.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Projekte und Montage — sections */
 .work {
-  padding-block: var(--section-space) 6.25rem;
+  padding-block: var(--space-section) var(--space-100);
 }
 .work .section-head {
-  margin-bottom: 3.875rem;
+  margin-bottom: var(--space-62);
 }
 .work .section-head h2 {
   max-width: 53.125rem;
-}
-.work .micro {
-  color: #8199ff;
 }
 .work-card {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
 }
-.work-card:nth-child(2) {
-  background: #1b2443;
-}
-.work-card:nth-child(3) {
-  background: #303036;
-}
-.work-card:nth-child(4) {
-  background: #172b3e;
-}
-.work-card .work-no {
-  font:
-    0.75rem PlexMono,
-    monospace;
-  color: #a9b9ff;
-}
 .work-card h3 {
-  font:
-    300 clamp(2.75rem, 5vw, 4.75rem)/1 Modernist,
-    Arial,
-    sans-serif;
   max-width: 40.625rem;
   margin: 0;
 }
@@ -43,36 +24,20 @@
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: 1.25rem;
-}
-.work-card .work-bottom span {
-  font:
-    0.75rem PlexMono,
-    monospace;
-  color: #c5c8d0;
-}
-.work-card .work-bottom .work-arrow {
-  font-size: 1.9375rem;
-  color: #fff;
+  gap: var(--space-20);
 }
 .work-index {
   display: flex;
   justify-content: space-between;
-  margin-top: 1.625rem;
-  color: #b7bdca;
-  font:
-    0.6875rem PlexMono,
-    monospace;
+  margin-top: var(--space-26);
 }
 .work-progress i {
   display: block;
 }
 .work-card:before {
-  content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, #05080e7a, #05080e0f 35%, #05080ed4);
 }
 .work-card > *:not(.work-image) {
   position: relative;
@@ -84,17 +49,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s ease;
-}
-.work-card:hover .work-image {
-  transform: scale(1.045);
-}
-.work-card h3 {
-  text-shadow: 0 2px 1.5rem rgba(0, 0, 0, 0.35);
 }
 .work {
-  background: var(--color-background);
-  color: var(--color-text);
   padding: 0;
   min-height: 100svh;
 }
@@ -103,42 +59,21 @@
   min-height: 42.5rem;
   display: flex;
   flex-direction: column;
-  padding-top: clamp(6.5625rem, 13vh, 9.375rem);
-  padding-bottom: clamp(1.875rem, 5vh, 4.0625rem);
+  padding-top: var(--space-work-padding-top);
+  padding-bottom: var(--space-work-padding-bottom);
   overflow: hidden;
 }
 .work-heading {
   flex: none;
   width: 100%;
 }
-.work-heading .micro {
-  color: var(--color-primary);
-}
 .work-heading h2 {
-  font:
-    300 clamp(2.25rem, 4.5vw, 4.3125rem)/1.05 Modernist,
-    sans-serif;
-  text-transform: uppercase;
-  margin: 0.9375rem 0 0.3125rem;
+  margin: var(--space-work-margin);
   max-width: 59.375rem;
 }
 .work-subtitle {
   max-width: 44ch;
   margin: var(--space-lg) 0 0;
-  color: var(--color-text-soft);
-  font:
-    400 1.0625rem/1.6 Plex,
-    Arial,
-    sans-serif;
-  text-transform: none;
-}
-@media (max-width: 760px) {
-  .work-subtitle {
-    font:
-      400 1rem/1.6 Plex,
-      Arial,
-      sans-serif;
-  }
 }
 .work-viewport {
   flex: 1;
@@ -146,20 +81,19 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  margin-top: clamp(2.25rem, 5vh, 4rem);
-  margin-bottom: clamp(2rem, 5vh, 3.75rem);
+  margin-top: var(--space-work-margin-top);
+  margin-bottom: var(--space-work-margin-bottom);
 }
 .work-track {
   display: flex;
   align-items: center;
-  gap: clamp(4rem, 7vw, 8rem);
+  gap: var(--space-work-gap);
   width: max-content;
-  padding-left: var(--content-offset);
-  padding-right: var(--container-gutter);
+  padding-left: var(--space-content-offset);
+  padding-right: var(--space-gutter);
   height: 100%;
 }
 .work-card {
-  counter-increment: montage-step;
   flex: none;
   width: clamp(20rem, 23vw, 25.625rem);
   height: min(100%, 28.4375rem);
@@ -170,9 +104,6 @@
 }
 .work-card:before {
   display: none;
-}
-.work-track {
-  counter-reset: montage-step;
 }
 .work .work-card figure {
   display: grid;
@@ -185,20 +116,9 @@
   align-items: end;
   gap: var(--space-md);
   margin: 0;
-  color: var(--color-text);
-  font:
-    400 1rem/1.2 PlexMono,
-    monospace;
-  text-transform: uppercase;
 }
 .work .work-card figcaption:before {
-  content: counter(montage-step, decimal-leading-zero);
   flex: none;
-  color: var(--color-primary);
-  font:
-    italic 300 3rem/0.9 Modernist,
-    Arial,
-    sans-serif;
 }
 .work .work-card img {
   grid-row: 2;
@@ -210,32 +130,24 @@
 .work-meta {
   display: flex;
   justify-content: space-between;
-  gap: 1.25rem;
+  gap: var(--space-20);
   width: 100%;
-  font:
-    0.6875rem PlexMono,
-    monospace;
   flex: none;
 }
 .work-progress {
   height: 2px;
-  background: #d0d2d8;
-  margin-top: 0.75rem;
+  margin-top: var(--space-12);
 }
 .work-progress i {
   height: 2px;
   width: 100%;
-  background: var(--color-primary);
-  transform: scaleX(0.06);
-  transform-origin: left;
 }
 .work .shell:last-child {
   width: 100%;
   flex: none;
 }
 .manual-book {
-  padding-block: var(--section-space);
-  background: #fff;
+  padding-block: var(--space-section);
 }
 .manual-book-inner {
   position: relative;
@@ -243,33 +155,19 @@
 .manual-book-header {
   position: absolute;
   z-index: 1;
-  top: clamp(1.125rem, 4vw, 4.0625rem);
+  top: var(--space-work-top);
   left: 0;
   max-width: min(47%, 38.75rem);
 }
 .manual-book-header .micro {
-  margin: 0 0 1.5625rem;
-  color: var(--color-primary);
+  margin: var(--space-work-margin-2);
 }
 .manual-book-header h2 {
   margin: 0;
-  font:
-    300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
-    Arial,
-    sans-serif;
-  text-transform: uppercase;
-}
-@media (max-width: 760px) {
-  .manual-book-header h2 {
-    font:
-      300 clamp(2.1875rem, 8.5vw, 3rem)/1.08 Modernist,
-      Arial,
-      sans-serif;
-  }
 }
 .manual-book-player {
   margin: 0;
-  padding-top: clamp(6.25rem, 8vw, 8.75rem);
+  padding-top: var(--space-work-padding-top-2);
 }
 .manual-book-player figure,
 .manual-book-player .video_container {
@@ -281,50 +179,28 @@
   height: auto;
   aspect-ratio: 15/8;
   object-fit: cover;
-  border-radius: var(--radius-md);
-  filter: brightness(1.045);
 }
 .manual-book-copy {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2.5rem, 7vw, 7.8125rem);
-  margin-top: clamp(1.5625rem, 4vw, 3.4375rem);
+  gap: var(--space-work-gap-2);
+  margin-top: var(--space-work-margin-top-2);
 }
 .manual-book-copy p {
   max-width: 35.625rem;
   margin: 0;
-  color: var(--color-muted);
-  font:
-    400 1.0625rem/1.6 Plex,
-    Arial,
-    sans-serif;
-}
-@media (max-width: 760px) {
-  .manual-book-copy p {
-    font:
-      400 1rem/1.6 Plex,
-      Arial,
-      sans-serif;
-  }
-}
-.manual-book-copy strong {
-  color: var(--color-text);
-  font-weight: 500;
 }
 .manual-book-copy .content-hyperlink {
-  margin-top: 1.125rem;
+  margin-top: var(--space-18);
 }
 @media (max-width: 760px) {
   .manual-book-header {
     position: static;
     max-width: 100%;
-    margin-bottom: 1.25rem;
+    margin-bottom: var(--space-20);
   }
   .manual-book-header .micro {
-    margin-bottom: 1.0625rem;
-  }
-  .manual-book-header h2 {
-    font-size: clamp(2.1875rem, 8.5vw, 3rem);
+    margin-bottom: var(--space-17);
   }
   .manual-book-player {
     padding-top: 0;
@@ -335,7 +211,7 @@
   }
   .manual-book-copy {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
-    margin-top: 1.6875rem;
+    gap: var(--space-20);
+    margin-top: var(--space-27);
   }
 }

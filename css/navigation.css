@@ -1,47 +1,34 @@
-/* Mobiles Menü und Menü-Zustände — Layer: layout */
+/* KOMPONENTE / STRUKTUR: Aufklappbares Menü.
+   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
+   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* Aufklappbares Menü — layout */
 .menu-toggle {
   align-items: center;
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  border: 0;
-  background: transparent;
-  padding: 0.625rem;
+  padding: var(--space-10);
 }
 .menu-lines {
   display: grid;
-  gap: 0.3125rem;
+  gap: var(--space-5);
   width: 1.5rem;
 }
 .menu-lines i {
   display: block;
   height: 1.5px;
-  background: var(--color-text);
   width: 100%;
-}
-body:has(.menu-toggle:hover, .menu-close:hover) .cursor-dot {
-  opacity: 0;
 }
 .menu-panel {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: var(--color-background);
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    opacity var(--transition-smooth),
-    visibility var(--transition-smooth);
-}
-.menu-panel.is-open {
-  visibility: visible;
-  opacity: 1;
 }
 .menu-panel-inner {
   height: 100%;
   display: flex;
   flex-direction: column;
-  max-width: var(--container-max);
+  max-width: var(--layout-container-max);
 }
 .menu-panel-top {
   display: flex;
@@ -51,56 +38,35 @@ body:has(.menu-toggle:hover, .menu-close:hover) .cursor-dot {
   flex: none;
 }
 .menu-close {
-  font:
-    300 2.125rem/1 Modernist,
-    sans-serif;
-  background: transparent;
-  border: 0;
   width: 2.75rem;
   height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 0.3125rem;
+  padding-bottom: var(--space-5);
 }
 .menu-panel-nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  gap: clamp(0.875rem, 3vh, 2.8125rem);
+  gap: var(--space-navigation-gap);
 }
 .menu-panel-nav a {
-  font:
-    300 clamp(3.625rem, 8vw, 8.75rem)/0.92 Modernist,
-    sans-serif;
   width: max-content;
   max-width: 100%;
-}
-.menu-panel-nav a:hover {
-  color: var(--color-primary);
-  transform: translate(0.75rem);
 }
 .menu-panel-bottom {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: 1.875rem;
-  padding-bottom: clamp(1.5rem, 4vh, 3.4375rem);
+  gap: var(--space-30);
+  padding-bottom: var(--space-navigation-padding-bottom);
 }
 .menu-panel-bottom > div {
   display: flex;
-  gap: clamp(1.125rem, 2.5vw, 2.75rem);
+  gap: var(--space-navigation-gap-2);
   flex-wrap: wrap;
-}
-.menu-panel-bottom > div a {
-  font:
-    0.6875rem PlexMono,
-    monospace;
-  color: var(--color-muted);
-}
-.menu-panel-bottom > div a:hover {
-  color: var(--color-primary);
 }
 body.menu-open {
   overflow: hidden;
