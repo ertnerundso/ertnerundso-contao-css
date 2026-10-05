@@ -2,10 +2,10 @@
 
 ## Active source and delivery
 
-The editable stylesheet lives in `css/` in this repository.
-`css/site.css` is the source entry point: it declares the layer order and imports
-30 thematic modules. The root `site.css` is generated and remains the file
-loaded by the active Contao template through GitHub Pages.
+The root `site.css` is the editable, 32-line entry point. It declares the layer
+order and imports 30 thematic modules from `css/`. The active Contao template
+continues to load this entry point through GitHub Pages; the browser loads the
+modules directly. There is no generated stylesheet and no CSS build step.
 
 The old `src/styles/` layout in the separate frontend repository is not the
 source for this delivery. Do not export that older CSS over the owner's current
@@ -15,10 +15,10 @@ stylesheet. The modular split starts from this repository's owner-maintained
 ## Cascade order
 
 The layers are `foundation`, `layout`, `components`, `sections`, `cms`.
-Each import in `css/site.css` explicitly names its layer. Modules contain plain
-rules; do not put imports or layer wrappers inside them. The build wraps each
-module in its declared layer without minifying, sorting or deduplicating rules.
-Only the source entry point determines the order within a layer.
+Each import in the root `site.css` explicitly names its layer. Modules contain
+plain rules; do not put imports or layer wrappers inside them. `@import` applies
+each module to its named layer, preserving the original order. Only the root
+entry point determines the order within a layer.
 
 Preserve existing layer ownership when moving a rule. For example, the
 `contao-components.css` and `contao-forms.css` rules remain in `sections`, while
@@ -44,7 +44,7 @@ file for each small change; edit the existing owner instead.
 
 ## Maintenance rules
 
-1. Edit modules in `css/`, never the generated root stylesheet.
+1. Edit feature rules in `css/`; edit root `site.css` only to manage imports.
 2. Define global tokens only in `variables.css`. Scoped feature variables can
    remain in the relevant component. Reuse existing color and motion tokens.
 3. Keep existing classes and JavaScript hooks, including `.is-open`, `.is-active`,
@@ -55,23 +55,25 @@ file for each small change; edit the existing owner instead.
    Do not mechanically convert existing values during a structural split.
 6. Avoid new duplicate declarations. Existing intentional overrides are
    preserved; consolidation requires checking specificity, layers and order.
-7. Keep font and image URLs absolute so both the source imports and root
-   stylesheet resolve the same assets.
+7. Keep font and image URLs absolute so the imported modules
+   resolve the existing assets correctly.
 
-## Build and validation
+## Validation and delivery
 
 ```sh
 npm ci
-npm run build:css
 npm run check:css
 ```
 
-The build validates CSS syntax, module coverage, explicit layer order and
-absolute asset URLs. The check also requires the committed root output to match
-its source modules. Commit both sources and output. Pull requests run that
-check; the CSS workflow assembles and commits the root file after module changes
-reach `main`. CSS and JavaScript publication share a concurrency group.
+The check validates CSS syntax, complete module coverage, explicit layer order,
+unique direct imports and absolute asset URLs. It does not write any files.
+GitHub Actions runs the check on pull requests and on `main`.
 
-The root bundle has no runtime imports, so splitting source files adds no
-stylesheet requests on the website. The template URL and asset paths remain
-unchanged. Template and asset deployment still follow `README.md`.
+Change a module, commit and push. GitHub Pages publishes the source files
+directly; no bundling or CSS generation is required. Keep `site.css` and `css/`
+together when deploying elsewhere. Local previews require an HTTP server.
+
+Direct imports cause separate requests for the 30 modules. Keep imports flat
+and ordered; do not introduce extra import chains. The Contao template URL,
+font/image URLs and every existing rule remain unchanged. Template and asset
+deployment still follow `README.md`.
