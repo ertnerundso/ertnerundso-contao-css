@@ -67,7 +67,7 @@
     --layout-header-compact-height: 4.25rem;
     --layout-z-header: 100;
     --layout-z-menu: 150;
-    /* MENÜ: Höhe des geöffneten Bereichs und Größe des runden Knopfs. */
+    /* MENÜ: Höhe des geöffneten Bereichs und Größe der Bedienelemente. */
     --layout-menu-height: min(34rem, 72svh);
     --layout-menu-control-size: 3.5rem;
     /* BUTTONS: Gemeinsame Höhe und Größe des quadratischen Pfeilfelds. */

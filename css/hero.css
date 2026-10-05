@@ -56,7 +56,7 @@
   align-self: flex-end;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-lg);
   margin: 0 0 clamp(var(--space-xl), var(--space-position-6vh), var(--space-3xl));
 }
 @media (min-width: 761px) {
@@ -96,7 +96,6 @@
     padding: 0 var(--space-gutter);
   }
   .hero-actions {
-    gap: var(--space-md);
     margin-top: var(--space-lg);
     width: 100%;
     margin-bottom: var(--space-xl);
