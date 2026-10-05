@@ -1,6 +1,6 @@
 # ERTNER&SO CSS Design Architecture & Guidelines
 
-This document specifies the official CSS architecture, naming conventions, directory structure, and linting rules for the **ERTNER&SO** web platform. All AI coding assistants (including Codex) and human developers MUST adhere strictly to these rules.
+This document records the intended modular CSS architecture. The current published stylesheet is the owner-maintained root `site.css`; the modular source layout below is a design target, not a build input for the live site. See `README.md` for the active delivery process.
 
 ---
 
@@ -92,8 +92,8 @@ Layer order: `foundation`, `layout`, `components`, `sections`, `cms`.
 - Use `rem` for font sizes, margins, paddings, gaps, and fluid bounds (`clamp`).
 - Use `px` ONLY for 1px/2px borders, outlines, dividers, and media query breakpoints.
 
-### Rule 7: Delivery & Export Workflow
+### Rule 7: Current Delivery
 
-1. Edit source CSS in `src/styles/`.
-2. Run `npm run audit:css` to verify zero duplicate property warnings or broken tokens.
-3. Run `npm run export:staging-css` to build `site.css` into the public delivery repository.
+The owner edits `site.css` in this repository. GitHub Pages serves that file
+directly to staging. The JavaScript build workflow only writes `dist/` and must
+not generate or change `site.css`.
