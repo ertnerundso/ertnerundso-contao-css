@@ -1,0 +1,29 @@
+/* Schriften und @font-face — Layer: foundation */
+@font-face {
+  font-family: Modernist;
+  src: url(https://staging.ertnerundso.de/clean/assets/sk-modernist-light.woff2)
+    format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: Modernist;
+  src: url(https://staging.ertnerundso.de/clean/assets/sk-modernist-regular.woff2)
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Plex;
+  src: url(https://staging.ertnerundso.de/clean/assets/ibm-plex-sans.woff2)
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: PlexMono;
+  src: url(https://staging.ertnerundso.de/clean/assets/ibm-plex-mono.woff2)
+    format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}

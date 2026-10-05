@@ -1,0 +1,62 @@
+/* Reveal-Animationen, Textzeilen und Cursor — Layer: components */
+[data-reveal] {
+  opacity: 1;
+}
+.js-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(2.1875rem);
+}
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+.split-line-inner {
+  display: block;
+}
+.cursor-dot {
+  position: fixed;
+  z-index: 150;
+  left: 0;
+  top: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-primary);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition:
+    width 0.2s,
+    height 0.2s,
+    opacity 0.2s;
+}
+.cursor-dot.is-active {
+  width: 3.625rem;
+  height: 3.625rem;
+  opacity: 0.55;
+}
+.project-visual {
+  margin: 0 0 var(--section-space);
+}
+.project-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 49.375rem;
+  object-fit: cover;
+  background: var(--color-background);
+}
+.project-visual figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-top: 1rem;
+  color: var(--color-muted);
+  font:
+    0.75rem/1.5 Plex,
+    Arial,
+    sans-serif;
+}
+.project-visual figcaption .micro {
+  font-size: 0.625rem;
+}

@@ -1,0 +1,309 @@
+/* Projektgalerie und Montagevideo — Layer: sections */
+.work {
+  padding-block: var(--section-space) 6.25rem;
+}
+.work .section-head {
+  margin-bottom: 3.875rem;
+}
+.work .section-head h2 {
+  max-width: 53.125rem;
+}
+.work .micro {
+  color: #8199ff;
+}
+.work-card {
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+.work-card:nth-child(2) {
+  background: #1b2443;
+}
+.work-card:nth-child(3) {
+  background: #303036;
+}
+.work-card:nth-child(4) {
+  background: #172b3e;
+}
+.work-card .work-no {
+  font:
+    0.75rem PlexMono,
+    monospace;
+  color: #a9b9ff;
+}
+.work-card h3 {
+  font:
+    300 clamp(2.75rem, 5vw, 4.75rem)/1 Modernist,
+    Arial,
+    sans-serif;
+  max-width: 40.625rem;
+  margin: 0;
+}
+.work-card .work-bottom {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+.work-card .work-bottom span {
+  font:
+    0.75rem PlexMono,
+    monospace;
+  color: #c5c8d0;
+}
+.work-card .work-bottom .work-arrow {
+  font-size: 1.9375rem;
+  color: #fff;
+}
+.work-index {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.625rem;
+  color: #b7bdca;
+  font:
+    0.6875rem PlexMono,
+    monospace;
+}
+.work-progress i {
+  display: block;
+}
+.work-card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, #05080e7a, #05080e0f 35%, #05080ed4);
+}
+.work-card > *:not(.work-image) {
+  position: relative;
+  z-index: 2;
+}
+.work-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.work-card:hover .work-image {
+  transform: scale(1.045);
+}
+.work-card h3 {
+  text-shadow: 0 2px 1.5rem rgba(0, 0, 0, 0.35);
+}
+.work {
+  background: var(--color-background);
+  color: var(--color-text);
+  padding: 0;
+  min-height: 100svh;
+}
+.work-stage {
+  height: 100svh;
+  min-height: 42.5rem;
+  display: flex;
+  flex-direction: column;
+  padding-top: clamp(6.5625rem, 13vh, 9.375rem);
+  padding-bottom: clamp(1.875rem, 5vh, 4.0625rem);
+  overflow: hidden;
+}
+.work-heading {
+  flex: none;
+  width: 100%;
+}
+.work-heading .micro {
+  color: var(--color-primary);
+}
+.work-heading h2 {
+  font:
+    300 clamp(2.25rem, 4.5vw, 4.3125rem)/1.05 Modernist,
+    sans-serif;
+  text-transform: uppercase;
+  margin: 0.9375rem 0 0.3125rem;
+  max-width: 59.375rem;
+}
+.work-subtitle {
+  max-width: 44ch;
+  margin: var(--space-lg) 0 0;
+  color: var(--color-text-soft);
+  font: 400 var(--type-body)/var(--leading-body) var(--font-body);
+  text-transform: none;
+}
+.work-viewport {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-top: clamp(2.25rem, 5vh, 4rem);
+  margin-bottom: clamp(2rem, 5vh, 3.75rem);
+}
+.work-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(4rem, 7vw, 8rem);
+  width: max-content;
+  padding-left: var(--content-offset);
+  padding-right: var(--container-gutter);
+  height: 100%;
+}
+.work-card {
+  counter-increment: montage-step;
+  flex: none;
+  width: clamp(20rem, 23vw, 25.625rem);
+  height: min(100%, 28.4375rem);
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+.work-card:before {
+  display: none;
+}
+.work-track {
+  counter-reset: montage-step;
+}
+.work .work-card figure {
+  display: grid;
+  grid-template-rows: 3.875rem minmax(0, 1fr);
+  row-gap: var(--space-lg);
+}
+.work .work-card figcaption {
+  grid-row: 1;
+  display: flex;
+  align-items: end;
+  gap: var(--space-md);
+  margin: 0;
+  color: var(--color-text);
+  font: 400 1rem/1.2 var(--font-mono);
+  text-transform: uppercase;
+}
+.work .work-card figcaption:before {
+  content: counter(montage-step, decimal-leading-zero);
+  flex: none;
+  color: var(--color-primary);
+  font: italic 300 3rem/0.9 var(--font-display);
+}
+.work .work-card img {
+  grid-row: 2;
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  object-fit: cover;
+}
+.work-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+  font:
+    0.6875rem PlexMono,
+    monospace;
+  flex: none;
+}
+.work-progress {
+  height: 2px;
+  background: #d0d2d8;
+  margin-top: 0.75rem;
+}
+.work-progress i {
+  height: 2px;
+  width: 100%;
+  background: var(--color-primary);
+  transform: scaleX(0.06);
+  transform-origin: left;
+}
+.work .shell:last-child {
+  width: 100%;
+  flex: none;
+}
+.manual-book {
+  padding-block: var(--section-space);
+  background: #fff;
+}
+.manual-book-inner {
+  position: relative;
+}
+.manual-book-header {
+  position: absolute;
+  z-index: 1;
+  top: clamp(1.125rem, 4vw, 4.0625rem);
+  left: 0;
+  max-width: min(47%, 38.75rem);
+}
+.manual-book-header .micro {
+  margin: 0 0 1.5625rem;
+  color: var(--color-primary);
+}
+.manual-book-header h2 {
+  margin: 0;
+  font:
+    300 var(--type-section)/1.08 Modernist,
+    Arial,
+    sans-serif;
+  text-transform: uppercase;
+}
+.manual-book-player {
+  margin: 0;
+  padding-top: clamp(6.25rem, 8vw, 8.75rem);
+}
+.manual-book-player figure,
+.manual-book-player .video_container {
+  margin: 0;
+}
+.manual-book-player video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 15/8;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  filter: brightness(1.045);
+}
+.manual-book-copy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 7vw, 7.8125rem);
+  margin-top: clamp(1.5625rem, 4vw, 3.4375rem);
+}
+.manual-book-copy p {
+  max-width: 35.625rem;
+  margin: 0;
+  color: var(--color-muted);
+  font:
+    400 var(--type-body)/1.6 Plex,
+    Arial,
+    sans-serif;
+}
+.manual-book-copy strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+.manual-book-copy .content-hyperlink {
+  margin-top: 1.125rem;
+}
+@media (max-width: 760px) {
+  .manual-book-header {
+    position: static;
+    max-width: 100%;
+    margin-bottom: 1.25rem;
+  }
+  .manual-book-header .micro {
+    margin-bottom: 1.0625rem;
+  }
+  .manual-book-header h2 {
+    font-size: var(--type-section);
+  }
+  .manual-book-player {
+    padding-top: 0;
+  }
+  .manual-book-player video {
+    aspect-ratio: 4/3;
+    object-fit: contain;
+  }
+  .manual-book-copy {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.6875rem;
+  }
+}

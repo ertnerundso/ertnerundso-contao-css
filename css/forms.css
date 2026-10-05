@@ -1,0 +1,76 @@
+/* Formularfelder, Einwilligung und Statusmeldungen — Layer: components */
+.form-honeypot {
+  position: absolute;
+  left: -625rem;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.form-consent {
+  display: flex;
+  align-items: start;
+  gap: 0.6875rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+.form-consent input {
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+}
+.form-consent a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.form-status {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.form-status[data-error] {
+  color: #b92b35;
+}
+.contact-meta h2 {
+  font:
+    300 clamp(1.875rem, 3.2vw, 3rem)/1.1 Modernist,
+    Arial,
+    sans-serif;
+  margin: 1.1875rem 0 1.5625rem;
+}
+.contact-meta p:not(.micro) {
+  font-size: 1rem;
+}
+:is(
+  .input,
+  .field input,
+  .field textarea,
+  .contact-form .widget input[type="email"],
+  .contact-form .widget textarea
+) {
+  width: 100%;
+  padding: 0.9375rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: 400 var(--type-input)/var(--leading-compact) var(--font-body);
+  box-shadow: inset 0 1px 0.1875rem #09090b09;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+:is(
+  .input,
+  .field input,
+  .field textarea,
+  .contact-form .widget input[type="email"],
+  .contact-form .widget textarea
+):focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.1875rem #2455ed1c;
+  outline: 0;
+}
+:is(.field textarea, .contact-form .widget textarea) {
+  min-height: 10.625rem;
+  resize: vertical;
+}

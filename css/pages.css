@@ -1,0 +1,160 @@
+/* Innenseiten, Inhalte, Index, Kontakt und Buchung — Layer: cms */
+.inner-hero {
+  padding-block: clamp(7.5rem, 14vw, 13.125rem) 6.875rem;
+  background: var(--color-surface);
+}
+.inner-hero h1 {
+  font:
+    300 clamp(3.4375rem, 7.3vw, 7rem)/1 Modernist,
+    Arial,
+    sans-serif;
+  max-width: 68.75rem;
+  margin: 1.0625rem 0 1.625rem;
+}
+.inner-hero p {
+  max-width: 48.75rem;
+}
+.inner-hero .micro {
+  margin: 0;
+}
+.inner-visual {
+  width: 100%;
+  max-height: 40.625rem;
+  object-fit: cover;
+  margin-top: 5rem;
+}
+.content-section {
+  padding-block: 5rem;
+  border-top: 1px solid var(--color-border);
+  display: grid;
+  grid-template-columns: minmax(13.75rem, 0.6fr) minmax(0, 1.4fr);
+  gap: clamp(2.1875rem, 7vw, 7.5rem);
+}
+.content-section h2 {
+  font:
+    300 clamp(2.125rem, 3.9vw, 3.75rem)/1.08 Modernist,
+    Arial,
+    sans-serif;
+  margin: 0;
+}
+.content-section .section-body {
+  max-width: 50rem;
+}
+.content-section p,
+.legal-content p,
+.legal-content li {
+  font:
+    1.0625rem/1.68 Plex,
+    Arial,
+    sans-serif;
+  color: var(--color-text-soft);
+}
+.content-section p:first-child {
+  margin-top: 0;
+}
+.content-section h3 {
+  font:
+    300 1.875rem/1.15 Modernist,
+    Arial,
+    sans-serif;
+}
+.index-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: var(--section-space);
+}
+.index-card {
+  border: 1px solid var(--color-border);
+  min-height: 17.1875rem;
+  padding: 1.6875rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--color-background);
+}
+.index-card h2 {
+  font:
+    300 clamp(1.625rem, 2.5vw, 2.4375rem)/1.12 Modernist,
+    Arial,
+    sans-serif;
+  margin: 0;
+}
+.index-card .micro {
+  color: var(--color-muted);
+}
+.index-card .text-link {
+  justify-content: space-between;
+}
+.legal-content {
+  padding-bottom: var(--section-space);
+}
+.legal-content h2 {
+  font:
+    300 2.25rem Modernist,
+    Arial,
+    sans-serif;
+  margin-top: 4.0625rem;
+}
+.legal-content h3 {
+  font:
+    300 1.75rem Modernist,
+    Arial,
+    sans-serif;
+}
+.legal-content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.booking-block {
+  background: var(--color-background);
+  padding-block: var(--section-space);
+}
+.booking-block h2 {
+  font:
+    300 clamp(2.5rem, 5vw, 4.375rem)/1.05 Modernist,
+    Arial,
+    sans-serif;
+  margin: 0.9375rem 0 2.25rem;
+}
+.booking-frame {
+  min-height: 43.125rem;
+  width: 100%;
+  border: 0;
+  background: #fff;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  padding-bottom: var(--section-space);
+}
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+}
+.field {
+  display: grid;
+  gap: 0.4375rem;
+}
+.field label {
+  font:
+    0.6875rem PlexMono,
+    monospace;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.contact-meta {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5625rem;
+}
+.contact-meta a {
+  color: var(--color-primary);
+}
+.legal-content {
+  max-width: var(--container-max);
+}
+.legal-content .content-section {
+  max-width: none;
+  padding-inline: 0;
+}

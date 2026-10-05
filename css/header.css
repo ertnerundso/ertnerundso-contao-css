@@ -1,0 +1,114 @@
+/* Header, Marke und Desktop-Navigation — Layer: layout */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  height: 4.75rem;
+}
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2.1875rem;
+}
+.brand {
+  display: block;
+  width: 9.25rem;
+  flex: none;
+}
+.brand img {
+  width: 100%;
+  height: auto;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-left: auto;
+  font-size: 0.8125rem;
+}
+.header-nav a,
+.footer-nav a {
+  transition: color var(--transition-fast);
+}
+.header-nav a:hover,
+.footer-nav a:hover {
+  color: var(--color-primary);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.375rem;
+  margin-left: clamp(0.625rem, 2vw, 2.5rem);
+}
+.lang-link {
+  font:
+    0.6875rem PlexMono,
+    monospace;
+}
+.menu-toggle {
+  display: none;
+  font-size: 1.25rem;
+}
+.site-header {
+  background: #fffffff0;
+  border-bottom: 1px dotted var(--color-border);
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
+  transition: height var(--transition-smooth);
+}
+.site-header.is-compact {
+  height: 4.25rem;
+}
+.header-nav {
+  counter-reset: header-item;
+  font: 400 0.6875rem/1.2 var(--font-mono);
+  text-transform: uppercase;
+}
+.header-nav :is(a, strong) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.5625rem 0.625rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  counter-increment: header-item;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+.header-nav :is(a, strong):before {
+  content: counter(header-item, decimal-leading-zero);
+  color: var(--color-primary);
+}
+.header-nav
+  :is(a, strong):is(:hover, :focus-visible, .active, [aria-current="page"]) {
+  background: #f0f4ff;
+  color: var(--color-text);
+}
+@media (max-width: 1000px) {
+  .header-nav,
+  .header-actions > .button,
+  .lang-link {
+    display: none !important;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+  .site-header .header-actions {
+    margin-left: auto;
+  }
+}
+@media (max-width: 760px) {
+  .site-header.is-compact {
+    height: 4rem;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .site-header {
+    background: #fff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

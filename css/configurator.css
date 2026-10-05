@@ -1,0 +1,147 @@
+/* Konfigurator und Video-Szene — Layer: sections */
+.configurator-scene {
+  position: relative;
+  background: #fff;
+  margin-block-start: var(--space-2xl);
+  padding-block: var(--section-space);
+}
+.configurator-scene-sticky {
+  position: relative;
+}
+.configurator-scene-heading {
+  text-align: center;
+}
+.configurator-scene-heading h2 {
+  max-width: 65.625rem;
+  margin: 1.25rem auto 1.625rem;
+  font: 300 var(--type-section)/var(--leading-display) var(--font-display);
+  text-wrap: balance;
+}
+.configurator-scene-intro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--column-gap);
+  max-width: 66.25rem;
+  margin-inline: auto;
+  text-align: left;
+}
+.configurator-scene-intro p {
+  margin: 0;
+  color: var(--color-text-soft);
+  font: 400 var(--type-body)/var(--leading-body) var(--font-body);
+}
+.configurator-scene-intro strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+.configurator-scene-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.configurator-scene-media {
+  position: relative;
+  width: min(100%, 72.5rem);
+  height: clamp(26.875rem, 65vh, 45rem);
+  margin-inline: auto;
+}
+.configurator-scene-media > * {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.012);
+}
+.configurator-scene-video {
+  display: none;
+}
+.configurator-scene-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gap);
+  width: min(100%, 70rem);
+}
+.configurator-scene-card {
+  min-height: 10.9375rem;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+.configurator-scene-card h3 {
+  margin: var(--space-md) 0 var(--space-sm);
+  font: 300 var(--type-small-title)/1.1 var(--font-display);
+}
+.configurator-scene-card p {
+  margin: 0;
+  color: var(--color-text-soft);
+  font: 400 var(--type-card-body)/var(--leading-compact) var(--font-body);
+}
+.configurator-scene-card p + p {
+  margin-top: var(--space-xs);
+}
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .configurator-scene.is-scroll-ready {
+    height: 260vh;
+    margin-block-start: var(--section-space);
+    padding: 0;
+  }
+  .configurator-scene.is-scroll-ready .configurator-scene-sticky {
+    position: sticky;
+    top: 4.75rem;
+    height: calc(100svh - 4.75rem);
+    overflow: hidden;
+    background: #fff;
+  }
+  .configurator-scene.is-scroll-ready .configurator-scene-heading {
+    position: absolute;
+    z-index: 1;
+    inset-inline: 0;
+    top: clamp(2.125rem, 5svh, 4.75rem);
+    pointer-events: none;
+  }
+  .configurator-scene.is-scroll-ready .configurator-scene-content {
+    height: 100%;
+    justify-content: center;
+  }
+  .configurator-scene.is-scroll-ready .configurator-scene-media {
+    flex: 0 0 auto;
+    height: 65svh;
+    max-height: 45rem;
+    margin-top: 8svh;
+  }
+  .configurator-scene.is-scroll-ready .configurator-scene-still {
+    display: none;
+  }
+  .configurator-scene.is-scroll-ready .configurator-scene-video {
+    display: block;
+  }
+  .configurator-scene.is-scroll-ready .configurator-scene-cards {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+@media (max-width: 760px) {
+  .configurator-scene-heading h2 {
+    margin-block: var(--space-md) var(--space-lg);
+  }
+  .configurator-scene-intro,
+  .configurator-scene-cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .configurator-scene-media {
+    height: auto;
+    aspect-ratio: 5 / 4;
+    margin-block: var(--space-lg);
+  }
+  .configurator-scene-card {
+    min-height: 0;
+  }
+}

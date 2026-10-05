@@ -1,0 +1,114 @@
+/* Contao-Kontaktformular und Buchung — Layer: sections */
+.questions-intro h2,
+.contact-column h2,
+.contact-meta h2 {
+  font:
+    300 clamp(2.4375rem, 4.8vw, 4.625rem)/1.04 Modernist,
+    Arial,
+    sans-serif;
+  margin: 0.75rem 0 1.5rem;
+}
+.contact-meta h2 {
+  font-size: clamp(1.875rem, 3.2vw, 3rem);
+}
+.contact-hero-actions > .content-hyperlink.button {
+  padding: 0;
+}
+.contact-hero-actions > .content-hyperlink.button a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.875rem;
+  padding: 0 1.3125rem;
+  color: #fff;
+  text-decoration: none;
+}
+.contact-form {
+  margin-top: 2.375rem;
+}
+.contact-form form,
+.contact-form .formbody {
+  display: grid;
+  gap: 1.25rem;
+}
+.contact-form .widget {
+  display: grid;
+  gap: 0.4375rem;
+}
+.contact-form .widget label,
+.contact-form .widget legend {
+  font:
+    0.6875rem PlexMono,
+    monospace;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.contact-form .widget-checkbox fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.contact-form .widget-checkbox legend {
+  margin-bottom: 0.625rem;
+}
+.contact-form .widget-checkbox span {
+  display: flex;
+  align-items: start;
+  gap: 0.625rem;
+  color: var(--color-muted);
+  font:
+    0.8125rem/1.5 Plex,
+    Arial,
+    sans-serif;
+}
+.contact-form .widget-checkbox span label {
+  font:
+    0.8125rem/1.5 Plex,
+    Arial,
+    sans-serif;
+  text-transform: none;
+}
+.contact-form .widget-checkbox a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.contact-form .widget-submit.button {
+  width: max-content;
+  padding: 0;
+}
+.contact-form .widget-submit.button button {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  min-height: 2.875rem;
+  padding: 0 1.375rem;
+}
+.contact-form .form-status {
+  margin: 0;
+  font-size: 0.875rem;
+}
+.contact-form .form-honeypot {
+  position: absolute;
+  left: -625rem;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.booking-block .content-hyperlink a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.3125rem;
+}
+.booking-block .booking-frame {
+  min-height: 43.125rem;
+}
+.contact-form .invisible,
+.contact-form .widget-checkbox legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
