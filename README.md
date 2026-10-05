@@ -49,7 +49,7 @@ CI führt diese Prüfungen auf Pull Requests aus. Die Browser-Tests verwenden lo
 
 ## Veröffentlichung
 
-Änderungen zuerst auf einem eigenen Branch als Pull Request prüfen. **Main, Merge und Veröffentlichung benötigen die ausdrückliche Freigabe des Inhabers.** Das vereinbarte Vorhaben wird in zwei aufeinander aufbauenden PRs geprüft: Grundlagen/Typografie und Layout/Komponenten/JavaScript.
+Änderungen zuerst auf einem eigenen Branch als Pull Request prüfen. **Main, Merge und Veröffentlichung benötigen die ausdrückliche Freigabe des Inhabers.** Die vereinbarte Architektur wurde über PR #6 (Grundlagen/Typografie) und PR #7 (Layout/Komponenten/JavaScript) nach `main` gemergt.
 
 Nach einer freigegebenen Änderung an `main` veröffentlicht GitHub Pages CSS, JavaScript und Repository-Assets. Die kurze `site.css` wird von Contao geladen; der Browser lädt ihre direkten Imports. JavaScript wird aus `src/` nach `dist/` gebündelt. Bei Moduländerungen baut die bestehende Aktion das JavaScript neu; veraltete Hash-Dateien werden entfernt.
 
