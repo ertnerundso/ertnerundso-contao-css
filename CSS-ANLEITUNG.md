@@ -17,6 +17,7 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Button-Rundung / Pfeilfeld-Rundung | `--radius-button` / `--radius-button-arrow` in `css/base.css` |
 | Button-Höhe / Pfeilfeld-Größe | `--layout-button-height` in `css/layout.css` / `--space-button-arrow` in `css/base.css` |
 | Button-Bewegung | `--motion-button-duration` / `--motion-button-ease` in `css/motion.css` |
+| Gestrichelte Rahmen / Kreuze | `--color-frame-*` in `base.css`, `--space-frame-marker-half` für die Kreuz-Größe, `--layout-frame-stroke` in `layout.css` für die Strichstärke |
 | Allgemeine responsive Raster | `css/responsive.css` |
 | Scroll-Schwellen, Slider-Verhalten, Formular-/Kalender-Adressen | `src/config.js` |
 | Funktion eines JavaScript-Bereichs | Etwa `src/navigation.js`, `src/work.js`, `src/forms.js` |
@@ -52,9 +53,11 @@ Für neue Textvarianten: `text-lead` (Einleitung), `text-small`, `text-caption` 
 
 `xs`, `sm`, `md`, `lg`, `xl`, `2xl` bis `7xl` sind gemeinsame Abstände. An dieser Stelle einen anderen Token wählen, um nur diesen Abstand zu ändern. Den Wert in `base.css` ändern, um alle Verwendungen anzupassen. Die zusätzlich benannten Positionswerte gehören zu besonderen Medien-/Scroll-Anordnungen.
 
-Optionale Raster: `grid-2-col`, `grid-3-col`, `grid-sidebar` (1:2), `grid-feature` (2:3). Auf dem Handy stehen sie untereinander. Buttons: `btn btn--primary`, `btn btn--secondary` (Outline), `btn btn--text`. Karten: `card`, optional `card--dark` / `card--plain`. Vorhandene Contao-Klassen bleiben nutzbar; keine Pflicht zum Umbauen.
+Optionale Raster: `grid-2-col`, `grid-3-col`, `grid-sidebar` (1:2), `grid-feature` (2:3). Auf dem Handy stehen sie untereinander. Buttons: `btn btn--primary`, `btn btn--secondary` (Outline), `btn btn--text`. Einzelne Inhaltsbereiche: `card`, optional `card--dark`. Bestehendes `card--plain` bleibt als Klasse erhalten und nutzt ebenfalls das offene Design. Vorhandene Contao-Klassen bleiben nutzbar; keine Pflicht zum Umbauen.
 
 Buttons erhalten automatisch ein weißes Pfeilfeld. Bei Hover oder Tastaturfokus wandert es nach links und der Text nach rechts; auf Touch-Geräten und bei reduzierter Bewegung bleibt die Anordnung ruhig. Textlinks bleiben ohne Pfeilfeld. Vorhandene Pfeile am Ende des Button-Texts werden ersetzt. Dafür müssen keine Contao-Klassen geändert werden. Innenabstände und Pfeilpositionen werden ausschließlich in `buttons.css` geregelt; in den Contao-Dateien keine eigenen Button-Innenabstände ergänzen.
+
+Das gemeinsame offene Raster ersetzt abgerundete Karten und Schatten. Leistungen, Vorteile, Prozess, Index-/News-Raster und Konfigurator-Texte erhalten automatisch einen Rahmen mit gestrichelten Linien und Kreuzen. Einzelkarten, Journal, Fragen und Projektkarten verwenden dasselbe Muster. Für neue Bereiche kann `line-frame` genutzt werden. `frames.css` regelt nur die Position der Kreuze, `surfaces.css` die Linien und ihre Farbe.
 
 Schriften stehen immer in `typography.css`, Flächen in `surfaces.css`, Effekte in `motion.css`. Komponenten enthalten nur Struktur und Abstände. Bildschirmgrenzen stehen direkt in `@media`, weil normale CSS-Variablen dort nicht funktionieren.
 

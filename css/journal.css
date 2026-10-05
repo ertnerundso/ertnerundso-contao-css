@@ -18,8 +18,10 @@
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--space-xs);
-  padding-block: var(--space-sm) var(--space-lg);
+  /* Platz für die Kreuze innerhalb des Scrollbereichs: keine zusätzliche Überlaufstrecke. */
+  scroll-padding-inline: var(--space-frame-marker-half);
+  padding-inline: var(--space-frame-marker-half);
+  padding-block: var(--space-frame-marker-half) var(--space-lg);
 }
 .journal .journal-list::-webkit-scrollbar {
   display: none;
@@ -81,7 +83,7 @@
 }
 @media (max-width: 760px) {
   .journal .journal-list article.journal-row {
-    flex-basis: min(82vw, 22.5rem);
+    flex-basis: min(82vw, 100%, 22.5rem);
     min-height: 21.25rem;
     padding: var(--space-lg);
   }

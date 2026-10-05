@@ -88,12 +88,6 @@
   margin: 0;
   display: block;
 }
-.work-card:before {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: none;
-}
 .work .work-card figure {
   display: grid;
   grid-template-rows: 3.875rem minmax(0, 1fr);
