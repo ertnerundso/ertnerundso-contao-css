@@ -23,9 +23,9 @@
     --color-current: currentColor;
     --color-overlay-subtle: #00000014;
     --color-header-surface: transparent;
-    --color-menu-surface: var(--color-ink);
+    --color-menu-surface: var(--color-primary);
     --color-menu-text: var(--color-on-dark);
-    --color-menu-muted: #b9b9bf;
+    --color-menu-muted: var(--color-on-dark);
     --color-primary-surface: #f0f4ff;
     --color-transparent: transparent;
     --color-link-on-dark: #a9bcff;

@@ -7,11 +7,11 @@ export function initNavigation(runtime) {
   const close = document.querySelector('.menu-close');
   if (!button || !panel) return;
   const english = document.documentElement.lang === 'en';
-  const headerActions = [
-    ...document.querySelectorAll('.header-actions > .button, .header-actions > .lang-link'),
+  const hiddenActions = [
+    ...document.querySelectorAll('.header-actions > .button, .header-actions > .lang-link, .menu-panel-bottom > .button'),
   ].map((element) => ({ element, hidden: element.hidden }));
-  // Auch gemeinsame Button-Regeln dürfen ausgeblendete Header-Aktionen nicht wieder anzeigen.
-  headerActions.forEach(({ element }) => { element.hidden = true; });
+  // Bestehende Contao-Templates dürfen den entfernten Menü-Button nicht wieder anzeigen.
+  hiddenActions.forEach(({ element }) => { element.hidden = true; });
   const main = document.querySelector('.site-main');
   const footer = document.querySelector('.site-footer');
   let shell = document.querySelector('.page-shell');
@@ -64,6 +64,23 @@ export function initNavigation(runtime) {
     copy.querySelectorAll('[id]').forEach((child) => child.removeAttribute('id'));
     navigation.append(copy);
     addedLinks.push(copy);
+  });
+  // Alte Template-Texte normalisieren, ohne Marken, Sprachkürzel oder AGB zu verändern.
+  const linkLabels = new Map([
+    ['ARBEITEN', 'Arbeiten'], ['WORK', 'Work'], ['LEISTUNGEN', 'Leistungen'],
+    ['SERVICES', 'Services'], ['JOURNAL', 'Journal'], ['KONTAKT', 'Kontakt'],
+    ['CONTACT', 'Contact'], ['IMPRESSUM', 'Impressum'], ['DATENSCHUTZ', 'Datenschutz'],
+  ]);
+  const restoredLabels = [];
+  panel.querySelectorAll('.menu-panel-nav a, .menu-panel-bottom a').forEach((link) => {
+    const walker = document.createTreeWalker(link, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      const normalized = linkLabels.get(node.textContent.trim());
+      if (!normalized) continue;
+      restoredLabels.push({ node, original: node.textContent });
+      node.textContent = node.textContent.replace(node.textContent.trim(), normalized);
+    }
   });
   let focusFrame;
   const setOpen = (open) => {
@@ -147,6 +164,7 @@ export function initNavigation(runtime) {
     label.remove();
     dismiss.remove();
     addedLinks.forEach((link) => link.remove());
-    headerActions.forEach(({ element, hidden }) => { element.hidden = hidden; });
+    restoredLabels.forEach(({ node, original }) => { node.textContent = original; });
+    hiddenActions.forEach(({ element, hidden }) => { element.hidden = hidden; });
   });
 }
