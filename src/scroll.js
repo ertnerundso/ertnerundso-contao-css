@@ -9,6 +9,8 @@ export function initScroll(runtime) {
     wheelMultiplier: config.scroll.wheelMultiplier,
   });
   runtime.lenis = lenis;
+  // Ein Präferenzwechsel darf das Scrollen hinter einem offenen Menü nicht wieder starten.
+  if (document.body.classList.contains('menu-open')) lenis.stop();
   lenis.on('scroll', ScrollTrigger.update);
   const tick = (time) => lenis.raf(time * 1000);
   gsap.ticker.add(tick);

@@ -10,6 +10,8 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Farbe, Hintergrund, Rand, Schatten eines Elements | `css/surfaces.css` |
 | Animationen, Übergänge und Bewegungswerte | `css/motion.css` |
 | Maximale Inhaltsbreite, gemeinsame Raster, Header-Höhe | `css/layout.css` |
+| Höhe des aufgeklappten Menüs / Größe des runden Knopfs | `--layout-menu-height` / `--layout-menu-control-size` in `css/layout.css` |
+| Menüfarbe / Geschwindigkeit / Verkleinerung der Seite | `--color-menu-*` in `css/base.css` / `--motion-menu-*` in `css/motion.css` |
 | Seitenränder und Abstand zwischen Bereichen | `--space-gutter` / `--space-section` in `css/base.css` |
 | Anordnung eines Bereichs, auch auf dem Handy | Etwa `css/hero.css`, `css/cards.css`, `css/contact.css` |
 | Allgemeine responsive Raster | `css/responsive.css` |
@@ -54,6 +56,8 @@ Schriften stehen immer in `typography.css`, Flächen in `surfaces.css`, Effekte 
 ## JavaScript, Dateien und Freigabe
 
 `src/site.js` startet die Module. Für Verhalten zuerst `src/config.js` öffnen; etwa `header.hideAfter` für die Scroll-Schwelle. Dauer, Bewegung und Gestaltungswerte stehen in `motion.css`. Benannte Werte wie `--motion-showreel-film-copy-start` sind Zeitpunkte in den vorhandenen Scrollgeschichten. Änderungen an JavaScript anschließend mit `npm run build:js` nach `dist/` übernehmen.
+
+Die Navigation liegt transparent über der Seite, verschwindet beim Herunterscrollen und kehrt beim Hochscrollen zurück. Der Menüknopf öffnet oben einen dunklen Bereich und verschiebt/verkleinert den gesamten Seiteninhalt darunter. Die nötige `.page-shell` ergänzt JavaScript automatisch im bestehenden Seitentemplate. Die Menüpunkte verwenden die gemeinsamen h2-Einstellungen. Escape, Schließen und ein Klick auf die verschobene Seite schließen das Menü; die Scrollposition bleibt erhalten.
 
 Schriften liegen in `assets/fonts/`, Bilder in `assets/images/`, Videos in `assets/videos/`. Schriftdateien werden direkt aus dem Repository geladen. CMS-Uploads bleiben bei Contao.
 

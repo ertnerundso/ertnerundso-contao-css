@@ -11,6 +11,7 @@ export const SYSTEM_FILES = new Set([
 export const SPACING_PROPERTY =
   /^(?:margin|padding|scroll-margin|scroll-padding)(?:-|$)|^(?:gap|row-gap|column-gap|inset(?:-.*)?|top|right|bottom|left|border-spacing|outline-offset|text-underline-offset|vertical-align)$/;
 export const STRUCTURE_PROPERTIES = new Set([
+  'align-content',
   'align-items',
   'align-self',
   'aspect-ratio',
@@ -45,6 +46,7 @@ export const STRUCTURE_PROPERTIES = new Set([
   'resize',
   'scroll-snap-align',
   'scroll-snap-type',
+  'scrollbar-gutter',
   'width',
   'z-index',
   '-webkit-box-orient',

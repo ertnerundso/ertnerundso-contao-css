@@ -22,7 +22,10 @@
     );
     --color-current: currentColor;
     --color-overlay-subtle: #00000014;
-    --color-header-surface: #fffffff0;
+    --color-header-surface: transparent;
+    --color-menu-surface: var(--color-ink);
+    --color-menu-text: var(--color-on-dark);
+    --color-menu-muted: #b9b9bf;
     --color-primary-surface: #f0f4ff;
     --color-transparent: transparent;
     --color-link-on-dark: #a9bcff;
@@ -97,6 +100,7 @@
     --space-icon-align: 0.25em;
     --space-offscreen: -625rem;
     --space-header-offset: var(--layout-header-height);
+    --space-menu-offset: var(--layout-menu-height);
     --space-position-5vh: 5vh;
     --space-position-3vw: 3vw;
     --space-position-10-5percent: 10.5%;

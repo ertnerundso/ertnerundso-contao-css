@@ -4,15 +4,16 @@ export function initHeader(runtime) {
   const { header, hero, config, listen, observer } = runtime;
   if (!header) return;
   let previous = window.scrollY;
+  let keyboardFocus = false;
   const show = () => {
     header.classList.remove('is-hidden');
-    header.inert = false;
+    header.inert = document.body.classList.contains('menu-open');
   };
   const update = () => {
     const position = Math.max(0, window.scrollY);
     const locked =
       document.body.classList.contains('menu-open') ||
-      header.contains(document.activeElement);
+      (keyboardFocus && header.contains(document.activeElement));
     if (locked || position <= config.header.hideAfter) show();
     else if (Math.abs(position - previous) >= config.header.directionThreshold) {
       const hidden = position > previous;
@@ -28,8 +29,10 @@ export function initHeader(runtime) {
   listen(window, 'scroll', update, { passive: true });
   listen(document, 'navigation:change', show);
   listen(document, 'keydown', (event) => {
+    if (event.key === 'Tab') keyboardFocus = true;
     if (['Tab', 'Home', 'Escape'].includes(event.key)) show();
   });
+  listen(document, 'pointerdown', () => { keyboardFocus = false; });
   listen(header, 'focusin', show);
   if (hero)
     observer(
@@ -42,6 +45,7 @@ export function initHeader(runtime) {
   else header.classList.add('is-compact');
   runtime.cleanup(() => {
     show();
+    header.inert = false;
     header.classList.remove('is-compact');
   });
 }
