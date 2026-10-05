@@ -1,0 +1,42 @@
+/* Prozess und Arbeitsschritte — Layer: sections */
+.process {
+  background: var(--color-surface);
+}
+.process-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.375rem;
+  align-items: end;
+}
+.process-header p {
+  max-width: 35rem;
+  margin: 0;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 5.75rem;
+}
+.step {
+  padding-top: 1.5rem;
+}
+.step-no {
+  font:
+    1rem PlexMono,
+    monospace;
+  color: var(--color-primary);
+}
+.step h3 {
+  font:
+    300 clamp(1.6875rem, 2.6vw, 2.5625rem)/1.13 Modernist,
+    Arial,
+    sans-serif;
+}
+.step p {
+  max-width: 34ch;
+  color: var(--color-muted);
+  font:
+    0.9375rem/1.55 Plex,
+    Arial,
+    sans-serif;
+}

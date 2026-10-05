@@ -1,0 +1,136 @@
+/* Überschriften und gemeinsame Typografie — Layer: foundation */
+main h1,
+main h2,
+main h3,
+main h4 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: 0;
+}
+main h1 {
+  font-size: var(--type-hero);
+  line-height: 1.04;
+}
+main h2 {
+  font-size: var(--type-section);
+  line-height: 1.08;
+}
+main h3 {
+  font-size: var(--type-card);
+  line-height: 1.12;
+}
+main h4 {
+  font-size: var(--type-small-title);
+  line-height: 1.15;
+}
+.hero h1,
+.inner-hero h1,
+.legal-hero-body h1,
+.news-detail > .news-intro h1 {
+  font-size: var(--type-hero);
+  line-height: 1.04;
+}
+.section-head h2,
+.section-heading,
+.intro .section-heading,
+.showreel-lead h2,
+.work-heading h2,
+.statement-copy h2,
+.process-header h2,
+.questions-intro h2,
+.contact-column h2,
+.benefits-lead h2,
+.benefits-impact h3,
+.journal .section-heading,
+.booking-block h2,
+.content-section h2,
+.legal-section h2,
+.contact-band h2,
+.contact-band-copy > .content-text h2 {
+  font-size: var(--type-section);
+  line-height: 1.08;
+}
+html.showreel-motion .benefits-lead h2,
+html.showreel-motion .benefits-impact h3 {
+  font-size: var(--type-section);
+}
+.service-card h3,
+.index-card h2,
+.index-card:has(img) h2,
+.journal-row h3,
+.step h3,
+.question summary,
+.showreel-outro h3,
+.content-section h3,
+.legal-section .rte h3 {
+  font-size: var(--type-card);
+  line-height: 1.12;
+}
+.benefit-column h4,
+.contact-meta h2 {
+  font-size: var(--type-small-title);
+  line-height: 1.15;
+}
+.body-copy,
+.hero-lede,
+.process-header p,
+.legal-section .rte p,
+.news-detail .rte p,
+.content-section p {
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: var(--leading-body);
+}
+.service-card p,
+.step p,
+.benefit-column .rte p,
+.question p {
+  font-family: var(--font-body);
+  font-size: var(--type-card-body);
+  font-weight: 400;
+  line-height: 1.55;
+}
+.micro,
+.step-no,
+.work-meta,
+.work-card figcaption,
+.showreel-caption {
+  font-family: var(--font-mono);
+  font-size: var(--type-meta);
+  font-weight: 400;
+  line-height: 1.5;
+}
+:where(
+    .intro,
+    .showreel-lead,
+    .section-head,
+    .statement-copy,
+    .manual-book-header,
+    .work-heading,
+    .process-header,
+    .questions-intro,
+    .benefits-lead,
+    .client-references-label,
+    .configurator-scene-heading,
+    .testimonial-feature-label,
+    .contact-band-copy,
+    .inner-hero,
+    .legal-hero-body,
+    .booking-block,
+    .contact-column
+  )
+  .micro:before {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-inline-end: 0.625rem;
+  border-radius: 50%;
+  background: currentColor;
+  vertical-align: 1px;
+}
+.menu-panel-nav a {
+  font-family: var(--font-display);
+  font-weight: 300;
+}

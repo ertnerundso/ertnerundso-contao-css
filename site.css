@@ -1,5 +1,9 @@
-@layer foundation,layout,components,sections,cms;
+/* GENERATED from css/site.css. Edit the modules in css/, then run npm run build:css. */
+@layer foundation, layout, components, sections, cms;
+
+/* Module: css/fonts.css */
 @layer foundation {
+  /* Schriften und @font-face — Layer: foundation */
   @font-face {
     font-family: Modernist;
     src: url(https://staging.ertnerundso.de/clean/assets/sk-modernist-light.woff2)
@@ -29,7 +33,10 @@
     font-display: swap;
   }
 }
+
+/* Module: css/variables.css */
 @layer foundation {
+  /* Globale Design-Tokens und mobile Token-Werte — Layer: foundation */
   :root {
     --color-primary: #2455ed;
     --color-primary-hover: #173fc3;
@@ -100,7 +107,10 @@
     }
   }
 }
+
+/* Module: css/base.css */
 @layer foundation {
+  /* Grundregeln, Container, Text-Helfer und Flächen — Layer: foundation */
   * {
     box-sizing: border-box;
   }
@@ -179,7 +189,10 @@
     background: var(--color-surface);
   }
 }
+
+/* Module: css/typography.css */
 @layer foundation {
+  /* Überschriften und gemeinsame Typografie — Layer: foundation */
   main h1,
   main h2,
   main h3,
@@ -316,7 +329,10 @@
     font-weight: 300;
   }
 }
+
+/* Module: css/layout.css */
 @layer layout {
+  /* Grid, Abschnittsabstände und gemeinsame Layout-Regeln — Layer: layout */
   .section,
   .section-padding {
     padding-block: var(--section-space);
@@ -372,6 +388,11 @@
   .hero h1 {
     font-size: clamp(3.625rem, 5.4vw, 5.5rem);
   }
+}
+
+/* Module: css/responsive.css */
+@layer layout {
+  /* Bestehende gemeinsame Responsive- und Motion-Regeln — Layer: layout */
   @media (max-width: 1000px) {
     .header-nav {
       gap: 1.0625rem;
@@ -832,7 +853,10 @@
     }
   }
 }
+
+/* Module: css/header.css */
 @layer layout {
+  /* Header, Marke und Desktop-Navigation — Layer: layout */
   .site-header {
     position: fixed;
     inset: 0 0 auto;
@@ -947,7 +971,10 @@
     }
   }
 }
+
+/* Module: css/navigation.css */
 @layer layout {
+  /* Mobiles Menü und Menü-Zustände — Layer: layout */
   .menu-toggle {
     align-items: center;
     justify-content: center;
@@ -1055,7 +1082,10 @@
     overflow: hidden;
   }
 }
+
+/* Module: css/footer.css */
 @layer layout {
+  /* Footer und Footer-Navigation — Layer: layout */
   .site-footer {
     color: var(--color-text);
   }
@@ -1108,7 +1138,10 @@
     margin-top: 5.9375rem;
   }
 }
+
+/* Module: css/buttons.css */
 @layer components {
+  /* Buttons, Text-Links und Contao-Link-Wrapper — Layer: components */
   .button,
   .btn,
   .hero-contact,
@@ -1210,7 +1243,10 @@
     color: #a9bcff;
   }
 }
+
+/* Module: css/cards.css */
 @layer components {
+  /* Service-Karten, Index-Karten und gemeinsame Kartengestaltung — Layer: components */
   .service-grid {
     display: grid;
     grid-template-columns: 1.32fr 0.82fr 0.82fr;
@@ -1442,6 +1478,11 @@
       transition: none;
     }
   }
+}
+
+/* Module: css/surfaces.css */
+@layer components {
+  /* Gemeinsame Flächen, Karten, Tabellen und mobile Abstände — Layer: components */
   .site-header,
   .content-section,
   .legal-section,
@@ -1637,7 +1678,10 @@
     }
   }
 }
+
+/* Module: css/forms.css */
 @layer components {
+  /* Formularfelder, Einwilligung und Statusmeldungen — Layer: components */
   .form-honeypot {
     position: absolute;
     left: -625rem;
@@ -1714,7 +1758,10 @@
     resize: vertical;
   }
 }
+
+/* Module: css/motion.css */
 @layer components {
+  /* Reveal-Animationen, Textzeilen und Cursor — Layer: components */
   [data-reveal] {
     opacity: 1;
   }
@@ -1777,7 +1824,10 @@
     font-size: 0.625rem;
   }
 }
+
+/* Module: css/hero.css */
 @layer sections {
+  /* Hero und Hero-Medien — Layer: sections */
   .site-main {
     padding-top: 4.75rem;
   }
@@ -1943,7 +1993,10 @@
     }
   }
 }
+
+/* Module: css/statement.css */
 @layer sections {
+  /* Statement und Bild-Text-Layout — Layer: sections */
   .statement {
     background: #fff;
   }
@@ -1973,7 +2026,10 @@
     margin-top: 1.875rem;
   }
 }
+
+/* Module: css/work.css */
 @layer sections {
+  /* Projektgalerie und Montagevideo — Layer: sections */
   .work {
     padding-block: var(--section-space) 6.25rem;
   }
@@ -2283,7 +2339,10 @@
     }
   }
 }
+
+/* Module: css/process.css */
 @layer sections {
+  /* Prozess und Arbeitsschritte — Layer: sections */
   .process {
     background: var(--color-surface);
   }
@@ -2326,7 +2385,10 @@
       sans-serif;
   }
 }
+
+/* Module: css/showreel.css */
 @layer sections {
+  /* Intro, Showreel und Showreel-Bewegungszustände — Layer: sections */
   .hero + .intro {
     padding-top: var(--section-space);
   }
@@ -2625,6 +2687,11 @@
     width: 100%;
     gap: 1.25rem;
   }
+}
+
+/* Module: css/contao-components.css */
+@layer sections {
+  /* Contao-Wrapper für Karten, Medien, Journal und Fragen — Layer: sections */
   .service-card > .content-text {
     position: relative;
     z-index: 2;
@@ -2760,6 +2827,11 @@
       height: 28.125rem;
     }
   }
+}
+
+/* Module: css/contao-forms.css */
+@layer sections {
+  /* Contao-Kontaktformular und Buchung — Layer: sections */
   .questions-intro h2,
   .contact-column h2,
   .contact-meta h2 {
@@ -2874,7 +2946,10 @@
     white-space: nowrap;
   }
 }
+
+/* Module: css/benefits.css */
 @layer sections {
+  /* Vorteile und Vergleichstabelle — Layer: sections */
   .benefits-section {
     background: #fff;
   }
@@ -3044,7 +3119,10 @@
     }
   }
 }
+
+/* Module: css/testimonials.css */
 @layer sections {
+  /* Kundenstimmen und Referenzlogos — Layer: sections */
   .testimonial-feature {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -3263,7 +3341,10 @@
     }
   }
 }
+
+/* Module: css/journal.css */
 @layer sections {
+  /* Journal und Journal-Slider — Layer: sections */
   .journal {
     background: var(--color-background);
   }
@@ -3418,7 +3499,10 @@
     }
   }
 }
+
+/* Module: css/configurator.css */
 @layer sections {
+  /* Konfigurator und Video-Szene — Layer: sections */
   .configurator-scene {
     position: relative;
     background: #fff;
@@ -3566,7 +3650,10 @@
     }
   }
 }
+
+/* Module: css/contact.css */
 @layer sections {
+  /* Kontaktband, Fragen und ergänzende Interaktionszustände — Layer: sections */
   .contact-band {
     padding-block: var(--section-space);
   }
@@ -3818,7 +3905,10 @@
     }
   }
 }
+
+/* Module: css/pages.css */
 @layer cms {
+  /* Innenseiten, Inhalte, Index, Kontakt und Buchung — Layer: cms */
   .inner-hero {
     padding-block: clamp(7.5rem, 14vw, 13.125rem) 6.875rem;
     background: var(--color-surface);
@@ -3978,6 +4068,11 @@
     max-width: none;
     padding-inline: 0;
   }
+}
+
+/* Module: css/news.css */
+@layer cms {
+  /* Contao-Newslisten und News-Detailseiten — Layer: cms */
   .news-detail > .news-intro {
     padding: clamp(7.5rem, 14vw, 13.125rem) var(--content-offset) 6.875rem;
     background: var(--color-surface);
@@ -4067,6 +4162,11 @@
       grid-template-columns: 1fr;
     }
   }
+}
+
+/* Module: css/contao.css */
+@layer cms {
+  /* Contao-Wrapper für Hero und Kontaktband — Layer: cms */
   .inner-hero > .shell > .rte p {
     margin: 0;
   }
@@ -4191,6 +4291,11 @@
     min-height: 2.875rem;
     padding: 0 1.4375rem;
   }
+}
+
+/* Module: css/legal.css */
+@layer cms {
+  /* Rechtstexte und abschließende CMS-Anpassungen — Layer: cms */
   .legal-hero-kicker {
     padding-top: clamp(7.5rem, 14vw, 13.125rem);
   }

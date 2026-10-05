@@ -1,0 +1,56 @@
+/* Grid, Abschnittsabstände und gemeinsame Layout-Regeln — Layer: layout */
+.section,
+.section-padding {
+  padding-block: var(--section-space);
+}
+.grid-2-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--column-gap);
+}
+.flex-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, var(--space-lg));
+}
+@media (max-width: 760px) {
+  .grid-2-col {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+.intro {
+  text-align: center;
+}
+.intro .display {
+  font-size: clamp(2.625rem, 5.7vw, 5.625rem);
+  max-width: 70rem;
+  margin: 1.5rem auto 1.75rem;
+}
+.intro .body-copy {
+  margin-inline: auto;
+}
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.875rem;
+  margin-bottom: 3.4375rem;
+}
+.section-head h2,
+.section-heading {
+  font:
+    300 clamp(2.4375rem, 4.8vw, 4.625rem)/1.04 Modernist,
+    Arial,
+    sans-serif;
+  margin: 0.75rem 0 0;
+}
+.brand img,
+.footer-brand img {
+  filter: invert(1);
+}
+.hero-copy {
+  max-width: 40.625rem;
+}
+.hero h1 {
+  font-size: clamp(3.625rem, 5.4vw, 5.5rem);
+}
