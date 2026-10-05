@@ -54,7 +54,7 @@ Für neue Textvarianten: `text-lead` (Einleitung), `text-small`, `text-caption` 
 
 Optionale Raster: `grid-2-col`, `grid-3-col`, `grid-sidebar` (1:2), `grid-feature` (2:3). Auf dem Handy stehen sie untereinander. Buttons: `btn btn--primary`, `btn btn--secondary` (Outline), `btn btn--text`. Karten: `card`, optional `card--dark` / `card--plain`. Vorhandene Contao-Klassen bleiben nutzbar; keine Pflicht zum Umbauen.
 
-Buttons erhalten automatisch ein weißes Pfeilfeld. Bei Hover oder Tastaturfokus wandert es nach links und der Text nach rechts; auf Touch-Geräten und bei reduzierter Bewegung bleibt die Anordnung ruhig. Textlinks bleiben ohne Pfeilfeld. Vorhandene Pfeile am Ende des Button-Texts werden ersetzt. Dafür müssen keine Contao-Klassen geändert werden.
+Buttons erhalten automatisch ein weißes Pfeilfeld. Bei Hover oder Tastaturfokus wandert es nach links und der Text nach rechts; auf Touch-Geräten und bei reduzierter Bewegung bleibt die Anordnung ruhig. Textlinks bleiben ohne Pfeilfeld. Vorhandene Pfeile am Ende des Button-Texts werden ersetzt. Dafür müssen keine Contao-Klassen geändert werden. Innenabstände und Pfeilpositionen werden ausschließlich in `buttons.css` geregelt; in den Contao-Dateien keine eigenen Button-Innenabstände ergänzen.
 
 Schriften stehen immer in `typography.css`, Flächen in `surfaces.css`, Effekte in `motion.css`. Komponenten enthalten nur Struktur und Abstände. Bildschirmgrenzen stehen direkt in `@media`, weil normale CSS-Variablen dort nicht funktionieren.
 

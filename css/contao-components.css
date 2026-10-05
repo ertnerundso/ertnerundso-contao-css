@@ -88,15 +88,6 @@
 .journal-list article.journal-row:before {
   display: none;
 }
-.questions-intro > .content-hyperlink.button {
-  padding: 0;
-}
-.questions-intro > .content-hyperlink.button a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.875rem;
-  padding: 0 var(--space-lg);
-}
 @media (max-width: 760px) {
   .journal-list article.journal-row {
     grid-template-columns: minmax(0, 1fr) 1.375rem;

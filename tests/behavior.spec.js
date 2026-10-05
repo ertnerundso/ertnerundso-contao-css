@@ -465,3 +465,66 @@ test('touch buttons keep the arrow on the right', async ({ browser }) => {
   expect(await buttonGeometry(button)).toEqual(before);
   await context.close();
 });
+
+function addCmsButtonContexts() {
+  const section = document.createElement('section');
+  section.id = 'cms-button-contexts';
+  section.className = 'section shell';
+  section.innerHTML = `
+    <div class="hero-actions"><div class="content-hyperlink hero-contact"><a href="#main">Projekt anfragen ↗</a></div></div>
+    <div class="contact-band-copy"><div class="content-hyperlink button"><a href="#main">Projekt anfragen ↗</a></div></div>
+    <div class="questions-intro"><div class="content-hyperlink button"><a href="#main">Projekt anfragen ↗</a></div></div>
+    <div class="contact-hero-actions"><div class="content-hyperlink button"><a href="#main">Projekt anfragen ↗</a></div></div>
+    <div class="contact-form"><div class="widget-submit button"><button type="button">Projekt anfragen ↗</button></div></div>`;
+  document.querySelector('main').prepend(section);
+}
+
+async function buttonSeparation(button, active = false) {
+  return button.evaluate(async (element, active) => {
+    await document.fonts.ready;
+    const button = element.getBoundingClientRect();
+    const label = element.querySelector('.button-label').getBoundingClientRect();
+    const arrow = element.querySelector('.button-arrow').getBoundingClientRect();
+    return {
+      gap: active ? label.left - arrow.right : arrow.left - label.right,
+      left: Math.min(label.left, arrow.left) - button.left,
+      right: button.right - Math.max(label.right, arrow.right),
+      width: button.width,
+    };
+  }, active);
+}
+
+for (const width of [390, 1440]) {
+  for (const reduced of [true, false]) {
+    test(`CMS buttons leave space between text and arrow at ${width}px, motion ${reduced ? 'reduced' : 'allowed'}`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.emulateMedia({ reducedMotion: reduced ? 'reduce' : 'no-preference' });
+      const errors = await start(page, addCmsButtonContexts);
+      const buttons = page.locator('#cms-button-contexts .button--arrow');
+      await expect(buttons).toHaveCount(5);
+      for (const button of await buttons.all()) {
+        const before = await buttonSeparation(button);
+        expect(before.gap).toBeGreaterThanOrEqual(16);
+        expect(before.left).toBeGreaterThanOrEqual(4);
+        expect(before.right).toBeGreaterThanOrEqual(4);
+        expect(before.width).toBeLessThan(width);
+        await button.hover();
+        if (!reduced) {
+          await expect.poll(async () => (await buttonSeparation(button, true)).gap).toBeGreaterThanOrEqual(16);
+          expect((await buttonSeparation(button, true)).width).toBeCloseTo(before.width, 0);
+          await page.mouse.move(0, 0);
+          await expect.poll(async () => (await buttonSeparation(button)).gap).toBeGreaterThanOrEqual(16);
+          await page.keyboard.press('Tab');
+          await button.focus();
+          await expect.poll(async () => (await buttonSeparation(button, true)).gap).toBeGreaterThanOrEqual(16);
+          await button.evaluate((element) => element.blur());
+          await expect.poll(async () => (await buttonSeparation(button)).gap).toBeGreaterThanOrEqual(16);
+        } else {
+          expect(await buttonSeparation(button)).toEqual(before);
+          await page.mouse.move(0, 0);
+        }
+      }
+      expect(errors).toEqual([]);
+    });
+  }
+}
