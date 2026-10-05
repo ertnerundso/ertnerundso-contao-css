@@ -123,3 +123,10 @@ This is an intentional typography design change after the structural
 refactoring. Font sizes and line wrapping change. Do not restore the old
 numeric font-size aliases or the scoped desktop hero override. Keep colors,
 spacing, selector names and runtime hooks independent of the type scale.
+
+All h1–h6 headings, section/display headlines and accordion titles use
+`--font-headline` with `--font-weight-headline` (700). The real SK Modernist
+Bold WOFF2 asset belongs to the private frontend assets and is copied by
+the build. The public stylesheet references its staging URL. Deploy that
+asset before activating this release; the CSS repository does not contain
+the font binary. Preserve the Major Third font sizes when changing weight.
