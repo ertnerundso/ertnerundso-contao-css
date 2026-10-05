@@ -1,7 +1,6 @@
 /* SYSTEM / FLÄCHEN: ALLE Farben, Hintergründe, Linien, Schatten und Sichtbarkeitszustände.
    Farbwerte selbst stehen in base.css. Suche unten den betroffenen Bereich. */
 @layer foundation {
-  /* Grundregeln — foundation */
   body {
     background: var(--color-background);
     color: var(--color-text);
@@ -9,9 +8,7 @@
   a {
     color: inherit;
   }
-  button {
-    cursor: pointer;
-  }
+  /* --- FORMULARE --- */
   ::selection {
     background: var(--color-primary);
     color: var(--color-on-dark);
@@ -28,6 +25,7 @@
   .body-copy {
     color: var(--color-text-soft);
   }
+  /* --- HEADER UND MENÜ --- */
   .menu-panel,
   .showreel-section,
   .showreel-stage,
@@ -39,7 +37,6 @@
   .service-card.featured {
     background: var(--color-surface);
   }
-  /* Allgemeine Texte und Schriften — foundation */
   :where(
       .intro,
       .showreel-lead,
@@ -66,41 +63,23 @@
   }
 }
 @layer layout {
-  /* Seitenraster — layout */
+  /* --- FOOTER --- */
   .brand img,
   .footer-brand img {
     filter: invert(1);
   }
-  /* Gemeinsame Bildschirmregeln — layout */
-  @media (max-width: 760px) {
-    .header-nav {
-      background: var(--color-on-dark);
-      box-shadow: var(--shadow-responsive);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .js-ready [data-reveal] {
-      opacity: 1;
-    }
-  }
   .site-main img {
     border-radius: var(--radius-md);
   }
-  @media (max-width: 760px) {
-    .work-viewport {
-      scrollbar-width: none;
-    }
-  }
-  /* Kopfbereich — layout */
+  /* --- HEADER UND MENÜ --- */
   .header-nav a:hover,
   .footer-nav a:hover {
     color: var(--color-primary);
   }
   .site-header {
-    background: var(--color-header);
+    background: var(--color-header-surface);
     border-bottom: 1px dotted var(--color-border);
     backdrop-filter: blur(1rem);
-    -webkit-backdrop-filter: blur(1rem);
   }
   .header-nav :is(a, strong) {
     border-radius: var(--radius-pill);
@@ -111,17 +90,9 @@
   }
   .header-nav
     :is(a, strong):is(:hover, :focus-visible, .active, [aria-current="page"]) {
-    background: var(--color-header-2);
+    background: var(--color-primary-surface);
     color: var(--color-text);
   }
-  @media (prefers-reduced-transparency: reduce) {
-    .site-header {
-      background: var(--color-on-dark);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-  }
-  /* Aufklappbares Menü — layout */
   .menu-toggle {
     border: 0;
     background: var(--color-transparent);
@@ -154,10 +125,6 @@
   .menu-panel-bottom > div a:hover {
     color: var(--color-primary);
   }
-  /* Fußbereich — layout */
-  .site-footer {
-    color: var(--color-text);
-  }
   .footer-brand p {
     color: var(--color-muted);
   }
@@ -166,43 +133,35 @@
     color: var(--color-muted);
   }
   .site-footer {
+    color: var(--color-text);
     background: var(--color-background);
   }
   .footer-nav .micro {
     color: var(--color-primary);
   }
+  @media (prefers-reduced-motion: reduce) {
+    .js-ready [data-reveal] {
+      opacity: 1;
+    }
+  }
+  @media (prefers-reduced-transparency: reduce) {
+    .site-header {
+      background: var(--color-on-dark);
+      backdrop-filter: none;
+    }
+  }
+  @media (max-width: 760px) {
+    .header-nav {
+      background: var(--color-on-dark);
+      box-shadow: var(--shadow-menu);
+    }
+    .work-viewport {
+      scrollbar-width: none;
+    }
+  }
 }
 @layer components {
-  /* Buttons und Links — components */
-  .button,
-  .btn,
-  .hero-contact,
-  .menu-panel-bottom .button,
-  .contact-band .button,
-  .contact-form .widget-submit.button {
-    border: 1px solid var(--color-primary);
-    border-radius: var(--radius-pill);
-    background: var(--color-primary);
-    color: var(--color-on-dark);
-    box-shadow: var(--shadow-button);
-  }
-  .button:hover,
-  .btn:hover,
-  .hero-contact:hover,
-  .menu-panel-bottom .button:hover,
-  .contact-band .button:hover,
-  .contact-form .widget-submit.button:hover {
-    background: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
-    color: var(--color-on-dark);
-  }
-  .content-hyperlink.button > a,
-  .hero-actions > .content-hyperlink.hero-contact > a,
-  .contact-form .widget-submit.button button {
-    color: var(--color-on-dark);
-  }
-  .button.outline,
-  .btn--secondary,
+  /* --- BUTTONS UND LINKS --- */
   .hero-work-link,
   .text-link,
   .content-hyperlink.text-link,
@@ -213,8 +172,6 @@
     box-shadow: none;
     color: var(--color-text);
   }
-  .button.outline:hover,
-  .btn--secondary:hover,
   .hero-work-link:hover,
   .text-link:hover,
   .content-hyperlink.text-link:hover,
@@ -232,30 +189,21 @@
     color: var(--color-on-dark);
   }
   .contact-band .text-link:hover {
-    color: var(--color-buttons);
+    color: var(--color-link-on-dark);
   }
-  /* Karten — components */
-  .service-card {
-    background: var(--color-on-dark);
-  }
+  /* --- GEMEINSAME KARTEN --- */
   .service-card p {
     color: var(--color-muted);
   }
   .service-card.featured {
     background: var(--color-surface);
   }
-  .service-card.featured .card-overlay {
-    color: var(--color-on-dark);
-  }
   .service-card.featured .micro,
   .service-card.featured p {
-    color: var(--color-cards);
+    color: var(--color-primary-tint);
   }
   .card-arrow {
     color: var(--color-primary);
-  }
-  .index-card:has(img) {
-    background: var(--color-on-dark);
   }
   .service-card,
   .statement-image,
@@ -264,21 +212,14 @@
   .index-card img {
     border-radius: var(--radius-md);
   }
-  .index-card {
-    border-radius: var(--radius-md);
-  }
   .services {
     background: var(--color-background);
-  }
-  .service-card {
-    border: 1px solid var(--color-cards-2);
-    box-shadow: var(--shadow-cards);
   }
   .service-card:not(.featured):before {
     content: "";
     background: linear-gradient(
       135deg,
-      var(--color-cards-5),
+      var(--color-primary-wash),
       var(--color-transparent) 46%
     );
     opacity: 0;
@@ -287,63 +228,22 @@
   .service-card:not(.featured):focus-visible:before {
     opacity: 1;
   }
-  .service-card:hover {
-    border-color: var(--color-cards-6);
-    box-shadow: var(--shadow-cards-2);
-  }
-  .service-card.featured .card-overlay {
-    background: var(--color-cards-8);
-    backdrop-filter: blur(1.125rem) saturate(1.15);
-    -webkit-backdrop-filter: blur(1.125rem) saturate(1.15);
-  }
   .service-card.featured .micro {
-    color: var(--color-cards-9);
+    color: var(--color-label-on-dark);
   }
   .service-card.featured p {
-    color: var(--color-cards-10);
+    color: var(--color-surface-muted);
   }
-  .steps {
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-  }
-  .step {
-    border-top: 0;
-    border-left: 1px solid var(--color-border);
-  }
-  .step:first-child {
-    border-left: 0;
-  }
-  .index-card {
-    border-color: var(--color-cards-2);
-    box-shadow: var(--shadow-cards-3);
-  }
-  .index-card:hover {
-    border-color: var(--color-border-hover);
-    box-shadow: var(--shadow-cards-4);
-  }
+  /* --- KONTAKT UND FRAGEN --- */
   .contact-band {
     background: linear-gradient(
       112deg,
-      var(--color-cards-12),
-      var(--color-cards-13) 68%,
-      var(--color-cards-14)
+      var(--color-surface-dark),
+      var(--color-surface-deep) 68%,
+      var(--color-surface-navy)
     );
   }
-  @media (max-width: 760px) {
-    .steps {
-      border-bottom: 0;
-    }
-    .step,
-    .step:first-child,
-    .step:last-child {
-      border-left: 0;
-      border-top: 1px solid var(--color-border);
-    }
-    .step:first-child {
-      border-top: 0;
-    }
-  }
-  /* Gemeinsame Karten und Tabellen — components */
+  /* --- HEADER UND MENÜ --- */
   .site-header,
   .content-section,
   .legal-section,
@@ -387,18 +287,20 @@
     border: 1px solid var(--color-border);
   }
   .service-card.featured .card-overlay {
+    color: var(--color-on-dark);
+    background: var(--color-overlay-card);
+    backdrop-filter: blur(1.125rem) saturate(1.15);
     border-top: 0;
   }
+  /* --- JOURNAL --- */
   .journal-row,
   .journal-list article.journal-row {
     border: 1px solid var(--color-border);
   }
-  .index-card:hover {
-    background: var(--color-surface);
-  }
+  /* --- PROJEKTE UND MONTAGE --- */
   .work-card {
     border: 0;
-    background: var(--color-transparent) !important;
+    background: var(--color-transparent);
     box-shadow: none;
   }
   .work-card img {
@@ -417,16 +319,7 @@
   main th {
     color: var(--color-text);
   }
-  @media (max-width: 760px) {
-    .step,
-    .step:first-child,
-    .step:last-child,
-    .benefit-column,
-    .benefit-column + .benefit-column {
-      border: 1px solid var(--color-border);
-    }
-  }
-  /* Formularfelder — components */
+  /* --- FORMULARE --- */
   .form-consent {
     color: var(--color-muted);
   }
@@ -450,7 +343,7 @@
     border-radius: var(--radius-md);
     background: var(--color-surface);
     color: var(--color-text);
-    box-shadow: var(--shadow-forms);
+    box-shadow: var(--shadow-input);
   }
   :is(
     .input,
@@ -460,10 +353,9 @@
     .contact-form .widget textarea
   ):focus {
     border-color: var(--color-primary);
-    box-shadow: var(--shadow-forms-2);
+    box-shadow: var(--shadow-focus);
     outline: 0;
   }
-  /* Reveal, Cursor und Projektmedien — components */
   [data-reveal] {
     opacity: 1;
   }
@@ -485,9 +377,84 @@
   .project-visual figcaption {
     color: var(--color-muted);
   }
+  :is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary) {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-pill);
+    background: var(--color-primary);
+    color: var(--color-on-dark);
+    box-shadow: var(--shadow-button);
+  }
+  :is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    color: var(--color-on-dark);
+  }
+  :is(.button.outline, .btn--secondary) {
+    background: var(--color-transparent);
+    color: var(--color-primary);
+    box-shadow: none;
+  }
+  :is(.button.outline, .btn--secondary):hover {
+    background: var(--color-primary);
+    color: var(--color-on-dark);
+  }
+  :is(.btn--text, .text-link, .hero-work-link) {
+    border: 0;
+    background: var(--color-transparent);
+    color: var(--color-text);
+    box-shadow: none;
+  }
+  :is(.btn--text, .text-link, .hero-work-link):hover {
+    color: var(--color-primary);
+  }
+  :is(
+      .content-hyperlink.button,
+      .content-hyperlink.hero-contact,
+      .content-hyperlink.hero-work-link,
+      .content-hyperlink.text-link
+    )
+    > a,
+  .contact-form .widget-submit.button button {
+    color: inherit;
+    background: var(--color-transparent);
+    border: 0;
+    border-radius: inherit;
+    box-shadow: none;
+  }
+  :is(.button, .btn, .hero-contact):disabled,
+  :is(.button, .btn, .hero-contact)[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .card--dark {
+    background: var(--color-surface-dark);
+    color: var(--color-on-dark);
+  }
+  .card--plain {
+    border: 0;
+    box-shadow: none;
+  }
+  @media (max-width: 760px) {
+    .steps {
+      border-bottom: 0;
+    }
+    .step,
+    .step:first-child,
+    .step:last-child {
+      border-left: 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .step,
+    .step:first-child,
+    .step:last-child,
+    .benefit-column,
+    .benefit-column + .benefit-column {
+      border: 1px solid var(--color-border);
+    }
+  }
 }
 @layer sections {
-  /* Startseite / Hero — sections */
+  /* --- HERO --- */
   #hero-scene {
     opacity: 0.8;
   }
@@ -513,65 +480,49 @@
       var(--color-transparent) 100%
     );
   }
-  @media (max-width: 760px) {
-    .hero-media img {
-      -webkit-mask-image: linear-gradient(
-        to bottom,
-        var(--color-black) 0%,
-        var(--color-black) 70%,
-        var(--color-transparent) 100%
-      );
-      mask-image: linear-gradient(
-        to bottom,
-        var(--color-black) 0%,
-        var(--color-black) 70%,
-        var(--color-transparent) 100%
-      );
-    }
-  }
-  /* Statement — sections */
+  /* --- STATEMENT --- */
   .statement {
     background: var(--color-on-dark);
   }
   .statement-image {
-    background: var(--color-statement);
+    background: var(--color-ink);
   }
-  /* Projekte und Montage — sections */
+  /* --- PROJEKTE UND MONTAGE --- */
   .work .micro {
-    color: var(--color-work);
+    color: var(--color-primary-on-dark);
   }
   .work-card:nth-child(2) {
-    background: var(--color-work-2);
+    background: var(--color-project-blue);
   }
   .work-card:nth-child(3) {
-    background: var(--color-work-3);
+    background: var(--color-project-neutral);
   }
   .work-card:nth-child(4) {
-    background: var(--color-work-4);
+    background: var(--color-project-teal);
   }
   .work-card .work-no {
-    color: var(--color-work-5);
+    color: var(--color-link-soft);
   }
   .work-card .work-bottom span {
-    color: var(--color-work-6);
+    color: var(--color-text-on-dark-muted);
   }
   .work-card .work-bottom .work-arrow {
     color: var(--color-on-dark);
   }
   .work-index {
-    color: var(--color-work-7);
+    color: var(--color-text-on-dark-soft);
   }
   .work-card:before {
     content: "";
     background: linear-gradient(
       180deg,
-      var(--color-work-8),
-      var(--color-work-9) 35%,
-      var(--color-work-10)
+      var(--color-overlay-top),
+      var(--color-overlay-mid) 35%,
+      var(--color-overlay-bottom)
     );
   }
   .work-card h3 {
-    text-shadow: var(--shadow-work);
+    text-shadow: var(--shadow-text);
   }
   .work {
     background: var(--color-background);
@@ -591,7 +542,7 @@
     color: var(--color-primary);
   }
   .work-progress {
-    background: var(--color-work-12);
+    background: var(--color-progress-track);
   }
   .work-progress i {
     background: var(--color-primary);
@@ -599,6 +550,7 @@
   .manual-book {
     background: var(--color-on-dark);
   }
+  /* --- HEADER UND MENÜ --- */
   .manual-book-header .micro {
     color: var(--color-primary);
   }
@@ -612,22 +564,22 @@
   .manual-book-copy strong {
     color: var(--color-text);
   }
-  /* Prozess — sections */
   .process {
     background: var(--color-surface);
   }
+  /* --- GEMEINSAME KARTEN --- */
   .step-no {
     color: var(--color-primary);
   }
   .step p {
     color: var(--color-muted);
   }
-  /* Showreel — sections */
   .intro .body-copy {
     color: var(--color-text-soft);
   }
+  /* --- SHOWREEL --- */
   .showreel video {
-    background: var(--color-showreel);
+    background: var(--color-video-surface);
     border-radius: var(--radius-md);
   }
   .showreel-section {
@@ -638,11 +590,11 @@
   }
   .showreel-frame {
     border-radius: var(--radius-md);
-    background: var(--color-showreel);
+    background: var(--color-video-surface);
   }
   .showreel-frame video {
     border-radius: inherit;
-    background: var(--color-showreel);
+    background: var(--color-video-surface);
   }
   .showreel-frame:after {
     content: "";
@@ -652,24 +604,24 @@
   }
   .showreel-film-copy {
     color: var(--color-on-dark);
-    text-shadow: var(--shadow-showreel);
+    text-shadow: var(--shadow-video);
   }
   .showreel-film-copy .micro {
-    color: var(--color-showreel-3);
+    color: var(--color-video-label);
   }
   .showreel-action {
     border: 0;
     border-radius: var(--radius-circle);
     background: var(--color-on-dark);
-    color: var(--color-statement);
-    box-shadow: var(--shadow-showreel-2);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-control);
     cursor: pointer;
   }
   .showreel-action:hover {
-    background: var(--color-showreel-5);
+    background: var(--color-control-surface);
   }
   .showreel-action:focus-visible {
-    outline: 0.1875rem solid var(--color-showreel-6);
+    outline: 0.1875rem solid var(--color-video-primary);
   }
   .showreel-caption {
     color: var(--color-muted);
@@ -689,15 +641,9 @@
     opacity: 0;
     visibility: hidden;
   }
-  @media (max-width: 760px) {
-    .showreel-frame {
-      border-width: 0 !important;
-    }
-  }
   .showreel-phone-overlay {
     filter: brightness(1.04);
   }
-  /* Contao-Sektionsbausteine — sections */
   .service-card > .card-link-overlay {
     opacity: 0;
   }
@@ -707,13 +653,7 @@
   .service-card .card-end .micro {
     color: var(--color-muted);
   }
-  .questions-intro > .content-hyperlink.button a {
-    color: var(--color-on-dark);
-  }
-  /* Contao-Formulare — sections */
-  .contact-hero-actions > .content-hyperlink.button a {
-    color: var(--color-on-dark);
-  }
+  /* --- FORMULARE --- */
   .contact-form .widget label,
   .contact-form .widget legend {
     color: var(--color-muted);
@@ -727,11 +667,7 @@
   .contact-form .widget-checkbox a {
     color: var(--color-primary);
   }
-  .contact-form .widget-submit.button button {
-    border: 0;
-    background: var(--color-transparent);
-    color: var(--color-on-dark);
-  }
+  /* --- KONTAKT UND FRAGEN --- */
   .booking-block .content-hyperlink a {
     color: var(--color-primary);
   }
@@ -739,7 +675,7 @@
   .contact-form .widget-checkbox legend {
     clip-path: inset(50%);
   }
-  /* Vorteile — sections */
+  /* --- VORTEILE --- */
   .benefits-section {
     background: var(--color-on-dark);
   }
@@ -759,13 +695,7 @@
   html.showreel-motion .benefits-section {
     background: var(--color-transparent);
   }
-  @media (max-width: 760px) {
-    .benefit-column,
-    .benefit-column + .benefit-column {
-      border-left: 0;
-    }
-  }
-  /* Kundenstimmen — sections */
+  /* --- KUNDENSTIMMEN --- */
   .testimonial-feature {
     background: var(--color-background);
   }
@@ -791,20 +721,20 @@
     background: var(--color-background);
   }
   .client-references-grid {
-    border-block: 1px dashed var(--color-testimonials);
+    border-block: 1px dashed var(--color-border-logo);
   }
   .client-references-grid:before,
   .client-references-grid:after {
     content: "";
     background:
-      linear-gradient(var(--color-text), var(--color-text)) left 0.875rem
-        center / 1px 1.75rem no-repeat,
-      linear-gradient(var(--color-text), var(--color-text)) left center /
-        1.75rem 1px no-repeat,
-      linear-gradient(var(--color-text), var(--color-text)) right 0.875rem
-        center / 1px 1.75rem no-repeat,
-      linear-gradient(var(--color-text), var(--color-text)) right center /
-        1.75rem 1px no-repeat;
+      linear-gradient(var(--color-text), var(--color-text)) left 0.875rem center / 1px
+        1.75rem no-repeat,
+      linear-gradient(var(--color-text), var(--color-text)) left center / 1.75rem 1px
+        no-repeat,
+      linear-gradient(var(--color-text), var(--color-text)) right 0.875rem center / 1px
+        1.75rem no-repeat,
+      linear-gradient(var(--color-text), var(--color-text)) right center / 1.75rem 1px
+        no-repeat;
   }
   .client-reference-logo img {
     filter: grayscale(1) brightness(0);
@@ -813,15 +743,15 @@
   .client-reference-logo:hover img {
     opacity: 1;
   }
-  /* Journal — sections */
+  /* --- JOURNAL --- */
   .journal {
     background: var(--color-background);
   }
   .journal-list {
-    border-top: 1px solid var(--color-journal);
+    border-top: 1px solid var(--color-border-journal);
   }
   .journal-row {
-    border-bottom: 1px solid var(--color-journal);
+    border-bottom: 1px solid var(--color-border-journal);
   }
   .journal-row:hover {
     color: var(--color-primary);
@@ -850,6 +780,7 @@
   .journal .journal-row .row-arrow {
     color: var(--color-primary);
   }
+  /* --- BUTTONS UND LINKS --- */
   .journal-slider-controls button {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-circle);
@@ -866,7 +797,7 @@
     opacity: 0.35;
     cursor: default;
   }
-  /* Konfigurator — sections */
+  /* --- KONFIGURATOR --- */
   .configurator-scene {
     background: var(--color-on-dark);
   }
@@ -887,15 +818,6 @@
   .configurator-scene-card p {
     color: var(--color-text-soft);
   }
-  @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
-    .configurator-scene.is-scroll-ready .configurator-scene-sticky {
-      background: var(--color-on-dark);
-    }
-    .configurator-scene.is-scroll-ready .configurator-scene-cards {
-      opacity: 0;
-    }
-  }
-  /* Kontakt und Fragen — sections */
   .contact-band .text-link {
     color: var(--color-on-dark);
   }
@@ -903,13 +825,13 @@
     color: var(--color-on-dark);
   }
   .contact-band .micro {
-    color: var(--color-contact);
+    color: var(--color-contact-label);
   }
   .contact-band-copy > p:last-child {
     color: var(--color-muted);
   }
   .contact-band-image {
-    background: var(--color-cards-12);
+    background: var(--color-surface-dark);
     border-radius: var(--radius-contact-top);
   }
   .site-progress span {
@@ -952,43 +874,71 @@
   .menu-panel.is-open .menu-panel-nav a {
     opacity: 1;
   }
+  @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+    .configurator-scene.is-scroll-ready .configurator-scene-sticky {
+      background: var(--color-on-dark);
+    }
+    .configurator-scene.is-scroll-ready .configurator-scene-cards {
+      opacity: 0;
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .menu-panel-nav a,
     .menu-panel.is-open .menu-panel-nav a {
       opacity: 1;
     }
   }
+  @media (max-width: 760px) {
+    .hero-media img {
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        var(--color-black) 0%,
+        var(--color-black) 70%,
+        var(--color-transparent) 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        var(--color-black) 0%,
+        var(--color-black) 70%,
+        var(--color-transparent) 100%
+      );
+    }
+    .showreel-frame {
+      border-width: 0 !important;
+    }
+    .benefit-column,
+    .benefit-column + .benefit-column {
+      border-left: 0;
+    }
+  }
 }
 @layer cms {
-  /* Innenseiten — cms */
+  /* --- HERO --- */
   .inner-hero {
     background: var(--color-surface);
   }
+  /* --- INNENSEITEN --- */
   .content-section {
     border-top: 1px solid var(--color-border);
   }
+  /* --- RECHTSTEXTE --- */
   .content-section p,
   .legal-content p,
   .legal-content li {
     color: var(--color-text-soft);
   }
-  .index-card {
-    border: 1px solid var(--color-border);
-    background: var(--color-background);
-  }
+  /* --- GEMEINSAME KARTEN --- */
   .index-card .micro {
     color: var(--color-muted);
   }
   .legal-content a {
     color: var(--color-primary);
   }
+  /* --- KONTAKT UND FRAGEN --- */
   .booking-block {
     background: var(--color-background);
   }
-  .booking-frame {
-    border: 0;
-    background: var(--color-on-dark);
-  }
+  /* --- FORMULARE --- */
   .field label {
     color: var(--color-muted);
   }
@@ -998,7 +948,7 @@
   .contact-meta a {
     color: var(--color-primary);
   }
-  /* News — cms */
+  /* --- NEWS --- */
   .news-detail > .news-intro {
     background: var(--color-surface);
   }
@@ -1018,13 +968,10 @@
   .news-detail > .content-section .rte li {
     color: var(--color-text-soft);
   }
-  /* Contao-Inhalte — cms */
   .contact-band-copy > .content-hyperlink a {
     color: inherit;
   }
-  .contact-band-copy > .content-hyperlink.button a {
-    color: var(--color-on-dark);
-  }
+  /* --- BUTTONS UND LINKS --- */
   .contact-band-copy > .content-hyperlink.text-link a {
     color: var(--color-on-dark);
   }
@@ -1057,14 +1004,6 @@
     border: 0;
     background: var(--color-transparent);
   }
-  .hero-actions > .content-hyperlink.hero-contact {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-  .hero-actions > .content-hyperlink.hero-contact a {
-    color: var(--color-on-dark);
-  }
-  /* Impressum und Datenschutz — cms */
   .legal-hero-kicker .rte p {
     color: var(--color-primary);
   }
@@ -1078,6 +1017,8 @@
     color: var(--color-text-soft);
   }
   .booking-frame {
+    border: 0;
+    background: var(--color-on-dark);
     border-radius: var(--radius-md);
   }
 }

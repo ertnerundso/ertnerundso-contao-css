@@ -100,7 +100,7 @@ export function validateModule(name, content, importLayer) {
     if (!inFontFace && /^(?:font(?:-|$)|line-height$)/.test(d.prop)) {
       if (!d.value.startsWith('var(--font-') && !['inherit', 'normal'].includes(d.value))
         throw new Error(`${name}: typography applications must use central --font-* settings.`);
-      const headingSelector = d.parent.selector?.replace(/:not\(:where\(h1,\s*h2,\s*h3,\s*h4,\s*h5,\s*h6\)\)/g, '') || '';
+      const headingSelector = d.parent.selector?.replace(/:not\(\s*:where\(h1,\s*h2,\s*h3,\s*h4,\s*h5,\s*h6\)\s*\)/g, '') || '';
       if (d.parent.type === 'rule' && /\bh[1-6]\b/.test(headingSelector)) {
         const first = d.parent.selector.split(',')[0].trim();
         if (!/^h[1-6]$/.test(first)) throw new Error(`${name}: heading overrides are forbidden; edit the central h1-h6 settings.`);

@@ -1,13 +1,13 @@
 /* KOMPONENTE / STRUKTUR: Innenseiten.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Innenseiten — cms */
 .inner-hero {
-  padding-block: var(--space-pages-padding-block);
+  padding-block: clamp(var(--space-5xl), var(--space-position-14vw), var(--space-7xl))
+    var(--space-4xl);
 }
 .inner-hero h1 {
   max-width: 68.75rem;
-  margin: var(--space-pages-margin);
+  margin: var(--space-md) 0 var(--space-lg);
 }
 .inner-hero p {
   max-width: 48.75rem;
@@ -19,13 +19,13 @@
   width: 100%;
   max-height: 40.625rem;
   object-fit: cover;
-  margin-top: var(--space-80);
+  margin-top: var(--space-3xl);
 }
 .content-section {
-  padding-block: var(--space-80);
+  padding-block: var(--space-3xl);
   display: grid;
   grid-template-columns: minmax(13.75rem, 0.6fr) minmax(0, 1.4fr);
-  gap: var(--space-pages-gap);
+  gap: clamp(var(--space-xl), var(--space-position-7vw), var(--space-5xl));
 }
 .content-section h2 {
   margin: 0;
@@ -39,12 +39,12 @@
 .index-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-12);
+  gap: var(--space-sm);
   margin-bottom: var(--space-section);
 }
 .index-card {
   min-height: 17.1875rem;
-  padding: var(--space-27);
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,17 +55,14 @@
 .index-card .text-link {
   justify-content: space-between;
 }
-.legal-content {
-  padding-bottom: var(--space-section);
-}
 .legal-content h2 {
-  margin-top: var(--space-65);
+  margin-top: var(--space-3xl);
 }
 .booking-block {
   padding-block: var(--space-section);
 }
 .booking-block h2 {
-  margin: var(--space-pages-margin-2);
+  margin: var(--space-md) 0 var(--space-xl);
 }
 .booking-frame {
   min-height: 43.125rem;
@@ -74,24 +71,50 @@
 .contact-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-80);
+  gap: var(--space-3xl);
   padding-bottom: var(--space-section);
 }
 .contact-form {
   display: grid;
-  gap: var(--space-20);
+  gap: var(--space-md);
 }
 .field {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-sm);
 }
 .contact-meta {
-  padding-top: var(--space-25);
+  padding-top: var(--space-lg);
 }
 .legal-content {
+  padding-bottom: var(--space-section);
   max-width: var(--layout-container-max);
 }
 .legal-content .content-section {
   max-width: none;
   padding-inline: 0;
+}
+@media (max-width: 760px) {
+  .inner-hero {
+    padding-block: var(--space-4xl) var(--space-3xl);
+  }
+  .content-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    padding-block: var(--space-2xl);
+  }
+  .index-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+  .booking-frame {
+    min-height: 46.25rem;
+  }
+}
+@media (max-width: 520px) {
+  .index-grid {
+    grid-template-columns: 1fr;
+  }
 }

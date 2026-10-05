@@ -1,20 +1,19 @@
 /* KOMPONENTE / STRUKTUR: Showreel.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Showreel — sections */
 .hero + .intro {
   padding-top: var(--space-section);
 }
 .intro .section-heading {
   max-width: 61.875rem;
-  margin: var(--space-showreel-margin);
+  margin: var(--space-md) auto var(--space-lg);
 }
 .intro .body-copy {
   max-width: 41.875rem;
   margin: 0 auto;
 }
 .showreel {
-  margin-top: var(--space-showreel-margin-top);
+  margin-top: clamp(var(--space-3xl), var(--space-position-8vw), var(--space-5xl));
 }
 .showreel video {
   display: block;
@@ -23,15 +22,12 @@
   max-height: 46.25rem;
   object-fit: cover;
 }
-.showreel-caption {
-  margin-top: var(--space-md);
-}
 .showreel-stage {
   position: relative;
 }
 .showreel-lead .section-heading {
   max-width: 58.125rem;
-  margin: var(--space-showreel-margin-2);
+  margin: var(--space-md) auto var(--space-lg);
 }
 .showreel-lead .body-copy {
   max-width: 40.625rem;
@@ -39,17 +35,17 @@
 }
 .showreel-frame {
   position: relative;
-  width: min(calc(100% - 2 * var(--space-gutter)), 75rem);
+  width: min(calc(100% - 2 * var(--space-gutter)), var(--layout-content-max));
   aspect-ratio: 16/9;
-  margin: var(--space-showreel-margin-3);
+  margin: clamp(var(--space-3xl), var(--space-position-8vw), var(--space-5xl)) auto 0;
   overflow: hidden;
   isolation: isolate;
 }
 .showreel-frame video {
   display: block;
   position: absolute;
-  left: var(--space-negative-4);
-  top: var(--space-negative-4);
+  left: calc(var(--space-xs) * -1);
+  top: calc(var(--space-xs) * -1);
   width: calc(100% + 0.5rem);
   height: calc(100% + 0.5rem);
   object-fit: cover;
@@ -64,13 +60,13 @@
   display: none;
   position: absolute;
   z-index: 2;
-  left: var(--space-50percent);
-  top: var(--space-50percent);
+  left: var(--space-center);
+  top: var(--space-center);
   width: min(80%, 54.375rem);
 }
 .showreel-film-copy strong {
   display: block;
-  margin-top: var(--space-20);
+  margin-top: var(--space-md);
 }
 .showreel-phone-overlay {
   display: none;
@@ -78,8 +74,8 @@
 .showreel-action {
   position: absolute;
   z-index: 4;
-  left: var(--space-50percent);
-  top: var(--space-50percent);
+  left: var(--space-center);
+  top: var(--space-center);
   display: grid;
   place-items: center;
   width: 4.375rem;
@@ -94,10 +90,10 @@
 }
 .showreel-outro {
   max-width: 46.875rem;
-  margin: var(--space-showreel-margin-4);
+  margin: clamp(var(--space-3xl), var(--space-position-9vw), var(--space-5xl)) auto 0;
 }
 .showreel-outro h3 {
-  margin: var(--space-showreel-margin-5);
+  margin: var(--space-md) 0 var(--space-md);
 }
 .showreel-outro .body-copy {
   max-width: 35rem;
@@ -106,8 +102,8 @@
 .showreel-caption {
   display: flex;
   justify-content: space-between;
-  gap: var(--space-20);
-  margin: var(--space-showreel-margin-6);
+  gap: var(--space-md);
+  margin: var(--space-xl) auto 0;
 }
 html.showreel-motion .showreel-section {
   padding: 0;
@@ -119,7 +115,7 @@ html.showreel-motion .showreel-stage {
 html.showreel-motion .showreel-lead {
   position: absolute;
   z-index: 1;
-  top: var(--space-showreel-top);
+  top: clamp(var(--space-5xl), var(--space-position-15vh), var(--space-7xl));
   left: 0;
   right: 0;
   width: 100%;
@@ -127,8 +123,8 @@ html.showreel-motion .showreel-lead {
 html.showreel-motion .showreel-frame {
   position: absolute;
   z-index: 3;
-  left: var(--space-50percent);
-  top: var(--space-72percent);
+  left: var(--space-center);
+  top: var(--space-position-72percent);
   width: min(70vw, 80rem);
   height: 61vh;
   aspect-ratio: auto;
@@ -142,8 +138,8 @@ html.showreel-motion .showreel-phone-overlay {
 html.showreel-motion .showreel-phone-overlay {
   position: absolute;
   z-index: 3;
-  left: var(--space-50percent);
-  top: var(--space-50percent);
+  left: var(--space-center);
+  top: var(--space-center);
   width: 145.02%;
   height: auto;
   max-width: none;
@@ -152,7 +148,7 @@ html.showreel-motion .showreel-phone-overlay {
 html.showreel-motion .showreel-outro {
   position: absolute;
   z-index: 1;
-  top: var(--space-11percent);
+  top: var(--space-position-11percent);
   left: var(--space-gutter);
   right: var(--space-gutter);
   max-width: none;
@@ -164,7 +160,7 @@ html.showreel-motion .showreel-outro h3 {
 }
 html.showreel-motion .showreel-outro .body-copy {
   position: absolute;
-  top: var(--space-showreel-top-2);
+  top: var(--space-position-82vh);
   left: 0;
   right: 0;
   max-width: 38.125rem;
@@ -172,34 +168,9 @@ html.showreel-motion .showreel-outro .body-copy {
 html.showreel-motion .showreel-caption {
   display: none;
 }
-@media (max-width: 760px) {
-  .showreel-section {
-    padding-block: var(--space-110);
-  }
-  .showreel-frame {
-    top: auto !important;
-    width: calc(100% - 2 * var(--space-gutter)) !important;
-    margin-top: var(--space-65);
-  }
-  .showreel-frame video {
-    object-fit: cover;
-  }
-  .showreel-outro {
-    padding-inline: var(--space-gutter);
-    margin-top: var(--space-75);
-  }
-  .showreel-caption {
-    padding-inline: var(--space-gutter);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .showreel-action {
-    display: none;
-  }
-}
 .showreel-lead h2 {
   max-width: 58.125rem;
-  margin: var(--space-showreel-margin-2);
+  margin: var(--space-md) auto var(--space-lg);
 }
 .showreel-phone-overlay figure {
   margin: 0;
@@ -214,5 +185,31 @@ html.showreel-motion .showreel-caption {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: var(--space-20);
+  gap: var(--space-md);
+}
+@media (max-width: 760px) {
+  .showreel-section {
+    padding-block: var(--space-4xl);
+  }
+  .showreel-frame {
+    top: auto !important;
+    width: calc(100% - 2 * var(--space-gutter)) !important;
+    margin-top: var(--space-3xl);
+  }
+  .showreel-frame video {
+    object-fit: cover;
+  }
+  .showreel-outro {
+    padding-inline: var(--space-gutter);
+    margin-top: var(--space-3xl);
+  }
+  .showreel-caption {
+    padding-inline: var(--space-gutter);
+  }
+  .showreel {
+    margin-top: var(--space-3xl);
+  }
+  .showreel video {
+    aspect-ratio: 4/3;
+  }
 }

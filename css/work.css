@@ -1,20 +1,11 @@
 /* KOMPONENTE / STRUKTUR: Projekte und Montage.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Projekte und Montage — sections */
-.work {
-  padding-block: var(--space-section) var(--space-100);
-}
 .work .section-head {
-  margin-bottom: var(--space-62);
+  margin-bottom: var(--space-3xl);
 }
 .work .section-head h2 {
   max-width: 53.125rem;
-}
-.work-card {
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
 }
 .work-card h3 {
   max-width: 40.625rem;
@@ -24,20 +15,12 @@
   display: flex;
   align-items: end;
   justify-content: space-between;
-  gap: var(--space-20);
+  gap: var(--space-md);
 }
 .work-index {
   display: flex;
   justify-content: space-between;
-  margin-top: var(--space-26);
-}
-.work-progress i {
-  display: block;
-}
-.work-card:before {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+  margin-top: var(--space-lg);
 }
 .work-card > *:not(.work-image) {
   position: relative;
@@ -59,8 +42,8 @@
   min-height: 42.5rem;
   display: flex;
   flex-direction: column;
-  padding-top: var(--space-work-padding-top);
-  padding-bottom: var(--space-work-padding-bottom);
+  padding-top: clamp(var(--space-4xl), var(--space-position-13vh), var(--space-6xl));
+  padding-bottom: clamp(var(--space-xl), var(--space-position-5vh), var(--space-3xl));
   overflow: hidden;
 }
 .work-heading {
@@ -68,7 +51,7 @@
   width: 100%;
 }
 .work-heading h2 {
-  margin: var(--space-work-margin);
+  margin: var(--space-md) 0 var(--space-xs);
   max-width: 59.375rem;
 }
 .work-subtitle {
@@ -81,19 +64,22 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  margin-top: var(--space-work-margin-top);
-  margin-bottom: var(--space-work-margin-bottom);
+  margin-top: clamp(var(--space-xl), var(--space-position-5vh), var(--space-3xl));
+  margin-bottom: clamp(var(--space-xl), var(--space-position-5vh), var(--space-3xl));
 }
 .work-track {
   display: flex;
   align-items: center;
-  gap: var(--space-work-gap);
+  gap: clamp(var(--space-3xl), var(--space-position-7vw), var(--space-5xl));
   width: max-content;
   padding-left: var(--space-content-offset);
   padding-right: var(--space-gutter);
   height: 100%;
 }
 .work-card {
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
   flex: none;
   width: clamp(20rem, 23vw, 25.625rem);
   height: min(100%, 28.4375rem);
@@ -103,6 +89,9 @@
   display: block;
 }
 .work-card:before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: none;
 }
 .work .work-card figure {
@@ -130,15 +119,16 @@
 .work-meta {
   display: flex;
   justify-content: space-between;
-  gap: var(--space-20);
+  gap: var(--space-md);
   width: 100%;
   flex: none;
 }
 .work-progress {
   height: 2px;
-  margin-top: var(--space-12);
+  margin-top: var(--space-sm);
 }
 .work-progress i {
+  display: block;
   height: 2px;
   width: 100%;
 }
@@ -155,19 +145,19 @@
 .manual-book-header {
   position: absolute;
   z-index: 1;
-  top: var(--space-work-top);
+  top: clamp(var(--space-md), var(--space-position-4vw), var(--space-3xl));
   left: 0;
   max-width: min(47%, 38.75rem);
 }
 .manual-book-header .micro {
-  margin: var(--space-work-margin-2);
+  margin: 0 0 var(--space-lg);
 }
 .manual-book-header h2 {
   margin: 0;
 }
 .manual-book-player {
   margin: 0;
-  padding-top: var(--space-work-padding-top-2);
+  padding-top: clamp(var(--space-4xl), var(--space-position-8vw), var(--space-5xl));
 }
 .manual-book-player figure,
 .manual-book-player .video_container {
@@ -183,24 +173,24 @@
 .manual-book-copy {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-work-gap-2);
-  margin-top: var(--space-work-margin-top-2);
+  gap: clamp(var(--space-xl), var(--space-position-7vw), var(--space-5xl));
+  margin-top: clamp(var(--space-lg), var(--space-position-4vw), var(--space-2xl));
 }
 .manual-book-copy p {
   max-width: 35.625rem;
   margin: 0;
 }
 .manual-book-copy .content-hyperlink {
-  margin-top: var(--space-18);
+  margin-top: var(--space-md);
 }
 @media (max-width: 760px) {
   .manual-book-header {
     position: static;
     max-width: 100%;
-    margin-bottom: var(--space-20);
+    margin-bottom: var(--space-md);
   }
   .manual-book-header .micro {
-    margin-bottom: var(--space-17);
+    margin-bottom: var(--space-md);
   }
   .manual-book-player {
     padding-top: 0;
@@ -211,7 +201,57 @@
   }
   .manual-book-copy {
     grid-template-columns: 1fr;
-    gap: var(--space-20);
-    margin-top: var(--space-27);
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+  .work-card {
+    padding: var(--space-lg);
+    scroll-snap-align: start;
+  }
+  .work-stage {
+    height: calc(100svh - 4rem);
+    min-height: 40rem;
+    padding-top: var(--space-3xl);
+    padding-bottom: var(--space-xl);
+  }
+  .work-track {
+    height: 100%;
+    gap: var(--space-xl);
+  }
+  .work .work-card {
+    width: min(78vw, 25.625rem);
+    height: 100%;
+  }
+  .work .work-card figure {
+    grid-template-rows: 3rem minmax(0, 1fr);
+    row-gap: var(--space-md);
+  }
+  .work-heading h2 {
+    margin-top: var(--space-sm);
+  }
+  .work-subtitle {
+    margin-bottom: 0;
+  }
+  .work-meta {
+    margin-top: var(--space-md);
+  }
+  .work-viewport {
+    flex: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    height: min(36svh, 21.25rem);
+    min-height: 16.25rem;
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    scroll-padding-inline: var(--space-gutter);
+  }
+  .work-viewport::-webkit-scrollbar {
+    display: none;
+  }
+}
+@media (max-width: 520px) {
+  .work-card {
+    height: 26.875rem;
+    width: 78vw;
   }
 }

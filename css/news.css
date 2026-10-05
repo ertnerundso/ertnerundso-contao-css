@@ -1,13 +1,13 @@
 /* KOMPONENTE / STRUKTUR: News.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* News — cms */
 .news-detail > .news-intro {
-  padding: var(--space-news-padding);
+  padding: clamp(var(--space-5xl), var(--space-position-14vw), var(--space-7xl))
+    var(--space-content-offset) var(--space-4xl);
 }
 .news-detail > .news-intro h1 {
   max-width: 68.75rem;
-  margin: var(--space-pages-margin);
+  margin: var(--space-md) 0 var(--space-lg);
 }
 .news-detail > .news-intro .rte {
   max-width: 48.75rem;
@@ -33,7 +33,7 @@
 .mod_newslist.news-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-12);
+  gap: var(--space-sm);
   max-width: var(--layout-container-max);
   margin: 0 auto var(--space-section);
   padding-inline: var(--space-gutter);

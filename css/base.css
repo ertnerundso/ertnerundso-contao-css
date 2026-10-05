@@ -2,7 +2,7 @@
    Hier gemeinsame Werte ändern; Anwendungsregeln stehen in den anderen System-Dateien. */
 @layer foundation {
   :root {
-    /* FARBPALETTE */
+    /* FARBEN: Website und vorhandene Medienflächen */
     --color-primary: #2455ed;
     --color-primary-hover: #173fc3;
     --color-secondary: #09090b;
@@ -14,57 +14,64 @@
     --color-border: #dfe1e6;
     --color-border-hover: #b7c5ef;
     --color-on-dark: #ffffff;
-    --color-shadow: rgba(9, 9, 11, 0.035);
-    --color-shadow-2: rgba(9, 9, 11, 0.065);
-    --color-shadow-3: rgba(255, 255, 255, 0.23);
-    --color-shadow-4: rgba(36, 85, 237, 0.13);
+    --color-highlight: rgba(255, 255, 255, 0.23);
+    --color-shadow-primary: color-mix(
+      in srgb,
+      var(--color-primary) 13%,
+      var(--color-transparent)
+    );
     --color-current: currentColor;
-    --color-responsive: #00000014;
-    --color-header: #fffffff0;
-    --color-header-2: #f0f4ff;
+    --color-overlay-subtle: #00000014;
+    --color-header-surface: #fffffff0;
+    --color-primary-surface: #f0f4ff;
     --color-transparent: transparent;
-    --color-buttons: #a9bcff;
-    --color-cards: #dce4ff;
-    --color-cards-2: #d9dce4;
-    --color-cards-3: #ffffffe6;
-    --color-cards-4: #09090b06;
-    --color-cards-5: rgba(36, 85, 237, 0.08);
-    --color-cards-6: #aab9f1;
-    --color-cards-7: #09090b13;
-    --color-cards-8: #070a11b8;
-    --color-cards-9: #b2c3ff;
-    --color-cards-10: #f2f3f6;
-    --color-cards-11: #09090b0e;
-    --color-cards-12: #030304;
-    --color-cards-13: #070910;
-    --color-cards-14: #101932;
+    --color-link-on-dark: #a9bcff;
+    --color-primary-tint: #dce4ff;
+    --color-primary-wash: color-mix(
+      in srgb,
+      var(--color-primary) 8%,
+      var(--color-transparent)
+    );
+    --color-overlay-card: #070a11b8;
+    --color-label-on-dark: #b2c3ff;
+    --color-surface-muted: #f2f3f6;
+    --color-surface-dark: #030304;
+    --color-surface-deep: #070910;
+    --color-surface-navy: #101932;
     --color-error: #b92b35;
-    --color-forms-2: #09090b09;
-    --color-forms-3: #2455ed1c;
+    --color-shadow-input: #09090b09;
+    --color-focus-ring: color-mix(
+      in srgb,
+      var(--color-primary) 11%,
+      var(--color-transparent)
+    );
     --color-black: #000;
-    --color-statement: #111;
-    --color-work: #8199ff;
-    --color-work-2: #1b2443;
-    --color-work-3: #303036;
-    --color-work-4: #172b3e;
-    --color-work-5: #a9b9ff;
-    --color-work-6: #c5c8d0;
-    --color-work-7: #b7bdca;
-    --color-work-8: #05080e7a;
-    --color-work-9: #05080e0f;
-    --color-work-10: #05080ed4;
-    --color-work-11: rgba(0, 0, 0, 0.35);
-    --color-work-12: #d0d2d8;
-    --color-showreel: #101114;
-    --color-showreel-2: rgba(0, 0, 0, 0.55);
-    --color-showreel-3: #c3d0ff;
-    --color-showreel-4: #0000003d;
-    --color-showreel-5: #e8eeff;
-    --color-showreel-6: #2b58ee;
-    --color-testimonials: #b9c1cb;
-    --color-journal: #d8dae0;
-    --color-contact: #9eb4ff;
-    /* ABSTÄNDE: xs bis 6xl = Grundskala; Zahlen = rem-Werte bei 16px; Bereichsnamen = besondere Abstände */
+    --color-ink: #111;
+    --color-primary-on-dark: #8199ff;
+    --color-project-blue: #1b2443;
+    --color-project-neutral: #303036;
+    --color-project-teal: #172b3e;
+    --color-link-soft: #a9b9ff;
+    --color-text-on-dark-muted: #c5c8d0;
+    --color-text-on-dark-soft: #b7bdca;
+    --color-overlay-top: #05080e7a;
+    --color-overlay-mid: #05080e0f;
+    --color-overlay-bottom: #05080ed4;
+    --color-shadow-text: rgba(0, 0, 0, 0.35);
+    --color-progress-track: #d0d2d8;
+    --color-video-surface: #101114;
+    --color-shadow-video: rgba(0, 0, 0, 0.55);
+    --color-video-label: #c3d0ff;
+    --color-shadow-control: #0000003d;
+    --color-control-surface: #e8eeff;
+    --color-video-primary: #2b58ee;
+    --color-border-logo: #b9c1cb;
+    --color-border-journal: #d8dae0;
+    --color-contact-label: #9eb4ff;
+    --color-shadow-soft: rgba(9, 9, 11, 0.035);
+    --color-shadow-hover: rgba(9, 9, 11, 0.065);
+    /* ABSTÄNDE: Kleine Grundskala; gutter und section steuern die gesamte Seite */
+    --space-xxs: 0.125rem;
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
     --space-md: 1rem;
@@ -75,214 +82,69 @@
     --space-4xl: 6rem;
     --space-5xl: 8rem;
     --space-6xl: 10rem;
-    --space-gutter: clamp(1.375rem, 5.1vw, 5.75rem);
-    --space-section: clamp(9.375rem, 12vw, 13.125rem);
+    --space-7xl: 12rem;
+    --space-gutter: clamp(var(--space-lg), 5vw, var(--space-4xl));
+    --space-section: clamp(var(--space-4xl), 10vw, var(--space-7xl));
     --space-grid: var(--space-md);
-    --space-columns: clamp(var(--space-xl), 7vw, 7.5rem);
+    --space-columns: clamp(var(--space-xl), 7vw, var(--space-5xl));
     --space-content-offset: max(
       var(--space-gutter),
       calc((100vw - var(--layout-container-max)) / 2 + var(--space-gutter))
     );
-    --space-3: 0.1875rem;
-    --space-5: 0.3125rem;
-    --space-7: 0.4375rem;
-    --space-9: 0.5625rem;
-    --space-10: 0.625rem;
-    --space-11: 0.6875rem;
-    --space-12: 0.75rem;
-    --space-13: 0.8125rem;
-    --space-14: 0.875rem;
-    --space-15: 0.9375rem;
-    --space-17: 1.0625rem;
-    --space-18: 1.125rem;
-    --space-20: 1.25rem;
-    --space-22: 1.375rem;
-    --space-23: 1.4375rem;
-    --space-25: 1.5625rem;
-    --space-26: 1.625rem;
-    --space-27: 1.6875rem;
-    --space-28: 1.75rem;
-    --space-30: 1.875rem;
-    --space-35: 2.1875rem;
-    --space-36: 2.25rem;
-    --space-38: 2.375rem;
-    --space-40: 2.5rem;
-    --space-42: 2.625rem;
-    --space-45: 2.8125rem;
-    --space-55: 3.4375rem;
-    --space-56: 3.5rem;
-    --space-62: 3.875rem;
-    --space-63: 3.9375rem;
-    --space-65: 4.0625rem;
-    --space-70: 4.375rem;
-    --space-75: 4.6875rem;
-    --space-76: 4.75rem;
-    --space-80: 5rem;
-    --space-90: 5.625rem;
-    --space-92: 5.75rem;
-    --space-95: 5.9375rem;
-    --space-98: 6.125rem;
-    --space-100: 6.25rem;
-    --space-105: 6.5625rem;
-    --space-110: 6.875rem;
-    --space-115: 7.1875rem;
-    --space-120: 7.5rem;
-    --space-132: 8.25rem;
-    --space-150: 9.375rem;
-    --space-210: 13.125rem;
-    --space-negative-60: -3.75rem;
-    --space-1px: 1px;
-    --space-layout-margin: 1.5rem auto 1.75rem;
-    --space-layout-margin-2: 0.75rem 0 0;
-    --space-responsive-margin: 1.5625rem 0 0;
-    --space-responsive-padding-block: 5.9375rem 4.0625rem;
-    --space-responsive-padding-block-2: 4.6875rem 3.4375rem;
-    --space-responsive-padding-block-3: 3.4375rem 2.1875rem;
-    --space-responsive-inset: 69% 0 0;
-    --space-responsive-gap: 0.9375rem 1.375rem;
-    --space-header-margin-left: clamp(0.625rem, 2vw, 2.5rem);
-    --space-header-padding: 0.5625rem 0.625rem;
-    --space-navigation-gap: clamp(0.875rem, 3vh, 2.8125rem);
-    --space-navigation-padding-bottom: clamp(1.5rem, 4vh, 3.4375rem);
-    --space-navigation-gap-2: clamp(1.125rem, 2.5vw, 2.75rem);
-    --space-footer-margin: 1.375rem 0;
-    --space-footer-padding: clamp(var(--space-4xl), 9vw, var(--space-5xl)) 0
-      var(--space-xl);
-    --space-0-26em: 0.26em;
-    --space-cards-padding: clamp(1.75rem, 3.2vw, 3.25rem);
-    --space-cards-margin: 0.625rem 0 0.875rem;
-    --space-cards-gap: clamp(4.0625rem, 9vw, 9.375rem);
-    --space-cards-padding-2: clamp(1.625rem, 3.2vw, 3.25rem);
-    --space-cards-padding-3: 1.75rem clamp(1.5625rem, 3vw, 3rem) 2.1875rem;
-    --space-cards-padding-4: 1.5rem 0 1.75rem;
-    --space-surfaces-padding: clamp(1.6875rem, 3vw, 2.625rem);
-    --space-surfaces-margin: 0 0 1rem;
-    --space-surfaces-margin-2: 0 0 1.125rem;
-    --space-surfaces-padding-2: 1.5625rem 1.75rem;
-    --space-surfaces-margin-3: 0 0 1.375rem;
-    --space-surfaces-padding-3: 1.125rem 1.375rem;
-    --space-surfaces-padding-4: 1.375rem 1.125rem;
-    --space-negative-10000: -625rem;
-    --space-2px: 2px;
-    --space-forms-margin: 1.1875rem 0 1.5625rem;
-    --space-hero-margin: 1.25rem 0 1.75rem;
-    --space-hero-margin-2: clamp(4.75rem, 10vh, 8.4375rem) 0 0;
-    --space-hero-margin-3: 0 0 clamp(2.125rem, 6vh, 4.875rem);
-    --space-hero-inset: 42% 0 0;
-    --space-statement-gap: clamp(var(--space-3xl), 7vw, var(--space-120));
-    --space-work-padding-top: clamp(6.5625rem, 13vh, 9.375rem);
-    --space-work-padding-bottom: clamp(1.875rem, 5vh, 4.0625rem);
-    --space-work-margin: 0.9375rem 0 0.3125rem;
-    --space-work-margin-top: clamp(2.25rem, 5vh, 4rem);
-    --space-work-margin-bottom: clamp(2rem, 5vh, 3.75rem);
-    --space-work-gap: clamp(4rem, 7vw, 8rem);
-    --space-work-top: clamp(1.125rem, 4vw, 4.0625rem);
-    --space-work-margin-2: 0 0 1.5625rem;
-    --space-work-padding-top-2: clamp(6.25rem, 8vw, 8.75rem);
-    --space-work-gap-2: clamp(2.5rem, 7vw, 7.8125rem);
-    --space-work-margin-top-2: clamp(1.5625rem, 4vw, 3.4375rem);
-    --space-showreel-margin: 1.125rem auto 1.75rem;
-    --space-showreel-margin-top: clamp(4.6875rem, 8vw, 8.125rem);
-    --space-showreel-margin-2: 1rem auto 1.375rem;
-    --space-showreel-margin-3: clamp(4.375rem, 8vw, 8.125rem) auto 0;
-    --space-negative-4: -0.25rem;
-    --space-50percent: 50%;
-    --space-showreel-margin-4: clamp(5rem, 9vw, 8.75rem) auto 0;
-    --space-showreel-margin-5: 0.875rem 0 1.25rem;
-    --space-showreel-margin-6: 2.125rem auto 0;
-    --space-showreel-top: clamp(7.5rem, 15vh, 11.875rem);
-    --space-72percent: 72%;
-    --space-11percent: 11%;
-    --space-showreel-top-2: 82vh;
-    --space-contao-components-padding: 0 1.3125rem;
-    --space-contao-forms-margin: 0.75rem 0 1.5rem;
-    --space-contao-forms-padding: 0 1.375rem;
-    --space-negative-1px: -1px;
-    --space-benefits-margin: 1.25rem 0 1.625rem;
-    --space-benefits-margin-top: clamp(2.1875rem, 5vh, 3.75rem);
-    --space-benefits-padding: 1.375rem clamp(1.5625rem, 3vw, 3.4375rem) 0 0;
-    --space-benefits-padding-left: clamp(1.5625rem, 3vw, 3.4375rem);
-    --space-10-5percent: 10.5%;
-    --space-14percent: 14%;
-    --space-15percent: 15%;
-    --space-70percent: 70%;
-    --space-benefits-padding-2: 1.25rem 0 0;
-    --space-testimonials-row-gap: clamp(var(--space-xl), 4vw, var(--space-3xl));
-    --space-testimonials-column-gap: clamp(
-      var(--space-lg),
-      5vw,
-      var(--space-4xl)
-    );
-    --space-testimonials-row-gap-2: clamp(
-      var(--space-2xl),
-      6vw,
-      var(--space-4xl)
-    );
-    --space-testimonials-margin-block-start: clamp(
-      var(--space-3xl),
-      7vw,
-      var(--space-5xl)
-    );
-    --space-testimonials-padding-block: clamp(
-      var(--space-2xl),
-      5vw,
-      var(--space-4xl)
-    );
-    --space-negative-14: -0.875rem;
-    --space-journal-padding: 1.75rem 0;
-    --space-configurator-margin: 1.25rem auto 1.625rem;
-    --space-configurator-top: clamp(2.125rem, 5svh, 4.75rem);
-    --space-configurator-margin-top: 8svh;
-    --space-contact-margin: 1.1875rem auto 1.625rem;
-    --space-contact-margin-2: 1.1875rem 0 0;
-    --space-contact-margin-top: clamp(4.5rem, 10vh, 8.4375rem);
-    --space-contact-gap: clamp(3.75rem, 9vw, 9.375rem);
-    --space-contact-margin-3: 1rem 0 1.5625rem;
-    --space-contact-margin-4: 0 0 2rem;
-    --space-contact-padding: 1.625rem 0;
-    --space-contact-margin-5: 0 0 1.8125rem;
-    --space-contact-padding-2: 1.4375rem 0;
-    --space-pages-padding-block: clamp(7.5rem, 14vw, 13.125rem) 6.875rem;
-    --space-pages-margin: 1.0625rem 0 1.625rem;
-    --space-pages-gap: clamp(2.1875rem, 7vw, 7.5rem);
-    --space-pages-margin-2: 0.9375rem 0 2.25rem;
-    --space-news-padding: clamp(var(--space-120), 14vw, var(--space-210))
-      var(--space-content-offset) var(--space-110);
-    --space-contao-padding: 0 1.25rem;
-    --space-contao-padding-2: 0 1.4375rem;
-    --space-legal-padding-top: clamp(7.5rem, 14vw, 13.125rem);
-    --space-0-27em: 0.27em;
-    /* ECKEN UND RADIEN */
+    --space-hairline: 1px;
+    --space-negative-hairline: -1px;
+    --space-center: 50%;
+    --space-icon-align: 0.25em;
+    --space-offscreen: -625rem;
+    --space-header-offset: var(--layout-header-height);
+    --space-position-5vh: 5vh;
+    --space-position-3vw: 3vw;
+    --space-position-10-5percent: 10.5%;
+    --space-position-14percent: 14%;
+    --space-position-15percent: 15%;
+    --space-position-70percent: 70%;
+    --space-position-3-2vw: 3.2vw;
+    --space-position-9vw: 9vw;
+    --space-position-5svh: 5svh;
+    --space-position-8svh: 8svh;
+    --space-position-10vh: 10vh;
+    --space-position-2vw: 2vw;
+    --space-position-6vh: 6vh;
+    --space-position-42percent: 42%;
+    --space-position-69percent: 69%;
+    --space-position-14vw: 14vw;
+    --space-position-7vw: 7vw;
+    --space-position-3vh: 3vh;
+    --space-position-4vh: 4vh;
+    --space-position-2-5vw: 2.5vw;
+    --space-position-8vw: 8vw;
+    --space-position-15vh: 15vh;
+    --space-position-72percent: 72%;
+    --space-position-11percent: 11%;
+    --space-position-82vh: 82vh;
+    --space-position-4vw: 4vw;
+    --space-position-5vw: 5vw;
+    --space-position-6vw: 6vw;
+    --space-position-13vh: 13vh;
+    /* RADIEN: Einheitliche Rundungen */
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 1rem;
     --radius-pill: 9999px;
     --radius-circle: 50%;
-    --radius-hero-bottom: 0 0 0.5rem 0.5rem;
-    --radius-contact-top: 0.5rem 0.5rem 0 0;
-    /* SCHATTEN */
-    --shadow-card: 0 0.3125rem 1.5rem var(--color-shadow);
-    --shadow-card-hover: 0 0.875rem 2.125rem var(--color-shadow-2);
+    --radius-hero-bottom: 0 0 var(--radius-md) var(--radius-md);
+    --radius-contact-top: var(--radius-md) var(--radius-md) 0 0;
+    /* SCHATTEN: Gemeinsame Karten und Bedienelemente */
     --shadow-button:
-      inset 0 1px 0 var(--color-shadow-3),
-      0 0.375rem 1.0625rem var(--color-shadow-4);
-    --shadow-responsive: 0 1.25rem 1.875rem var(--color-responsive);
-    --shadow-cards:
-      inset 0 1px var(--color-cards-3), 0 0.5rem 1.75rem var(--color-cards-4);
-    --shadow-cards-2:
-      inset 0 1px var(--color-on-dark), 0 1.25rem 2.625rem var(--color-cards-7);
-    --shadow-cards-3: inset 0 1px var(--color-cards-3);
-    --shadow-cards-4: 0 0.9375rem 2.1875rem var(--color-cards-11);
-    --shadow-forms: inset 0 1px 0.1875rem var(--color-forms-2);
-    --shadow-forms-2: 0 0 0 0.1875rem var(--color-forms-3);
-    --shadow-work: 0 2px 1.5rem var(--color-work-11);
-    --shadow-showreel: 0 2px 1.75rem var(--color-showreel-2);
-    --shadow-showreel-2: 0 0.5rem 1.75rem var(--color-showreel-4);
-  }
-  @media (max-width: 760px) {
-    :root {
-      --space-gutter: 1.375rem;
-      --space-section: 6.875rem;
-    }
+      inset 0 1px 0 var(--color-highlight),
+      0 0.375rem 1.0625rem var(--color-shadow-primary);
+    --shadow-menu: 0 1.25rem 1.875rem var(--color-overlay-subtle);
+    --shadow-card: 0 0.3125rem 1.5rem var(--color-shadow-soft);
+    --shadow-card-hover: 0 0.875rem 2.125rem var(--color-shadow-hover);
+    --shadow-input: inset 0 1px 0.1875rem var(--color-shadow-input);
+    --shadow-focus: 0 0 0 0.1875rem var(--color-focus-ring);
+    --shadow-text: 0 2px 1.5rem var(--color-shadow-text);
+    --shadow-video: 0 2px 1.75rem var(--color-shadow-video);
+    --shadow-control: 0 0.5rem 1.75rem var(--color-shadow-control);
   }
 }

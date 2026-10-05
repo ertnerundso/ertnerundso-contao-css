@@ -1,7 +1,6 @@
 /* KOMPONENTE / STRUKTUR: Gemeinsame Karten, Listen und Tabellen.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Gemeinsame Karten und Tabellen — components */
 .site-progress,
 .work-progress {
   display: none;
@@ -21,30 +20,30 @@
 .step:last-child,
 .benefit-column,
 .benefit-column + .benefit-column {
-  padding: var(--space-surfaces-padding);
+  padding: clamp(var(--space-lg), var(--space-position-3vw), var(--space-2xl));
 }
 .step {
   min-height: 15.625rem;
 }
 .step h3 {
   min-height: 2.24em;
-  margin: var(--space-surfaces-margin);
+  margin: 0 0 var(--space-md);
 }
 .benefit-column:before {
   display: none;
 }
 .benefit-column h4 {
-  margin: var(--space-surfaces-margin-2);
+  margin: 0 0 var(--space-md);
 }
 .journal-row,
 .journal-list article.journal-row {
-  padding: var(--space-surfaces-padding-2);
+  padding: var(--space-lg) var(--space-lg);
 }
 .journal-row:hover {
-  padding-left: var(--space-28);
+  padding-left: var(--space-lg);
 }
 .question {
-  padding-inline: var(--space-27);
+  padding-inline: var(--space-lg);
 }
 .question summary {
   padding-block: var(--space-lg);
@@ -55,7 +54,7 @@
 }
 .news-grid .news-card figure {
   width: 100%;
-  margin: var(--space-surfaces-margin-3);
+  margin: 0 0 var(--space-lg);
 }
 .work-card {
   overflow: visible;
@@ -70,7 +69,7 @@ main table {
 }
 main th,
 main td {
-  padding: var(--space-surfaces-padding-3);
+  padding: var(--space-md) var(--space-lg);
   vertical-align: top;
 }
 @media (max-width: 760px) {
@@ -78,24 +77,24 @@ main td {
   .benefits-table,
   .question-list,
   .journal-list {
-    gap: var(--space-12);
+    gap: var(--space-sm);
   }
   .step,
   .step:first-child,
   .step:last-child,
   .benefit-column,
   .benefit-column + .benefit-column {
-    padding: var(--space-27);
+    padding: var(--space-lg);
     min-height: 0;
   }
   .journal-row,
   .journal-list article.journal-row {
-    padding: var(--space-surfaces-padding-4);
+    padding: var(--space-lg) var(--space-md);
   }
   .journal-row:hover {
-    padding-left: var(--space-18);
+    padding-left: var(--space-md);
   }
   .question {
-    padding-inline: var(--space-22);
+    padding-inline: var(--space-lg);
   }
 }

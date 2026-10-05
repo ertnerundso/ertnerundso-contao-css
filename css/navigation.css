@@ -1,17 +1,16 @@
 /* KOMPONENTE / STRUKTUR: Aufklappbares Menü.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Aufklappbares Menü — layout */
 .menu-toggle {
   align-items: center;
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  padding: var(--space-10);
+  padding: var(--space-sm);
 }
 .menu-lines {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-xs);
   width: 1.5rem;
 }
 .menu-lines i {
@@ -22,7 +21,7 @@
 .menu-panel {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: var(--layout-z-menu);
 }
 .menu-panel-inner {
   height: 100%;
@@ -34,7 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4.75rem;
+  height: var(--layout-header-height);
   flex: none;
 }
 .menu-close {
@@ -43,14 +42,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: var(--space-5);
+  padding-bottom: var(--space-xs);
 }
 .menu-panel-nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  gap: var(--space-navigation-gap);
+  gap: clamp(var(--space-md), var(--space-position-3vh), var(--space-2xl));
 }
 .menu-panel-nav a {
   width: max-content;
@@ -60,14 +59,30 @@
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: var(--space-30);
-  padding-bottom: var(--space-navigation-padding-bottom);
+  gap: var(--space-xl);
+  padding-bottom: clamp(var(--space-lg), var(--space-position-4vh), var(--space-2xl));
 }
 .menu-panel-bottom > div {
   display: flex;
-  gap: var(--space-navigation-gap-2);
+  gap: clamp(var(--space-md), var(--space-position-2-5vw), var(--space-2xl));
   flex-wrap: wrap;
 }
 body.menu-open {
   overflow: hidden;
+}
+@media (max-width: 760px) {
+  .menu-panel-top {
+    height: var(--layout-header-height);
+  }
+  .menu-panel-nav {
+    gap: var(--space-md);
+  }
+  .menu-panel-bottom {
+    align-items: start;
+    flex-direction: column-reverse;
+    gap: var(--space-lg);
+  }
+  .menu-panel-bottom > div {
+    gap: var(--space-md) var(--space-lg);
+  }
 }

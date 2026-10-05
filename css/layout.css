@@ -1,10 +1,6 @@
 /* SYSTEM / SEITENRASTER: Grundstruktur, Container und gemeinsame Layout-Regeln.
    Abstände verwenden die Werte aus base.css. */
 @layer foundation {
-  /* Grundregeln — foundation */
-  :root {
-    --layout-container-max: 96rem;
-  }
   * {
     box-sizing: border-box;
   }
@@ -20,13 +16,13 @@
   }
   .skip-link {
     position: absolute;
-    z-index: 200;
-    left: var(--space-12);
-    top: var(--space-negative-60);
-    padding: var(--space-12);
+    z-index: var(--layout-z-skip);
+    left: var(--space-sm);
+    top: calc(var(--space-3xl) * -1);
+    padding: var(--space-sm);
   }
   .skip-link:focus {
-    top: var(--space-12);
+    top: var(--space-sm);
   }
   .shell,
   .container {
@@ -35,7 +31,6 @@
     margin-inline: auto;
     padding-inline: var(--space-gutter);
   }
-  /* Allgemeine Texte und Schriften — foundation */
   :where(
       .intro,
       .showreel-lead,
@@ -59,34 +54,42 @@
     display: inline-block;
     width: 0.5rem;
     height: 0.5rem;
-    margin-inline-end: var(--space-10);
-    vertical-align: var(--space-1px);
+    margin-inline-end: var(--space-sm);
+    vertical-align: var(--space-hairline);
+  }
+  :root {
+    --layout-container-max: 96rem;
+    --layout-content-max: calc(var(--layout-container-max) - 2 * var(--space-gutter));
+    --layout-header-height: 4.75rem;
+    --layout-header-compact-height: 4.25rem;
+    --layout-z-header: 100;
+    --layout-z-menu: 150;
+    --layout-button-height: 3rem;
+    --layout-z-skip: 200;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  @media (max-width: 760px) {
+    :root {
+      --layout-header-height: 4rem;
+      --layout-header-compact-height: 4rem;
+    }
   }
 }
 @layer layout {
-  /* Seitenraster — layout */
   .section,
   .section-padding {
     padding-block: var(--space-section);
-  }
-  .grid-2-col {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-columns);
   }
   .flex-stack {
     display: flex;
     flex-direction: column;
     gap: var(--space-stack-gap, var(--stack-gap, var(--space-lg)));
   }
-  @media (max-width: 760px) {
-    .grid-2-col {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
   .intro .display {
     max-width: 70rem;
-    margin: var(--space-layout-margin);
+    margin: var(--space-lg) auto var(--space-lg);
   }
   .intro .body-copy {
     margin-inline: auto;
@@ -95,14 +98,31 @@
     display: flex;
     align-items: end;
     justify-content: space-between;
-    gap: var(--space-30);
-    margin-bottom: var(--space-55);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
   }
   .section-head h2,
   .section-heading {
-    margin: var(--space-layout-margin-2);
+    margin: var(--space-sm) 0 0;
   }
   .hero-copy {
     max-width: 40.625rem;
+  }
+  .grid-2-col,
+  .grid-3-col,
+  .grid-sidebar,
+  .grid-feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-columns);
+  }
+  .grid-2-col > *,
+  .grid-3-col > *,
+  .grid-sidebar > *,
+  .grid-feature > * {
+    min-width: 0;
+  }
+  .site-main {
+    padding-top: var(--space-header-offset);
   }
 }

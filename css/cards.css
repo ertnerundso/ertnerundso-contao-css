@@ -1,22 +1,8 @@
 /* KOMPONENTE / STRUKTUR: Karten.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Karten — components */
-.service-grid {
-  display: grid;
-  grid-template-columns: 1.32fr 0.82fr 0.82fr;
-  grid-template-rows: minmax(18.75rem, auto) minmax(16.25rem, auto);
-}
-.service-card {
-  position: relative;
-  overflow: hidden;
-  padding: var(--space-cards-padding);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 .service-card h3 {
-  margin: var(--space-cards-margin);
+  margin: var(--space-sm) 0 var(--space-md);
 }
 .service-card p {
   max-width: 33ch;
@@ -31,21 +17,17 @@
   height: 100%;
   object-fit: cover;
 }
-.service-card.featured .card-overlay {
-  position: absolute;
-  inset: auto 0 0;
-}
 .service-card .card-end {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin-top: var(--space-35);
+  margin-top: var(--space-xl);
 }
 .index-card:has(img) {
   padding: 0;
   min-height: 25.625rem;
   justify-content: end;
-  gap: var(--space-13);
+  gap: var(--space-md);
   overflow: hidden;
 }
 .index-card figure {
@@ -60,30 +42,39 @@
 .index-card:has(img) > .micro,
 .index-card:has(img) > h2,
 .index-card:has(img) > .text-link {
-  margin-inline: var(--space-25);
+  margin-inline: var(--space-lg);
 }
 .index-card:has(img) > .text-link {
-  margin-bottom: var(--space-23);
-  margin-top: var(--space-9);
+  margin-bottom: var(--space-lg);
+  margin-top: var(--space-sm);
 }
 .services .section-head,
 .statement-grid,
 .process-header {
-  gap: var(--space-cards-gap);
+  gap: clamp(var(--space-3xl), var(--space-position-9vw), var(--space-6xl));
 }
 .statement-image {
   min-height: 32.5rem;
 }
 .process .steps {
-  margin-top: var(--space-115);
+  margin-top: var(--space-5xl);
 }
 .index-card {
   overflow: hidden;
 }
 .service-grid {
+  display: grid;
+  grid-template-columns: 1.32fr 0.82fr 0.82fr;
+  grid-template-rows: minmax(18.75rem, auto) minmax(16.25rem, auto);
   gap: var(--space-md);
 }
 .service-card {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(var(--space-lg), var(--space-position-3-2vw), var(--space-2xl));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   isolation: isolate;
 }
 .service-card:not(.featured):before {
@@ -92,13 +83,16 @@
   pointer-events: none;
 }
 .service-card.featured .card-overlay {
-  padding: var(--space-cards-padding-2);
+  position: absolute;
+  inset: auto 0 0;
+  padding: clamp(var(--space-lg), var(--space-position-3-2vw), var(--space-2xl));
 }
 .steps {
   gap: 0;
 }
 .step {
-  padding: var(--space-cards-padding-3);
+  padding: var(--space-lg)
+    clamp(var(--space-lg), var(--space-position-3vw), var(--space-2xl)) var(--space-xl);
 }
 .step:first-child {
   padding-left: 0;
@@ -106,13 +100,50 @@
 .step:last-child {
   padding-right: 0;
 }
+.card {
+  position: relative;
+  padding: var(--space-xl);
+}
+.card--plain {
+  padding: 0;
+}
+@media (max-width: 1000px) {
+  .service-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .service-card.featured {
+    grid-row: span 2;
+  }
+}
 @media (max-width: 760px) {
   .step,
   .step:first-child,
   .step:last-child {
-    padding: var(--space-cards-padding-4);
+    padding: var(--space-lg) 0 var(--space-lg);
   }
   .service-card.featured .card-overlay {
-    padding: var(--space-27);
+    padding: var(--space-lg);
+  }
+  .service-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: var(--space-sm);
+  }
+  .service-card,
+  .service-card.featured {
+    min-height: 16.875rem;
+  }
+  .service-card.featured {
+    height: 29.375rem;
+    grid-row: auto;
+  }
+}
+@media (max-width: 520px) {
+  .service-card.featured {
+    height: 24.375rem;
+  }
+  .index-card {
+    min-height: 12.8125rem;
   }
 }

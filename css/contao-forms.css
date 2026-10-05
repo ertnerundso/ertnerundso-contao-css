@@ -1,11 +1,10 @@
 /* KOMPONENTE / STRUKTUR: Contao-Formulare.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Contao-Formulare — sections */
 .questions-intro h2,
 .contact-column h2,
 .contact-meta h2 {
-  margin: var(--space-contao-forms-margin);
+  margin: var(--space-sm) 0 var(--space-lg);
 }
 .contact-hero-actions > .content-hyperlink.button {
   padding: 0;
@@ -14,31 +13,31 @@
   display: inline-flex;
   align-items: center;
   min-height: 2.875rem;
-  padding: var(--space-contao-components-padding);
+  padding: 0 var(--space-lg);
 }
 .contact-form {
-  margin-top: var(--space-38);
+  margin-top: var(--space-xl);
 }
 .contact-form form,
 .contact-form .formbody {
   display: grid;
-  gap: var(--space-20);
+  gap: var(--space-md);
 }
 .contact-form .widget {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-sm);
 }
 .contact-form .widget-checkbox fieldset {
   margin: 0;
   padding: 0;
 }
 .contact-form .widget-checkbox legend {
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-sm);
 }
 .contact-form .widget-checkbox span {
   display: flex;
   align-items: start;
-  gap: var(--space-10);
+  gap: var(--space-sm);
 }
 .contact-form .widget-submit.button {
   width: max-content;
@@ -46,14 +45,14 @@
 }
 .contact-form .widget-submit.button button {
   min-height: 2.875rem;
-  padding: var(--space-contao-forms-padding);
+  padding: 0 var(--space-lg);
 }
 .contact-form .form-status {
   margin: 0;
 }
 .contact-form .form-honeypot {
   position: absolute;
-  left: var(--space-negative-10000);
+  left: var(--space-offscreen);
   width: 1px;
   height: 1px;
   overflow: hidden;
@@ -66,7 +65,7 @@
   position: absolute;
   width: 1px;
   height: 1px;
-  margin: var(--space-negative-1px);
+  margin: var(--space-negative-hairline);
   padding: 0;
   overflow: hidden;
 }

@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'src/site.js'
-      - 'src/scene.js'
+      - 'src/**'
+      - 'scripts/build-js.mjs'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/build-js.yml'
