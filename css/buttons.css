@@ -51,3 +51,19 @@
   min-height: 0;
   padding: 0;
 }
+:is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink),
+:is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a,
+.contact-form .widget-submit.button button {
+  justify-content: space-between;
+  gap: var(--space-lg);
+  padding-inline-end: var(--space-xs);
+}
+:is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink)::after,
+:is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a::after,
+.contact-form .widget-submit.button button::after {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+}

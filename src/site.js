@@ -17,6 +17,7 @@ import { initPointer } from './pointer.js';
 import { initScene } from './scene-loader.js';
 import { initForms } from './forms.js';
 import { initBooking } from './booking.js';
+import { initTestimonials } from './testimonials.js';
 
 const runtime = createRuntime();
 const motionModules = new Set([
@@ -43,6 +44,7 @@ for (const initialize of [
   initScene,
   initForms,
   initBooking,
+  initTestimonials,
 ]) {
   try {
     if (motionModules.has(initialize)) runtime.runResponsive(initialize);

@@ -78,10 +78,13 @@
     --font-caption-size: 0.75rem;
     --font-label-family: "IBM Plex Mono", monospace;
     --font-label-size: 0.6875rem;
+    --font-label-weight: 400;
     --font-label-line-height: 1.5;
     --font-button-size: 1rem;
     --font-button-weight: 600;
     --font-quote-size: var(--font-h3-size);
+    --font-testimonial-size: clamp(1.75rem, calc(1.35rem + 1.6vw), 3.25rem);
+    --font-testimonial-weight: 700;
   }
   @font-face {
     font-family: "SK Modernist";
@@ -419,6 +422,29 @@
   /* --- KUNDENSTIMMEN --- */
   .testimonial-quote p {
     text-wrap: balance;
+  }
+  .testimonial-carousel-label,
+  .testimonial-switch-button {
+    font-family: var(--font-label-family);
+    font-size: var(--font-label-size);
+    font-weight: var(--font-label-weight);
+    line-height: var(--font-label-line-height);
+    text-transform: uppercase;
+  }
+  .testimonial-carousel-panel .testimonial-quote p {
+    font-family: var(--font-h2-family);
+    font-size: var(--font-testimonial-size);
+    font-weight: var(--font-testimonial-weight);
+    line-height: var(--font-h2-line-height);
+  }
+  .testimonial-carousel-panel {
+    text-align: center;
+  }
+  .testimonial-carousel-panel .testimonial-company p {
+    font-family: var(--font-h4-family);
+    font-size: var(--font-h4-size);
+    font-weight: var(--font-h4-weight);
+    line-height: var(--font-h4-line-height);
   }
   .testimonial-project-link a {
     text-decoration: underline;

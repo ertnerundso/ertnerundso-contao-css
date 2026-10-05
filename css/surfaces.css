@@ -747,6 +747,64 @@
   .testimonial-project-link a:focus-visible {
     outline: 2px solid var(--color-primary);
   }
+  .testimonial-carousel {
+    background: var(--color-background);
+  }
+  .testimonial-carousel-label {
+    color: var(--color-primary);
+  }
+  .testimonial-switch {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    background: var(--color-primary);
+  }
+  .testimonial-switch-button {
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-transparent);
+    color: var(--color-on-dark);
+    cursor: pointer;
+  }
+  .testimonial-switch-button[aria-selected="true"] {
+    background: var(--color-on-dark);
+    color: var(--color-primary);
+  }
+  .testimonial-switch-button:focus-visible {
+    outline: 2px solid var(--color-primary);
+  }
+  .testimonial-carousel-panel .testimonial-company p {
+    color: var(--color-muted);
+  }
+  .testimonial-carousel-panel .testimonial-quote p::before {
+    content: "“";
+  }
+  .testimonial-carousel-panel .testimonial-quote p::after {
+    content: "”";
+  }
+  :is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink),
+  :is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a,
+  .contact-form .widget-submit.button button {
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+  }
+  :is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink)::after,
+  :is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a::after,
+  .contact-form .widget-submit.button button::after {
+    content: "→";
+    border-radius: var(--radius-sm);
+    background: var(--color-on-dark);
+    color: var(--color-primary);
+  }
+  :is(.button.outline, .btn--secondary)::after {
+    background: var(--color-primary);
+    color: var(--color-on-dark);
+  }
+  :is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink):hover::after,
+  :is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a:hover::after,
+  .contact-form .widget-submit.button button:hover::after {
+    background: var(--color-primary-hover);
+    color: var(--color-on-dark);
+  }
   .client-references {
     background: var(--color-background);
   }
