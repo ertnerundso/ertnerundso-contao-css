@@ -3,8 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:css": "node scripts/build-css.mjs",
-    "check:css": "node scripts/build-css.mjs --check",
+    "check:css": "node scripts/check-css.mjs",
     "build:js": "esbuild src/site.js --bundle --splitting --minify --format=esm --target=es2020 --outdir=dist --entry-names=site --chunk-names=chunks/[name]-[hash]"
   },
   "dependencies": {

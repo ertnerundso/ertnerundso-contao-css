@@ -7,14 +7,14 @@ CMS-managed content or customer uploads.
 
 ## Live delivery
 
-- `css/` contains the editable CSS modules. `css/site.css` lists them in cascade
-  order. Run `npm run build:css` to assemble the root `site.css`, then commit
-  both the modules and the generated file. `npm run check:css` checks syntax,
-  import coverage, layer order, asset URLs and whether the generated file is current.
-- The Contao page template continues to load the root `site.css` from GitHub
-  Pages. It contains all rules, with no runtime imports. The CSS workflow
-  rebuilds that file after module changes reach `main`; pull requests check it.
-  JavaScript builds never regenerate CSS. Allow a few minutes for Pages caching.
+- The root `site.css` is the short, editable stylesheet entry point. It imports
+  the 30 thematic files in `css/` directly into their cascade layers.
+- The Contao page template continues to load that root `site.css` from GitHub
+  Pages. The browser then loads its imported modules from the same repository.
+  Edit a module, commit and push: no CSS build or generated bundle is required.
+  Allow a few minutes for Pages publishing and browser caching.
+- `npm run check:css` checks syntax, import coverage, layer order and asset URLs.
+  GitHub Actions runs this read-only check on pull requests and on `main`.
 - `src/site.js` and `src/scene.js` are editable source. `npm run build:js`
   produces the bundled JavaScript in `dist/`. A GitHub Action rebuilds and publishes it
   when the source or dependencies change; the Contao template loads that file
@@ -32,10 +32,16 @@ customer uploads or CMS database exports here; this repository is public.
 
 ## Editing CSS
 
-Run `npm ci` once. Change the relevant file in `css/`, then run
-`npm run build:css` and `npm run check:css`. Do not edit the generated root
-`site.css`. To add a module, add its import in `css/site.css` at the appropriate
-position within its existing layer. Keep asset URLs absolute.
+Change the relevant file in `css/`, then commit and push it. For local
+validation, run `npm ci` once and `npm run check:css` after editing. To add a
+module, add its import in the root `site.css` at the appropriate position
+within its existing layer. Keep asset URLs absolute.
+
+The browser fetches the 30 modules separately, so this delivery uses more CSS
+requests than a combined bundle. All imports are direct children of `site.css`;
+there is no second entry point or nested import chain. If copying CSS to another
+server, copy both `site.css` and the complete `css/` directory, keeping the same
+relative paths. Open local previews through an HTTP server, not a file URL.
 
 | Area | Modules in `css/` |
 | --- | --- |
