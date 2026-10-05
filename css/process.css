@@ -1,11 +1,10 @@
 /* KOMPONENTE / STRUKTUR: Prozess.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Prozess — sections */
 .process-header {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-70);
+  gap: var(--space-3xl);
   align-items: end;
 }
 .process-header p {
@@ -15,11 +14,25 @@
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: var(--space-92);
+  margin-top: var(--space-4xl);
 }
 .step {
   padding-top: var(--space-lg);
 }
 .step p {
   max-width: 34ch;
+}
+@media (max-width: 760px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    margin-top: var(--space-3xl);
+  }
+  .step h3 {
+    margin-top: var(--space-lg);
+  }
+  .process-header {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
 }

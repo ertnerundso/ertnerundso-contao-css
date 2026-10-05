@@ -1,53 +1,53 @@
-/* KOMPONENTE / STRUKTUR: Buttons und Links.
-   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
-   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Buttons und Links — components */
-.button,
-.btn,
-.hero-contact,
-.menu-panel-bottom .button,
-.contact-band .button,
-.contact-form .widget-submit.button {
+/* KOMPONENTE / BUTTONS: Gemeinsame Anordnung. Varianten: .btn--primary, .btn--secondary, .btn--text.
+   Text in typography.css, Farbe in surfaces.css, Effekte in motion.css. */
+:is(
+  .button,
+  .btn,
+  .hero-contact,
+  .hero-work-link,
+  .text-link,
+  .btn--primary,
+  .btn--secondary,
+  .btn--text
+) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--button-height, 3rem);
-  padding-inline: var(
-    --space-button-padding,
-    var(--button-padding, var(--space-23))
-  );
+  gap: var(--space-sm);
+  min-height: var(--button-height, var(--layout-button-height));
+  padding-inline: var(--button-padding, var(--space-lg));
 }
-.content-hyperlink.button,
-.content-hyperlink.hero-contact,
-.contact-form .widget-submit.button {
+:is(
+  .content-hyperlink.button,
+  .content-hyperlink.hero-contact,
+  .content-hyperlink.hero-work-link,
+  .content-hyperlink.text-link,
+  .contact-form .widget-submit.button
+) {
   padding: 0;
 }
-.content-hyperlink.button > a,
-.hero-actions > .content-hyperlink.hero-contact > a,
+:is(
+    .content-hyperlink.button,
+    .content-hyperlink.hero-contact,
+    .content-hyperlink.hero-work-link,
+    .content-hyperlink.text-link
+  )
+  > a,
 .contact-form .widget-submit.button button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--button-height, 3rem);
-  padding-inline: var(
-    --space-button-padding,
-    var(--button-padding, var(--space-23))
-  );
-}
-.button.outline,
-.btn--secondary,
-.hero-work-link,
-.text-link,
-.content-hyperlink.text-link,
-.index-card .text-link {
-  display: inline-flex;
-  align-items: center;
   gap: var(--space-sm);
+  min-height: var(--button-height, var(--layout-button-height));
+  padding-inline: var(--button-padding, var(--space-lg));
+  width: 100%;
+}
+:is(.text-link, .btn--text, .hero-work-link) {
   min-height: 0;
   padding: 0;
+  justify-content: start;
 }
-.hero-actions > .content-hyperlink.hero-work-link > a,
-.content-hyperlink.text-link > a {
+:is(.content-hyperlink.text-link, .content-hyperlink.hero-work-link) > a {
   min-height: 0;
   padding: 0;
 }

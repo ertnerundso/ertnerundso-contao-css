@@ -1,21 +1,24 @@
 # CSS und JavaScript einfach bearbeiten
 
-Alle CSS-Dateien liegen direkt in `css/`. Die kurze `site.css` lädt sie automatisch; einen CSS-Build brauchst du nicht. Ändere die vorhandene zuständige Einstellung statt eine zusätzliche Überschreibung anzuhängen.
+Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einstellung, statt am Dateiende eine neue Überschreibung anzuhängen. CSS braucht keinen Build.
 
-| Was ändern? | Welche Datei? |
+| Was ändern? | Wo? |
 | --- | --- |
-| Schriftfamilie, Schriftschnitt, Größe oder Zeilenhöhe von h1–h6 | `css/typography.css`, beim jeweiligen H1–H6-Variablen-Block |
-| Normaler Text, Einleitung, kleine Texte, Beschriftungen oder Button-Schrift | `css/typography.css`, bei LESEN oder TEXTVARIANTEN |
-| Gemeinsame Farben, Abstände, Rundungen und Schatten | `css/base.css` |
-| Farbe, Hintergrund, Rand oder Schatten für ein Element verwenden | `css/surfaces.css` |
-| Animationen, Übergänge und ihre Gestaltungswerte | `css/motion.css` |
-| Seitenbreite, Seitenränder und gemeinsame Raster | `css/layout.css` und die dort verwendeten Werte aus `base.css` |
-| Anordnung eines Bereichs, auch auf dem Handy | Seine Datei, etwa `css/hero.css`, `css/cards.css` oder `css/contact.css` |
-| Allgemeine responsive Seitenstruktur | `css/responsive.css` |
+| Schrift, Schnitt, Größe oder Zeilenhöhe von h1–h6 | `css/typography.css`, im jeweiligen H1–H6-Block |
+| Normaler Text und Textvarianten | `css/typography.css`, bei LESEN / TEXTVARIANTEN |
+| Gemeinsame Farben, Abstände, Rundungen, Schatten | `css/base.css` |
+| Farbe, Hintergrund, Rand, Schatten eines Elements | `css/surfaces.css` |
+| Animationen, Übergänge und Bewegungswerte | `css/motion.css` |
+| Maximale Inhaltsbreite, gemeinsame Raster, Header-Höhe | `css/layout.css` |
+| Seitenränder und Abstand zwischen Bereichen | `--space-gutter` / `--space-section` in `css/base.css` |
+| Anordnung eines Bereichs, auch auf dem Handy | Etwa `css/hero.css`, `css/cards.css`, `css/contact.css` |
+| Allgemeine responsive Raster | `css/responsive.css` |
+| Scroll-Schwellen, Slider-Verhalten, Formular-/Kalender-Adressen | `src/config.js` |
+| Funktion eines JavaScript-Bereichs | Etwa `src/navigation.js`, `src/work.js`, `src/forms.js` |
 
-## Beispiel: h1 ändern
+## Beispiel: h1 bearbeiten
 
-Suche in `typography.css` den Kommentar **H1**. Dort stehen:
+Suche in `typography.css` **H1**. Diese Einstellungen gelten für **jede h1 auf der Website**:
 
 ```css
 --font-h1-family: "SK Modernist", Arial, sans-serif;
@@ -26,32 +29,34 @@ Suche in `typography.css` den Kommentar **H1**. Dort stehen:
 --font-h1-line-height: 1.06;
 ```
 
-- `family`: Schriftfamilie; die passende Datei muss bei SCHRIFTDATEIEN eingebunden sein.
-- `weight`: Schriftschnitt. SK Modernist ist mit 300 (Light), 400 (Regular) und 700 (Bold) eingebunden.
-- `min` und `max`: kleinste und größte Schriftgröße. Für eine eigene Höchstgröße kannst du beispielsweise `--font-h1-max: 4.5rem;` einsetzen.
-- `size`: verwendet die Grenzen und eine automatisch mitwachsende mittlere Größe. Für eine feste Größe könntest du hier direkt `3rem` einsetzen.
-- `line-height`: Zeilenhöhe, ohne Einheit.
+`family` wählt die Schrift. SK Modernist ist mit 300 (Light), 400 (Regular) und 700 (Bold) eingebunden. `min` / `max` begrenzen die Größe; für eine eigene Höchstgröße etwa `--font-h1-max: 4.5rem;` einsetzen. Für eine feste Größe kannst du `size` direkt auf `3rem` setzen. `line-height` ist die Zeilenhöhe ohne Einheit. h2–h6 haben gleich aufgebaute Blöcke.
 
-**Diese Einstellungen gelten für jede h1 auf der gesamten Website.** Für h2–h6 gibt es gleich aufgebaute Blöcke. Sondergrößen für Hero, News oder Kontakt sind nicht vorgesehen.
+`--font-scale: 1.33` steuert die Desktop-Abstufung. Mobile Mindestgrößen halten kleine Überschriften lesbar. Lesetext startet bei `1.0625rem` (17px bei 16px Browser-Grundschrift). Alle Größen berücksichtigen die Browser-Einstellungen.
 
-`--font-scale: 1.33` bestimmt die Desktop-Abstufung. Mobile Mindestgrößen halten kleine Überschriften mindestens so groß wie den normalen Lesetext; deshalb wird die Hierarchie auf schmalen Bildschirmen flacher. Alle Grenzen sind sichtbar in den H1–H6-Blöcken editierbar.
+Für neue Textvarianten: `text-lead` (Einleitung), `text-small`, `text-caption` (Beschriftung), `text-label`. Eine echte Überschrift behält immer ihre h1–h6-Einstellungen.
 
-Lesetext startet mit `--font-body-size: 1.0625rem;`, entsprechend 17px bei einer Grundschrift von 16px. Die Größen bleiben von der Browser-Einstellung des Nutzers abhängig.
+## Beispiel: Abstände und Anordnung
 
-## Textvarianten
+```css
+/* Etwa in hero.css: nur Anordnung */
+.hero-actions {
+  display: flex;
+  gap: var(--space-lg);
+}
+```
 
-Vorhandene Klassen bleiben erhalten. Für neue Inhalte stehen `text-lead`, `text-small`, `text-caption` und `text-label` bereit. Sie dienen Einleitungen, kleineren Informationen, Bildbeschriftungen und Labels. Echte Überschriften behalten unabhängig von diesen Klassen ihre h1–h6-Einstellungen.
+`xs`, `sm`, `md`, `lg`, `xl`, `2xl` bis `7xl` sind gemeinsame Abstände. An dieser Stelle einen anderen Token wählen, um nur diesen Abstand zu ändern. Den Wert in `base.css` ändern, um alle Verwendungen anzupassen. Die zusätzlich benannten Positionswerte gehören zu besonderen Medien-/Scroll-Anordnungen.
 
-## Abstände und Gestaltung
+Optionale Raster: `grid-2-col`, `grid-3-col`, `grid-sidebar` (1:2), `grid-feature` (2:3). Auf dem Handy stehen sie untereinander. Buttons: `btn btn--primary`, `btn btn--secondary` (Outline), `btn btn--text`. Karten: `card`, optional `card--dark` / `card--plain`. Vorhandene Contao-Klassen bleiben nutzbar; keine Pflicht zum Umbauen.
 
-`gap: var(--space-lg)` verwendet einen gemeinsamen Abstand aus `base.css`. Für eine Änderung nur an dieser Stelle wählst du einen anderen Wert. Änderst du die Definition in `base.css`, betrifft das alle Stellen, die sie benutzen.
+Schriften stehen immer in `typography.css`, Flächen in `surfaces.css`, Effekte in `motion.css`. Komponenten enthalten nur Struktur und Abstände. Bildschirmgrenzen stehen direkt in `@media`, weil normale CSS-Variablen dort nicht funktionieren.
 
-Komponenten regeln ausschließlich Anordnung. Schriften gehören immer in `typography.css`, Gestaltung in `surfaces.css`, Bewegungen in `motion.css`. Normale CSS-Variablen funktionieren nicht in `@media`-Bedingungen; registrierte Bildschirmgrenzen stehen deshalb direkt in den Bedingungen.
+## JavaScript, Dateien und Freigabe
 
-## Dateien und Freigabe
+`src/site.js` startet die Module. Für Verhalten zuerst `src/config.js` öffnen; etwa `header.hideAfter` für die Scroll-Schwelle. Dauer, Bewegung und Gestaltungswerte stehen in `motion.css`. Benannte Werte wie `--motion-showreel-film-copy-start` sind Zeitpunkte in den vorhandenen Scrollgeschichten. Änderungen an JavaScript anschließend mit `npm run build:js` nach `dist/` übernehmen.
 
-Schriftdateien werden aus `assets/fonts/` dieses Repositorys geladen. Der zweite Umsetzungsschritt ergänzt Funktionsmodule in `src/`, gemeinsame Verhaltens-Einstellungen in `src/config.js` sowie die Unterordner `assets/images/` und `assets/videos/`.
+Schriften liegen in `assets/fonts/`, Bilder in `assets/images/`, Videos in `assets/videos/`. Schriftdateien werden direkt aus dem Repository geladen. CMS-Uploads bleiben bei Contao.
 
-Vor Änderungen Umfang abstimmen, dann auf einem eigenen Branch arbeiten. Pull Requests werden mit einer kurzen Änderungsliste geprüft. **Merge in main und Veröffentlichung erst nach ausdrücklicher Freigabe.** Die verbindlichen Regeln stehen in `AGENTS.md`.
+Prüfen: einmal `npm ci` und `npx playwright install chromium`; danach `npm run check:css`, `npm run check:js`, `npm run build:js`, `npm run test:browser`. Die Tests verwenden simulierte Kontakt-/Kalenderdienste.
 
-Lokale Prüfung: einmal `npm ci`, danach `npm run check:css`. Browser-Tests: einmal `npx playwright install chromium`, danach `npm run test:browser`. Die Tests versenden keine Kontaktanfragen oder Buchungen. Verwende einen Webserver für lokale Vorschauen.
+Auf eigenen Branches arbeiten. **Merge nach main und Veröffentlichung erst nach ausdrücklicher Freigabe.** Template-Kopien müssen gesondert nach Contao synchronisiert werden. Verbindliche Regeln: `AGENTS.md`.

@@ -14,7 +14,7 @@
     {% for metaTag in metaTags|default %}<meta{{ metaTag }}>{% endfor %}
     {% for linkTag in linkTags|default %}<link{{ linkTag }}>{% endfor %}
     {% if canonical|default %}<link rel="canonical" href="{{ canonical }}">{% endif %}
-    <link rel="icon" href="/clean/assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/images/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/fonts/sk-modernist-bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/fonts/ibm-plex-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
     {{ stylesheets|raw }}
@@ -27,7 +27,7 @@
 <a class="skip-link" href="#main">{{ english ? 'Skip to content' : 'Zum Inhalt' }}</a>
 <header class="site-header">
     <div class="shell header-inner">
-        <a class="brand" href="{{ english ? '/en/' : '/' }}" aria-label="ERTNER&SO {{ english ? 'home' : 'Startseite' }}"><img src="/clean/assets/logo.svg" alt="ERTNER&SO" width="148" height="15"></a>
+        <a class="brand" href="{{ english ? '/en/' : '/' }}" aria-label="ERTNER&SO {{ english ? 'home' : 'Startseite' }}"><img src="https://ertnerundso.github.io/ertnerundso-contao-src/assets/images/logo.svg" alt="ERTNER&SO" width="148" height="15"></a>
         <nav class="header-nav" aria-label="{{ english ? 'Main navigation' : 'Hauptnavigation' }}">
             {% if header %}
                 {{ header|raw }}
@@ -47,7 +47,7 @@
 </header>
 <div class="menu-panel" id="site-menu" aria-hidden="true" inert>
     <div class="shell menu-panel-inner">
-        <div class="menu-panel-top"><a class="brand" href="{{ english ? '/en/' : '/' }}" aria-label="ERTNER&SO {{ english ? 'home' : 'Startseite' }}"><img src="/clean/assets/logo.svg" alt="ERTNER&SO" width="148" height="15"></a><button class="menu-close" type="button" aria-label="{{ english ? 'Close menu' : 'Menü schließen' }}">×</button></div>
+        <div class="menu-panel-top"><a class="brand" href="{{ english ? '/en/' : '/' }}" aria-label="ERTNER&SO {{ english ? 'home' : 'Startseite' }}"><img src="https://ertnerundso.github.io/ertnerundso-contao-src/assets/images/logo.svg" alt="ERTNER&SO" width="148" height="15"></a><button class="menu-close" type="button" aria-label="{{ english ? 'Close menu' : 'Menü schließen' }}">×</button></div>
         <nav class="menu-panel-nav" aria-label="{{ english ? 'Full screen navigation' : 'Vollbild-Navigation' }}"><a href="{{ english ? '/en/arbeiten/' : '/arbeiten/' }}">{{ english ? 'WORK' : 'ARBEITEN' }}</a><a href="{{ english ? '/en/journal/' : '/journal/' }}">JOURNAL</a><a href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'CONTACT' : 'KONTAKT' }}</a></nav>
         <div class="menu-panel-bottom"><div><a href="{{ languageSwitchPath }}" hreflang="{{ english ? 'de' : 'en' }}">{{ english ? 'DE' : 'EN' }}</a><a href="/impressum/">IMPRESSUM</a><a href="/datenschutz/">DATENSCHUTZ</a><a href="/agb/">AGB</a></div><a class="button" href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'ENQUIRE' : 'ANFRAGEN' }}</a></div>
     </div>
@@ -58,7 +58,7 @@
 <footer class="site-footer">
     <div class="shell">
         <div class="footer-top">
-            <div class="footer-brand"><a href="{{ english ? '/en/' : '/' }}"><img src="/clean/assets/logo.svg" alt="ERTNER&SO" width="190" height="19"></a><p>{{ english ? 'We make technology understandable.' : 'Wir machen Technik verständlich.' }}</p></div>
+            <div class="footer-brand"><a href="{{ english ? '/en/' : '/' }}"><img src="https://ertnerundso.github.io/ertnerundso-contao-src/assets/images/logo.svg" alt="ERTNER&SO" width="190" height="19"></a><p>{{ english ? 'We make technology understandable.' : 'Wir machen Technik verständlich.' }}</p></div>
             <nav class="footer-nav" aria-label="{{ english ? 'Services' : 'Leistungen' }}"><span class="micro">{{ english ? 'SERVICES' : 'LEISTUNGEN' }}</span><a href="{{ english ? '/en/#leistungen' : '/#leistungen' }}">{{ english ? 'Explainer films' : 'Erklärfilme' }}</a><a href="{{ english ? '/en/#leistungen' : '/#leistungen' }}">{{ english ? 'Assembly guides' : 'Montageanleitungen' }}</a><a href="{{ english ? '/en/#leistungen' : '/#leistungen' }}">{{ english ? 'Configurators' : 'Konfiguratoren' }}</a></nav>
             <nav class="footer-nav" aria-label="Studio"><span class="micro">STUDIO</span><a href="{{ english ? '/en/arbeiten/' : '/arbeiten/' }}">{{ english ? 'Work' : 'Arbeiten' }}</a><a href="{{ english ? '/en/journal/' : '/journal/' }}">Journal</a><a href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'Contact' : 'Kontakt' }}</a></nav>
             <nav class="footer-nav" aria-label="{{ english ? 'Contact' : 'Kontakt' }}"><span class="micro">{{ english ? 'CONTACT' : 'KONTAKT' }}</span><a href="mailto:projects@ertnerundso.com">projects@ertnerundso.com</a><a href="https://cal.ertnerundso.de/eunds/30min" target="_blank" rel="noopener">{{ english ? 'Book a call' : 'Termin buchen' }}</a></nav>

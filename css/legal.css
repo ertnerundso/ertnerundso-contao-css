@@ -1,29 +1,28 @@
 /* KOMPONENTE / STRUKTUR: Impressum und Datenschutz.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Impressum und Datenschutz — cms */
 .legal-hero-kicker {
-  padding-top: var(--space-legal-padding-top);
+  padding-top: clamp(var(--space-5xl), var(--space-position-14vw), var(--space-7xl));
 }
 .legal-hero-kicker .rte p {
   margin: 0;
 }
 .legal-hero-body {
-  padding-bottom: var(--space-110);
+  padding-bottom: var(--space-4xl);
 }
 .legal-hero-body h1 {
   max-width: 68.75rem;
-  margin: var(--space-pages-margin);
+  margin: var(--space-md) 0 var(--space-lg);
 }
 .legal-hero-body .rte p {
   max-width: 48.75rem;
   margin: 0;
 }
 .legal-section {
-  padding-block: var(--space-80);
+  padding-block: var(--space-3xl);
   display: grid;
   grid-template-columns: minmax(13.75rem, 0.6fr) minmax(0, 1.4fr);
-  gap: var(--space-pages-gap);
+  gap: clamp(var(--space-xl), var(--space-position-7vw), var(--space-5xl));
 }
 .legal-section h2 {
   margin: 0;
@@ -38,19 +37,19 @@
 .legal-section:last-child {
   padding-bottom: var(--space-section);
 }
+.split-line {
+  max-width: 100%;
+}
 @media (max-width: 760px) {
   .legal-hero-kicker {
-    padding-top: var(--space-95);
+    padding-top: var(--space-4xl);
   }
   .legal-hero-body {
-    padding-bottom: var(--space-65);
+    padding-bottom: var(--space-3xl);
   }
   .legal-section {
     grid-template-columns: 1fr;
-    gap: var(--space-18);
-    padding-block: var(--space-55);
+    gap: var(--space-md);
+    padding-block: var(--space-2xl);
   }
-}
-.split-line {
-  max-width: 100%;
 }

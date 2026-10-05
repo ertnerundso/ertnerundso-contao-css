@@ -1,18 +1,17 @@
 /* KOMPONENTE / STRUKTUR: Kopfbereich.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Kopfbereich — layout */
 .site-header {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 100;
-  height: 4.75rem;
+  z-index: var(--layout-z-header);
+  height: var(--layout-header-height);
 }
 .header-inner {
   height: 100%;
   display: flex;
   align-items: center;
-  gap: var(--space-35);
+  gap: var(--space-xl);
 }
 .brand {
   display: block;
@@ -33,26 +32,29 @@
 .header-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-22);
-  margin-left: var(--space-header-margin-left);
+  gap: var(--space-lg);
+  margin-left: clamp(var(--space-sm), var(--space-position-2vw), var(--space-xl));
 }
 .menu-toggle {
   display: none;
 }
 .site-header.is-compact {
-  height: 4.25rem;
+  height: var(--layout-header-compact-height);
 }
 .header-nav :is(a, strong) {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-header-padding);
+  padding: var(--space-sm) var(--space-sm);
+}
+.site-header.is-hidden {
+  pointer-events: none;
 }
 @media (max-width: 1000px) {
   .header-nav,
   .header-actions > .button,
   .lang-link {
-    display: none !important;
+    display: none;
   }
   .menu-toggle {
     display: flex;
@@ -60,9 +62,49 @@
   .site-header .header-actions {
     margin-left: auto;
   }
+  .header-nav {
+    gap: var(--space-md);
+  }
+  .brand {
+    width: 7.8125rem;
+  }
 }
 @media (max-width: 760px) {
   .site-header.is-compact {
-    height: 4rem;
+    height: var(--layout-header-compact-height);
+  }
+  .header-nav {
+    display: none;
+    position: absolute;
+    top: var(--space-3xl);
+    left: 0;
+    right: 0;
+    padding: var(--space-lg) var(--space-gutter) var(--space-xl);
+    flex-direction: column;
+    align-items: start;
+  }
+  .header-nav.is-open {
+    display: flex;
+  }
+  .header-actions {
+    margin-left: auto;
+    gap: var(--space-md);
+  }
+  .header-actions .button {
+    display: none;
+  }
+  .brand {
+    width: 8.125rem;
+  }
+  .site-header {
+    height: var(--layout-header-height);
+  }
+  .header-nav,
+  .header-actions > .button,
+  .lang-link {
+    display: none;
+  }
+  .menu-toggle {
+    display: flex;
   }
 }

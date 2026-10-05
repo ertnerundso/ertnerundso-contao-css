@@ -29,11 +29,7 @@
     --font-h1-weight: 700;
     --font-h1-min: 2.375rem;
     --font-h1-max: var(--font-step-1);
-    --font-h1-size: clamp(
-      var(--font-h1-min),
-      var(--font-fluid-1),
-      var(--font-h1-max)
-    );
+    --font-h1-size: clamp(var(--font-h1-min), var(--font-fluid-1), var(--font-h1-max));
     --font-h1-line-height: 1.06;
     /* H2: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
@@ -41,11 +37,7 @@
     --font-h2-weight: 700;
     --font-h2-min: 1.875rem;
     --font-h2-max: var(--font-step-2);
-    --font-h2-size: clamp(
-      var(--font-h2-min),
-      var(--font-fluid-2),
-      var(--font-h2-max)
-    );
+    --font-h2-size: clamp(var(--font-h2-min), var(--font-fluid-2), var(--font-h2-max));
     --font-h2-line-height: 1.1;
     /* H3: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
@@ -53,11 +45,7 @@
     --font-h3-weight: 700;
     --font-h3-min: 1.5rem;
     --font-h3-max: var(--font-step-3);
-    --font-h3-size: clamp(
-      var(--font-h3-min),
-      var(--font-fluid-3),
-      var(--font-h3-max)
-    );
+    --font-h3-size: clamp(var(--font-h3-min), var(--font-fluid-3), var(--font-h3-max));
     --font-h3-line-height: 1.15;
     /* H4: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
@@ -65,11 +53,7 @@
     --font-h4-weight: 700;
     --font-h4-min: 1.25rem;
     --font-h4-max: var(--font-step-4);
-    --font-h4-size: clamp(
-      var(--font-h4-min),
-      var(--font-fluid-4),
-      var(--font-h4-max)
-    );
+    --font-h4-size: clamp(var(--font-h4-min), var(--font-fluid-4), var(--font-h4-max));
     --font-h4-line-height: 1.2;
     /* H5: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
@@ -77,11 +61,7 @@
     --font-h5-weight: 700;
     --font-h5-min: 1.125rem;
     --font-h5-max: var(--font-step-5);
-    --font-h5-size: clamp(
-      var(--font-h5-min),
-      var(--font-fluid-5),
-      var(--font-h5-max)
-    );
+    --font-h5-size: clamp(var(--font-h5-min), var(--font-fluid-5), var(--font-h5-max));
     --font-h5-line-height: 1.25;
     /* H6: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
@@ -89,11 +69,7 @@
     --font-h6-weight: 700;
     --font-h6-min: 1.0625rem;
     --font-h6-max: var(--font-step-6);
-    --font-h6-size: clamp(
-      var(--font-h6-min),
-      var(--font-fluid-6),
-      var(--font-h6-max)
-    );
+    --font-h6-size: clamp(var(--font-h6-min), var(--font-fluid-6), var(--font-h6-max));
     --font-h6-line-height: 1.3;
     /* TEXTVARIANTEN: Einleitung, kleine Texte, Beschriftung, Zitat und Buttons */
     --font-lead-size: clamp(1.125rem, calc(1rem + 0.4vw), 1.375rem);
@@ -107,7 +83,6 @@
     --font-button-weight: 600;
     --font-quote-size: var(--font-h3-size);
   }
-  /* SCHRIFTDATEIEN: verfügbare Schnitte. 700 ist die echte Bold-Datei. */
   @font-face {
     font-family: "SK Modernist";
     src: url("../assets/fonts/sk-modernist-light.woff2") format("woff2");
@@ -143,13 +118,7 @@
     font-weight: 400;
     font-display: swap;
   }
-  body {
-    font-family: var(--font-body-family);
-    font-size: var(--font-body-size);
-    font-weight: var(--font-body-weight);
-    line-height: var(--font-body-line-height);
-    -webkit-font-smoothing: antialiased;
-  }
+  /* --- BUTTONS UND LINKS --- */
   button,
   input,
   optgroup,
@@ -157,7 +126,6 @@
   textarea {
     font: inherit;
   }
-  /* H1: Die einzige Anwendungsregel dieser Überschriftenstufe. */
   h1,
   :where(.h1, .display):not(:where(h1, h2, h3, h4, h5, h6)) {
     font-family: var(--font-h1-family);
@@ -165,7 +133,6 @@
     font-weight: var(--font-h1-weight);
     line-height: var(--font-h1-line-height);
   }
-  /* H2: Die einzige Anwendungsregel dieser Überschriftenstufe. */
   h2,
   :where(.h2, .section-heading):not(:where(h1, h2, h3, h4, h5, h6)) {
     font-family: var(--font-h2-family);
@@ -173,7 +140,6 @@
     font-weight: var(--font-h2-weight);
     line-height: var(--font-h2-line-height);
   }
-  /* H3: Die einzige Anwendungsregel dieser Überschriftenstufe. */
   h3,
   :where(.h3):not(:where(h1, h2, h3, h4, h5, h6)) {
     font-family: var(--font-h3-family);
@@ -181,7 +147,6 @@
     font-weight: var(--font-h3-weight);
     line-height: var(--font-h3-line-height);
   }
-  /* H4: Die einzige Anwendungsregel dieser Überschriftenstufe. */
   h4,
   :where(.h4):not(:where(h1, h2, h3, h4, h5, h6)) {
     font-family: var(--font-h4-family);
@@ -189,7 +154,6 @@
     font-weight: var(--font-h4-weight);
     line-height: var(--font-h4-line-height);
   }
-  /* H5: Die einzige Anwendungsregel dieser Überschriftenstufe. */
   h5,
   :where(.h5):not(:where(h1, h2, h3, h4, h5, h6)) {
     font-family: var(--font-h5-family);
@@ -197,7 +161,6 @@
     font-weight: var(--font-h5-weight);
     line-height: var(--font-h5-line-height);
   }
-  /* H6: Die einzige Anwendungsregel dieser Überschriftenstufe. */
   h6,
   :where(.h6):not(:where(h1, h2, h3, h4, h5, h6)) {
     font-family: var(--font-h6-family);
@@ -205,7 +168,7 @@
     font-weight: var(--font-h6-weight);
     line-height: var(--font-h6-line-height);
   }
-  /* Einleitung: vorhandene Klassen bleiben als verständliche Zuordnung erhalten. */
+  /* --- HERO --- */
   :where(
     .text-lead,
     .hero-lede,
@@ -216,6 +179,7 @@
     font-size: var(--font-lead-size);
     line-height: var(--font-lead-line-height);
   }
+  /* --- FOOTER --- */
   :where(
     .text-small,
     .service-card p,
@@ -228,14 +192,13 @@
   ):not(:where(h1, h2, h3, h4, h5, h6)) {
     font-size: var(--font-small-size);
   }
-  :where(
-    .text-caption,
-    figcaption,
-    .testimonial-project-link,
-    .row-category
-  ):not(:where(h1, h2, h3, h4, h5, h6)) {
+  /* --- KUNDENSTIMMEN --- */
+  :where(.text-caption, figcaption, .testimonial-project-link, .row-category):not(
+    :where(h1, h2, h3, h4, h5, h6)
+  ) {
     font-size: var(--font-caption-size);
   }
+  /* --- HEADER UND MENÜ --- */
   :where(
     .text-label,
     .micro,
@@ -272,7 +235,6 @@
     font-size: var(--font-quote-size);
     line-height: var(--font-h3-line-height);
   }
-  /* Links in Buttons sollen die zentrale Einstellung übernehmen. */
   .content-hyperlink > a {
     font: inherit;
   }
@@ -282,32 +244,31 @@
     font-weight: var(--font-h2-weight);
     line-height: var(--font-h2-line-height);
   }
-  /* Grundregeln — foundation */
   a {
     text-decoration: none;
   }
-  /* Allgemeine Texte und Schriften — foundation */
   body {
+    font-family: var(--font-body-family);
+    font-size: var(--font-body-size);
+    font-weight: var(--font-body-weight);
+    line-height: var(--font-body-line-height);
     -webkit-font-smoothing: antialiased;
   }
   .micro {
     text-transform: uppercase;
     letter-spacing: 0;
   }
-  main h1,
-  main h2,
-  main h3,
-  main h4 {
+  :where(h1, h2, h3, h4, h5, h6) {
     letter-spacing: 0;
+    text-transform: none;
+    text-wrap: balance;
   }
 }
 @layer layout {
-  /* Seitenraster — layout */
   .intro {
     text-align: center;
   }
-  /* Gemeinsame Bildschirmregeln — layout */
-  /* Kopfbereich — layout */
+  /* --- HEADER UND MENÜ --- */
   .header-nav {
     counter-reset: header-item;
     text-transform: uppercase;
@@ -316,11 +277,9 @@
     white-space: nowrap;
     counter-increment: header-item;
   }
-  /* Aufklappbares Menü — layout */
-  /* Fußbereich — layout */
 }
 @layer components {
-  /* Buttons und Links — components */
+  /* --- HEADER UND MENÜ --- */
   .button,
   .btn,
   .hero-contact,
@@ -330,31 +289,32 @@
     text-transform: none;
     white-space: nowrap;
   }
+  /* --- BUTTONS UND LINKS --- */
   .content-hyperlink.button > a,
   .hero-actions > .content-hyperlink.hero-contact > a,
   .contact-form .widget-submit.button button {
     text-decoration: none;
     text-transform: none;
   }
-  .button.outline,
-  .btn--secondary,
   .hero-work-link,
   .text-link,
   .content-hyperlink.text-link,
   .index-card .text-link {
     text-decoration: underline;
     text-decoration-thickness: 1px;
-    text-underline-offset: var(--space-0-26em);
+    text-underline-offset: var(--space-icon-align);
   }
   .hero-actions > .content-hyperlink.hero-work-link > a,
   .content-hyperlink.text-link > a {
     text-decoration: inherit;
   }
-  /* Karten — components */
-  /* Gemeinsame Karten und Tabellen — components */
   main th,
   main td {
     text-align: left;
+  }
+  /* --- FORMULARE --- */
+  .form-consent a {
+    text-decoration: underline;
   }
   @media (max-width: 760px) {
     .inner-hero h1,
@@ -364,36 +324,9 @@
       overflow-wrap: normal;
     }
   }
-  /* Formularfelder — components */
-  .form-consent a {
-    text-decoration: underline;
-  }
-  /* Reveal, Cursor und Projektmedien — components */
 }
 @layer sections {
-  /* STARTSEITE / HERO: Hauptüberschrift, Text und Links — sections */
-  .hero h1,
-  .display {
-    letter-spacing: 0;
-  }
-  /* Hauptüberschrift: Schriftstärke, Größe, Zeilenhöhe und Schriftfamilie */
-  .hero h1 {
-    text-transform: none;
-    text-wrap: balance;
-  }
-  /* Hauptüberschrift auf großen Bildschirmen: Hier die Größe ändern. */
-  .hero-work-link,
-  .hero-contact {
-    text-transform: uppercase;
-  }
-  /* Statement — sections */
-  .statement-copy h2 {
-    text-wrap: balance;
-  }
-  /* Projekte und Montage — sections */
-  .work-heading h2 {
-    text-transform: uppercase;
-  }
+  /* --- PROJEKTE UND MONTAGE --- */
   .work-subtitle {
     text-transform: none;
   }
@@ -406,11 +339,7 @@
   .work .work-card figcaption {
     text-transform: uppercase;
   }
-  .manual-book-header h2 {
-    text-transform: uppercase;
-  }
-  /* Prozess — sections */
-  /* Showreel — sections */
+  /* --- SHOWREEL --- */
   .showreel {
     text-align: left;
   }
@@ -429,10 +358,7 @@
   .showreel-caption {
     text-align: left;
   }
-  .showreel-lead h2 {
-    text-transform: none;
-  }
-  /* Contao-Sektionsbausteine — sections */
+  /* --- JOURNAL --- */
   .journal-list {
     counter-reset: home-journal;
   }
@@ -442,13 +368,14 @@
   .journal-list article.journal-row h3 {
     overflow-wrap: anywhere;
   }
+  /* --- BUTTONS UND LINKS --- */
   .questions-intro > .content-hyperlink.button a {
     text-decoration: none;
   }
-  /* Contao-Formulare — sections */
   .contact-hero-actions > .content-hyperlink.button a {
     text-decoration: none;
   }
+  /* --- FORMULARE --- */
   .contact-form .widget label,
   .contact-form .widget legend {
     text-transform: uppercase;
@@ -459,15 +386,15 @@
   .contact-form .widget-checkbox a {
     text-decoration: underline;
   }
+  /* --- KONTAKT UND FRAGEN --- */
   .booking-block .content-hyperlink a {
     text-decoration: underline;
-    text-underline-offset: var(--space-5);
+    text-underline-offset: var(--space-xs);
   }
   .contact-form .invisible,
   .contact-form .widget-checkbox legend {
     white-space: nowrap;
   }
-  /* Vorteile — sections */
   html.showreel-motion .benefits-lead,
   html.showreel-motion .benefits-impact {
     text-align: center;
@@ -478,32 +405,20 @@
   html.showreel-motion .benefits-table {
     text-align: left;
   }
-  /* Kundenstimmen — sections */
+  /* --- KUNDENSTIMMEN --- */
   .testimonial-quote p {
     text-wrap: balance;
   }
   .testimonial-project-link a {
     text-decoration: underline;
-    text-underline-offset: var(--space-5);
-  }
-  @media (max-width: 760px) {
-    .testimonial-quote p {
-      overflow-wrap: break-word;
-    }
+    text-underline-offset: var(--space-xs);
   }
   .client-references-label .micro {
     text-align: center;
   }
   .client-references-heading h2 {
     text-align: center;
-    text-wrap: balance;
   }
-  @media (max-width: 360px) {
-    .testimonial-quote p {
-      overflow-wrap: break-word;
-    }
-  }
-  /* Journal — sections */
   .journal-row h3 {
     overflow-wrap: anywhere;
   }
@@ -516,55 +431,64 @@
   .journal .journal-excerpt {
     -webkit-line-clamp: 3;
   }
-  /* Konfigurator — sections */
+  /* --- KONFIGURATOR --- */
   .configurator-scene-heading {
     text-align: center;
-  }
-  .configurator-scene-heading h2 {
-    text-wrap: balance;
   }
   .configurator-scene-intro {
     text-align: left;
   }
-  /* Kontakt und Fragen — sections */
   .contact-band {
     text-align: center;
   }
+  /* --- HERO --- */
   .hero-lede {
     text-wrap: pretty;
   }
   .question summary {
     list-style: none;
   }
+  @media (max-width: 760px) {
+    .testimonial-quote p {
+      overflow-wrap: break-word;
+    }
+  }
+  @media (max-width: 360px) {
+    .testimonial-quote p {
+      overflow-wrap: break-word;
+    }
+  }
 }
 @layer cms {
-  /* Innenseiten — cms */
+  /* --- RECHTSTEXTE --- */
   .legal-content a {
     text-decoration: underline;
   }
+  /* --- FORMULARE --- */
   .field label {
     text-transform: uppercase;
   }
-  /* News — cms */
+  /* --- NEWS --- */
   .news-grid .news-card h2 a {
     text-decoration: none;
   }
-  /* Contao-Inhalte — cms */
+  /* --- KONTAKT UND FRAGEN --- */
   .contact-band-copy > .content-hyperlink a {
     text-decoration: none;
   }
+  /* --- BUTTONS UND LINKS --- */
   .contact-band-copy > .content-hyperlink.text-link a {
     text-decoration: underline;
-    text-underline-offset: var(--space-5);
+    text-underline-offset: var(--space-xs);
   }
+  /* --- HERO --- */
   .hero-actions > .content-hyperlink a {
     text-decoration: none;
   }
   .hero-actions > .content-hyperlink.hero-work-link a {
     text-decoration: underline;
-    text-underline-offset: var(--space-5);
+    text-underline-offset: var(--space-xs);
   }
-  /* Impressum und Datenschutz — cms */
   .legal-hero-kicker .rte p {
     text-transform: uppercase;
   }
@@ -580,15 +504,9 @@
     hyphens: auto;
     overflow-wrap: anywhere;
   }
-  @media (max-width: 760px) {
-    .legal-hero-body h1 {
-      hyphens: manual;
-      overflow-wrap: normal;
-    }
-  }
   .contact-meta a {
     text-decoration: underline;
-    text-underline-offset: var(--space-0-27em);
+    text-underline-offset: var(--space-icon-align);
   }
   .inner-hero h1,
   .content-section h2,
@@ -602,5 +520,11 @@
   .split-line-inner {
     hyphens: auto;
     overflow-wrap: anywhere;
+  }
+  @media (max-width: 760px) {
+    .legal-hero-body h1 {
+      hyphens: manual;
+      overflow-wrap: normal;
+    }
   }
 }

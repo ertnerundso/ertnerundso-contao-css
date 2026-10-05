@@ -1,13 +1,12 @@
 /* KOMPONENTE / STRUKTUR: Journal.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Journal — sections */
 .journal-row {
   display: grid;
   grid-template-columns: 5rem minmax(0, 1fr) 10.625rem 1.75rem;
   align-items: center;
-  gap: var(--space-22);
-  padding: var(--space-journal-padding);
+  gap: var(--space-lg);
+  padding: var(--space-lg) 0;
 }
 .journal-row h3 {
   margin: 0;
@@ -52,7 +51,7 @@
   inset: 0;
 }
 .journal .journal-row:focus-within {
-  outline-offset: var(--space-3);
+  outline-offset: var(--space-xxs);
 }
 .journal .journal-excerpt {
   display: -webkit-box;
@@ -85,5 +84,12 @@
     flex-basis: min(82vw, 22.5rem);
     min-height: 21.25rem;
     padding: var(--space-lg);
+  }
+  .journal-row {
+    grid-template-columns: 1.25rem minmax(0, 1fr) 1rem;
+    gap: var(--space-sm);
+  }
+  .journal-row .row-category {
+    display: none;
   }
 }

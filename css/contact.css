@@ -1,14 +1,11 @@
 /* KOMPONENTE / STRUKTUR: Kontakt und Fragen.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Kontakt und Fragen — sections */
+.contact-band .text-link {
+  margin-left: var(--space-lg);
+}
 .contact-band {
   padding-block: var(--space-section);
-}
-.contact-band .text-link {
-  margin-left: var(--space-28);
-}
-.contact-band {
   padding-block-start: var(--space-section);
   overflow: hidden;
 }
@@ -19,10 +16,10 @@
 }
 .contact-band h2 {
   max-width: 53.125rem;
-  margin: var(--space-contact-margin);
+  margin: var(--space-md) auto var(--space-lg);
 }
 .contact-band-copy > p:last-child {
-  margin: var(--space-contact-margin-2);
+  margin: var(--space-md) 0 0;
 }
 .contact-band-image {
   width: 100%;
@@ -34,7 +31,7 @@
 .site-progress {
   position: fixed;
   z-index: 110;
-  top: var(--space-75);
+  top: var(--space-3xl);
   left: 0;
   right: 0;
   height: 2px;
@@ -47,7 +44,7 @@
 }
 .hero-message {
   max-width: 38.75rem;
-  margin-top: var(--space-contact-margin-top);
+  margin-top: clamp(var(--space-3xl), var(--space-position-10vh), var(--space-5xl));
 }
 .hero-message h1 {
   margin: 0;
@@ -62,27 +59,27 @@
 .questions-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  gap: var(--space-contact-gap);
+  gap: clamp(var(--space-3xl), var(--space-position-9vw), var(--space-6xl));
   align-items: start;
 }
 .questions-layout > div:first-child {
   position: sticky;
-  top: var(--space-132);
+  top: var(--space-5xl);
 }
 .questions .section-heading {
   max-width: 37.5rem;
-  margin: var(--space-contact-margin-3);
+  margin: var(--space-md) 0 var(--space-lg);
 }
 .questions .body-copy {
   max-width: 25rem;
-  margin: var(--space-contact-margin-4);
+  margin: 0 0 var(--space-xl);
 }
 .question summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-22);
-  padding: var(--space-contact-padding);
+  gap: var(--space-lg);
+  padding: var(--space-lg) 0;
 }
 .question summary::-webkit-details-marker {
   display: none;
@@ -92,25 +89,25 @@
 }
 .question p {
   max-width: 36.875rem;
-  margin: var(--space-contact-margin-5);
+  margin: 0 0 var(--space-xl);
 }
 .contact-hero-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-28);
+  gap: var(--space-lg);
   flex-wrap: wrap;
-  margin-top: var(--space-42);
+  margin-top: var(--space-2xl);
 }
 #anfrage,
 #termin {
-  scroll-margin-top: var(--space-105);
+  scroll-margin-top: var(--space-4xl);
 }
 @media (max-width: 760px) {
   .site-progress {
-    top: var(--space-63);
+    top: var(--space-3xl);
   }
   .hero-message {
-    margin-top: var(--space-25);
+    margin-top: var(--space-lg);
     max-width: 88%;
   }
   .hero-lede {
@@ -119,17 +116,28 @@
   }
   .questions-layout {
     grid-template-columns: 1fr;
-    gap: var(--space-55);
+    gap: var(--space-2xl);
   }
   .questions-layout > div:first-child {
     position: static;
   }
   .question summary {
-    padding: var(--space-contact-padding-2);
+    padding: var(--space-lg) 0;
   }
   .contact-hero-actions {
     margin-top: var(--space-xl);
-    gap: var(--space-20);
+    gap: var(--space-md);
+  }
+  .contact-band .text-link {
+    display: flex;
+    margin: var(--space-lg) 0 0;
+  }
+  .contact-band {
+    padding-top: var(--space-section);
+  }
+  .contact-band-image {
+    height: 22.5rem;
+    margin-top: var(--space-xl);
   }
 }
 @media (max-width: 520px) {
@@ -140,6 +148,9 @@
     max-width: 16.875rem;
   }
   .hero-actions {
-    gap: var(--space-10);
+    gap: var(--space-sm);
+  }
+  .contact-band-image {
+    height: 17.5rem;
   }
 }

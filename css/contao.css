@@ -1,7 +1,6 @@
 /* KOMPONENTE / STRUKTUR: Contao-Inhalte.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-/* Contao-Inhalte — cms */
 .inner-hero > .shell > .rte p {
   margin: 0;
 }
@@ -10,14 +9,14 @@
 }
 .contact-band-copy > .content-text h2 {
   max-width: 53.125rem;
-  margin: var(--space-contact-margin);
+  margin: var(--space-md) auto var(--space-lg);
 }
 .contact-band-copy > .content-hyperlink {
   display: inline-block;
   margin-inline: var(--space-sm);
 }
 .contact-band-copy .contact-note p {
-  margin: var(--space-contact-margin-2);
+  margin: var(--space-md) 0 0;
 }
 .contact-band-media {
   margin-top: var(--space-sm);
@@ -36,8 +35,6 @@
   width: 100%;
   height: 100%;
   margin: 0;
-}
-.hero-media figure {
   position: relative;
 }
 .hero-motion-video {
@@ -60,7 +57,7 @@
   align-items: center;
   justify-content: center;
   min-height: 3rem;
-  padding: var(--space-contao-padding);
+  padding: 0 var(--space-md);
 }
 .contact-band-copy > .content-hyperlink.button {
   padding: 0;
@@ -70,5 +67,5 @@
   align-items: center;
   justify-content: center;
   min-height: 2.875rem;
-  padding: var(--space-contao-padding-2);
+  padding: 0 var(--space-lg);
 }

@@ -1,75 +1,60 @@
-# ERTNER&SO Contao frontend
+# ERTNER&SO Contao Frontend
 
-This repository contains the modular stylesheet maintained by the site owner,
-the JavaScript source, fixed frontend assets, and copies of the active Contao
-templates for `staging.ertnerundso.de`. It does not contain the Contao database,
-CMS-managed content or customer uploads.
+Hier liegen CSS, JavaScript, feste Frontend-Dateien und versionierte Kopien der Contao-Templates. Inhalte, Datenbank und Kunden-Uploads bleiben in Contao.
 
-## Einfach CSS bearbeiten
+Zum Bearbeiten zuerst [CSS-ANLEITUNG.md](CSS-ANLEITUNG.md) lesen. Die im Interview vereinbarten Regeln stehen in [AGENTS.md](AGENTS.md); technische Details in [ARCHITECTURE.md](ARCHITECTURE.md).
 
-Die deutsche [CSS-Anleitung](CSS-ANLEITUNG.md) zeigt dir die zuständige Datei.
-Alle Schriftregeln stehen in `css/typography.css`; gemeinsame Werte in
-`css/base.css`; Flächen in `css/surfaces.css`; Bewegungen in `css/motion.css`.
-Komponenten-Dateien enthalten ausschließlich Anordnung und Abstände.
+## Aufbau
 
-The agreed decisions and approval rules are recorded in [AGENTS.md](AGENTS.md). Heading edits use central h1–h6 variable blocks, without section overrides.
+```text
+site.css             Einstieg: direkte Imports aller CSS-Dateien
+css/                 Sechs Systemdateien und 24 Dateien für Anordnung
+src/site.js          Kleiner Start für die JavaScript-Module
+src/config.js        Einstellungen für Verhalten und Integrationen
+src/*.js             Ein Modul je Funktion
+assets/fonts/        Schriftdateien und zugehörige Originale/Lizenzen
+assets/images/       Feste Bilder und Icons
+assets/videos/       Feste Videos
+templates/           Versionierte Contao-Template-Kopien
+scripts/             Architekturprüfungen und JavaScript-Build
+tests/              Lokale Browser-Prüfungen
+dist/               Generiertes JavaScript für die Website
+```
 
-## Live delivery
+## Bearbeiten und prüfen
 
-- The root `site.css` is the short, editable stylesheet entry point. It imports
-  six system files and 24 structure-only modules in `css/`, preserving existing cascade priorities.
-- The Contao page template continues to load that root `site.css` from GitHub
-  Pages. The browser then loads its imported modules from the same repository.
-  Edit a module, commit and push: no CSS build or generated bundle is required.
-  Allow a few minutes for Pages publishing and browser caching.
-- `npm run check:css` checks syntax, full import coverage, property ownership, tokens, breakpoints, layers and asset URLs.
-  GitHub Actions runs this read-only check on pull requests and on `main`.
-- `src/site.js` and `src/scene.js` are editable source. `npm run build:js`
-  produces the bundled JavaScript in `dist/`. A GitHub Action rebuilds and publishes it
-  when the source or dependencies change; the Contao template loads that file
-  from GitHub Pages. Allow a few minutes for Pages caching after a change.
-- `templates/` contains source-controlled copies of the active Contao templates.
-  GitHub edits to these files do **not** deploy automatically. Sync a changed
-  template to staging's persistent `templates/` directory and clear the Contao
-  cache before expecting it to appear on the site.
-- `assets/` contains the fixed assets used by the frontend. The site currently
-  serves these from `/clean/assets/` on staging. Changing an asset in GitHub
-  also requires synchronizing that asset to staging.
+CSS wird direkt bearbeitet. Es gibt keinen CSS-Build, keine zweite `site.css` und keine verschachtelten Imports. Alle 30 Module liegen flach in `css/`. Sechs Systemdateien besitzen die Gestaltung; alle übrigen Dateien ausschließlich Anordnung und Abstände.
 
-Production is not deployed from this repository. Do not put credentials,
-customer uploads or CMS database exports here; this repository is public.
+Alle h1–h6 verwenden ihre zentralen Einstellungen aus `typography.css`, zunächst echtes SK Modernist Bold. Die Desktop-Schriftgrößen folgen der 1,33-Skala. Körpertext startet mit IBM Plex Sans bei 17px. Die gemeinsame Abstandsskala und Layout-Regeln ersetzen bisherige Einzelwerte; Änderungen am bisherigen Erscheinungsbild sind dabei ausdrücklich erlaubt.
 
-## Editing CSS
+Vorhandene Klassen und JavaScript-Hooks bleiben erhalten. Neue Text-, Raster-, Button- und Kartenvarianten sind optional; es ist keine Umbenennung im vorhandenen HTML nötig.
 
-Change the relevant file in `css/`, then commit and push it. For local
-validation, run `npm ci` once and `npm run check:css` after editing. To add a
-module, add its import in the root `site.css` at the appropriate position
-within its existing layer. Repository font URLs use ../assets/fonts/ from the imported CSS; the checker verifies those files.
+Einmal installieren:
 
-The browser fetches the 30 modules separately, so this delivery uses more CSS
-requests than a combined bundle. All imports are direct children of `site.css`;
-there is no second entry point or nested import chain. If copying CSS to another
-server, copy both `site.css` and the complete `css/` directory, keeping the same
-relative paths. Open local previews through an HTTP server, not a file URL.
+```sh
+npm ci
+npx playwright install chromium
+```
 
-| Responsibility | Modules in `css/` |
-| --- | --- |
-| System: shared values | `base.css` |
-| System: all typography | `typography.css` |
-| System: all surfaces and paint | `surfaces.css` |
-| System: all motion | `motion.css` |
-| System: page structure and shared responsive structure | `layout.css`, `responsive.css` |
-| Header/footer structure | `header.css`, `navigation.css`, `footer.css` |
-| Shared component structure | `buttons.css`, `cards.css`, `containers.css`, `forms.css`, `media.css` |
-| Section structure | `hero.css`, `statement.css`, `work.css`, `process.css`, `showreel.css`, `benefits.css`, `testimonials.css`, `journal.css`, `configurator.css`, `contact.css` |
-| Contao wrapper structure | `contao-components.css`, `contao-forms.css` |
-| Page and CMS structure | `pages.css`, `news.css`, `contao.css`, `legal.css` |
+Nach Änderungen:
 
-The system/component refactor preserves the appearance of main commit `313b6aa`.
-System files contain named blocks for the original five cascade layers.
-Components use layered imports and keep their structural order. Existing HTML classes and JavaScript states are preserved. Fonts now load from assets/fonts in this repository and all headings use their global settings.
-`fonts.css` and `variables.css` remain merged into their responsible systems.
-Typography uses central per-level variables in its single owner; shared palette, spacing,
-radius, shadow and motion values use custom properties.
-See [ARCHITECTURE.md](ARCHITECTURE.md) for ownership, token namespaces,
-compatibility hooks and verification details.
+```sh
+npm run check:css
+npm run check:js
+npm run build:js
+npm run test:browser
+```
+
+CI führt diese Prüfungen auf Pull Requests aus. Die Browser-Tests verwenden lokale Beispielstrukturen, echte Repository-Schriften und simulierte externe Dienste. Sie versenden keine Kontaktanfragen oder Buchungen und ersetzen keine Prüfung der vollständigen Contao-Seite nach der Freigabe.
+
+## Veröffentlichung
+
+Änderungen zuerst auf einem eigenen Branch als Pull Request prüfen. **Main, Merge und Veröffentlichung benötigen die ausdrückliche Freigabe des Inhabers.** Das vereinbarte Vorhaben wird in zwei aufeinander aufbauenden PRs geprüft: Grundlagen/Typografie und Layout/Komponenten/JavaScript.
+
+Nach einer freigegebenen Änderung an `main` veröffentlicht GitHub Pages CSS, JavaScript und Repository-Assets. Die kurze `site.css` wird von Contao geladen; der Browser lädt ihre direkten Imports. JavaScript wird aus `src/` nach `dist/` gebündelt. Bei Moduländerungen baut die bestehende Aktion das JavaScript neu; veraltete Hash-Dateien werden entfernt.
+
+Die Template-Kopien in `templates/` werden durch GitHub **nicht automatisch in Contao installiert**. Die geänderten Kopien laden Fonts, Logo/Favicon und Konfigurator-Medien aus den neuen Repository-Unterordnern. Sie müssen nach Freigabe gesondert nach Staging synchronisiert werden; anschließend den Contao-Cache leeren. Bestehende CMS-Medien unter `/files/` und `/clean/assets/` werden dadurch nicht migriert.
+
+Für einen anderen Server `site.css`, `css/`, `assets/` und `dist/` gemeinsam kopieren und Template-URLs anpassen. Lokale Vorschauen über HTTP öffnen. Wegen der vereinbarten direkten Imports gibt es mehrere CSS-Anfragen; Pages- und Browser-Caches können Veröffentlichungen verzögern.
+
+Dieses Repository ist öffentlich. Keine Zugangsdaten, Datenbankexporte oder Kunden-Uploads ablegen. Produktion wird aus dieser Aufgabe nicht veröffentlicht.
