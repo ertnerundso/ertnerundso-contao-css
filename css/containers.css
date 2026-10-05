@@ -5,10 +5,8 @@
 .work-progress {
   display: none;
 }
-.steps,
-.benefits-table,
 .journal-list {
-  gap: var(--space-md);
+  gap: 0;
 }
 .journal-list,
 .question-list {
@@ -47,10 +45,6 @@
 .question summary {
   padding-block: var(--space-lg);
 }
-.index-grid,
-.mod_newslist.news-grid {
-  gap: var(--space-md);
-}
 .news-grid .news-card figure {
   width: 100%;
   margin: 0 0 var(--space-lg);
@@ -72,11 +66,6 @@ main td {
   vertical-align: top;
 }
 @media (max-width: 760px) {
-  .steps,
-  .benefits-table,
-  .journal-list {
-    gap: var(--space-sm);
-  }
   .step,
   .step:first-child,
   .step:last-child,

@@ -59,7 +59,7 @@ Buttons erhalten automatisch ein weißes Pfeilfeld. Bei Hover oder Tastaturfokus
 
 Das gemeinsame offene Raster ersetzt abgerundete Karten und Schatten. Leistungen, Vorteile, Prozess, Index-/News-Raster und Konfigurator-Texte erhalten automatisch einen Rahmen mit gestrichelten Linien und Kreuzen. Einzelkarten, Journal, Fragen und Projektkarten verwenden dasselbe Muster. Für neue Bereiche kann `line-frame` genutzt werden. `frames.css` regelt nur die Position der Kreuze, `surfaces.css` die Linien und ihre Farbe.
 
-Die Leistungskarten haben auch innen gestrichelte Trennlinien: zwischen Spalten und Reihen, auf dem Handy zwischen den gestapelten Karten. Farbe und Strichstärke folgen denselben Rahmen-Einstellungen. Die Anordnung steht in `cards.css`, die Trennlinien in `surfaces.css`; HTML-Klassen müssen dafür nicht geändert werden.
+Alle Kartenraster haben innen gestrichelte Trennlinien: zwischen Spalten und Reihen, auf dem Handy passend zur jeweiligen Anordnung. Das gilt für Leistungen, Vorteile, Prozess, Index/News, Konfigurator sowie Journal- und Projekt-Slider. Auch die Standard-Raster `grid-2-col`, `grid-3-col`, `grid-sidebar` und `grid-feature` erhalten beim Einsatz von `card` automatisch einen gemeinsamen Außenrahmen und innere Trenner. Farbe und Strichstärke folgen denselben Rahmen-Einstellungen in `base.css` / `layout.css`. Die Anordnung bleibt in den Komponenten, die Trennlinien in `surfaces.css`; bestehendes HTML muss nicht geändert werden.
 
 Schriften stehen immer in `typography.css`, Flächen in `surfaces.css`, Effekte in `motion.css`. Komponenten enthalten nur Struktur und Abstände. Bildschirmgrenzen stehen direkt in `@media`, weil normale CSS-Variablen dort nicht funktionieren.
 

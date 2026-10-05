@@ -454,6 +454,7 @@
     .news-grid,
     .configurator-scene-cards,
     .client-references-grid,
+    :is(.grid-2-col, .grid-3-col, .grid-sidebar, .grid-feature):has(> .card),
     .card,
     .question-list,
     .question:not(.question-list .question),
@@ -477,18 +478,66 @@
           right center / var(--layout-frame-marker-size) var(--layout-frame-stroke) no-repeat;
     }
   }
+  :is(.grid-2-col, .grid-3-col, .grid-sidebar, .grid-feature):has(> .card) > :is(.card, .service-card, .index-card, .work-card) {
+    border-block: 0;
+  }
   /* Dezente Trennlinien innerhalb der offenen Raster. */
   .question-list .question:not(:last-child) {
     border-bottom: var(--layout-frame-stroke) dashed var(--color-frame-line);
   }
-  :is(.benefit-column, .step) + :is(.benefit-column, .step) {
+  :is(.journal .journal-list, .work-track) > :is(.journal-row, .work-card) + :is(.journal-row, .work-card) {
     border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+  }
+  /* Am gemeinsamen Slider-Rand zeichnet nur die folgende Karte das Kreuz. */
+  :is(.journal .journal-list, .work-track) > :is(.journal-row, .work-card):not(:last-child) {
+    &::before,
+    &::after {
+      background:
+        linear-gradient(var(--color-frame-cross), var(--color-frame-cross))
+          left var(--space-frame-marker-half) center /
+          var(--layout-frame-stroke) var(--layout-frame-marker-size) no-repeat,
+        linear-gradient(var(--color-frame-cross), var(--color-frame-cross))
+          left center / var(--layout-frame-marker-size) var(--layout-frame-stroke) no-repeat;
+    }
+  }
+  .journal-list:not(.journal .journal-list) > .journal-row + .journal-row {
+    border-block-start: 0;
   }
   main :is(th, td) {
     border-bottom: var(--layout-frame-stroke) dashed var(--color-frame-line);
   }
   main tr:last-child :is(th, td) {
     border-bottom: 0;
+  }
+  /* Gleichmäßige Dreier-Raster; spätere Reihen erhalten zusätzlich waagerechte Trenner. */
+  @media (min-width: 761px) {
+    :is(.benefits-table, .steps, .configurator-scene-cards, .index-grid, .news-grid) > :not(:nth-child(3n + 1)),
+    .grid-3-col:has(> .card) > :not(:nth-child(3n + 1)),
+    :is(.grid-2-col, .grid-sidebar, .grid-feature):has(> .card) > :nth-child(2n) {
+      border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+    :is(.benefits-table, .steps, .configurator-scene-cards, .index-grid, .news-grid) > :nth-child(n + 4),
+    .grid-3-col:has(> .card) > :nth-child(n + 4),
+    :is(.grid-2-col, .grid-sidebar, .grid-feature):has(> .card) > :nth-child(n + 3) {
+      border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+  }
+  /* Index und News haben auf Tablets zwei Spalten. */
+  @media (max-width: 760px) {
+    :is(.index-grid, .news-grid) > :nth-child(2n) {
+      border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+    :is(.index-grid, .news-grid) > :nth-child(n + 3) {
+      border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+  }
+  @media (max-width: 520px) {
+    :is(.index-grid, .news-grid) > :not(:first-child) {
+      border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+    :is(.index-grid, .news-grid) > :nth-child(n) {
+      border-inline-start: 0;
+    }
   }
   /* Leistungen: Die erste Bildkarte belegt zwei Reihen; Trenner folgen den belegten Zellen. */
   @media not all and (max-width: 1000px) {
@@ -513,8 +562,8 @@
     .service-grid > .service-card + .service-card {
       border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
     }
-    :is(.benefit-column, .step) + :is(.benefit-column, .step) {
-      border-inline-start: 0;
+    :is(.benefits-table, .steps, .configurator-scene-cards) > :not(:first-child),
+    :is(.grid-2-col, .grid-3-col, .grid-sidebar, .grid-feature):has(> .card) > :not(:first-child) {
       border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
     }
   }
@@ -557,15 +606,6 @@
   /* --- PROJEKTE UND MONTAGE --- */
   .work .micro {
     color: var(--color-primary-on-dark);
-  }
-  .work-card:nth-child(2) {
-    background: var(--color-project-blue);
-  }
-  .work-card:nth-child(3) {
-    background: var(--color-project-neutral);
-  }
-  .work-card:nth-child(4) {
-    background: var(--color-project-teal);
   }
   .work-card .work-no {
     color: var(--color-link-soft);

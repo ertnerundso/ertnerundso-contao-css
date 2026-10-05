@@ -1,7 +1,93 @@
 import { test, expect } from '@playwright/test';
 
-const frames = '.service-grid, .benefits-table, .steps, .index-grid, .news-grid, .configurator-scene-cards, .card, .question-list, .journal-row, .client-references-grid, .work-card';
+const genericGrids = ':is(.grid-2-col, .grid-3-col, .grid-sidebar, .grid-feature):has(> .card)';
+const frames = `.service-grid, .benefits-table, .steps, .index-grid, .news-grid, .configurator-scene-cards, ${genericGrids}, .card:not(:is(.grid-2-col, .grid-3-col, .grid-sidebar, .grid-feature) > .card), .question-list, .journal-row, .client-references-grid, .work-card`;
 const cards = '.card, .service-card, .index-card, .step, .benefit-column, .journal-row, .question, .work-card, .configurator-scene-card';
+
+for (const width of [360, 520, 521, 760, 761, 1000, 1440]) {
+  test(`all card grids have continuous inner lines across multiple rows at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/tests/fixtures/frames.html');
+    const grids = [
+      ['.benefits-table', width > 760 ? 3 : 1],
+      ['.steps', width > 760 ? 3 : 1],
+      ['.configurator-scene-cards', width > 760 ? 3 : 1],
+      ['.index-grid', width > 760 ? 3 : width > 520 ? 2 : 1],
+      ['.news-grid', width > 760 ? 3 : width > 520 ? 2 : 1],
+      ['.grid-2-col', width > 760 ? 2 : 1],
+      ['.grid-3-col', width > 760 ? 3 : 1],
+      ['.grid-sidebar', width > 760 ? 2 : 1],
+      ['.grid-feature', width > 760 ? 2 : 1],
+    ];
+    await page.evaluate(() => {
+      document.documentElement.style.setProperty('--color-frame-line', 'rgb(90, 100, 110)');
+      document.documentElement.style.setProperty('--layout-frame-stroke', '2px');
+    });
+    for (const [selector, columns] of grids) {
+      const grid = page.locator(selector);
+      await grid.evaluate(element => {
+        while (element.children.length < 7) element.append(element.firstElementChild.cloneNode(true));
+      });
+      await expect(grid).toHaveCSS('gap', '0px');
+      const cells = grid.locator(':scope > *');
+      for (let index = 0; index < await cells.count(); index++) {
+        const cell = cells.nth(index);
+        const vertical = index % columns !== 0;
+        const horizontal = index >= columns;
+        await expect(cell).toHaveCSS('border-left-style', vertical ? 'dashed' : 'none');
+        await expect(cell).toHaveCSS('border-top-style', horizontal ? 'dashed' : 'none');
+        if (vertical) {
+          await expect(cell).toHaveCSS('border-left-width', '2px');
+          await expect(cell).toHaveCSS('border-left-color', 'rgb(90, 100, 110)');
+        }
+        if (horizontal) await expect(cell).toHaveCSS('border-top-width', '2px');
+        if (selector.startsWith('.grid-')) {
+          await expect(cell).toHaveCSS('border-bottom-width', '0px');
+          expect(await cell.evaluate(el => getComputedStyle(el, '::before').display)).toBe('none');
+        }
+      }
+      const boxes = await cells.evaluateAll(elements => elements.map(el => {
+        const rect = el.getBoundingClientRect();
+        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom };
+      }));
+      for (let index = 1; index < boxes.length; index++) {
+        if (index % columns !== 0) expect(boxes[index - 1].right).toBeCloseTo(boxes[index].left, 0);
+        if (index >= columns) expect(boxes[index - columns].bottom).toBeCloseTo(boxes[index].top, 0);
+      }
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  });
+}
+
+for (const width of [390, 1440]) {
+  test(`horizontal card sliders retain joined lines and scrolling at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/tests/fixtures/frames.html');
+    for (const selector of ['.journal-list', '.work-track']) {
+      const row = page.locator(selector);
+      await row.evaluate(el => el.append(el.firstElementChild.cloneNode(true)));
+      const cells = row.locator(':scope > *');
+      await expect(row).toHaveCSS('gap', '0px');
+      const boxes = await cells.evaluateAll(elements => elements.map(el => {
+        const rect = el.getBoundingClientRect();
+        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom };
+      }));
+      for (let index = 1; index < boxes.length; index++) {
+        await expect(cells.nth(index)).toHaveCSS('border-left-style', 'dashed');
+        expect(boxes[index - 1].right).toBeCloseTo(boxes[index].left, 0);
+        expect(boxes[index - 1].top).toBeCloseTo(boxes[index].top, 0);
+        expect(boxes[index - 1].bottom).toBeCloseTo(boxes[index].bottom, 0);
+      }
+      const scroller = selector === '.journal-list' ? row : page.locator('.work-viewport');
+      if (selector === '.journal-list' || width <= 760) {
+        await scroller.scrollIntoViewIfNeeded();
+        await scroller.evaluate(el => el.scrollTo({left: el.scrollWidth, behavior: 'instant'}));
+        expect(await scroller.evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
+        await expect(cells.last()).toBeInViewport();
+      }
+    }
+  });
+}
 
 for (const width of [360, 760, 761, 1000, 1001, 1440]) {
   test(`service dividers follow touching grid cells at ${width}px`, async ({ page }) => {
@@ -81,6 +167,9 @@ for (const width of [360, 760, 1000, 1440]) {
     for (const image of await page.locator('.service-card img, .index-card img, .work-card img').all()) {
       await expect(image).toHaveCSS('border-radius', '0px');
       await expect(image).toBeVisible();
+    }
+    for (const card of await page.locator('.work-track > .work-card').all()) {
+      await expect(card).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
     }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
     await expect(page.locator('table')).toHaveCSS('border-top-style', 'dashed');

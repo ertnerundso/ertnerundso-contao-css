@@ -39,7 +39,7 @@
 .index-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-sm);
+  gap: 0;
   margin-bottom: var(--space-section);
 }
 .index-card {
