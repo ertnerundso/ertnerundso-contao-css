@@ -66,14 +66,29 @@ test('FAQ separators respect Contao text wrappers and keyboard expansion', async
   await expect(questions.nth(2)).toHaveCSS('border-top-style', 'dashed');
 });
 
-for (const height of [640, 1000]) {
-  test(`configurator reveal includes all four crosses and cleans up at ${height}px height`, async ({ page }) => {
+async function expectSharedCardWidth(page) {
+  const alignment = await page.locator('.configurator-scene-cards').evaluate(cards => {
+    const rect = cards.getBoundingClientRect();
+    const reference = document.querySelector('.service-grid').getBoundingClientRect();
+    return { left: rect.left - reference.left, right: rect.right - reference.right };
+  });
+  expect(Math.abs(alignment.left)).toBeLessThanOrEqual(0.5);
+  expect(Math.abs(alignment.right)).toBeLessThanOrEqual(0.5);
+}
+
+for (const { width, height } of [
+  { width: 1440, height: 640 }, { width: 1440, height: 1000 },
+  { width: 1000, height: 900 }, { width: 1920, height: 1000 },
+]) {
+  test(`configurator crosses and shared content width survive reveal and cleanup at ${width}x${height}`, async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await page.setViewportSize({ width: 1440, height });
+    await page.setViewportSize({ width, height });
     await page.goto('/tests/fixtures/frames.html');
     await page.evaluate(async () => {
       await document.fonts.ready;
       const scene = document.querySelector('#configurator');
+      // Wie im Contao-Template: nur die inneren Container besitzen .shell.
+      scene.classList.remove('section', 'shell');
       scene.classList.add('configurator-scene');
       const heading = document.createElement('div');
       heading.className = 'configurator-scene-heading shell';
@@ -112,14 +127,17 @@ for (const height of [640, 1000]) {
     });
     expect(bounds.clipped).toBe(false);
     expect(bounds.belowSticky).toBeLessThanOrEqual(0.5);
+    await expectSharedCardWidth(page);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await expect(page.locator('.configurator-scene-card-reveal')).toHaveCount(0);
     await expect(page.locator('.configurator-scene')).not.toHaveClass(/is-scroll-ready/);
     await expect(page.locator('.configurator-scene-content > .configurator-scene-cards')).toHaveCount(1);
+    await expectSharedCardWidth(page);
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await expect(page.locator('.configurator-scene-card-reveal')).toHaveCount(1);
     await page.setViewportSize({ width: 390, height: 900 });
     await expect(page.locator('.configurator-scene-card-reveal')).toHaveCount(0);
     await expect(page.locator('.configurator-scene-cards')).toHaveCSS('overflow', 'visible');
+    await expectSharedCardWidth(page);
   });
 }

@@ -61,7 +61,7 @@ Das gemeinsame offene Raster ersetzt abgerundete Karten und Schatten. Leistungen
 
 Alle Kartenraster haben innen gestrichelte Trennlinien: zwischen Spalten und Reihen, auf dem Handy passend zur jeweiligen Anordnung. Das gilt für Leistungen, Vorteile, Prozess, Index/News, Konfigurator sowie Journal- und Projekt-Slider. Auch die Standard-Raster `grid-2-col`, `grid-3-col`, `grid-sidebar` und `grid-feature` erhalten beim Einsatz von `card` automatisch einen gemeinsamen Außenrahmen und innere Trenner. Farbe und Strichstärke folgen denselben Rahmen-Einstellungen in `base.css` / `layout.css`. Die Anordnung bleibt in den Komponenten, die Trennlinien in `surfaces.css`; bestehendes HTML muss nicht geändert werden.
 
-Einblendanimationen bewegen den Karteninhalt; die Rasterlinien bleiben stehen. Im Konfigurator ergänzt JavaScript vorübergehend einen Reveal-Container mit Platz für die Kreuze und entfernt ihn bei mobiler Ansicht oder reduzierter Bewegung wieder. FAQ-Trenner funktionieren auch mit den Contao-Text-Wrappern um einzelne Fragen.
+Einblendanimationen bewegen den Karteninhalt; die Rasterlinien bleiben stehen. Die Konfigurator-Karten folgen der gemeinsamen Inhaltsbreite und den Seitenrändern aus `layout.css`. JavaScript ergänzt dort vorübergehend einen Reveal-Container mit Platz für die Kreuze im Seitenabstand und entfernt ihn bei mobiler Ansicht oder reduzierter Bewegung wieder. FAQ-Trenner funktionieren auch mit den Contao-Text-Wrappern um einzelne Fragen.
 
 Schriften stehen immer in `typography.css`, Flächen in `surfaces.css`, Effekte in `motion.css`. Komponenten enthalten nur Struktur und Abstände. Bildschirmgrenzen stehen direkt in `@media`, weil normale CSS-Variablen dort nicht funktionieren.
 

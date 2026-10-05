@@ -50,7 +50,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  width: min(100%, var(--layout-configurator-cards-max));
+  width: 100%;
 }
 .configurator-scene-card {
   min-height: 10.9375rem;
@@ -101,9 +101,9 @@
   .configurator-scene.is-scroll-ready .configurator-scene-video {
     display: block;
   }
-  /* Der Reveal-Container umfasst auch die außen liegenden Kreuze. */
+  /* Die Karten folgen der Inhaltsbreite; die Kreuze liegen im Seitenabstand. */
   .configurator-scene-card-reveal {
-    width: min(100%, calc(var(--layout-configurator-cards-max) + var(--space-frame-marker-half) * 2));
+    width: calc(100% + var(--space-frame-marker-half) * 2);
     padding: var(--space-frame-marker-half);
     flex: 0 0 auto;
     max-height: 0;
