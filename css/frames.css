@@ -1,0 +1,35 @@
+/* KOMPONENTE / LINIENRAHMEN: Gemeinsame Anordnung der gestrichelten Rahmen und Kreuze.
+   Bestehende Raster nutzen ihn automatisch. Optional: .line-frame für neue Bereiche.
+   Farbe/Linien in surfaces.css; Größe der Kreuze in layout.css, Abstand in base.css. */
+:is(
+  .line-frame,
+  .service-grid,
+  .benefits-table,
+  .steps,
+  .index-grid,
+  .news-grid,
+  .configurator-scene-cards,
+  .client-references-grid,
+  .card,
+  .question-list,
+  .question:not(.question-list .question),
+  .journal-row,
+  .work-card
+) {
+  position: relative;
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    inset-inline: calc(var(--space-frame-marker-half) * -1);
+    height: var(--layout-frame-marker-size);
+    z-index: var(--layout-z-frame);
+    pointer-events: none;
+  }
+  &::before {
+    top: calc(var(--space-frame-marker-half) * -1);
+  }
+  &::after {
+    bottom: calc(var(--space-frame-marker-half) * -1);
+  }
+}

@@ -240,10 +240,8 @@
     --motion-image-zoom-transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     /* CARD: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-card-arrow-transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    --motion-card-transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
-    --motion-card-wash-transition: opacity 0.35s;
-    --motion-card-compact-transition:
-      background 0.25s, border-color 0.25s, box-shadow 0.25s;
+    --motion-card-transition: border-color 0.3s, transform 0.3s;
+    --motion-card-compact-transition: border-color 0.25s;
     /* FORMS: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-forms-transition: border-color 0.2s, box-shadow 0.2s;
     /* LINK: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
@@ -378,9 +376,6 @@
     transform-style: preserve-3d;
     transition: var(--motion-card-transition);
   }
-  .service-card:not(.featured):before {
-    transition: var(--motion-card-wash-transition);
-  }
   .index-card {
     transition: var(--motion-card-compact-transition);
   }
@@ -409,7 +404,6 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .service-card,
-    .service-card:before,
     .index-card,
     .button {
       transition: none;

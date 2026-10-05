@@ -85,9 +85,6 @@
 .journal-list article.journal-row h3 {
   min-width: 0;
 }
-.journal-list article.journal-row:before {
-  display: none;
-}
 @media (max-width: 760px) {
   .journal-list article.journal-row {
     grid-template-columns: minmax(0, 1fr) 1.375rem;

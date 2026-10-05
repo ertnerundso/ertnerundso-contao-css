@@ -63,6 +63,7 @@
   overflow: hidden;
 }
 .service-grid {
+  padding-block: var(--space-lg);
   display: grid;
   grid-template-columns: 1.32fr 0.82fr 0.82fr;
   grid-template-rows: minmax(18.75rem, auto) minmax(16.25rem, auto);
@@ -76,11 +77,6 @@
   flex-direction: column;
   justify-content: space-between;
   isolation: isolate;
-}
-.service-card:not(.featured):before {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
 }
 .service-card.featured .card-overlay {
   position: absolute;
@@ -103,9 +99,6 @@
 .card {
   position: relative;
   padding: var(--space-xl);
-}
-.card--plain {
-  padding: 0;
 }
 @media (max-width: 1000px) {
   .service-grid {

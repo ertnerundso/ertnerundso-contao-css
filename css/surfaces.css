@@ -235,28 +235,13 @@
   .card-arrow {
     color: var(--color-primary);
   }
-  .service-card,
   .statement-image,
   .inner-visual,
-  .project-visual img,
-  .index-card img {
+  .project-visual img {
     border-radius: var(--radius-md);
   }
   .services {
     background: var(--color-background);
-  }
-  .service-card:not(.featured):before {
-    content: "";
-    background: linear-gradient(
-      135deg,
-      var(--color-primary-wash),
-      var(--color-transparent) 46%
-    );
-    opacity: 0;
-  }
-  .service-card:not(.featured):hover:before,
-  .service-card:not(.featured):focus-visible:before {
-    opacity: 1;
   }
   .service-card.featured .micro {
     color: var(--color-label-on-dark);
@@ -285,36 +270,13 @@
   .steps {
     border: 0;
   }
-  .steps {
+  /* Alte Box-Optik entfernen: Die Inhaltsraster besitzen den gemeinsamen Linienrahmen. */
+  :is(.card, .service-card, .index-card, .step, .benefit-column,
+      .journal-row, .question, .work-card, .configurator-scene-card) {
     border: 0;
-  }
-  .card,
-  .service-card,
-  .index-card,
-  .step,
-  .benefit-column,
-  .journal-row,
-  .question,
-  .work-card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    box-shadow: var(--shadow-card);
-  }
-  .card:hover,
-  .service-card:hover,
-  .index-card:hover,
-  .journal-row:hover,
-  .question:hover {
-    border-color: var(--color-border-hover);
-    box-shadow: var(--shadow-card-hover);
-  }
-  .step,
-  .step:first-child,
-  .step:last-child,
-  .benefit-column,
-  .benefit-column + .benefit-column {
-    border: 1px solid var(--color-border);
+    border-radius: 0;
+    background: var(--color-transparent);
+    box-shadow: none;
   }
   .service-card.featured .card-overlay {
     color: var(--color-on-dark);
@@ -322,25 +284,16 @@
     backdrop-filter: blur(1.125rem) saturate(1.15);
     border-top: 0;
   }
-  /* --- JOURNAL --- */
-  .journal-row,
-  .journal-list article.journal-row {
-    border: 1px solid var(--color-border);
-  }
-  /* --- PROJEKTE UND MONTAGE --- */
-  .work-card {
-    border: 0;
-    background: var(--color-transparent);
-    box-shadow: none;
-  }
-  .work-card img {
-    border-radius: var(--radius-md);
+  /* --- PROJEKTE UND TABELLEN --- */
+  :is(.service-card, .index-card, .work-card) img {
+    border-radius: 0;
   }
   main table {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    box-shadow: var(--shadow-card);
+    border: 0;
+    border-block: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    border-radius: 0;
+    background: var(--color-transparent);
+    box-shadow: none;
   }
   main th,
   main td {
@@ -491,28 +444,59 @@
     background: var(--color-surface-dark);
     color: var(--color-on-dark);
   }
-  .card--plain {
-    border: 0;
-    box-shadow: none;
+  /* --- GEMEINSAME LINIEN UND KREUZE --- */
+  :is(
+    .line-frame,
+    .service-grid,
+    .benefits-table,
+    .steps,
+    .index-grid,
+    .news-grid,
+    .configurator-scene-cards,
+    .client-references-grid,
+    .card,
+    .question-list,
+    .question:not(.question-list .question),
+    .journal-row,
+    .work-card
+  ) {
+    border-block: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    &::before,
+    &::after {
+      content: "";
+      background:
+        linear-gradient(var(--color-frame-cross), var(--color-frame-cross))
+          left var(--space-frame-marker-half) center /
+          var(--layout-frame-stroke) var(--layout-frame-marker-size) no-repeat,
+        linear-gradient(var(--color-frame-cross), var(--color-frame-cross))
+          left center / var(--layout-frame-marker-size) var(--layout-frame-stroke) no-repeat,
+        linear-gradient(var(--color-frame-cross), var(--color-frame-cross))
+          right var(--space-frame-marker-half) center /
+          var(--layout-frame-stroke) var(--layout-frame-marker-size) no-repeat,
+        linear-gradient(var(--color-frame-cross), var(--color-frame-cross))
+          right center / var(--layout-frame-marker-size) var(--layout-frame-stroke) no-repeat;
+    }
+  }
+  /* Dezente Trennlinien innerhalb der offenen Raster. */
+  .question-list .question:not(:last-child) {
+    border-bottom: var(--layout-frame-stroke) dashed var(--color-frame-line);
+  }
+  :is(.benefit-column, .step) + :is(.benefit-column, .step) {
+    border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+  }
+  main :is(th, td) {
+    border-bottom: var(--layout-frame-stroke) dashed var(--color-frame-line);
+  }
+  main tr:last-child :is(th, td) {
+    border-bottom: 0;
   }
   @media (max-width: 760px) {
-    .steps {
-      border-bottom: 0;
-    }
-    .step,
-    .step:first-child,
-    .step:last-child {
-      border-left: 0;
-      border-top: 1px solid var(--color-border);
-    }
-    .step,
-    .step:first-child,
-    .step:last-child,
-    .benefit-column,
-    .benefit-column + .benefit-column {
-      border: 1px solid var(--color-border);
+    :is(.benefit-column, .step) + :is(.benefit-column, .step) {
+      border-inline-start: 0;
+      border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
     }
   }
+
 }
 @layer sections {
   /* --- HERO --- */
@@ -572,15 +556,6 @@
   }
   .work-index {
     color: var(--color-text-on-dark-soft);
-  }
-  .work-card:before {
-    content: "";
-    background: linear-gradient(
-      180deg,
-      var(--color-overlay-top),
-      var(--color-overlay-mid) 35%,
-      var(--color-overlay-bottom)
-    );
   }
   .work-card h3 {
     text-shadow: var(--shadow-text);
@@ -740,16 +715,6 @@
   .benefits-section {
     background: var(--color-on-dark);
   }
-  .benefit-column {
-    border-top: 1px solid var(--color-border);
-  }
-  .benefit-column + .benefit-column {
-    border-left: 1px solid var(--color-border);
-  }
-  .benefit-column:before {
-    content: "";
-    background: var(--color-primary);
-  }
   .benefit-column .rte p {
     color: var(--color-text-soft);
   }
@@ -815,22 +780,6 @@
   .client-references {
     background: var(--color-background);
   }
-  .client-references-grid {
-    border-block: 1px dashed var(--color-border-logo);
-  }
-  .client-references-grid:before,
-  .client-references-grid:after {
-    content: "";
-    background:
-      linear-gradient(var(--color-text), var(--color-text)) left 0.875rem center / 1px
-        1.75rem no-repeat,
-      linear-gradient(var(--color-text), var(--color-text)) left center / 1.75rem 1px
-        no-repeat,
-      linear-gradient(var(--color-text), var(--color-text)) right 0.875rem center / 1px
-        1.75rem no-repeat,
-      linear-gradient(var(--color-text), var(--color-text)) right center / 1.75rem 1px
-        no-repeat;
-  }
   .client-reference-logo img {
     filter: grayscale(1) brightness(0);
     opacity: 0.67;
@@ -841,12 +790,6 @@
   /* --- JOURNAL --- */
   .journal {
     background: var(--color-background);
-  }
-  .journal-list {
-    border-top: 1px solid var(--color-border-journal);
-  }
-  .journal-row {
-    border-bottom: 1px solid var(--color-border-journal);
   }
   .journal-row:hover {
     color: var(--color-primary);
@@ -905,11 +848,6 @@
   .configurator-scene-media > * {
     filter: brightness(1.012);
   }
-  .configurator-scene-card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-  }
   .configurator-scene-card p {
     color: var(--color-text-soft);
   }
@@ -937,12 +875,6 @@
   }
   .questions {
     background: var(--color-on-dark);
-  }
-  .question-list {
-    border-top: 1px solid var(--color-border);
-  }
-  .question {
-    border-bottom: 1px solid var(--color-border);
   }
   .question summary {
     cursor: pointer;
@@ -1000,10 +932,6 @@
     }
     .showreel-frame {
       border-width: 0 !important;
-    }
-    .benefit-column,
-    .benefit-column + .benefit-column {
-      border-left: 0;
     }
   }
 }
