@@ -490,7 +490,29 @@
   main tr:last-child :is(th, td) {
     border-bottom: 0;
   }
+  /* Leistungen: Die erste Bildkarte belegt zwei Reihen; Trenner folgen den belegten Zellen. */
+  @media not all and (max-width: 1000px) {
+    .service-grid:where(:not(:has(> .service-card.featured:first-child))) > .service-card:not(:nth-child(3n + 1)),
+    .service-grid:where(:has(> .service-card.featured:first-child)) > .service-card:not(:first-child, :nth-child(3n + 6)) {
+      border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+    .service-grid > .service-card:nth-child(n + 4) {
+      border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+  }
+  @media (min-width: 761px) and (max-width: 1000px) {
+    .service-grid:where(:not(:has(> .service-card.featured:first-child))) > .service-card:nth-child(2n),
+    .service-grid:where(:has(> .service-card.featured:first-child)) > .service-card:is(:nth-child(2), :nth-child(3), :nth-child(2n + 5)) {
+      border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+    .service-grid > .service-card:nth-child(n + 3) {
+      border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
+  }
   @media (max-width: 760px) {
+    .service-grid > .service-card + .service-card {
+      border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
+    }
     :is(.benefit-column, .step) + :is(.benefit-column, .step) {
       border-inline-start: 0;
       border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);

@@ -3,6 +3,55 @@ import { test, expect } from '@playwright/test';
 const frames = '.service-grid, .benefits-table, .steps, .index-grid, .news-grid, .configurator-scene-cards, .card, .question-list, .journal-row, .client-references-grid, .work-card';
 const cards = '.card, .service-card, .index-card, .step, .benefit-column, .journal-row, .question, .work-card, .configurator-scene-card';
 
+for (const width of [360, 760, 761, 1000, 1001, 1440]) {
+  test(`service dividers follow touching grid cells at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/tests/fixtures/frames.html');
+    await page.evaluate(() => {
+      document.documentElement.style.setProperty('--color-frame-line', 'rgb(90, 100, 110)');
+    });
+    const serviceCards = page.locator('.service-grid > .service-card');
+    const leftBorders = width <= 760 ? [] : width <= 1000 ? [1, 2, 4] : [1, 2, 3, 4];
+    const topBorders = width <= 760 ? [1, 2, 3, 4] : width <= 1000 ? [2, 3, 4] : [3, 4];
+    for (let index = 0; index < await serviceCards.count(); index++) {
+      const card = serviceCards.nth(index);
+      await expect(card).toHaveCSS('border-left-style', leftBorders.includes(index) ? 'dashed' : 'none');
+      await expect(card).toHaveCSS('border-top-style', topBorders.includes(index) ? 'dashed' : 'none');
+      if (leftBorders.includes(index)) await expect(card).toHaveCSS('border-left-color', 'rgb(90, 100, 110)');
+      if (topBorders.includes(index)) await expect(card).toHaveCSS('border-top-color', 'rgb(90, 100, 110)');
+    }
+    const cells = await serviceCards.evaluateAll(elements => elements.map(element => {
+      const rect = element.getBoundingClientRect();
+      return { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right };
+    }));
+    // Durchgehende Linien statt einzelner kurzer Kanten mit Lücken dazwischen.
+    if (width > 1000) {
+      expect(cells[1].right).toBeCloseTo(cells[2].left, 0);
+      expect(cells[1].bottom).toBeCloseTo(cells[3].top, 0);
+      expect(cells[2].bottom).toBeCloseTo(cells[4].top, 0);
+      expect(cells[3].right).toBeCloseTo(cells[4].left, 0);
+    } else if (width > 760) {
+      expect(cells[1].bottom).toBeCloseTo(cells[2].top, 0);
+      expect(cells[2].bottom).toBeCloseTo(cells[3].top, 0);
+      expect(cells[3].right).toBeCloseTo(cells[4].left, 0);
+    } else {
+      for (let index = 2; index < cells.length; index++) {
+        expect(cells[index - 1].bottom).toBeCloseTo(cells[index].top, 0);
+      }
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+
+    // Dasselbe Raster funktioniert auch ohne die optionale große Bildkarte.
+    await serviceCards.first().evaluate(element => element.remove());
+    const plainLeft = width <= 760 ? [] : width <= 1000 ? [1, 3] : [1, 2];
+    const plainTop = width <= 760 ? [1, 2, 3] : width <= 1000 ? [2, 3] : [3];
+    for (let index = 0; index < await serviceCards.count(); index++) {
+      await expect(serviceCards.nth(index)).toHaveCSS('border-left-style', plainLeft.includes(index) ? 'dashed' : 'none');
+      await expect(serviceCards.nth(index)).toHaveCSS('border-top-style', plainTop.includes(index) ? 'dashed' : 'none');
+    }
+  });
+}
+
 for (const width of [360, 760, 1000, 1440]) {
   test(`open line design replaces all card variants at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
