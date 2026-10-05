@@ -143,13 +143,13 @@
     cursor: pointer;
   }
   .menu-panel-nav a:hover {
-    color: var(--color-primary);
+    color: var(--color-menu-text);
   }
   .menu-panel-bottom > div a {
     color: var(--color-menu-muted);
   }
   .menu-panel-bottom > div a:hover {
-    color: var(--color-primary);
+    color: var(--color-menu-text);
   }
   .footer-brand p {
     color: var(--color-muted);
