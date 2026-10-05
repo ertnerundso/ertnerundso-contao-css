@@ -94,7 +94,7 @@
     --space-columns: clamp(var(--space-xl), 7vw, var(--space-5xl));
     --space-content-offset: max(
       var(--space-gutter),
-      calc((100vw - var(--layout-container-max)) / 2 + var(--space-gutter))
+      calc((100% - var(--layout-container-max)) / 2 + var(--space-gutter))
     );
     --space-hairline: 1px;
     --space-negative-hairline: -1px;

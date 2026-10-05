@@ -48,7 +48,6 @@ html.showreel-motion .benefits-section {
 html.showreel-motion .benefits-stage {
   position: relative;
   height: 100%;
-  max-width: none;
   padding-block: 0;
 }
 html.showreel-motion .benefits-lead,
@@ -86,7 +85,6 @@ html.showreel-motion .benefits-table {
   top: var(--space-position-70percent);
   left: var(--space-gutter);
   right: var(--space-gutter);
-  max-width: 85rem;
   margin: 0 auto;
 }
 @media (max-width: 760px) {

@@ -20,6 +20,7 @@
   /* Platz für die Kreuze innerhalb des Scrollbereichs: keine zusätzliche Überlaufstrecke. */
   scroll-padding-inline: var(--space-frame-marker-half);
   padding-inline: var(--space-frame-marker-half);
+  margin-inline: calc(var(--space-frame-marker-half) * -1);
   padding-block: var(--space-frame-marker-half) var(--space-lg);
 }
 .journal .journal-list::-webkit-scrollbar {

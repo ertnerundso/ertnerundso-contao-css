@@ -556,6 +556,7 @@
     text-underline-offset: var(--space-icon-align);
   }
   .inner-hero h1,
+  .news-detail > .news-intro h1,
   .content-section h2,
   .content-section h3 {
     hyphens: auto;

@@ -10,7 +10,7 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Farbe, Hintergrund, Rand, Schatten eines Elements | `css/surfaces.css` |
 | Animationen, Übergänge und Bewegungswerte | `css/motion.css` |
 | Maximale Inhaltsbreite, gemeinsame Raster, Header-Höhe | `css/layout.css` |
-| Höhe des aufgeklappten Menüs / Größe des runden Knopfs | `--layout-menu-height` / `--layout-menu-control-size` in `css/layout.css` |
+| Höhe des aufgeklappten Menüs / Größe des Menüknopfs | `--layout-menu-height` / `--layout-menu-control-size` in `css/layout.css` |
 | Menüfarbe / Geschwindigkeit / Verkleinerung der Seite | `--color-menu-*` in `css/base.css` / `--motion-menu-*` in `css/motion.css` |
 | Seitenränder und Abstand zwischen Bereichen | `--space-gutter` / `--space-section` in `css/base.css` |
 | Anordnung eines Bereichs, auch auf dem Handy | Etwa `css/hero.css`, `css/cards.css`, `css/contact.css` |
@@ -40,6 +40,10 @@ Suche in `typography.css` **H1**. Diese Einstellungen gelten für **jede h1 auf 
 `--font-scale: 1.33` steuert die Desktop-Abstufung. Mobile Mindestgrößen halten kleine Überschriften lesbar. Lesetext startet bei `1.0625rem` (17px bei 16px Browser-Grundschrift). Alle Größen berücksichtigen die Browser-Einstellungen.
 
 Für neue Textvarianten: `text-lead` (Einleitung), `text-small`, `text-caption` (Beschriftung), `text-label`. Eine echte Überschrift behält immer ihre h1–h6-Einstellungen.
+
+## Gemeinsame Seitenbreite
+
+`--layout-container-max` in `layout.css` legt die maximale Seitenbreite fest, `--space-gutter` in `base.css` den Innenabstand links und rechts. Alle äußeren Inhaltsbereiche und Kartenraster richten sich daran aus, auch auf Journal-/Projekt-Detailseiten und während der Scrollanimationen. Neue Bereiche erhalten außen `shell` oder `container`; verschachtelte Container ergänzen keine zweiten Seitenränder. Keine eigenen maximalen Außenbreiten in Komponenten hinzufügen. Textspalten, einzelne Logos und Medien dürfen innerhalb des gemeinsamen Rasters schmaler bleiben.
 
 ## Beispiel: Abstände und Anordnung
 

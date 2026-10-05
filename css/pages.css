@@ -87,7 +87,6 @@
 }
 .legal-content {
   padding-bottom: var(--space-section);
-  max-width: var(--layout-container-max);
 }
 .legal-content .content-section {
   max-width: none;

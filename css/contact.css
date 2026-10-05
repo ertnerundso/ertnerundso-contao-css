@@ -12,7 +12,7 @@
 .contact-band-copy {
   position: relative;
   z-index: 1;
-  padding: 0 var(--space-gutter);
+  padding-block: 0;
 }
 .contact-band h2 {
   max-width: 53.125rem;

@@ -22,7 +22,10 @@
   height: 3.625rem;
 }
 .project-visual {
-  margin: 0 0 var(--space-section);
+  margin-block: 0 var(--space-section);
+}
+.project-visual figure {
+  margin: 0;
 }
 .project-visual img {
   display: block;

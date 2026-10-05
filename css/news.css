@@ -2,8 +2,8 @@
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
 .news-detail > .news-intro {
-  padding: clamp(var(--space-5xl), var(--space-position-14vw), var(--space-7xl))
-    var(--space-content-offset) var(--space-4xl);
+  padding-block: clamp(var(--space-5xl), var(--space-position-14vw), var(--space-7xl))
+    var(--space-4xl);
 }
 .news-detail > .news-intro h1 {
   max-width: 68.75rem;
@@ -15,16 +15,6 @@
 .news-detail > .news-intro .rte p {
   margin: 0;
 }
-.news-detail > .project-visual {
-  max-width: var(--layout-container-max);
-  margin-inline: auto;
-  padding-inline: var(--space-gutter);
-}
-.news-detail > .content-section {
-  max-width: var(--layout-container-max);
-  margin-inline: auto;
-  padding-inline: var(--space-gutter);
-}
 .is-news-detail .mod_article > .inner-hero,
 .is-news-detail .mod_article > .shell,
 .is-news-detail .mod_article > .contact-band {
@@ -34,9 +24,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  max-width: var(--layout-container-max);
-  margin: 0 auto var(--space-section);
-  padding-inline: var(--space-gutter);
+  margin-block: 0 var(--space-section);
 }
 .news-grid .news-card {
   min-width: 0;

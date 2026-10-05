@@ -28,11 +28,33 @@
     top: var(--space-sm);
   }
   .shell,
-  .container {
+  .container,
+  .contact-band-copy,
+  .contact-band-media,
+  .showreel-outro,
+  .showreel-caption,
+  .news-detail > :is(.news-intro, .content-section, .project-visual, .testimonial-feature) {
     width: 100%;
     max-width: var(--layout-container-max);
     margin-inline: auto;
     padding-inline: var(--space-gutter);
+  }
+  /* Verschachtelte Container nutzen die vorhandenen Seitenränder genau einmal. */
+  :is(.shell, .container) :is(
+    .shell, .container, .contact-band-copy, .contact-band-media,
+    .showreel-outro, .showreel-caption,
+    .news-detail > :is(.news-intro, .content-section, .project-visual, .testimonial-feature)
+  ) {
+    max-width: none;
+    padding-inline: 0;
+  }
+  /* Contao-Listen ohne .shell: Rahmen liegen an der Inhaltskante, Kreuze im Seitenrand. */
+  .mod_newslist.news-grid {
+    width: min(calc(100% - 2 * var(--space-gutter)), var(--layout-content-max));
+    margin-inline: auto;
+  }
+  :is(.shell, .container) .mod_newslist.news-grid {
+    width: 100%;
   }
   :where(
       .intro,
