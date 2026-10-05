@@ -97,6 +97,15 @@ export function validateModule(name, content, importLayer) {
       );
     if (d.prop.startsWith('--') && d.parent.selector !== ':root')
       throw new Error(`${name}: shared tokens must be defined on :root.`);
+    if (!inFontFace && /^(?:font(?:-|$)|line-height$)/.test(d.prop)) {
+      if (!d.value.startsWith('var(--font-') && !['inherit', 'normal'].includes(d.value))
+        throw new Error(`${name}: typography applications must use central --font-* settings.`);
+      const headingSelector = d.parent.selector?.replace(/:not\(:where\(h1,\s*h2,\s*h3,\s*h4,\s*h5,\s*h6\)\)/g, '') || '';
+      if (d.parent.type === 'rule' && /\bh[1-6]\b/.test(headingSelector)) {
+        const first = d.parent.selector.split(',')[0].trim();
+        if (!/^h[1-6]$/.test(first)) throw new Error(`${name}: heading overrides are forbidden; edit the central h1-h6 settings.`);
+      }
+    }
     if (SPACING_PROPERTY.test(d.prop)) {
       valueParser(d.value).walk((node) => {
         if (
@@ -135,7 +144,7 @@ export function validateModule(name, content, importLayer) {
       });
     }
     for (const match of d.value.matchAll(/url\(\s*["']?([^"')\s]+)/g)) {
-      if (!/^(?:https?:|data:|\/|#)/i.test(match[1]))
+      if (!/^(?:https?:|data:|\/|#|\.\.\/assets\/(?:fonts|images|videos)\/)/i.test(match[1]))
         throw new Error(`${name}: use an absolute asset URL: ${match[1]}`);
     }
   });
@@ -180,6 +189,18 @@ export function validateProject(entry, files) {
   for (const name of [...files.keys(), ...SYSTEM_FILES])
     if (!imported.has(name))
       throw new Error(`Unimported stylesheet: css/${name}`);
+  for (let level = 1; level <= 6; level++) {
+    const rules = [];
+    imported.get('typography.css').walkRules(rule => {
+      if (rule.selector.split(',')[0].trim() === `h${level}`) rules.push(rule);
+    });
+    if (rules.length !== 1) throw new Error(`typography.css: h${level} needs exactly one central rule.`);
+    for (const [property, suffix] of [['font-family','family'],['font-weight','weight'],['font-size','size'],['line-height','line-height']]) {
+      const declarations = rules[0].nodes.filter(n => n.type === 'decl' && n.prop === property);
+      if (declarations.length !== 1 || declarations[0].value !== `var(--font-h${level}-${suffix})`)
+        throw new Error(`typography.css: h${level} ${property} must use its own central variable.`);
+    }
+  }
   const definitions = new Set();
   let declarations = 0;
   for (const module of imported.values())

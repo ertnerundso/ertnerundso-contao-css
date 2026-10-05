@@ -1,5 +1,6 @@
 import { readFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import postcss from 'postcss';
 import { validateProject } from './validate-css.mjs';
 
 if (process.argv.length > 2)
@@ -18,6 +19,13 @@ try {
     await readFile(resolve(root, 'site.css'), 'utf8'),
     files,
   );
+  for (const content of files.values()) {
+    const urls=[];
+    postcss.parse(content).walkDecls(d=>{
+      for(const match of d.value.matchAll(/url\(\s*["']?(\.\.\/assets\/[^"')\s]+)/g)) urls.push(match[1]);
+    });
+    for(const url of urls) await readFile(resolve(directory,decodeURIComponent(url)));
+  }
   console.log(
     `CSS check OK: ${result.modules} direct imports, ${result.declarations} declarations; system/component ownership, tokens, breakpoints and asset URLs validated.`,
   );

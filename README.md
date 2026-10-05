@@ -12,6 +12,8 @@ Alle Schriftregeln stehen in `css/typography.css`; gemeinsame Werte in
 `css/base.css`; Flächen in `css/surfaces.css`; Bewegungen in `css/motion.css`.
 Komponenten-Dateien enthalten ausschließlich Anordnung und Abstände.
 
+The agreed decisions and approval rules are recorded in [AGENTS.md](AGENTS.md). Heading edits use central h1–h6 variable blocks, without section overrides.
+
 ## Live delivery
 
 - The root `site.css` is the short, editable stylesheet entry point. It imports
@@ -42,7 +44,7 @@ customer uploads or CMS database exports here; this repository is public.
 Change the relevant file in `css/`, then commit and push it. For local
 validation, run `npm ci` once and `npm run check:css` after editing. To add a
 module, add its import in the root `site.css` at the appropriate position
-within its existing layer. Keep asset URLs absolute.
+within its existing layer. Repository font URLs use ../assets/fonts/ from the imported CSS; the checker verifies those files.
 
 The browser fetches the 30 modules separately, so this delivery uses more CSS
 requests than a combined bundle. All imports are direct children of `site.css`;
@@ -65,10 +67,9 @@ relative paths. Open local previews through an HTTP server, not a file URL.
 
 The system/component refactor preserves the appearance of main commit `313b6aa`.
 System files contain named blocks for the original five cascade layers.
-Components use layered imports and keep their structural order. No existing
-HTML classes, JavaScript states, font resources or asset URLs are changed.
+Components use layered imports and keep their structural order. Existing HTML classes and JavaScript states are preserved. Fonts now load from assets/fonts in this repository and all headings use their global settings.
 `fonts.css` and `variables.css` remain merged into their responsible systems.
-Typography uses direct values in its single owner; shared palette, spacing,
+Typography uses central per-level variables in its single owner; shared palette, spacing,
 radius, shadow and motion values use custom properties.
 See [ARCHITECTURE.md](ARCHITECTURE.md) for ownership, token namespaces,
 compatibility hooks and verification details.

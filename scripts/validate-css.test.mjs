@@ -48,7 +48,7 @@ test('surface styling uses palette values, including gradient colors', () => {
     );
 });
 
-test('font resources belong to typography and keep absolute URLs', () => {
+test('font resources belong to typography and support repository-relative URLs', () => {
   const face =
     '@font-face { font-family: Modernist; src: url(https://example.org/regular.woff2); }';
   assert.doesNotThrow(() =>
@@ -66,6 +66,7 @@ test('font resources belong to typography and keep absolute URLs', () => {
       ),
     /absolute asset URL/,
   );
+  assert.doesNotThrow(() => validateModule('typography.css', '@layer foundation { @font-face { src: url(../assets/fonts/regular.woff2); } }'));
 });
 
 test('new and variable breakpoints require an explicit architecture update', () => {
@@ -96,6 +97,13 @@ function project() {
     [...SYSTEM_FILES].map((name) => [name, '@layer foundation {}']),
   );
   files.set('base.css', '@layer foundation { :root { --space-lg: 1.5rem; } }');
+  const tokens=[], rules=[];
+  for(let n=1;n<=6;n++) {
+    const properties=[['font-family','family','Arial'],['font-weight','weight','700'],['font-size','size','1rem'],['line-height','line-height','1.1']];
+    tokens.push(...properties.map(([,key,value])=>`--font-h${n}-${key}: ${value};`));
+    rules.push(`h${n} {${properties.map(([prop,key])=>`${prop}: var(--font-h${n}-${key});`).join('')}}`);
+  }
+  files.set('typography.css', `@layer foundation { :root {${tokens.join('')}} ${rules.join('')} }`);
   files.set('hero.css', '.hero { gap: var(--space-lg); }');
   const entry =
     '@layer foundation, layout, components, sections, cms;\n' +
@@ -139,4 +147,11 @@ test('entry rejects duplicate imports and incorrect cascade order', () => {
       ),
     /five cascade layers/,
   );
+});
+
+test('a hidden hero font override is rejected even inside typography', () => {
+  assert.throws(() => validateModule('typography.css', '@layer sections { .hero h1 { font-size: var(--font-h1-size); } }'), /heading overrides/);
+  const {entry,files}=project();
+  files.set('typography.css', files.get('typography.css') + '@layer sections { h1 { font-size: var(--font-h1-size); } }');
+  assert.throws(() => validateProject(entry,files), /exactly one central rule/);
 });
