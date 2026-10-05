@@ -123,7 +123,7 @@ main td {
   text-align: left;
   vertical-align: top;
   font:
-    400 var(--type-card-body)/1.55 Plex,
+    400 0.9375rem/1.55 Plex,
     Arial,
     sans-serif;
 }
@@ -135,7 +135,7 @@ main th {
   .inner-hero h1,
   .legal-hero-body h1,
   .news-detail > .news-intro h1 {
-    font-size: var(--type-hero);
+    font-size: clamp(2.375rem, 10vw, 3.625rem);
   }
   .inner-hero h1,
   .legal-hero-body h1,
@@ -158,14 +158,14 @@ main th {
   .booking-block h2,
   .content-section h2,
   .legal-section h2 {
-    font-size: var(--type-section);
+    font-size: clamp(2.1875rem, 8.5vw, 3rem);
   }
   .service-card h3,
   .index-card h2,
   .journal-row h3,
   .step h3,
   .question summary {
-    font-size: var(--type-card);
+    font-size: clamp(1.625rem, 6.5vw, 2.125rem);
   }
   .steps,
   .benefits-table,

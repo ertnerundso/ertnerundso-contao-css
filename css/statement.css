@@ -10,11 +10,19 @@
 }
 .statement-copy h2 {
   font:
-    300 var(--type-section)/1.08 Modernist,
+    300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
     Arial,
     sans-serif;
   margin: var(--space-lg) 0 var(--space-xl);
   text-wrap: balance;
+}
+@media (max-width: 760px) {
+  .statement-copy h2 {
+    font:
+      300 clamp(2.1875rem, 8.5vw, 3rem)/1.08 Modernist,
+      Arial,
+      sans-serif;
+  }
 }
 .statement-image {
   height: clamp(27.5rem, 48vw, 41.25rem);

@@ -25,7 +25,10 @@
 .testimonial-quote p {
   max-width: none;
   color: var(--color-text);
-  font: 300 clamp(2.25rem, 3.6vw, 3.75rem)/1.16 var(--font-display);
+  font:
+    300 clamp(2.25rem, 3.6vw, 3.75rem)/1.16 Modernist,
+    Arial,
+    sans-serif;
   text-wrap: balance;
 }
 .testimonial-signature {
@@ -52,7 +55,10 @@
 .testimonial-company p {
   margin: 0;
   color: var(--color-muted);
-  font: 400 var(--type-card-body)/var(--leading-compact) var(--font-body);
+  font:
+    400 0.9375rem/1.5 Plex,
+    Arial,
+    sans-serif;
 }
 .testimonial-project-link {
   grid-column: 2;
@@ -61,7 +67,10 @@
 .testimonial-project-link a {
   display: inline-block;
   color: var(--color-text);
-  font: 400 var(--type-card-body)/var(--leading-compact) var(--font-body);
+  font:
+    400 0.9375rem/1.5 Plex,
+    Arial,
+    sans-serif;
   text-decoration: underline;
   text-underline-offset: 0.3125rem;
   transition: color 0.18s ease;
@@ -122,8 +131,10 @@
 }
 .client-references-heading h2 {
   margin: var(--space-lg) 0 0;
-  font: 300 clamp(2.375rem, 4.1vw, 4rem)/var(--leading-display)
-    var(--font-display);
+  font:
+    300 clamp(2.375rem, 4.1vw, 4rem)/1.08 Modernist,
+    Arial,
+    sans-serif;
   text-align: center;
   text-wrap: balance;
 }
@@ -147,14 +158,14 @@
   height: 1.75rem;
   pointer-events: none;
   background:
-    linear-gradient(var(--color-text), var(--color-text)) left 0.875rem
-      center / 1px 1.75rem no-repeat,
-    linear-gradient(var(--color-text), var(--color-text)) left center /
-      1.75rem 1px no-repeat,
+    linear-gradient(var(--color-text), var(--color-text)) left 0.875rem center /
+      1px 1.75rem no-repeat,
+    linear-gradient(var(--color-text), var(--color-text)) left center / 1.75rem
+      1px no-repeat,
     linear-gradient(var(--color-text), var(--color-text)) right 0.875rem
       center / 1px 1.75rem no-repeat,
-    linear-gradient(var(--color-text), var(--color-text)) right center /
-      1.75rem 1px no-repeat;
+    linear-gradient(var(--color-text), var(--color-text)) right center / 1.75rem
+      1px no-repeat;
 }
 .client-references-grid:before {
   top: -0.875rem;
