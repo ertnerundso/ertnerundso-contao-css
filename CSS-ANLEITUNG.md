@@ -30,7 +30,7 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 Suche in `typography.css` **H1**. Diese Einstellungen gelten für **jede h1 auf der Website**:
 
 ```css
---font-h1-family: "Commit Mono", "IBM Plex Mono", monospace;
+--font-h1-family: "Michroma", Arial, sans-serif;
 --font-h1-weight: 700;
 --font-h1-min: 2.375rem;
 --font-h1-max: var(--font-step-1);
@@ -38,9 +38,9 @@ Suche in `typography.css` **H1**. Diese Einstellungen gelten für **jede h1 auf 
 --font-h1-line-height: 1.06;
 ```
 
-Aktueller Schrift-Test: h1–h6 verwenden Commit Mono Bold (700), Lesetext und Buttons Commit Mono Regular (400). IBM Plex Mono bleibt für Labels und Metadaten erhalten. Größen, Skala und Abstände sind unverändert.
+Aktueller Schrift-Test: h1–h6 verwenden Michroma mit Gewicht 700. Die mitgelieferte Datei enthält nur Regular (400), daher erzeugt der Browser die fette Darstellung synthetisch. Für die Original-Darstellung `--font-h1-weight: 400;` setzen (entsprechend auch h2–h6). Lesetext und Buttons verwenden IBM Plex Sans Regular (400); IBM Plex Mono bleibt für Labels und Metadaten erhalten. Größen und Skala sind unverändert.
 
-`family` wählt die Schrift. Commit Mono ist mit 400 (Regular) und 700 (Bold) eingebunden. SK Modernist ist mit 300 (Light), 400 (Regular) und 700 (Bold) eingebunden. `min` / `max` begrenzen die Größe; für eine eigene Höchstgröße etwa `--font-h1-max: 4.5rem;` einsetzen. Für eine feste Größe kannst du `size` direkt auf `3rem` setzen. `line-height` ist die Zeilenhöhe ohne Einheit. h2–h6 haben gleich aufgebaute Blöcke.
+`family` wählt die Schrift. Michroma ist als Regular (400) eingebunden; 700 ist synthetisch fett. SK Modernist ist mit 300 (Light), 400 (Regular) und 700 (Bold) eingebunden. `min` / `max` begrenzen die Größe; für eine eigene Höchstgröße etwa `--font-h1-max: 4.5rem;` einsetzen. Für eine feste Größe kannst du `size` direkt auf `3rem` setzen. `line-height` ist die Zeilenhöhe ohne Einheit. h2–h6 haben gleich aufgebaute Blöcke.
 
 `--font-scale: 1.33` steuert die Desktop-Abstufung. Mobile Mindestgrößen halten kleine Überschriften lesbar. Lesetext startet bei `1.0625rem` (17px bei 16px Browser-Grundschrift). Alle Größen berücksichtigen die Browser-Einstellungen.
 

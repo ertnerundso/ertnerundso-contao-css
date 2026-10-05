@@ -4,7 +4,7 @@
 @layer foundation {
   :root {
     /* LESEN: Standardtext, etwa 17px bei einer Browser-Grundschrift von 16px */
-    --font-body-family: "Commit Mono", "IBM Plex Mono", monospace;
+    --font-body-family: "IBM Plex Sans", Arial, sans-serif;
     --font-body-size: 1.0625rem;
     --font-body-weight: 400;
     --font-body-line-height: 1.6;
@@ -25,7 +25,7 @@
     --font-fluid-1: calc(var(--font-fluid-2) * var(--font-scale));
     /* H1: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
-    --font-h1-family: "Commit Mono", "IBM Plex Mono", monospace;
+    --font-h1-family: "Michroma", Arial, sans-serif;
     --font-h1-weight: 700;
     --font-h1-min: 2.375rem;
     --font-h1-max: var(--font-step-1);
@@ -33,7 +33,7 @@
     --font-h1-line-height: 1.06;
     /* H2: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
-    --font-h2-family: "Commit Mono", "IBM Plex Mono", monospace;
+    --font-h2-family: "Michroma", Arial, sans-serif;
     --font-h2-weight: 700;
     --font-h2-min: 1.875rem;
     --font-h2-max: var(--font-step-2);
@@ -41,7 +41,7 @@
     --font-h2-line-height: 1.1;
     /* H3: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
-    --font-h3-family: "Commit Mono", "IBM Plex Mono", monospace;
+    --font-h3-family: "Michroma", Arial, sans-serif;
     --font-h3-weight: 700;
     --font-h3-min: 1.5rem;
     --font-h3-max: var(--font-step-3);
@@ -49,7 +49,7 @@
     --font-h3-line-height: 1.15;
     /* H4: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
-    --font-h4-family: "Commit Mono", "IBM Plex Mono", monospace;
+    --font-h4-family: "Michroma", Arial, sans-serif;
     --font-h4-weight: 700;
     --font-h4-min: 1.25rem;
     --font-h4-max: var(--font-step-4);
@@ -57,7 +57,7 @@
     --font-h4-line-height: 1.2;
     /* H5: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
-    --font-h5-family: "Commit Mono", "IBM Plex Mono", monospace;
+    --font-h5-family: "Michroma", Arial, sans-serif;
     --font-h5-weight: 700;
     --font-h5-min: 1.125rem;
     --font-h5-max: var(--font-step-5);
@@ -65,7 +65,7 @@
     --font-h5-line-height: 1.25;
     /* H6: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
-    --font-h6-family: "Commit Mono", "IBM Plex Mono", monospace;
+    --font-h6-family: "Michroma", Arial, sans-serif;
     --font-h6-weight: 700;
     --font-h6-min: 1.0625rem;
     --font-h6-max: var(--font-step-6);
@@ -86,20 +86,14 @@
     --font-testimonial-size: clamp(1.75rem, calc(1.35rem + 1.6vw), 3.25rem);
     --font-testimonial-weight: 700;
   }
-  /* SCHRIFT-TEST: Commit Mono Regular für Lesetext, Bold für h1–h6.
-     IBM Plex Mono bleibt die bestehende Schrift für Labels und Metadaten. */
+  /* SCHRIFT-TEST: Michroma liegt nur als Regular (400) vor.
+     h1–h6 nutzen 700: Der Browser erzeugt die fette Darstellung synthetisch.
+     Lesetext: IBM Plex Sans Regular. Labels: weiterhin IBM Plex Mono. */
   @font-face {
-    font-family: "Commit Mono";
-    src: url("../assets/fonts/commit-mono-regular.woff2") format("woff2");
+    font-family: "Michroma";
+    src: url("../assets/fonts/michroma-regular.woff2") format("woff2");
     font-style: normal;
     font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Commit Mono";
-    src: url("../assets/fonts/commit-mono-bold.woff2") format("woff2");
-    font-style: normal;
-    font-weight: 700;
     font-display: swap;
   }
   @font-face {

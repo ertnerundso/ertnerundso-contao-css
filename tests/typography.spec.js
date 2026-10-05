@@ -62,7 +62,13 @@ test('real fonts load from this repository and body text remains 17px', async ({
   const fonts=await page.evaluate(()=>[...document.fonts].map(f=>({family:f.family,weight:f.weight,status:f.status})));
   for(const weight of ['300','400','700'])expect(fonts).toContainEqual(expect.objectContaining({family:'SK Modernist',weight,status:'loaded'}));
   expect(fonts).toContainEqual(expect.objectContaining({family:'IBM Plex Sans',status:'loaded'}));
-  for(const weight of ['400','700'])expect(fonts).toContainEqual(expect.objectContaining({family:'Commit Mono',weight,status:'loaded'}));
+  expect(fonts).toContainEqual(expect.objectContaining({family:'Michroma',weight:'400',status:'loaded'}));
+  // Michroma besitzt nur Regular: keine falsch als Bold deklarierte Font-Datei.
+  expect(fonts.filter(font=>font.family==='Michroma').map(font=>font.weight)).toEqual(['400']);
+  await expect(page.locator('body')).toHaveCSS('font-family', '"IBM Plex Sans", Arial, sans-serif');
+  await expect(page.locator('body')).toHaveCSS('font-weight', '400');
+  await expect(page.locator('#headings h1')).toHaveCSS('font-family', 'Michroma, Arial, sans-serif');
+  await expect(page.locator('#headings h1')).toHaveCSS('font-weight', '700');
   expect(fonts).toContainEqual(expect.objectContaining({family:'IBM Plex Mono',weight:'400',status:'loaded'}));
   await expect(page.locator('body')).toHaveCSS('font-size','17px');
 });
