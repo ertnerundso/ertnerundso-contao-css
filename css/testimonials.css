@@ -77,8 +77,10 @@
   margin: 0 0 var(--space-xl);
 }
 .testimonial-switch {
-  display: inline-grid;
-  grid-template-columns: repeat(2, minmax(2.75rem, auto));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
   gap: var(--space-xxs);
   padding: var(--space-xxs);
 }

@@ -73,6 +73,8 @@ Die Navigation liegt transparent über der Seite, verschwindet beim Herunterscro
 
 Schriften liegen in `assets/fonts/`, Bilder in `assets/images/`, Videos in `assets/videos/`. Schriftdateien werden direkt aus dem Repository geladen. CMS-Uploads bleiben bei Contao.
 
+Kundenstimmen werden als Inhaltsgruppen mit der Klasse `testimonial-feature` in Contao gepflegt. Zitat: `testimonial-quote`; Name: `testimonial-company` innerhalb von `testimonial-signature`. Die Ansicht übernimmt alle Stimmen desselben Artikels in ihrer CMS-Reihenfolge; neue Einträge brauchen keine Änderungen im JavaScript. Der Umschalter unterstützt Klick, Pfeiltasten, Home und End. Mit nur einer Stimme bleibt der Inhalt ohne Umschalter sichtbar.
+
 Prüfen: einmal `npm ci` und `npx playwright install chromium`; danach `npm run check:css`, `npm run check:js`, `npm run build:js`, `npm run test:browser`. Die Tests verwenden simulierte Kontakt-/Kalenderdienste.
 
 Auf eigenen Branches arbeiten. **Merge nach main und Veröffentlichung erst nach ausdrücklicher Freigabe.** Template-Kopien müssen gesondert nach Contao synchronisiert werden. Verbindliche Regeln: `AGENTS.md`.
