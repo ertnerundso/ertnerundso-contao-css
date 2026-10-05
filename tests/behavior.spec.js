@@ -112,9 +112,9 @@ test('compact blue buttons keep their arrow tile and fit on mobile', async ({ pa
   await page.setViewportSize({ width: 390, height: 844 });
   await start(page);
   const button = page.locator('.hero-actions .button');
-  await expect(button).toHaveCSS('border-radius', '4px');
-  const arrow = await button.evaluate((element) => getComputedStyle(element, '::after').content);
-  expect(arrow).toContain('→');
+  await expect(button).toHaveCSS('border-radius', '8px');
+  await expect(button.locator('.button-arrow')).toHaveCount(1);
+  await expect(button.locator('.button-arrow')).toHaveAttribute('aria-hidden', 'true');
   const width = await button.evaluate((element) => element.getBoundingClientRect().width);
   expect(width).toBeLessThan(390);
 });
@@ -226,6 +226,8 @@ for (const success of [true, false])
     expect(payload.token).toBe('simulated-token');
     if (success) await expect(page.locator('[name=email]')).toHaveValue('');
     else await expect(page.locator('.widget-submit button')).toBeEnabled();
+    await expect(page.locator('.widget-submit button .button-arrow')).toHaveCount(1);
+    await expect(page.locator('.widget-submit button .button-label')).toHaveText(success ? 'Gesendet' : 'Senden');
     expect(errors).toEqual([]);
   });
 
@@ -393,4 +395,73 @@ test('returning from the browser back cache retains menu listeners', async ({
   await expect(page.locator('.menu-panel')).toHaveClass(/is-open/);
   await expect(page.locator('.menu-close')).toBeFocused();
   expect(errors).toEqual([]);
+});
+
+function addButtonVariants() {
+  const section = document.createElement('section');
+  section.id = 'arrow-variants';
+  section.className = 'section shell';
+  section.innerHTML = '<a class="btn btn--primary" href="#main">Projekt anfragen ↗</a><div class="content-hyperlink btn btn--secondary"><a href="#main"><strong>Mehr erfahren →</strong></a></div><div class="contact-form"><div class="widget-submit button"><button type="button">Speichern</button></div></div><a class="btn btn--text" href="#main">Arbeiten ansehen ↗</a>';
+  document.querySelector('main').prepend(section);
+}
+
+async function buttonGeometry(button) {
+  return button.evaluate(async (element) => {
+    await document.fonts.ready;
+    const rect = element.getBoundingClientRect();
+    const arrow = element.querySelector('.button-arrow').getBoundingClientRect();
+    const label = element.querySelector('.button-label').getBoundingClientRect();
+    return { width: rect.width, arrow: arrow.left - rect.left, label: label.left - rect.left };
+  });
+}
+
+test('arrow tiles slide left without resizing direct buttons or Contao wrappers', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  const errors = await start(page, addButtonVariants);
+  for (const button of [page.locator('#arrow-variants > .btn--primary'), page.locator('#arrow-variants .content-hyperlink > a')]) {
+    await page.mouse.move(0, 0);
+    const before = await buttonGeometry(button);
+    await button.hover();
+    await expect.poll(async () => (await buttonGeometry(button)).arrow).toBeLessThan(6);
+    const after = await buttonGeometry(button);
+    expect(after.width).toBeCloseTo(before.width, 0);
+    expect(after.label - before.label).toBeCloseTo(36, 0);
+    await page.mouse.move(0, 0);
+    await expect.poll(async () => (await buttonGeometry(button)).arrow).toBeCloseTo(before.arrow, 0);
+  }
+  const button = page.locator('#arrow-variants > .btn--primary');
+  await page.keyboard.press('Tab');
+  await button.focus();
+  await expect.poll(async () => (await buttonGeometry(button)).arrow).toBeLessThan(6);
+  expect(errors).toEqual([]);
+});
+
+test('arrow tiles preserve accessible names, nested labels and plain text links', async ({ page }) => {
+  await start(page, addButtonVariants);
+  const primary = page.getByRole('link', { name: 'Projekt anfragen', exact: true });
+  await expect(primary).toHaveCount(1);
+  await expect(primary.locator('.button-arrow')).toHaveAttribute('aria-hidden', 'true');
+  await expect(page.locator('#arrow-variants .content-hyperlink .button-label strong')).toHaveText('Mehr erfahren');
+  await expect(page.locator('#arrow-variants .widget-submit > .button-arrow')).toHaveCount(0);
+  await expect(page.locator('#arrow-variants .widget-submit button .button-arrow')).toHaveCount(1);
+  await expect(page.locator('#arrow-variants .btn--text .button-arrow')).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Arbeiten ansehen ↗' })).toHaveCount(1);
+  const before = await buttonGeometry(primary);
+  await primary.hover();
+  expect(await buttonGeometry(primary)).toEqual(before);
+  await expect(primary).toHaveCSS('transition-duration', '0s');
+});
+
+test('touch buttons keep the arrow on the right', async ({ browser }) => {
+  const context = await browser.newContext({
+    baseURL: 'http://127.0.0.1:3199', viewport: { width: 390, height: 844 },
+    isMobile: true, hasTouch: true, reducedMotion: 'no-preference',
+  });
+  const page = await context.newPage();
+  await start(page, addButtonVariants);
+  const button = page.locator('#arrow-variants > .btn--primary');
+  const before = await buttonGeometry(button);
+  await button.tap();
+  expect(await buttonGeometry(button)).toEqual(before);
+  await context.close();
 });

@@ -70,7 +70,9 @@
     /* MENÜ: Höhe des geöffneten Bereichs und Größe des runden Knopfs. */
     --layout-menu-height: min(34rem, 72svh);
     --layout-menu-control-size: 3.5rem;
+    /* BUTTONS: Gemeinsame Höhe und Größe des quadratischen Pfeilfelds. */
     --layout-button-height: 3rem;
+    --layout-button-icon-size: 1rem;
     --layout-z-skip: 200;
   }
   [hidden] {

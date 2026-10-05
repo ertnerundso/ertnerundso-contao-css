@@ -14,6 +14,9 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Menüfarbe / Geschwindigkeit / Verkleinerung der Seite | `--color-menu-*` in `css/base.css` / `--motion-menu-*` in `css/motion.css` |
 | Seitenränder und Abstand zwischen Bereichen | `--space-gutter` / `--space-section` in `css/base.css` |
 | Anordnung eines Bereichs, auch auf dem Handy | Etwa `css/hero.css`, `css/cards.css`, `css/contact.css` |
+| Button-Rundung / Pfeilfeld-Rundung | `--radius-button` / `--radius-button-arrow` in `css/base.css` |
+| Button-Höhe / Pfeilfeld-Größe | `--layout-button-height` in `css/layout.css` / `--space-button-arrow` in `css/base.css` |
+| Button-Bewegung | `--motion-button-duration` / `--motion-button-ease` in `css/motion.css` |
 | Allgemeine responsive Raster | `css/responsive.css` |
 | Scroll-Schwellen, Slider-Verhalten, Formular-/Kalender-Adressen | `src/config.js` |
 | Funktion eines JavaScript-Bereichs | Etwa `src/navigation.js`, `src/work.js`, `src/forms.js` |
@@ -50,6 +53,8 @@ Für neue Textvarianten: `text-lead` (Einleitung), `text-small`, `text-caption` 
 `xs`, `sm`, `md`, `lg`, `xl`, `2xl` bis `7xl` sind gemeinsame Abstände. An dieser Stelle einen anderen Token wählen, um nur diesen Abstand zu ändern. Den Wert in `base.css` ändern, um alle Verwendungen anzupassen. Die zusätzlich benannten Positionswerte gehören zu besonderen Medien-/Scroll-Anordnungen.
 
 Optionale Raster: `grid-2-col`, `grid-3-col`, `grid-sidebar` (1:2), `grid-feature` (2:3). Auf dem Handy stehen sie untereinander. Buttons: `btn btn--primary`, `btn btn--secondary` (Outline), `btn btn--text`. Karten: `card`, optional `card--dark` / `card--plain`. Vorhandene Contao-Klassen bleiben nutzbar; keine Pflicht zum Umbauen.
+
+Buttons erhalten automatisch ein weißes Pfeilfeld. Bei Hover oder Tastaturfokus wandert es nach links und der Text nach rechts; auf Touch-Geräten und bei reduzierter Bewegung bleibt die Anordnung ruhig. Textlinks bleiben ohne Pfeilfeld. Vorhandene Pfeile am Ende des Button-Texts werden ersetzt. Dafür müssen keine Contao-Klassen geändert werden.
 
 Schriften stehen immer in `typography.css`, Flächen in `surfaces.css`, Effekte in `motion.css`. Komponenten enthalten nur Struktur und Abstände. Bildschirmgrenzen stehen direkt in `@media`, weil normale CSS-Variablen dort nicht funktionieren.
 
