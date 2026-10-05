@@ -238,6 +238,17 @@
   .content-hyperlink > a {
     font: inherit;
   }
+  .menu-toggle,
+  .menu-panel-bottom,
+  .menu-close {
+    font-family: var(--font-body-family);
+    font-size: var(--font-button-size);
+    font-weight: var(--font-body-weight);
+    line-height: var(--font-label-line-height);
+  }
+  .menu-close {
+    font-size: var(--font-h4-size);
+  }
   .menu-panel-nav a {
     font-family: var(--font-h2-family);
     font-size: var(--font-h2-size);

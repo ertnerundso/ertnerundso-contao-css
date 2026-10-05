@@ -253,6 +253,9 @@
     /* ACCORDION: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-accordion-transition: transform 0.3s;
     /* MENU: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
+    --motion-menu-duration: 0.65s;
+    --motion-menu-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --motion-menu-page-scale: 0.98;
     --motion-menu-link-transition: opacity 0.4s, transform 0.5s, color 0.2s;
     --motion-menu-second-link-delay: 0.06s;
     --motion-menu-third-link-delay: 0.12s;
@@ -273,7 +276,21 @@
   }
   .menu-panel {
     /* Sichtbarkeit sofort umschalten, damit der Menüfokus sofort gesetzt werden kann. */
-    transition: opacity var(--motion-smooth);
+    transform: translateY(-100%);
+    transition:
+      transform var(--motion-menu-duration) var(--motion-menu-ease),
+      visibility 0s var(--motion-menu-duration);
+  }
+  .menu-panel.is-open {
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+  .page-shell {
+    transform-origin: center var(--menu-page-origin, 0px);
+    transition: transform var(--motion-menu-duration) var(--motion-menu-ease);
+  }
+  body.menu-open .page-shell {
+    transform: translateY(var(--layout-menu-height)) scale(var(--motion-menu-page-scale));
   }
   .menu-panel-nav a:hover {
     transform: translate(0.75rem);
@@ -297,7 +314,8 @@
     .js-ready [data-reveal] {
       transform: none;
     }
-    .menu-panel {
+    .menu-panel,
+    .page-shell {
       transition: none;
     }
     .work-viewport {

@@ -64,7 +64,6 @@
 }
 @layer layout {
   /* --- FOOTER --- */
-  .brand img,
   .footer-brand img {
     filter: invert(1);
   }
@@ -78,8 +77,22 @@
   }
   .site-header {
     background: var(--color-header-surface);
-    border-bottom: 1px dotted var(--color-border);
-    backdrop-filter: blur(1rem);
+    color: var(--color-on-dark);
+    mix-blend-mode: difference;
+    border: 0;
+  }
+  .site-header .brand img,
+  .menu-panel .brand img {
+    filter: none;
+  }
+  .page-shell {
+    background: var(--color-background);
+  }
+  body.menu-open {
+    background: var(--color-menu-surface);
+  }
+  body.menu-open .page-shell {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
   }
   .header-nav :is(a, strong) {
     border-radius: var(--radius-pill);
@@ -96,31 +109,44 @@
   .menu-toggle {
     border: 0;
     background: var(--color-transparent);
+    color: inherit;
+    cursor: pointer;
+  }
+  .menu-lines {
+    border: 1px solid var(--color-current);
+    border-radius: var(--radius-circle);
   }
   .menu-lines i {
-    background: var(--color-text);
+    background: var(--color-current);
   }
   body:has(.menu-toggle:hover, .menu-close:hover) .cursor-dot {
     opacity: 0;
   }
   .menu-panel {
-    background: var(--color-background);
+    background: var(--color-menu-surface);
+    color: var(--color-menu-text);
     visibility: hidden;
-    opacity: 0;
   }
   .menu-panel.is-open {
     visibility: visible;
-    opacity: 1;
   }
   .menu-close {
     background: var(--color-transparent);
+    color: inherit;
+    border: 1px solid var(--color-current);
+    border-radius: var(--radius-circle);
+    cursor: pointer;
+  }
+  .menu-dismiss {
+    background: var(--color-transparent);
     border: 0;
+    cursor: pointer;
   }
   .menu-panel-nav a:hover {
     color: var(--color-primary);
   }
   .menu-panel-bottom > div a {
-    color: var(--color-muted);
+    color: var(--color-menu-muted);
   }
   .menu-panel-bottom > div a:hover {
     color: var(--color-primary);
@@ -146,8 +172,12 @@
   }
   @media (prefers-reduced-transparency: reduce) {
     .site-header {
-      background: var(--color-on-dark);
-      backdrop-filter: none;
+      background: var(--color-background);
+      color: var(--color-text);
+      mix-blend-mode: normal;
+    }
+    .site-header .brand img {
+      filter: invert(1);
     }
   }
   @media (max-width: 760px) {

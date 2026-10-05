@@ -1,55 +1,63 @@
-/* KOMPONENTE / STRUKTUR: Aufklappbares Menü.
-   Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
-   Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
+/* KOMPONENTE / STRUKTUR: Menü oben, Seiteninhalt gleitet darunter nach unten.
+   Nur Anordnung und Abstände. Schrift: typography.css; Flächen: surfaces.css; Bewegung: motion.css. */
 .menu-toggle {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  padding: var(--space-sm);
+  gap: var(--space-md);
+  min-height: var(--layout-menu-control-size);
+  padding: 0;
 }
 .menu-lines {
   display: grid;
+  place-items: center;
+  align-content: center;
   gap: var(--space-xs);
-  width: 1.5rem;
+  width: var(--layout-menu-control-size);
+  height: var(--layout-menu-control-size);
 }
 .menu-lines i {
   display: block;
   height: 1.5px;
-  width: 100%;
+  width: 1.5rem;
+}
+.menu-lines i:nth-child(3) {
+  display: none;
 }
 .menu-panel {
   position: fixed;
-  inset: 0;
+  inset: 0 0 auto;
+  height: var(--layout-menu-height);
   z-index: var(--layout-z-menu);
+  overflow-y: auto;
 }
 .menu-panel-inner {
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  max-width: var(--layout-container-max);
 }
 .menu-panel-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: var(--layout-header-height);
+  min-height: var(--layout-header-height);
   flex: none;
 }
 .menu-close {
-  width: 2.75rem;
-  height: 2.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: var(--space-xs);
+  width: var(--layout-menu-control-size);
+  height: var(--layout-menu-control-size);
+  display: grid;
+  place-items: center;
+  padding: 0;
+  flex: none;
 }
 .menu-panel-nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: center;
   flex: 1;
-  gap: clamp(var(--space-md), var(--space-position-3vh), var(--space-2xl));
+  gap: var(--space-lg) var(--space-xl);
+  padding-block: var(--space-xl);
 }
 .menu-panel-nav a {
   width: max-content;
@@ -58,31 +66,39 @@
 .menu-panel-bottom {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: center;
   gap: var(--space-xl);
-  padding-bottom: clamp(var(--space-lg), var(--space-position-4vh), var(--space-2xl));
+  padding-bottom: var(--space-xl);
 }
 .menu-panel-bottom > div {
   display: flex;
-  gap: clamp(var(--space-md), var(--space-position-2-5vw), var(--space-2xl));
+  gap: var(--space-md) var(--space-lg);
   flex-wrap: wrap;
+}
+.menu-dismiss {
+  position: fixed;
+  inset: var(--space-menu-offset) 0 0;
+  z-index: var(--layout-z-menu);
+  width: 100%;
+  padding: 0;
+  display: none;
 }
 body.menu-open {
   overflow: hidden;
 }
+body.menu-open .menu-dismiss {
+  display: block;
+}
 @media (max-width: 760px) {
-  .menu-panel-top {
-    height: var(--layout-header-height);
-  }
   .menu-panel-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-md);
+    padding-block: var(--space-lg);
   }
   .menu-panel-bottom {
     align-items: start;
     flex-direction: column-reverse;
     gap: var(--space-lg);
-  }
-  .menu-panel-bottom > div {
-    gap: var(--space-md) var(--space-lg);
+    padding-bottom: var(--space-lg);
   }
 }
