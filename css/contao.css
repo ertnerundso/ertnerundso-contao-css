@@ -49,23 +49,3 @@
 .hero-message > .content-text {
   max-width: 100%;
 }
-.hero-actions > .content-hyperlink {
-  padding: 0;
-}
-.hero-actions > .content-hyperlink a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 3rem;
-  padding: 0 var(--space-md);
-}
-.contact-band-copy > .content-hyperlink.button {
-  padding: 0;
-}
-.contact-band-copy > .content-hyperlink.button a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.875rem;
-  padding: 0 var(--space-lg);
-}
