@@ -438,6 +438,12 @@
   .testimonial-project-link a {
     transition: var(--motion-link-transition);
   }
+  .testimonial-switch-button,
+  :is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink)::after,
+  :is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a::after,
+  .contact-form .widget-submit.button button::after {
+    transition: var(--motion-buttons-transition);
+  }
   .client-reference-logo img {
     transition: var(--motion-logo-transition);
   }

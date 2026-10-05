@@ -91,6 +91,34 @@ test('journal controls indicate both ends and move one article at a time', async
   expect(errors).toEqual([]);
 });
 
+test('testimonial switch unifies CMS voices and supports pointer and keyboard', async ({ page }) => {
+  const errors = await start(page);
+  const carousel = page.locator('.testimonial-carousel');
+  const tabs = carousel.getByRole('tab');
+  await expect(carousel.getByRole('tabpanel')).toHaveCount(1);
+  await expect(tabs).toHaveCount(2);
+  await expect(tabs.first()).toHaveAttribute('aria-selected', 'true');
+  await expect(carousel.getByRole('tabpanel')).toContainText('Steitz Secura');
+  await tabs.last().click();
+  await expect(carousel.getByRole('tabpanel')).toContainText('Visora Studios');
+  await tabs.last().press('ArrowRight');
+  await expect(tabs.first()).toBeFocused();
+  await expect(carousel.getByRole('tabpanel')).toContainText('Steitz Secura');
+  await expect(page.locator('main > .testimonial-feature')).toHaveCount(0);
+  expect(errors).toEqual([]);
+});
+
+test('compact blue buttons keep their arrow tile and fit on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await start(page);
+  const button = page.locator('.hero-actions .button');
+  await expect(button).toHaveCSS('border-radius', '4px');
+  const arrow = await button.evaluate((element) => getComputedStyle(element, '::after').content);
+  expect(arrow).toContain('→');
+  const width = await button.evaluate((element) => element.getBoundingClientRect().width);
+  expect(width).toBeLessThan(390);
+});
+
 test('reduced motion keeps text readable and leaves effects uninitialized', async ({
   page,
 }) => {
