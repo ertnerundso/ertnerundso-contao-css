@@ -7,7 +7,7 @@ Diese Regeln stammen aus dem Architektur-Interview mit dem Projektinhaber am 05.
 - Vor neuen Aufgaben Umfang und Plan mit dem Inhaber abstimmen. Innerhalb des freigegebenen Umfangs selbstständig bis zum geprüften Ergebnis arbeiten.
 - Auf eigenen Branches arbeiten und Änderungen als Pull Requests mit verständlicher Änderungsliste bereitstellen.
 - `main` niemals ohne ausdrückliche Freigabe des Inhabers verändern oder einen PR mergen. Staging-Templates und CMS-Inhalte ebenfalls erst nach Freigabe veröffentlichen. Keine Produktion-Deployments aus dieser Aufgabe ableiten.
-- Das aktuelle freigegebene Vorhaben umfasst zwei Schritte: Grundlagen/Typografie und anschließend Layout/Komponenten/JavaScript. Beide dürfen vorbereitet und geprüft, aber noch nicht gemergt werden.
+- Grundlagen/Typografie und Layout/Komponenten/JavaScript wurden mit Freigabe des Inhabers über PR #6 und #7 nach `main` gemergt. Für weitere Änderungen gelten weiterhin die obigen Freigaberegeln.
 - Keine zusätzlichen Funktionen, Designexperimente oder Änderungen außerhalb des vereinbarten Umfangs hinzufügen.
 
 ## CSS
@@ -15,7 +15,7 @@ Diese Regeln stammen aus dem Architektur-Interview mit dem Projektinhaber am 05.
 - Alle CSS-Dateien liegen direkt in `css/`. Die kurze `site.css` importiert sie direkt; kein CSS-Build.
 - `base.css` besitzt Farbpalette, Abstandsskala, Rundungen und Schatten.
 - `typography.css` besitzt Font-Dateien und sämtliche Texteinstellungen. Jede Überschriftenstufe h1–h6 hat einen zentralen Variablen-Block und gilt überall gleich. Keine Schriftüberschreibungen für einzelne Bereiche.
-- H1–h6 starten mit echtem SK Modernist Bold (700). Desktop-Größen folgen einer Skala von 1,33; `clamp()` begrenzt fließende Größen. Lesetext startet bei 1.0625rem (17px bei Standard-Grundschrift) in IBM Plex Sans. Wenige benannte Textvarianten sind erlaubt.
+- H1–h6 wurden mit echtem SK Modernist Bold (700) angelegt. Der Inhaber kann Familie und Schnitt je Stufe zentral ändern; Light (300), Regular (400) und Bold (700) sind eingebunden. Prüfungen sichern die Anwendung dieser Einstellungen ab, ohne Bold zu erzwingen. Desktop-Größen folgen einer Skala von 1,33; `clamp()` begrenzt fließende Größen. Lesetext startet bei 1.0625rem (17px bei Standard-Grundschrift) in IBM Plex Sans. Wenige benannte Textvarianten sind erlaubt.
 - `surfaces.css` besitzt sämtliche Flächen, Farben, Ränder und Schattenanwendungen. `motion.css` besitzt sämtliche Effekte, Übergänge und Bewegungswerte; JavaScript liest Gestaltungswerte daraus.
 - `layout.css` besitzt Container, Seitenraster und gemeinsame Struktur. `responsive.css` enthält allgemeine responsive Struktur. Spezifische Anordnung auf Handy/Tablet bleibt in der jeweiligen Komponenten-Datei.
 - Jede andere CSS-Datei enthält nur Struktur und Abstände über `--space-*`. Auch `font-size: var(...)`, Farben und Transitions gehören nicht in Komponenten.

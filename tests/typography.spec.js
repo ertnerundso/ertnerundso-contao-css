@@ -19,15 +19,23 @@ for (const width of [360, 520, 760, 1000, 1440]) {
           const style=getComputedStyle(heading);
           measurements.push([style.fontFamily,style.fontWeight,style.fontSize,style.lineHeight]);parent.remove();
         }
-        values.push(measurements);
+        // Prüfe die Anwendung der editierbaren Einstellungen statt eines festen Schnitts.
+        const reference=document.createElement('span');
+        for(const property of ['font-family','font-weight','font-size','line-height']) {
+          const setting=property==='line-height'?'line-height':property.slice(5);
+          reference.style.setProperty(property,`var(--font-h${level}-${setting})`);
+        }
+        reference.textContent='Referenz';document.body.append(reference);
+        const style=getComputedStyle(reference);
+        const expected=[style.fontFamily,style.fontWeight,style.fontSize,style.lineHeight];
+        reference.remove();values.push({measurements,expected});
       }
       return values;
     });
-    for(const values of result) {
-      expect(new Set(values.map(v=>JSON.stringify(v))).size).toBe(1);
-      expect(values[0][0]).toContain('SK Modernist');expect(values[0][1]).toBe('700');
+    for(const {measurements,expected} of result) {
+      for(const actual of measurements)expect(actual).toEqual(expected);
     }
-    const sizes=result.map(v=>parseFloat(v[0][2]));
+    const sizes=result.map(v=>parseFloat(v.measurements[0][2]));
     expect(sizes[5]).toBeGreaterThanOrEqual(17);
     for(let i=0;i<5;i++)expect(sizes[i]).toBeGreaterThan(sizes[i+1]);
     if(width===1440)for(let i=0;i<5;i++)expect(sizes[i]/sizes[i+1]).toBeCloseTo(1.33,2);
@@ -46,8 +54,11 @@ test('changing the h1 variables changes every h1, without affecting h2', async (
 });
 
 test('real fonts load from this repository and body text remains 17px', async ({page}) => {
+  await page.evaluate(async()=>{
+    for(const weight of [300,400,700])await document.fonts.load(`${weight} 20px "SK Modernist"`);
+  });
   const fonts=await page.evaluate(()=>[...document.fonts].map(f=>({family:f.family,weight:f.weight,status:f.status})));
-  expect(fonts).toContainEqual(expect.objectContaining({family:'SK Modernist',weight:'700',status:'loaded'}));
+  for(const weight of ['300','400','700'])expect(fonts).toContainEqual(expect.objectContaining({family:'SK Modernist',weight,status:'loaded'}));
   expect(fonts).toContainEqual(expect.objectContaining({family:'IBM Plex Sans',status:'loaded'}));
   await expect(page.locator('body')).toHaveCSS('font-size','17px');
 });
