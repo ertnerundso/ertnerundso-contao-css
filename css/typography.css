@@ -42,7 +42,7 @@
     /* H3: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
     --font-h3-family: "SK Modernist", Arial, sans-serif;
-    --font-h3-weight: 700;
+    --font-h3-weight: 400;
     --font-h3-min: 1.5rem;
     --font-h3-max: var(--font-step-3);
     --font-h3-size: clamp(var(--font-h3-min), var(--font-fluid-3), var(--font-h3-max));
