@@ -136,12 +136,17 @@
 }
 .manual-book-inner {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
 }
+/* Überschrift und Buch teilen dieselbe Inhaltskante innerhalb der .shell-Seitenränder. */
 .manual-book-header {
-  position: absolute;
+  position: relative;
   z-index: 1;
-  top: clamp(var(--space-md), var(--space-position-4vw), var(--space-3xl));
-  left: 0;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  margin-top: clamp(var(--space-md), var(--space-position-4vw), var(--space-3xl));
   max-width: min(47%, 38.75rem);
 }
 .manual-book-header .micro {
@@ -151,6 +156,8 @@
   margin: 0;
 }
 .manual-book-player {
+  grid-column: 1;
+  grid-row: 1;
   margin: 0;
   padding-top: clamp(var(--space-4xl), var(--space-position-8vw), var(--space-5xl));
 }
@@ -166,6 +173,7 @@
   object-fit: cover;
 }
 .manual-book-copy {
+  grid-column: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(var(--space-xl), var(--space-position-7vw), var(--space-5xl));
@@ -181,13 +189,16 @@
 @media (max-width: 760px) {
   .manual-book-header {
     position: static;
+    grid-row: auto;
     max-width: 100%;
+    margin-top: 0;
     margin-bottom: var(--space-md);
   }
   .manual-book-header .micro {
     margin-bottom: var(--space-md);
   }
   .manual-book-player {
+    grid-row: auto;
     padding-top: 0;
   }
   .manual-book-player video {
