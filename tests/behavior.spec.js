@@ -86,7 +86,7 @@ test('journal controls indicate both ends and move one article at a time', async
   await expect(buttons.first()).toBeEnabled();
   await page
     .locator('.journal-list')
-    .evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: 'instant' }));
+    .press('End');
   await expect(buttons.last()).toBeDisabled();
   expect(errors).toEqual([]);
 });

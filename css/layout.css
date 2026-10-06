@@ -101,6 +101,9 @@
     --layout-button-height: 3rem;
     --layout-button-icon-size: 1rem;
     --layout-z-skip: 200;
+    /* JOURNAL: Mindestbreite je Karte; höchstens drei ganze Karten je Ansicht. */
+    --layout-journal-card-min: 20rem;
+    --layout-journal-columns-max: 3;
     /* LINIENRAHMEN: Strichstärke und gemeinsame Kreuz-Größe. */
     --layout-frame-stroke: 1px;
     --layout-frame-marker-size: calc(var(--space-frame-marker-half) * 2);

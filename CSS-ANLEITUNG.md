@@ -88,3 +88,5 @@ Der Abschluss der Montagegalerie liegt als Contao-Inhaltsgruppe `work-outro` nac
 Prüfen: einmal `npm ci` und `npx playwright install chromium`; danach `npm run check:css`, `npm run check:js`, `npm run build:js`, `npm run test:browser`. Die Tests verwenden simulierte Kontakt-/Kalenderdienste.
 
 Auf eigenen Branches arbeiten. **Merge nach main und Veröffentlichung erst nach ausdrücklicher Freigabe.** Template-Kopien müssen gesondert nach Contao synchronisiert werden. Verbindliche Regeln: `AGENTS.md`.
+
+Der Journal-Slider zeigt ganze Ansichten statt angeschnittener Karten. `--layout-journal-card-min` und `--layout-journal-columns-max` in `layout.css` bestimmen die sichtbare Anzahl. Zurück/Weiter, Pfeiltasten (im fokussierten Bereich) und horizontales Wischen blättern; Home/End springen zum Anfang/Ende. Auf der letzten Ansicht können Beiträge der vorherigen Ansicht erneut sichtbar sein, damit alle Spalten gefüllt bleiben. Artikel-Links und blaue Buttons werden aus den vorhandenen CMS-Links erstellt; neue Inhalte im CMS bleiben automatisch erreichbar. Wischschwelle: `journalSwipeThreshold` in `src/config.js`.

@@ -69,19 +69,58 @@
   display: flex;
   justify-content: flex-end;
   gap: var(--space-sm);
-  margin-bottom: var(--space-md);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xl);
 }
 .journal-slider-controls[hidden] {
   display: none;
 }
-.journal-slider-controls button {
+/* Mit JavaScript wird ohne seitlich vorbeiziehende/angeschnittene Karten geblättert.
+   Ohne JavaScript bleibt die native horizontale Liste vollständig bedienbar. */
+.journal .journal-list.is-journal-paged {
   display: grid;
-  place-items: center;
-  width: 2.625rem;
-  height: 2.625rem;
+  overflow: visible;
   padding: 0;
+  margin: 0;
+}
+.journal .is-journal-paged article.journal-row {
+  min-width: 0;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+}
+.journal .is-journal-paged article.journal-row[hidden] {
+  display: none;
+}
+.journal .is-journal-paged .row-category {
+  margin-bottom: var(--space-md);
+}
+.journal .is-journal-paged h3 {
+  margin: 0;
+}
+.journal .is-journal-paged .row-arrow,
+.journal .is-journal-paged h3 a::after {
+  display: none;
+}
+.journal .journal-read-link {
+  margin-top: auto;
+  align-self: start;
+}
+.journal-slider-status {
+  margin-inline-end: auto;
 }
 @media (max-width: 760px) {
+  .journal-slider-controls {
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+  .journal-slider-status {
+    flex-basis: 100%;
+    margin-inline-end: 0;
+  }
+  .journal .is-journal-paged article.journal-row .row-category {
+    display: block;
+  }
   .journal .journal-list article.journal-row {
     flex-basis: min(82vw, 100%, 22.5rem);
     min-height: 21.25rem;

@@ -448,13 +448,16 @@
   .client-reference-logo img {
     transition: var(--motion-logo-transition);
   }
+  .journal-page-previous .button-arrow::before {
+    transform: rotate(180deg);
+  }
   .journal-row {
     transition: var(--motion-journal-row-transition);
   }
   .journal .journal-list article.journal-row {
     transition: var(--motion-journal-card-transition);
   }
-  .journal .journal-list article.journal-row:hover {
+  .journal .journal-list:not(.is-journal-paged) article.journal-row:hover {
     transform: translateY(-0.25rem);
   }
   .configurator-scene-media > * {
