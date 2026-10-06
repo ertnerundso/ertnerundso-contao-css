@@ -14,7 +14,8 @@
     <base href="{{ base }}">
     {% for metaTag in metaTags|default %}<meta{{ metaTag }}>{% endfor %}
     {% for linkTag in linkTags|default %}<link{{ linkTag }}>{% endfor %}
-    {% if canonical|default %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+    {# Beide Live-Domains bleiben erreichbar; Contao erzeugt den Pfad, .com ist die Suchmaschinen-Adresse. #}
+    {% if canonical|default %}<link rel="canonical" href="{{ canonical|replace({'https://ertnerundso.de/': 'https://ertnerundso.com/'}) }}">{% endif %}
     <link rel="icon" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/images/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/fonts/sk-modernist-bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/fonts/ibm-plex-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
