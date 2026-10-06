@@ -4,8 +4,8 @@
   :root {
     /* Scroll-Skala: Reichweite und Stärke der wandernden Markierung (keine Nachlaufzeit). */
     --motion-scroll-progress-radius: 4;
-    --motion-scroll-progress-min-scale: 0.5;
-    --motion-scroll-progress-min-opacity: 0.24;
+    --motion-scroll-progress-min-scale: 0.6;
+    --motion-scroll-progress-min-opacity: 0.45;
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */

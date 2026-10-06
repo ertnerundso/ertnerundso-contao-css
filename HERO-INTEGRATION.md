@@ -13,7 +13,11 @@ Der Hero lädt keinen Film und hat keine eigene Scroll-Fixierung, Parallax-Beweg
 
 Die Hero-Bilder der deutschen und englischen Startseite (Inhalte 2181 und 2297) verwenden die ursprüngliche Datei und die Klassen `hero-media hero-media--centered`. Die übrigen CMS-Eigenschaften bleiben erhalten.
 
-Die Vorschau liegt im persistenten Dateivolume unter `files/site/hero-white-hand/`. Das Staging-Seitentemplate lädt sie ausschließlich auf `/`, `/en` und `/en/`. Sie enthält den aktuellen main samt Abendkorrekturen und diesem statischen Hero. Unterseiten laden weiterhin GitHub Pages.
+Die Vorschau liegt im persistenten Dateivolume unter `files/site/hero-white-hand-20261006-scroll/`. Das Staging-Seitentemplate lädt sie ausschließlich auf `/`, `/en` und `/en/`. Sie enthält den aktuellen main samt Abendkorrekturen und diesem statischen Hero. Unterseiten laden weiterhin GitHub Pages.
+
+Bei einer neuen Vorschau einen neuen Versionsordner verwenden und CSS, JavaScript sowie die relativ verlinkten Schriften und Bilder gemeinsam hochladen. Beide Pfade im Staging-Seitentemplate auf diesen Ordner setzen. Dadurch lädt auch ein Browser mit zwischengespeicherten CSS-Imports den zusammengehörigen neuen Stand.
+
+Die rechte Scroll-Skala gehört weiterhin zu Showreel, Arbeiten und MacBook-Konfigurator. Sie erscheint nur während ihrer tatsächlichen Scrollstrecke auf Desktop; Mobile und reduzierte Bewegung behalten das normale Layout ohne diese Scrollgeschichten. Die Striche sind 2 Pixel dick und bis zu 32 Pixel breit bei Standard-Grundschrift, damit sie auf großen Bildschirmen erkennbar bleiben.
 
 Nach freigegebenem Merge und erfolgreicher Pages-Veröffentlichung die beiden Vorschau-URLs im Staging-Template auf die regulären GitHub-Pages-URLs zurücksetzen. Zwischenzeitliche Template-Änderungen erhalten.
 
