@@ -45,6 +45,8 @@ Suche in `typography.css` **H1**. Diese Einstellungen gelten für **jede h1 auf 
 
 Für neue Textvarianten: `text-lead` (Einleitung), `text-small`, `text-caption` (Beschriftung), `text-label`. Eine echte Überschrift behält immer ihre h1–h6-Einstellungen.
 
+Für Buttons: `button` ist die blaue Variante, `button btn--secondary` die vorhandene Outline-Variante. `button btn--icon` zeigt nur den Pfeil; bei diesen Knöpfen immer einen beschreibenden `aria-label` setzen. Die Journal-Pfeile stehen unter dem Kartenraster, „Artikel lesen“ verwendet die sekundäre Variante.
+
 ## Gemeinsame Seitenbreite
 
 `--layout-container-max` in `layout.css` legt die maximale Seitenbreite fest, `--space-gutter` in `base.css` den Innenabstand links und rechts. Alle äußeren Inhaltsbereiche und Kartenraster richten sich daran aus, auch auf Journal-/Projekt-Detailseiten und während der Scrollanimationen. Neue Bereiche erhalten außen `shell` oder `container`; verschachtelte Container ergänzen keine zweiten Seitenränder. Keine eigenen maximalen Außenbreiten in Komponenten hinzufügen. Textspalten, einzelne Logos und Medien dürfen innerhalb des gemeinsamen Rasters schmaler bleiben.

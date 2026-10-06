@@ -42,7 +42,7 @@
   margin-bottom: auto;
 }
 .index-card:has(img) > .micro,
-.index-card:has(img) > h2,
+.index-card:has(img) > :is(h2, h3),
 .index-card:has(img) > .text-link {
   margin-inline: var(--space-lg);
 }

@@ -32,6 +32,8 @@ async function expectWholePage(page) {
     await expect(link).toHaveAttribute('href',await card.locator('h3 a').getAttribute('href'));
     await expect(link).toHaveCSS('font-weight','400');
     await expect(link.locator('.button-arrow')).toHaveCount(1);
+    await expect(link).toHaveClass(/btn--secondary/);
+    await expect(link).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
   }
 }
 for(const width of [360,390,760,1000,1440,2560]) {
@@ -39,6 +41,19 @@ for(const width of [360,390,760,1000,1440,2560]) {
     await start(page,width);
     const next=page.getByRole('button',{name:'Nächste Beiträge'}),back=page.getByRole('button',{name:'Vorherige Beiträge'});
     await expect(back).toBeDisabled();
+    const controls = await page.locator('.journal-slider-controls').evaluate(el => {
+      const list = document.querySelector('.journal-list').getBoundingClientRect();
+      const rect = el.getBoundingClientRect();
+      return {left:rect.left-list.left,top:rect.top-list.bottom};
+    });
+    expect(Math.abs(controls.left)).toBeLessThanOrEqual(0.5);
+    expect(controls.top).toBeGreaterThan(0);
+    for (const button of [back,next]) {
+      await expect(button.locator('.button-label')).toBeHidden();
+      const rect = await button.boundingBox();
+      expect(rect.width).toBeGreaterThanOrEqual(44);
+      expect(rect.width).toBeCloseTo(rect.height,0);
+    }
     const visited=new Set();
     for(let iteration=0;iteration<8;iteration++) {
       await expectWholePage(page);
@@ -78,3 +93,26 @@ test('journal handles swipes without translating partial cards',async({page})=>{
   await expect(page.locator('.journal-slider-status')).toHaveText('02–02 / 08');
   await expectWholePage(page);
 });
+
+for (const motion of ['reduce','no-preference']) {
+  test(`arrow-only controls stay centered on hover/focus and support keyboard with ${motion} motion`, async({page})=>{
+    await page.emulateMedia({reducedMotion:motion});
+    await start(page,390);
+    const next=page.getByRole('button',{name:'Nächste Beiträge'});
+    const back=page.getByRole('button',{name:'Vorherige Beiträge'});
+    await expect(next).toHaveClass(/is-button-ready/);
+    const original=await next.boundingBox();
+    await next.hover();
+    await next.focus();
+    await expect.poll(async()=>next.evaluate(button=>{
+      const b=button.getBoundingClientRect(),a=button.querySelector('.button-arrow').getBoundingClientRect();
+      return Math.abs((a.left+a.right)-(b.left+b.right));
+    })).toBeLessThan(0.5);
+    const focused=await next.boundingBox();
+    expect(focused.width).toBe(original.width);
+    await next.press('Enter');
+    await expect(page.locator('.journal-slider-status')).toHaveText('02–02 / 08');
+    await back.press('Space');
+    await expect(page.locator('.journal-slider-status')).toHaveText('01–01 / 08');
+  });
+}

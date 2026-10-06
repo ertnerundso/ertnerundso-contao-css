@@ -14,12 +14,11 @@ export function initJournal(runtime) {
     status.className = 'journal-slider-status micro';
     status.setAttribute('aria-live', 'polite');
     status.setAttribute('aria-atomic', 'true');
-    controls.append(status);
     let columns = 1, page = 0, starts = [0];
     const buttons = [-1, 1].map(direction => {
       const button = document.createElement('button');
       button.type = 'button';
-      button.className = 'button journal-page-button';
+      button.className = 'button btn--icon journal-page-button';
       button.textContent = direction < 0 ? (english ? 'Back' : 'Zurück') : (english ? 'Next' : 'Weiter');
       button.setAttribute('aria-label', direction < 0
         ? (english ? 'Previous articles' : 'Vorherige Beiträge')
@@ -30,7 +29,8 @@ export function initJournal(runtime) {
       controls.append(button);
       return button;
     });
-    list.before(controls);
+    controls.append(status);
+    list.after(controls);
     list.tabIndex = 0;
     list.setAttribute('role', 'region');
     list.setAttribute('aria-label', english ? 'Journal articles' : 'Journalbeiträge');
@@ -43,7 +43,7 @@ export function initJournal(runtime) {
       if (!headlineLink) return;
       const link = headlineLink.cloneNode(false);
       link.removeAttribute('id');
-      link.className = 'button journal-read-link';
+      link.className = 'button btn--secondary journal-read-link';
       link.textContent = english ? 'Read article' : 'Artikel lesen';
       link.setAttribute('aria-label', `${link.textContent}: ${headlineLink.textContent.trim()}`);
       enhanceButton(link);
