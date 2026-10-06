@@ -3,7 +3,7 @@
 Die horizontale Arbeiten-Seite nutzt die vorhandenen Nachrichtenarchive **Arbeiten DE (1)** und **Work EN (2)**. Alle 15 Projekte der [alten Seite](https://ertnerundso.com/arbeiten/) sind übernommen; vorhandene Nachrichten und URLs werden weiterverwendet.
 
 - Titel, Beschreibung, Vorschaubild und Veröffentlichungsdatum unter **Nachrichten → Arbeiten DE / Work EN** bearbeiten. Die Reihenfolge folgt dem Datum aufsteigend.
-- Unter **Inhalt** stehen Einleitung, Bilder und Videos direkt als normale Contao-Inhaltselemente in einer flachen Liste. Die übernommenen Bilder behalten ihre Originalreihenfolge und lassen sich ersetzen, verschieben und ergänzen. Die Galerie wird vom Theme angeordnet; es gibt keine verschachtelte Elementgruppe mehr.
+- Unter **Inhalt** besitzt jedes Projekt eine **Original-Projektgalerie**. Darin stehen die übernommenen Bilder als normale Contao-Bildelemente in Originalreihenfolge. Sie lassen sich ersetzen, verschieben und ergänzen.
 - Ein **Projektvideo (CDN)** ist ein natives Hyperlink-Element mit dem Template `content_element/hyperlink/eo_project_video`: Video-Adresse im URL-Feld, Beschriftung im Linktext, Vorschaubild über „Bildlink“ bearbeiten. Die vorhandenen fünf Videos bleiben auf dem bisherigen Bunny-CDN und starten erst bei Bedienung.
 - Die deutschen und englischen Inhalte sind getrennt bearbeitbar; beide verwenden dieselben registrierten Mediendateien. Überschriften bleiben zentral als H3 Regular gestaltet.
 - Neue veröffentlichte Projekte erscheinen automatisch in der Galerie. Projektanzahl und aktueller Titel werden aus den CMS-Einträgen ermittelt.
@@ -23,4 +23,4 @@ Die Detailgalerien verwenden außen `shell project-gallery`: erstes Bild und Vid
 - Die Original-WebPs verwenden im CMS keine zusätzliche Bildgröße. Der aktuelle Staging-Image-Prozessor unterstützt kein WebP-Resizing; die vorhandenen komprimierten Originale werden direkt ausgeliefert und im gemeinsamen Raster angeordnet.
 - `templates/` enthält die synchronisierten Template-Kopien. Nach einer freigegebenen Veröffentlichung müssen Templates, CSS und `dist/` zusammen verfügbar sein. Staging lädt seit der Veröffentlichung von PR #24 und #25 wieder `site.css` und `dist/site.js` aus dem veröffentlichten `main` auf GitHub Pages. Die frühere Vorschau unter `files/site/work-portfolio-20261006/` wird nicht mehr verwendet.
 
-Die vorhandenen Texte, Übersetzungen, Testimonials und anderen Seitenbereiche bleiben erhalten. Die flache CMS-Struktur ist auf Staging aktiv. Hinweise zu Artikel-Templates und Layout-Rollen stehen in `CMS-STRUKTUR.md`; der Veröffentlichungsstand steht in `VEROEFFENTLICHUNG.md`.
+Die vorhandenen Texte, Übersetzungen, Testimonials und anderen Seitenbereiche bleiben erhalten. Produktion wird nicht verändert.
