@@ -19,6 +19,8 @@ export const config = {
   },
   // Rechte Scroll-Skala: Anzahl der Striche; Gestaltung in CSS.
   scrollProgress: { ticks: 52 },
+  // Kundenstimmen: Lesezeit pro Stimme in Millisekunden, nur im sichtbaren Bereich.
+  testimonials: { autoplayDelay: 8000, visibilityThreshold: 0.25 },
   showreel: {
     scrollRange: 5.3,
     scrollRangeWithoutBenefits: 2.8,

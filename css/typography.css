@@ -438,7 +438,8 @@
     text-wrap: balance;
   }
   .testimonial-carousel-label,
-  .testimonial-switch-button {
+  .testimonial-switch-button,
+  .testimonial-playback {
     font-family: var(--font-label-family);
     font-size: var(--font-label-size);
     font-weight: var(--font-label-weight);
