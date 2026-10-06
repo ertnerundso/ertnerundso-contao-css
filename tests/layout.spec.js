@@ -73,6 +73,7 @@ for (const width of [1920, 2560]) {
     }));
     await expectAligned(page, '.benefits-stage,.showreel-outro', true);
     await expectAligned(page, '.benefits-table');
+    await expect(page.locator('.benefits-impact h2')).toHaveCSS('font-size', await page.locator('.benefits-lead h2').evaluate(el => getComputedStyle(el).fontSize));
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await expect(page.locator('html')).not.toHaveClass(/showreel-motion/);
     await expectAligned(page, '.benefits-stage,.showreel-outro', true);

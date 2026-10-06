@@ -19,7 +19,7 @@
   width: 100%;
   margin-top: var(--space-4xl);
 }
-.benefits-impact h3 {
+.benefits-impact h2 {
   margin: 0;
 }
 .benefits-table {
@@ -64,7 +64,7 @@ html.showreel-motion .benefits-lead .micro {
   right: var(--space-gutter);
 }
 html.showreel-motion .benefits-lead h2,
-html.showreel-motion .benefits-impact h3 {
+html.showreel-motion .benefits-impact h2 {
   position: absolute;
   top: var(--space-position-14percent);
   left: var(--space-gutter);

@@ -29,7 +29,7 @@ export function initShowreel(runtime) {
         const filmCopy = showreelStage.querySelector('.showreel-film-copy');
         const phoneOverlay = showreelStage.querySelector('.showreel-phone-overlay');
         const benefitsLead = benefits?.querySelector('.benefits-lead');
-        const benefitsHeading = benefits?.querySelector('.benefits-impact h3');
+        const benefitsHeading = benefits?.querySelector('.benefits-impact h2');
         const benefitsTable = benefits?.querySelector('.benefits-table');
         const benefitColumns = benefits?.querySelectorAll('.benefit-column');
         const phoneWidth = () =>
