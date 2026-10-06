@@ -1,4 +1,5 @@
 {% set currentPath = app.request.pathInfo %}
+{% set staging = app.request.host == 'staging.ertnerundso.de' %}
 {% set english = currentPath == '/en' or currentPath starts with '/en/' %}
 {% set hasTranslation = english or currentPath == '/' or currentPath == '/arbeiten' or currentPath starts with '/arbeiten/' or currentPath == '/journal' or currentPath starts with '/journal/' or currentPath == '/kontakt' or currentPath starts with '/kontakt/' %}
 {% set languageSwitchPath = english ? (currentPath|slice(3)|default('/')) : (hasTranslation ? '/en' ~ currentPath : '/en/') %}
@@ -7,7 +8,7 @@
 <head>
     <meta charset="{{ charset }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="{{ robots }}">
+    <meta name="robots" content="{{ staging ? 'noindex,nofollow' : robots }}">
     <meta name="description" content="{{ description|u.truncate(320, '…') }}">
     <title>{{ title }}</title>
     <base href="{{ base }}">
