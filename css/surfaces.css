@@ -1075,6 +1075,23 @@
   .contact-band-media img {
     border-radius: 0;
   }
+  /* Der obere Bildrand blendet in den schwarzen Kontaktbereich ein.
+     Der Verlauf endet vor dem Produkt, dessen Kontrast vollständig erhalten bleibt. */
+  .contact-band-image,
+  .contact-band-media img {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      var(--color-transparent) 0%,
+      var(--color-black) 18%,
+      var(--color-black) 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      var(--color-transparent) 0%,
+      var(--color-black) 18%,
+      var(--color-black) 100%
+    );
+  }
   .hero-motion-video {
     filter: brightness(1.08) contrast(1.05);
     -webkit-mask-image: linear-gradient(
