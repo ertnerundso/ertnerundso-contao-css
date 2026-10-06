@@ -1,6 +1,0 @@
-{% extends '@Contao/content_element/_base.html.twig' %}
-
-{% block wrapper %}
-    {% include '@Contao/layout/_flat_metadata.html.twig' with {classes: element_css_classes|default('')} only %}
-    {{ parent() }}
-{% endblock %}

@@ -1,8 +1,0 @@
-{# Native Elemente werden für das flache Artikellayout mit ihrer CSS-Rolle markiert.
-   Keine Inhaltswerte oder Datensatz-IDs werden im Theme gespeichert. #}
-<!-- eo-content -->
-{% set tokens = classes is iterable ? classes : classes|default('')|split(' ') %}
-{% for token in tokens %}
-    {% if token starts with 'eo-slot-' %}<!-- eo-slot:{{ token|slice(8) }} -->{% endif %}
-    {% if token starts with 'eo-layout-' %}<!-- eo-layout:{{ token|slice(10) }} -->{% endif %}
-{% endfor %}
