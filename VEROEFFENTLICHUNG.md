@@ -21,6 +21,10 @@
 - Der eingebettete Kalender lädt den vorhandenen Termin „30 min meeting“, Zeitzone Europe/Berlin und freie Uhrzeiten. Ein tatsächlich angelegter Termin einschließlich Bestätigung und Stornierung ist noch nicht geprüft. Es wurde keine echte Buchung erzeugt.
 - Kontaktvalidierung, simulierte erfolgreiche/fehlgeschlagene Formularübertragung und Kalender-Fallback werden durch die vorhandenen lokalen Browserprüfungen abgedeckt. Die tatsächliche Cloudflare-Sicherheitsprüfung lieferte im automatisierten Browser keinen fertigen Token; die abschließende manuelle Prüfung bleibt erforderlich. Der Schutz wurde nicht umgangen oder deaktiviert.
 
+## Getrennte Produktionskopie
+
+Die Produktionsinstallation `ertnerundso-contao-live` ist mit eigener Datenbank, eigenen persistenten Dateispeichern und der flachen CMS-Struktur vorbereitet. Neue Zugangsschlüssel sind gesetzt; der OAuth-/MCP-Zustand startet getrennt. Sie ist nur lokal erreichbar und besitzt noch keine öffentliche Domain-Route. Der native Cache wurde als `www-data` neu aufgebaut. Alle 41 privaten Seiten- und Projektadressen liefern HTTP 200, ohne Elementgruppen und mit vorhandenen Projektgalerien. Die bisherige öffentliche Website läuft weiter.
+
 ## Vor der Umschaltung
 
 1. Hauptdomain mit dem Inhaber festlegen: bisherige `.com` ersetzen oder `.de` verwenden. Bis dahin bleibt die bestehende Produktion unverändert.
