@@ -1,9 +1,17 @@
+{% set renderedContent = text.invoke() %}
+{% set elements = renderedContent|split('<!-- eo-content -->') %}
 <div class="layout_full news-detail block">
-    {{ text.invoke()|raw }}
+    {% if '<!-- eo-layout:news-layout-eo-project-2 -->' in renderedContent %}
+        {% include '@Contao/news_layout_eo_project_2.html.twig' with {elements: elements} only %}
+    {% elseif '<!-- eo-layout:news-layout-eo-project-1 -->' in renderedContent %}
+        {% include '@Contao/news_layout_eo_project_1.html.twig' with {elements: elements} only %}
+    {% else %}
+        {{ renderedContent|raw }}
+    {% endif %}
 </div>
 
 {% set schemaOrg = getSchemaOrgData.invoke() %}
 {% if hasText.invoke() %}
-    {% set schemaOrg = schemaOrg|merge({text: text.invoke()|html_to_plain_text}) %}
+    {% set schemaOrg = schemaOrg|merge({text: renderedContent|html_to_plain_text}) %}
 {% endif %}
 {% do add_schema_org(schemaOrg) %}

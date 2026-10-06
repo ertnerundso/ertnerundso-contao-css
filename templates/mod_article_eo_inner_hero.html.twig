@@ -1,0 +1,9 @@
+{% extends '@Contao/mod_article.html.twig' %}
+{% import '@Contao/layout/_flat_slots.html.twig' as slots %}
+
+{% block content %}
+<div class="inner-hero">
+  {{ slots.render(elements, 'inner-hero-inner-hero-1-1') }}
+</div>
+{{ slots.unassigned(elements) }}
+{% endblock %}

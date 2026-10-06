@@ -1,0 +1,17 @@
+{% extends '@Contao/mod_article.html.twig' %}
+{% import '@Contao/layout/_flat_slots.html.twig' as slots %}
+
+{% block content %}
+<div class="section journal">
+  <div class="shell">
+    <div class="section-head">
+      <div>
+        {{ slots.render(elements, 'journal-journal-1-heading-1-section-head-1-heading-1-1') }}
+      </div>
+      {{ slots.render(elements, 'journal-journal-1-heading-1-section-head-1-1') }}
+    </div>
+    {{ slots.render(elements, 'journal-journal-1-heading-1-1') }}
+  </div>
+</div>
+{{ slots.unassigned(elements) }}
+{% endblock %}

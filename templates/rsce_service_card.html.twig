@@ -1,4 +1,5 @@
-<div class="service-card">
+{% include '@Contao/layout/_flat_metadata.html.twig' with {classes: cssID[1]|default('')} only %}
+<div{{ attrs(cssID|default).addClass('service-card') }}>
     <div class="content-text">
         <div class="rte"><span class="micro">{{ eyebrow }}</span></div>
     </div>

@@ -1,0 +1,12 @@
+{% extends '@Contao/mod_article.html.twig' %}
+{% import '@Contao/layout/_flat_slots.html.twig' as slots %}
+
+{% block content %}
+<div class="contact-band">
+  <div class="contact-band-copy">
+    {{ slots.render(elements, 'contact-band-contact-band-1-contact-band-copy-1-1') }}
+  </div>
+  {{ slots.render(elements, 'contact-band-contact-band-1-1') }}
+</div>
+{{ slots.unassigned(elements) }}
+{% endblock %}
