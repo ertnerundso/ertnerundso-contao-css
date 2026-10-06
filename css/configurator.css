@@ -17,8 +17,6 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-columns);
-  max-width: 66.25rem;
-  margin-inline: auto;
 }
 .configurator-scene-intro p {
   margin: 0;
@@ -30,7 +28,7 @@
 }
 .configurator-scene-media {
   position: relative;
-  width: min(100%, 72.5rem);
+  width: 100%;
   height: clamp(26.875rem, 65vh, 45rem);
   margin-inline: auto;
 }
@@ -50,7 +48,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
-  width: min(100%, 70rem);
+  width: 100%;
 }
 .configurator-scene-card {
   min-height: 10.9375rem;
@@ -89,7 +87,8 @@
     justify-content: center;
   }
   .configurator-scene.is-scroll-ready .configurator-scene-media {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
+    min-height: 0;
     height: 65svh;
     max-height: 45rem;
     margin-top: var(--space-position-8svh);
@@ -100,7 +99,11 @@
   .configurator-scene.is-scroll-ready .configurator-scene-video {
     display: block;
   }
-  .configurator-scene.is-scroll-ready .configurator-scene-cards {
+  /* Die Karten folgen der Inhaltsbreite; die Kreuze liegen im Seitenabstand. */
+  .configurator-scene-card-reveal {
+    width: calc(100% + var(--space-frame-marker-half) * 2);
+    padding: var(--space-frame-marker-half);
+    flex: 0 0 auto;
     max-height: 0;
     overflow: hidden;
   }

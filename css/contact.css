@@ -12,7 +12,7 @@
 .contact-band-copy {
   position: relative;
   z-index: 1;
-  padding: 0 var(--space-gutter);
+  padding-block: 0;
 }
 .contact-band h2 {
   max-width: 53.125rem;
@@ -146,9 +146,6 @@
   }
   .hero-lede {
     max-width: 16.875rem;
-  }
-  .hero-actions {
-    gap: var(--space-sm);
   }
   .contact-band-image {
     height: 17.5rem;

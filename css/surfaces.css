@@ -65,14 +65,13 @@
 @layer layout {
   /* --- FOOTER --- */
   .footer-brand img {
-    filter: invert(1);
+    filter: none;
   }
   .site-main img {
     border-radius: var(--radius-md);
   }
   /* --- HEADER UND MENÜ --- */
-  .header-nav a:hover,
-  .footer-nav a:hover {
+  .header-nav a:hover {
     color: var(--color-primary);
   }
   .site-header {
@@ -112,10 +111,6 @@
     color: inherit;
     cursor: pointer;
   }
-  .menu-lines {
-    border: 1px solid var(--color-current);
-    border-radius: var(--radius-circle);
-  }
   .menu-lines i {
     background: var(--color-current);
   }
@@ -152,18 +147,23 @@
     color: var(--color-menu-text);
   }
   .footer-brand p {
-    color: var(--color-muted);
+    color: var(--color-footer-text);
   }
   .footer-bottom {
-    border-top: 1px solid var(--color-border);
-    color: var(--color-muted);
+    color: var(--color-footer-text);
   }
   .site-footer {
-    color: var(--color-text);
-    background: var(--color-background);
+    color: var(--color-footer-text);
+    background: var(--color-footer-surface);
   }
   .footer-nav .micro {
-    color: var(--color-primary);
+    color: var(--color-footer-text);
+  }
+  .site-footer a:is(:hover, :focus-visible) {
+    color: var(--color-footer-text);
+  }
+  .site-footer a:focus-visible {
+    outline-color: var(--color-footer-text);
   }
   @media (prefers-reduced-motion: reduce) {
     .js-ready [data-reveal] {
@@ -191,6 +191,14 @@
   }
 }
 @layer components {
+  /* Weiße Striche mit Differenz-Mischung bleiben auf hellen und dunklen Medien sichtbar. */
+  .section-scroll-progress {
+    mix-blend-mode: difference;
+  }
+  .section-scroll-progress-tick {
+    background: var(--color-scroll-progress);
+  }
+
   /* --- BUTTONS UND LINKS --- */
   .hero-work-link,
   .text-link,
@@ -482,8 +490,10 @@
     border-block: 0;
   }
   /* Dezente Trennlinien innerhalb der offenen Raster. */
-  .question-list .question:not(:last-child) {
-    border-bottom: var(--layout-frame-stroke) dashed var(--color-frame-line);
+  /* Contao umschließt jedes details mit content-text/rte; Trenner folgen den Listenzeilen. */
+  .question-list > .question:not(:first-child),
+  .question-list > :not(:first-child) .question {
+    border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
   }
   :is(.journal .journal-list, .work-track) > :is(.journal-row, .work-card) + :is(.journal-row, .work-card) {
     border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
@@ -967,7 +977,7 @@
     .configurator-scene.is-scroll-ready .configurator-scene-sticky {
       background: var(--color-on-dark);
     }
-    .configurator-scene.is-scroll-ready .configurator-scene-cards {
+    .configurator-scene-card-reveal {
       opacity: 0;
     }
   }

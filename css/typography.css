@@ -81,7 +81,7 @@
     --font-label-weight: 400;
     --font-label-line-height: 1.5;
     --font-button-size: 1rem;
-    --font-button-weight: 600;
+    --font-button-weight: 400;
     --font-quote-size: var(--font-h3-size);
     --font-testimonial-size: clamp(1.75rem, calc(1.35rem + 1.6vw), 3.25rem);
     --font-testimonial-weight: 700;
@@ -288,6 +288,10 @@
   }
 }
 @layer layout {
+  .site-footer a:is(:hover, :focus-visible) {
+    text-decoration: underline;
+    text-underline-offset: var(--space-xs);
+  }
   .intro {
     text-align: center;
   }
@@ -556,6 +560,7 @@
     text-underline-offset: var(--space-icon-align);
   }
   .inner-hero h1,
+  .news-detail > .news-intro h1,
   .content-section h2,
   .content-section h3 {
     hyphens: auto;

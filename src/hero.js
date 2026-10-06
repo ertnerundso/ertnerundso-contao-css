@@ -1,5 +1,6 @@
 /* Vorhandene Hero-Animation und Video-Scrubbing.
    Verhalten: config.js; Gestaltung/Zeiten: motion.css und base.css. */
+import { createScrollProgress } from './scroll-progress.js';
 export function initHero(runtime) {
   if (runtime.reduceMotion) return;
   const {
@@ -82,7 +83,9 @@ export function initHero(runtime) {
         hero.querySelector('.hero-media'),
         hero.querySelector('.hero-inner'),
       ];
+      const progressIndicator = createScrollProgress(runtime, { de: 'Startfilm', en: 'Opening film' });
       const motionTrigger = ScrollTrigger.create({
+        ...progressIndicator.callbacks,
         trigger: hero,
         start: () => `top top+=${runtime.headerHeight}`,
         end: () => `+=${Math.round(window.innerHeight * config.hero.scrollRange)}`,
@@ -90,6 +93,7 @@ export function initHero(runtime) {
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
+          progressIndicator.update(self);
           gsap.set(heroLayers, {
             y:
               -motion.number('motion-hero-layer-shift') *
@@ -107,6 +111,7 @@ export function initHero(runtime) {
             video.currentTime = frame;
         },
       });
+      progressIndicator.update(motionTrigger);
       listen(
         video,
         'loadeddata',
@@ -121,6 +126,7 @@ export function initHero(runtime) {
         video,
         'error',
         () => {
+          progressIndicator.destroy();
           motionTrigger.kill();
           gsap.set(heroLayers, { clearProps: 'transform' });
           video.remove();
@@ -131,6 +137,7 @@ export function initHero(runtime) {
       );
       heroImage.parentElement.append(video);
       runtime.cleanup(() => {
+        progressIndicator.destroy();
         video.pause();
         video.remove();
       });

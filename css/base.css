@@ -3,6 +3,7 @@
 @layer foundation {
   :root {
     /* FARBEN: Website und vorhandene Medienflächen */
+    --color-scroll-progress: var(--color-on-dark);
     --color-primary: #2455ed;
     --color-primary-hover: #173fc3;
     --color-secondary: #09090b;
@@ -26,6 +27,8 @@
     --color-menu-surface: var(--color-primary);
     --color-menu-text: var(--color-on-dark);
     --color-menu-muted: var(--color-on-dark);
+    --color-footer-surface: var(--color-primary);
+    --color-footer-text: var(--color-on-dark);
     --color-primary-surface: #f0f4ff;
     --color-transparent: transparent;
     --color-link-on-dark: #a9bcff;
@@ -94,7 +97,7 @@
     --space-columns: clamp(var(--space-xl), 7vw, var(--space-5xl));
     --space-content-offset: max(
       var(--space-gutter),
-      calc((100vw - var(--layout-container-max)) / 2 + var(--space-gutter))
+      calc((100% - var(--layout-container-max)) / 2 + var(--space-gutter))
     );
     --space-hairline: 1px;
     --space-negative-hairline: -1px;

@@ -2,6 +2,10 @@
    Zeitwerte und Übergänge stehen hier. JavaScript-Zustände und Reduced Motion bleiben erhalten. */
 @layer foundation {
   :root {
+    /* Scroll-Skala: Reichweite und Stärke der wandernden Markierung (keine Nachlaufzeit). */
+    --motion-scroll-progress-radius: 4;
+    --motion-scroll-progress-min-scale: 0.5;
+    --motion-scroll-progress-min-opacity: 0.24;
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
@@ -328,6 +332,13 @@
   }
 }
 @layer components {
+  .section-scroll-progress {
+    transform: translateY(-50%);
+  }
+  .section-scroll-progress-tick {
+    transform-origin: right center;
+  }
+
   .button,
   .btn,
   .hero-contact,
@@ -525,8 +536,8 @@
     }
   }
   @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
-    .configurator-scene.is-scroll-ready .configurator-scene-cards {
-      transform: translateY(1.5rem);
+    .configurator-scene-card-reveal {
+      transform: translateY(var(--motion-configurator-card-offset));
     }
   }
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {

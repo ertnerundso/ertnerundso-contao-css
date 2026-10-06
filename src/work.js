@@ -1,5 +1,6 @@
 /* PROJEKTE: Desktop-Scrollgeschichte und nativer mobiler Slider.
    Verhalten: config.js. Anordnung: work.css. Bewegung: motion.css. */
+import { createScrollProgress } from './scroll-progress.js';
 export function initWork(runtime) {
   const { gsap, config, listen, observer, motion } = runtime;
   const work = document.querySelector('.work');
@@ -39,10 +40,12 @@ export function initWork(runtime) {
         if (!context.conditions.desktop || context.conditions.reduced) return;
         const initialTransform = track.style.transform;
         const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-        gsap.to(track, {
+        const progressIndicator = createScrollProgress(runtime, { de: 'Arbeiten', en: 'Projects' });
+        const story = gsap.to(track, {
           x: () => -distance(),
           ease: motion.value('motion-work-ease'),
           scrollTrigger: {
+            ...progressIndicator.callbacks,
             trigger: work,
             start: 'top top',
             end: () =>
@@ -50,10 +53,15 @@ export function initWork(runtime) {
             pin: true,
             scrub: motion.number('motion-work-scrub'),
             invalidateOnRefresh: true,
-            onUpdate: (self) => update(self.progress),
+            onUpdate: (self) => {
+              update(self.progress);
+              progressIndicator.update(self);
+            },
           },
         });
+        progressIndicator.update(story.scrollTrigger);
         return () => {
+          progressIndicator.destroy();
           track.style.transform = initialTransform;
         };
       },
