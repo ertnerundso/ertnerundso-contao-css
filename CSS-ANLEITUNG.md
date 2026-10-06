@@ -8,6 +8,7 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Normaler Text und Textvarianten | `css/typography.css`, bei LESEN / TEXTVARIANTEN |
 | Gemeinsame Farben, Abstände, Rundungen, Schatten | `css/base.css` |
 | Farbe, Hintergrund, Rand, Schatten eines Elements | `css/surfaces.css` |
+| Handmotiv nach unten ins Weiß auslaufen lassen | `css/surfaces.css`, Abschnitt HERO bei `.hero-media img` (`mask-image`) |
 | Rechte Scroll-Skala: Größe / Position / Anzahl Striche | `--layout-scroll-progress-*` in `css/layout.css` / `css/scroll-progress.css` / `scrollProgress.ticks` in `src/config.js` |
 | Scroll-Skala: wandernde Markierung | `--motion-scroll-progress-*` in `css/motion.css` |
 | Animationen, Übergänge und Bewegungswerte | `css/motion.css` |

@@ -1100,8 +1100,9 @@
     );
     opacity: 0;
   }
-  /* Zentrierte Medien nutzen ihren eigenen Bildausschnitt ohne die alten Masken. */
-  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media :is(img, video) {
+  /* Nur der industrielle Hintergrundfilm nutzt seinen Ausschnitt ohne Verlauf.
+     Das zentrierte Originalbild behält die Hero-Maske aus dem Abschnitt HERO. */
+  .hero:has(.hero-media--industrial) .hero-media :is(img, video) {
     filter: none;
     -webkit-mask-image: none;
     mask-image: none;

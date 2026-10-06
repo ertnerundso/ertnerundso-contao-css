@@ -45,5 +45,7 @@ for (const width of [360, 390, 760, 1000, 1920]) {
     expect(geometry.position).toBe('50% 50%');
     expect(geometry.transform).toBe('none');
     expect(geometry.overflow).toBeLessThanOrEqual(1);
+    // Die Zentrierung darf den Verlauf ins Weiß nicht wieder überschreiben.
+    await expect(page.locator('.hero-media img')).toHaveCSS('mask-image', /linear-gradient/);
   });
 }
