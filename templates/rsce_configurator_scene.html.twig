@@ -1,4 +1,5 @@
-<section class="configurator-scene" aria-labelledby="configurator-scene-title">
+{% include '@Contao/layout/_flat_metadata.html.twig' with {classes: cssID[1]|default('')} only %}
+<section{{ attrs(cssID|default).addClass('configurator-scene') }} aria-labelledby="configurator-scene-title">
     <div class="configurator-scene-sticky">
         <div class="configurator-scene-heading shell">
             <span class="micro">{{ eyebrow }}</span>

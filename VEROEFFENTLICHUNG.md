@@ -2,6 +2,9 @@
 
 ## Erledigt
 
+- Alle 223 Elementgruppen sind auf Staging aufgelöst. Die acht betroffenen Seiten verwenden flache Inhalte in normalen Abschnittsartikeln; alle 30 Projektdetails behalten ihre Bilder und Videos in flachen Nachrichten-Inhaltslisten. Die 876 verbleibenden Inhaltselemente behalten ihre Inhaltswerte und IDs. RockSolid bleibt ausdrücklich zugelassen; vier Leistungskarten und zwei Konfigurator-Szenen sind erhalten. Details stehen in `CMS-STRUKTUR.md`.
+- Der Stand vor dem Umbau ist zusätzlich privat als Datenbank- und Theme-Sicherung abgelegt und auf gzip-Integrität geprüft. Die bestehende vollständige Sicherung einschließlich Dateien und alter Produktions-Konfiguration bleibt erhalten.
+
 - PR #24 (Originalbilder Mikroskop und Platine) und PR #25 (15 übernommene Arbeiten und kleinere statische Hand) sind in `main`. Die zugehörigen Frontend-Prüfungen und GitHub-Pages-Veröffentlichungen sind erfolgreich.
 - Staging lädt die veröffentlichten Frontend-Dateien aus `main`. Die Contao-Templates und CMS-Inhalte sind separat synchronisiert; ein Git-Merge überträgt keine Datenbank und keine CMS-Dateien.
 - Der englische Kontaktbutton im Abschluss der Montageanleitungen verwendet jetzt `/en/kontakt/#anfrage` statt des nicht vorhandenen `/en/contact/#request` (Inhaltselement 2643).
@@ -10,11 +13,17 @@
 
 ## Geprüft
 
+- Nach dem Auflösen liefern 41 deutsche/englische Seitenadressen einschließlich aller 30 Projektdetails dieselben Texte, Überschriften, Medien, Links und funktionalen Layout-Container. Contao meldet null Elementgruppen und null unter anderen Inhaltselementen gespeicherte Inhalte. Alle 48 Twig-Templates, CSS-/JavaScript-Prüfung, Build und 116 lokale Frontend-Prüfungen sind erfolgreich.
+
 - 49 interne Seiten- und Projektlinks liefern HTTP 200. 13 gerenderte Seiten in Deutsch/Englisch einschließlich Projektleser liefern passende Canonical-Adressen und den Staging-Indexierungsschutz.
 - Der Kontaktservice antwortet auf seinen Healthcheck; die erlaubten Origins enthalten Staging sowie `.com` und `.de` mit und ohne `www`.
 - SMTP-Anmeldung und verschlüsselte Verbindung funktionieren. Eine ausdrücklich als Website-Test gekennzeichnete interne Mail wurde vom SMTP-Server für `info@ertnerundso.com` angenommen. Der Eingang im Postfach muss noch bestätigt werden; SMTP-Annahme allein bestätigt keine Zustellung in den Posteingang.
 - Der eingebettete Kalender lädt den vorhandenen Termin „30 min meeting“, Zeitzone Europe/Berlin und freie Uhrzeiten. Ein tatsächlich angelegter Termin einschließlich Bestätigung und Stornierung ist noch nicht geprüft. Es wurde keine echte Buchung erzeugt.
 - Kontaktvalidierung, simulierte erfolgreiche/fehlgeschlagene Formularübertragung und Kalender-Fallback werden durch die vorhandenen lokalen Browserprüfungen abgedeckt. Die tatsächliche Cloudflare-Sicherheitsprüfung lieferte im automatisierten Browser keinen fertigen Token; die abschließende manuelle Prüfung bleibt erforderlich. Der Schutz wurde nicht umgangen oder deaktiviert.
+
+## Getrennte Produktionskopie
+
+Die Produktionsinstallation `ertnerundso-contao-live` ist mit eigener Datenbank, eigenen persistenten Dateispeichern und der flachen CMS-Struktur vorbereitet. Neue Zugangsschlüssel sind gesetzt; der OAuth-/MCP-Zustand startet getrennt. Sie ist nur lokal erreichbar und besitzt noch keine öffentliche Domain-Route. Der native Cache wurde als `www-data` neu aufgebaut. Alle 41 privaten Seiten- und Projektadressen liefern HTTP 200, ohne Elementgruppen und mit vorhandenen Projektgalerien. Die bisherige öffentliche Website läuft weiter.
 
 ## Vor der Umschaltung
 

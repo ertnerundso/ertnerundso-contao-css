@@ -1,0 +1,12 @@
+{% extends '@Contao/mod_article.html.twig' %}
+{% import '@Contao/layout/_flat_slots.html.twig' as slots %}
+
+{% block content %}
+<div class="shell testimonial-feature testimonial-feature--work-list">
+  {{ slots.render(elements, 'testimonials-testimonial-feature-1-1') }}
+  <div class="testimonial-signature">
+    {{ slots.render(elements, 'testimonials-testimonial-feature-1-testimonial-signature-1-1') }}
+  </div>
+</div>
+{{ slots.unassigned(elements) }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends '@Contao/mod_article.html.twig' %}
+{% import '@Contao/layout/_flat_slots.html.twig' as slots %}
+
+{% block content %}
+<div id="termin" class="booking-block">
+  <div class="shell">
+    {{ slots.render(elements, 'booking-block-booking-block-1-heading-1-1') }}
+  </div>
+</div>
+{{ slots.unassigned(elements) }}
+{% endblock %}

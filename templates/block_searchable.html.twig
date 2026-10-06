@@ -1,0 +1,9 @@
+{# Auch klassische Contao-Module und Formulare behalten ihre native Ausgabe. #}
+{% extends '@Contao/block_searchable.html.twig' %}
+
+{% block wrapper %}
+    {% if 'eo-slot-' in cssID[1]|default('') %}
+        {% include '@Contao/layout/_flat_metadata.html.twig' with {classes: cssID[1]} only %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}
