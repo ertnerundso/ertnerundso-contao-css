@@ -64,7 +64,7 @@ export function initAnimations(runtime) {
     .forEach((element) =>
       revealOnce(element, { y: motion.pixels('motion-reveal-card-offset') }),
     );
-  document.querySelectorAll('.index-card,.journal-row,.question').forEach((card) => {
+  document.querySelectorAll('.index-card,.journal-row:not(.is-journal-paged > .journal-row),.question').forEach((card) => {
     const contents = cardContents(card);
     gsap.from(contents.length ? contents : card, {
       autoAlpha: 0,

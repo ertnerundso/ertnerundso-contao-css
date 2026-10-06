@@ -10,6 +10,7 @@ export function initWork(runtime) {
   const progress = work.querySelector('.work-progress i');
   const count = work.querySelector('.work-count');
   const cards = [...track.querySelectorAll('.work-card')];
+  let pinnedAnimation;
   const update = (fraction) => {
     const value = Math.max(0, Math.min(1, fraction));
     if (progress)
@@ -19,10 +20,12 @@ export function initWork(runtime) {
         Math.max(1, Math.min(cards.length, 1 + Math.round(value * (cards.length - 1)))),
       ).padStart(2, '0');
   };
-  const updateNative = () =>
+  const updateNative = () => {
+    if (pinnedAnimation) return;
     update(
       viewport.scrollLeft / Math.max(1, viewport.scrollWidth - viewport.clientWidth),
     );
+  };
   viewport.tabIndex = 0;
   viewport.setAttribute('role', 'region');
   viewport.setAttribute(
@@ -30,6 +33,17 @@ export function initWork(runtime) {
     document.documentElement.lang === 'en' ? 'Projects' : 'Projekte',
   );
   listen(viewport, 'scroll', updateNative, { passive: true });
+  // Tab zum Abschluss-Link zeigt auch in der gepinnten Strecke den vollständigen Text.
+  listen(viewport, 'focusin', (event) => {
+    if (!pinnedAnimation || !event.target.closest('.work-outro')) return;
+    viewport.scrollLeft = 0;
+    const end = pinnedAnimation.scrollTrigger.end;
+    if (runtime.lenis) runtime.lenis.scrollTo(end, { immediate: true, force: true });
+    else window.scrollTo({ top: end, behavior: 'instant' });
+    pinnedAnimation.progress(1);
+    runtime.ScrollTrigger.update();
+    update(1);
+  });
   observer(new ResizeObserver(updateNative), viewport);
   updateNative();
   runtime
@@ -60,7 +74,9 @@ export function initWork(runtime) {
           },
         });
         progressIndicator.update(story.scrollTrigger);
+        pinnedAnimation = story;
         return () => {
+          pinnedAnimation = undefined;
           progressIndicator.destroy();
           track.style.transform = initialTransform;
         };

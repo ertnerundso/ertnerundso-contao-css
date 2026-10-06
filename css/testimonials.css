@@ -69,6 +69,14 @@
 .testimonial-carousel-label {
   margin: 0 0 var(--space-xl);
 }
+.testimonial-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  gap: var(--space-sm);
+}
 .testimonial-switch {
   display: flex;
   flex-wrap: wrap;
@@ -77,14 +85,16 @@
   gap: var(--space-xxs);
   padding: var(--space-xxs);
 }
-.testimonial-switch-button {
+.testimonial-switch-button,
+.testimonial-playback {
   display: grid;
   place-items: center;
   min-width: 2.75rem;
   min-height: 2.75rem;
   padding: var(--space-xs);
 }
-.testimonial-switch-button:focus-visible {
+.testimonial-switch-button:focus-visible,
+.testimonial-playback:focus-visible {
   outline-offset: var(--space-xs);
 }
 .testimonial-panels {

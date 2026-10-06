@@ -8,6 +8,7 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Normaler Text und Textvarianten | `css/typography.css`, bei LESEN / TEXTVARIANTEN |
 | Gemeinsame Farben, Abstände, Rundungen, Schatten | `css/base.css` |
 | Farbe, Hintergrund, Rand, Schatten eines Elements | `css/surfaces.css` |
+| Handmotiv nach unten ins Weiß auslaufen lassen | `css/surfaces.css`, Abschnitt HERO bei `.hero-media img` (`mask-image`) |
 | Rechte Scroll-Skala: Größe / Position / Anzahl Striche | `--layout-scroll-progress-*` in `css/layout.css` / `css/scroll-progress.css` / `scrollProgress.ticks` in `src/config.js` |
 | Scroll-Skala: wandernde Markierung | `--motion-scroll-progress-*` in `css/motion.css` |
 | Animationen, Übergänge und Bewegungswerte | `css/motion.css` |
@@ -80,8 +81,12 @@ Die Navigation liegt transparent über der Seite, verschwindet beim Herunterscro
 
 Schriften liegen in `assets/fonts/`, Bilder in `assets/images/`, Videos in `assets/videos/`. Schriftdateien werden direkt aus dem Repository geladen. CMS-Uploads bleiben bei Contao.
 
-Kundenstimmen werden als Inhaltsgruppen mit der Klasse `testimonial-feature` in Contao gepflegt. Zitat: `testimonial-quote`; Name: `testimonial-company` innerhalb von `testimonial-signature`. Die Ansicht übernimmt alle Stimmen desselben Artikels in ihrer CMS-Reihenfolge; neue Einträge brauchen keine Änderungen im JavaScript. Der Umschalter unterstützt Klick, Pfeiltasten, Home und End. Mit nur einer Stimme bleibt der Inhalt ohne Umschalter sichtbar.
+Kundenstimmen werden als Inhaltsgruppen mit der Klasse `testimonial-feature` in Contao gepflegt. Zitat: `testimonial-quote`; Name: `testimonial-company` innerhalb von `testimonial-signature`. Die Ansicht übernimmt alle Stimmen desselben Artikels in ihrer CMS-Reihenfolge; neue Einträge brauchen keine Änderungen im JavaScript. Der Umschalter unterstützt Klick, Pfeiltasten, Home und End. Im sichtbaren Bereich wechseln die Stimmen alle acht Sekunden automatisch; `testimonials.autoplayDelay` in `src/config.js` ändert die Lesezeit (8000 = acht Sekunden). Hover, Tastaturfokus, ein anderer Browser-Tab und Scrollen aus dem Bereich pausieren den Wechsel. Danach beginnt die volle Lesezeit neu. Der Pause-Knopf stoppt die Automatik dauerhaft bis zum Fortsetzen. Bei „Bewegung reduzieren“ bleibt die Auswahl manuell. Mit nur einer Stimme bleibt der Inhalt ohne Umschalter sichtbar.
+
+Der Abschluss der Montagegalerie liegt als Contao-Inhaltsgruppe `work-outro` nach allen Bildern innerhalb von `work-track`. Label, h3, Absatz und Anfrage-Link bleiben im CMS bearbeitbar. `work.css` ordnet den Text in der rechten Hälfte des gemeinsamen Rasters an; auf dem Handy nutzt er die volle Inhaltsbreite. Beide Enden der horizontalen Strecke verwenden dieselben Seitenränder wie `.shell`. Der Text zählt nicht als zusätzliche Bildkarte. Auch mit reduzierter Bewegung bleibt die gesamte Strecke horizontal erreichbar.
 
 Prüfen: einmal `npm ci` und `npx playwright install chromium`; danach `npm run check:css`, `npm run check:js`, `npm run build:js`, `npm run test:browser`. Die Tests verwenden simulierte Kontakt-/Kalenderdienste.
 
 Auf eigenen Branches arbeiten. **Merge nach main und Veröffentlichung erst nach ausdrücklicher Freigabe.** Template-Kopien müssen gesondert nach Contao synchronisiert werden. Verbindliche Regeln: `AGENTS.md`.
+
+Der Journal-Slider zeigt ganze Ansichten statt angeschnittener Karten. `--layout-journal-card-min` und `--layout-journal-columns-max` in `layout.css` bestimmen die sichtbare Anzahl. Zurück/Weiter, Pfeiltasten (im fokussierten Bereich) und horizontales Wischen blättern; Home/End springen zum Anfang/Ende. Auf der letzten Ansicht können Beiträge der vorherigen Ansicht erneut sichtbar sein, damit alle Spalten gefüllt bleiben. Artikel-Links und blaue Buttons werden aus den vorhandenen CMS-Links erstellt; neue Inhalte im CMS bleiben automatisch erreichbar. Wischschwelle: `journalSwipeThreshold` in `src/config.js`.

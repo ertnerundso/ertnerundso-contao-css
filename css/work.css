@@ -59,6 +59,7 @@
   margin: var(--space-lg) 0 0;
 }
 .work-viewport {
+  container-type: inline-size;
   flex: 1;
   min-height: 0;
   display: flex;
@@ -73,9 +74,27 @@
   align-items: center;
   gap: 0;
   width: max-content;
-  padding-left: var(--space-content-offset);
-  padding-right: var(--space-gutter);
+  /* Beide Enden liegen an derselben Inhaltskante wie die .shell-Bereiche. */
+  padding-inline: var(--space-content-offset);
   height: 100%;
+}
+/* Redaktioneller Abschluss nach den Bildern: rechte Hälfte des gemeinsamen Rasters.
+   100cqi ist die tatsächliche Breite des Viewports, ohne die Browser-Scrollleiste. */
+.work-outro {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: var(--space-lg);
+  width: calc((min(100cqi, var(--layout-container-max)) - 2 * var(--space-gutter)) / 2);
+  padding-inline-start: var(--space-columns);
+}
+.work-outro :is(h3, p) {
+  margin: 0;
+}
+.work-outro .content-hyperlink {
+  margin-top: var(--space-sm);
 }
 .work-card {
   flex-direction: column;
@@ -187,6 +206,15 @@
   margin-top: var(--space-md);
 }
 @media (max-width: 760px) {
+  .work-outro {
+    width: calc(100cqi - 2 * var(--space-gutter));
+    padding-inline-start: 0;
+    scroll-snap-align: end;
+  }
+  .work-viewport:has(.work-outro) {
+    height: min(48svh, 28.4375rem);
+    min-height: 22rem;
+  }
   .manual-book-header {
     position: static;
     grid-row: auto;
@@ -252,6 +280,13 @@
   }
   .work-viewport::-webkit-scrollbar {
     display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-content-offset);
   }
 }
 @media (max-width: 520px) {

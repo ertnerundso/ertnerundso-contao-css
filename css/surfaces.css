@@ -259,12 +259,7 @@
   }
   /* --- KONTAKT UND FRAGEN --- */
   .contact-band {
-    background: linear-gradient(
-      112deg,
-      var(--color-surface-dark),
-      var(--color-surface-deep) 68%,
-      var(--color-surface-navy)
-    );
+    background: var(--color-black);
   }
   /* --- HEADER UND MENÜ --- */
   .site-header,
@@ -455,6 +450,7 @@
   /* --- GEMEINSAME LINIEN UND KREUZE --- */
   :is(
     .line-frame,
+    .journal-list.is-journal-paged,
     .service-grid,
     .benefits-table,
     .steps,
@@ -837,7 +833,15 @@
     background: var(--color-on-dark);
     color: var(--color-primary);
   }
-  .testimonial-switch-button:focus-visible {
+  .testimonial-playback {
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    background: var(--color-transparent);
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+  .testimonial-switch-button:focus-visible,
+  .testimonial-playback:focus-visible {
     outline: 2px solid var(--color-primary);
   }
   .testimonial-carousel-panel .testimonial-company p {
@@ -891,21 +895,11 @@
     color: var(--color-primary);
   }
   /* --- BUTTONS UND LINKS --- */
-  .journal-slider-controls button {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-circle);
-    background: var(--color-background);
-    color: var(--color-text);
-    cursor: pointer;
+  .journal .is-journal-paged .row-category::before {
+    content: attr(data-journal-index) " / ";
   }
-  .journal-slider-controls button:hover:not(:disabled),
-  .journal-slider-controls button:focus-visible {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-  }
-  .journal-slider-controls button:disabled {
-    opacity: 0.35;
-    cursor: default;
+  .journal .is-journal-paged .is-journal-first {
+    border-inline-start: 0;
   }
   /* --- KONFIGURATOR --- */
   .configurator-scene {
@@ -936,8 +930,8 @@
     color: var(--color-muted);
   }
   .contact-band-image {
-    background: var(--color-surface-dark);
-    border-radius: var(--radius-contact-top);
+    background: var(--color-black);
+    border-radius: 0;
   }
   .site-progress span {
     background: var(--color-primary);
@@ -1074,7 +1068,7 @@
     color: var(--color-muted);
   }
   .contact-band-media img {
-    border-radius: var(--radius-contact-top);
+    border-radius: 0;
   }
   .hero-motion-video {
     filter: brightness(1.08) contrast(1.05);
@@ -1092,8 +1086,9 @@
     );
     opacity: 0;
   }
-  /* Zentrierte Medien nutzen ihren eigenen Bildausschnitt ohne die alten Masken. */
-  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media :is(img, video) {
+  /* Nur der industrielle Hintergrundfilm nutzt seinen Ausschnitt ohne Verlauf.
+     Das zentrierte Originalbild behält die Hero-Maske aus dem Abschnitt HERO. */
+  .hero:has(.hero-media--industrial) .hero-media :is(img, video) {
     filter: none;
     -webkit-mask-image: none;
     mask-image: none;

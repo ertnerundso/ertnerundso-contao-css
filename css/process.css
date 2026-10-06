@@ -7,6 +7,10 @@
   gap: var(--space-3xl);
   align-items: end;
 }
+/* Die H2-Unterkante bestimmt die gemeinsame Ausrichtung beider Spalten. */
+.process-header h2 {
+  margin-bottom: 0;
+}
 .process-header p {
   max-width: 35rem;
   margin: 0;

@@ -3,6 +3,7 @@
    Farbe/Linien in surfaces.css; Größe der Kreuze in layout.css, Abstand in base.css. */
 :is(
   .line-frame,
+  .journal-list.is-journal-paged,
   .service-grid,
   .benefits-table,
   .steps,

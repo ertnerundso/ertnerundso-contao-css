@@ -11,7 +11,7 @@ export const config = {
   },
   header: { hideAfter: 160, directionThreshold: 8 },
   scroll: { wheelMultiplier: 0.9, smoothWheel: true },
-  sliders: { edgeTolerance: 2, workScrollPadding: 0.25, minimumProgress: 0.06 },
+  sliders: { edgeTolerance: 2, workScrollPadding: 0.25, minimumProgress: 0.06, journalSwipeThreshold: 50 },
   video: {
     frameRate: 24,
     visibilityThreshold: 0.45,
@@ -19,6 +19,8 @@ export const config = {
   },
   // Rechte Scroll-Skala: Anzahl der Striche; Gestaltung in CSS.
   scrollProgress: { ticks: 52 },
+  // Kundenstimmen: Lesezeit pro Stimme in Millisekunden, nur im sichtbaren Bereich.
+  testimonials: { autoplayDelay: 8000, visibilityThreshold: 0.25 },
   showreel: {
     scrollRange: 5.3,
     scrollRangeWithoutBenefits: 2.8,
