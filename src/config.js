@@ -75,8 +75,8 @@ export const config = {
   },
   // Feste Frontend-Dateien kommen aus dem Repository. CMS-Medien bleiben bei Contao.
   assets: {
-    heroVideo: 'videos/hero-industrial-soft.mp4',
-    heroPoster: 'images/hero-industrial-soft.jpg',
+    heroVideo: 'videos/hero-release.mp4',
+    heroPoster: 'images/hero-sensor.jpg',
     manualBookPoster: '/files/site/montage-book-poster.jpg',
   },
   contact: {

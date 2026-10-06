@@ -16,7 +16,7 @@ export function initHero(runtime) {
   } = runtime;
   const heroMessage = hero?.querySelector('.hero-message');
   const heroImage = hero?.querySelector('.hero-media img');
-  const industrialHero = Boolean(heroImage?.closest('.hero-media--industrial'));
+  const centeredHero = Boolean(heroImage?.closest('.hero-media--centered, .hero-media--industrial'));
   const heroActions = hero?.querySelector('.hero-actions');
   if (heroMessage && heroImage && heroActions) {
     gsap
@@ -102,7 +102,7 @@ export function initHero(runtime) {
           });
           if (!video.classList.contains('is-ready')) return;
           // Film und Poster nicht mischen: unterschiedliche Frames erzeugen Doppelkonturen.
-          if (!industrialHero)
+          if (!centeredHero)
             video.style.opacity = String(
               Math.min(1, self.progress * motion.number('motion-hero-fade-progress')),
             );

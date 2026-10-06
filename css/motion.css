@@ -558,7 +558,7 @@
 }
 @layer cms {
   /* Neue Aufnahme: keine seitliche Verschiebung oder Skalierung des alten Motivs. */
-  .hero:has(.hero-media--industrial) .hero-media :is(img, video) {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media :is(img, video) {
     transform: none;
   }
   .hero-motion-video {
