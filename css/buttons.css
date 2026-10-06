@@ -1,4 +1,4 @@
-/* KOMPONENTE / BUTTONS: Gemeinsame Anordnung. Varianten: .btn--primary, .btn--secondary, .btn--text.
+/* KOMPONENTE / BUTTONS: Gemeinsame Anordnung. Varianten: .btn--primary, .btn--secondary, .btn--text; .btn--icon ergänzt einen reinen Symbolknopf.
    Text in typography.css, Farbe in surfaces.css, Effekte in motion.css. */
 :is(
   .button,
@@ -94,24 +94,42 @@
   height: var(--layout-button-icon-size);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .button--arrow:focus-visible:not(:disabled, [aria-disabled="true"]) {
+  .button--arrow:not(.btn--icon):focus-visible:not(:disabled, [aria-disabled="true"]) {
     padding-inline-start: calc(
       var(--space-button-arrow) + var(--button-padding, var(--space-lg))
     );
     padding-inline-end: var(--button-padding, var(--space-lg));
   }
-  .button--arrow:focus-visible:not(:disabled, [aria-disabled="true"]) .button-arrow {
+  .button--arrow:not(.btn--icon):focus-visible:not(:disabled, [aria-disabled="true"]) .button-arrow {
     inset-inline-start: var(--space-xs);
   }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .button--arrow:hover:not(:disabled, [aria-disabled="true"]) {
+  .button--arrow:not(.btn--icon):hover:not(:disabled, [aria-disabled="true"]) {
     padding-inline-start: calc(
       var(--space-button-arrow) + var(--button-padding, var(--space-lg))
     );
     padding-inline-end: var(--button-padding, var(--space-lg));
   }
-  .button--arrow:hover:not(:disabled, [aria-disabled="true"]) .button-arrow {
+  .button--arrow:not(.btn--icon):hover:not(:disabled, [aria-disabled="true"]) .button-arrow {
     inset-inline-start: var(--space-xs);
   }
+}
+
+/* Symbolknöpfe verwenden dieselbe Höhe und dasselbe Pfeilsymbol wie Textbuttons.
+   Der zugängliche Name bleibt am Button als aria-label erhalten. */
+.btn--icon.button--arrow {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--button-height, var(--layout-button-height));
+  height: var(--button-height, var(--layout-button-height));
+  padding: 0;
+}
+.btn--icon .button-label {
+  display: none;
+}
+.btn--icon .button-arrow {
+  position: static;
 }

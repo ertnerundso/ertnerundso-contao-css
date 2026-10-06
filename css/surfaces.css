@@ -435,6 +435,11 @@
     background: var(--color-on-dark);
     color: var(--color-primary);
   }
+  /* Reine Symbolknöpfe: ein zentrierter Pfeil auf der gemeinsamen Button-Fläche. */
+  .btn--icon .button-arrow {
+    background: var(--color-transparent);
+    color: inherit;
+  }
   .button--arrow:focus-visible {
     outline: 2px solid var(--color-primary);
   }
