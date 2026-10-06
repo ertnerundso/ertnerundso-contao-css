@@ -20,7 +20,7 @@ body.menu-open .section-scroll-progress {
   display: block;
   flex: 0 0 auto;
   width: 100%;
-  height: var(--layout-frame-stroke);
+  height: var(--layout-scroll-progress-stroke);
 }
 @media (max-width: 760px), (prefers-reduced-motion: reduce) {
   .section-scroll-progress {

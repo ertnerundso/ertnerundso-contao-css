@@ -15,11 +15,6 @@ async function start(page, { english = false, ready = true } = {}) {
     const video = document.querySelector('.configurator-scene-video');
     Object.defineProperty(video, 'duration', { value: 8 });
     Object.defineProperty(video, 'readyState', { value: ready ? 1 : 0 });
-    // Der Hero-Film bleibt lokal simuliert: kein Netzfehler beendet die zu prüfende Strecke.
-    const descriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'src');
-    Object.defineProperty(HTMLMediaElement.prototype, 'src', {
-      ...descriptor, set(value) { if (!this.classList.contains('hero-motion-video')) descriptor.set.call(this, value); },
-    });
   }, { english, ready });
   await page.addScriptTag({ type: 'module', url: '/dist/site.js' });
   await expect(page.locator('.menu-label')).toHaveCount(1);
@@ -41,21 +36,16 @@ async function scrollStory(page, name, fraction) {
     } else {
       const spacer = element.closest('.pin-spacer');
       start = spacer.getBoundingClientRect().top + scrollY;
-      if (name === '.hero') {
-        start -= 2 * header;
-        distance = Math.round(innerHeight * 1.25);
-      } else {
-        const track = element.querySelector('.work-track');
-        const viewport = element.querySelector('.work-viewport');
-        distance = Math.max(0, track.scrollWidth - viewport.clientWidth) + innerHeight * 0.25;
-      }
+      const track = element.querySelector('.work-track');
+      const viewport = element.querySelector('.work-viewport');
+      distance = Math.max(0, track.scrollWidth - viewport.clientWidth) + innerHeight * 0.25;
     }
     window.scrollTo({ top: start + distance * fraction, behavior: 'instant' });
   }, { name, fraction });
 }
 
 for (const [selector, label] of [
-  ['.hero', 'Startfilm'], ['.showreel-section', 'Showreel'],
+  ['.showreel-section', 'Showreel'],
   ['.work', 'Arbeiten'], ['.configurator-scene', 'Konfigurator'],
 ]) {
   test(`${label}: actual scroll distance, moving ticks, reverse scroll and exit`, async ({ page }) => {
@@ -90,7 +80,7 @@ test('refresh, menu, responsive teardown and preference changes leave no stale i
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.setViewportSize({ width: 1440, height: 900 });
   const errors = await start(page);
-  await expect(page.locator('.section-scroll-progress')).toHaveCount(4);
+  await expect(page.locator('.section-scroll-progress')).toHaveCount(3);
   await scrollStory(page, '.showreel-section', 0.5);
   const indicator = page.getByRole('progressbar', { name: 'Scrollfortschritt: Showreel', includeHidden: true });
   await expect(indicator).toHaveAttribute('aria-valuenow', '50');
@@ -110,11 +100,11 @@ test('refresh, menu, responsive teardown and preference changes leave no stale i
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await expect(page.locator('.section-scroll-progress')).toHaveCount(0);
     await page.emulateMedia({ reducedMotion: 'no-preference' });
-    await expect(page.locator('.section-scroll-progress')).toHaveCount(4);
+    await expect(page.locator('.section-scroll-progress')).toHaveCount(3);
     await page.setViewportSize({ width: 390, height: 900 });
     await expect(page.locator('.section-scroll-progress')).toHaveCount(0);
     await page.setViewportSize({ width: 1440, height: 900 });
-    await expect(page.locator('.section-scroll-progress')).toHaveCount(4);
+    await expect(page.locator('.section-scroll-progress')).toHaveCount(3);
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
   await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide')));
@@ -136,7 +126,6 @@ test('metadata starts the configurator indicator once; media failures remove onl
   await page.locator('.configurator-scene-video').evaluate(el => el.dispatchEvent(new Event('error')));
   await expect(config).toHaveCount(0);
   await expect(page.locator('.configurator-scene')).not.toHaveClass(/is-scroll-ready/);
-  await page.locator('.hero-motion-video').evaluate(el => el.dispatchEvent(new Event('error')));
   await expect(page.getByRole('progressbar', { name: 'Scroll progress: Opening film', includeHidden: true })).toHaveCount(0);
   await expect(page.locator('.section-scroll-progress')).toHaveCount(2);
   expect(errors).toEqual([]);

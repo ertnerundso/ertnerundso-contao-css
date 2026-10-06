@@ -19,7 +19,6 @@ export const config = {
   },
   // Rechte Scroll-Skala: Anzahl der Striche; Gestaltung in CSS.
   scrollProgress: { ticks: 52 },
-  hero: { scrollRange: 1.25 },
   showreel: {
     scrollRange: 5.3,
     scrollRangeWithoutBenefits: 2.8,
@@ -48,10 +47,6 @@ export const config = {
   },
   // ScrollTrigger-Grenzen der bestehenden Effekte.
   triggers: {
-    hero: {
-      parallaxStart: 'top top',
-      parallaxEnd: 'bottom top',
-    },
     showreel: {
       start: 'top top',
     },
@@ -75,8 +70,6 @@ export const config = {
   },
   // Feste Frontend-Dateien kommen aus dem Repository. CMS-Medien bleiben bei Contao.
   assets: {
-    heroVideo: 'videos/hero-industrial-soft.mp4',
-    heroPoster: 'images/hero-industrial-soft.jpg',
     manualBookPoster: '/files/site/montage-book-poster.jpg',
   },
   contact: {

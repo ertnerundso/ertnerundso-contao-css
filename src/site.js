@@ -7,7 +7,6 @@ import { initHeader } from './header.js';
 import { initNavigation } from './navigation.js';
 import { initJournal } from './journal.js';
 import { initVideo } from './video.js';
-import { initHero } from './hero.js';
 import { initShowreel } from './showreel.js';
 import { initBenefits } from './benefits.js';
 import { initConfigurator } from './configurator.js';
@@ -23,7 +22,6 @@ import { initButtons } from './buttons.js';
 const runtime = createRuntime();
 const motionModules = new Set([
   initScroll,
-  initHero,
   initBenefits,
   initConfigurator,
   initAnimations,
@@ -35,7 +33,6 @@ for (const initialize of [
   initNavigation,
   initJournal,
   initVideo,
-  initHero,
   initShowreel,
   initBenefits,
   initConfigurator,

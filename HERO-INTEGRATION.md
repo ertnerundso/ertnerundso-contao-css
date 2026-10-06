@@ -1,26 +1,26 @@
-# Weißes Industriemotiv im Hero
+# Statischer Hero: ursprüngliche Hand auf Weiß
 
-Die freigegebene Higgsfield-Version mit mittiger Hand, stark unscharfer Industrieumgebung und Kamerabewegung ersetzt den bisherigen Hero-Film. Das Showreel bleibt unverändert.
+Der Hero verwendet ausschließlich das ursprüngliche Bild `files/site/hero-sensor.jpg` (1920 × 1080). Es bleibt auf Desktop, Handy und bei reduzierter Bewegung zentriert auf weißem Hintergrund.
 
-- Film: `assets/videos/hero-industrial-soft.mp4`, 1276 × 720, ca. 10 Sekunden, ohne Ton. Einzelbild-Kompression ermöglicht direktes Vor- und Zurückscrollen.
-- Passendes Standbild: `assets/images/hero-industrial-soft.jpg`, erster Frame desselben Films.
-- Film und Poster einstellen: `src/config.js` → `assets.heroVideo` / `assets.heroPoster`.
-- Bildausschnitt und Textabstände: `css/hero.css`. Gestaltung bleibt in `surfaces.css`, Bewegung in `motion.css`.
+- Anordnung und Bildausschnitt: `css/hero.css`.
+- Weißer Hintergrund und Aufhellung des Originalbilds: `css/surfaces.css`.
+- Zentrierung ohne Skalierung oder Verschiebung: `css/motion.css`.
+- Originaldatei im Repository: `assets/images/hero-sensor.jpg`; die aktiven CMS-Bilder werden in Contao gepflegt.
 
-Der bestehende Desktop-Film wird weiter durch Scrollen gesteuert. Kleine Bildschirme, Touch-Geräte, Datensparen und reduzierte Bewegung behalten ein Standbild. Ein Videofehler löst die Fixierung und lässt das Standbild sichtbar. Die Klasse `hero-media--industrial` entfernt ausschließlich für dieses Motiv die alten Verschiebungen, Skalierungen, Filter und Masken.
+Der Hero lädt keinen Film und hat keine eigene Scroll-Fixierung, Parallax-Bewegung oder Fortschrittsanzeige. Der bisherige Hero-JavaScript-Baustein und seine ungenutzten Einstellungen wurden entfernt. Showreel, MacBook und Projekt-Slider behalten ihre Animationen und Scroll-Indikatoren.
 
-Sobald der Film geladen ist, ersetzt er das Standbild vollständig. Beide Bilder werden nicht überblendet, damit beim Scrollen keine Doppelkonturen entstehen.
+## Contao-Einbindung
 
-## Staging-Einbindung vom 06.10.2026
+Die Hero-Bilder der deutschen und englischen Startseite (Inhalte 2181 und 2297) verwenden die ursprüngliche Datei und die Klassen `hero-media hero-media--centered`. Die übrigen CMS-Eigenschaften bleiben erhalten.
 
-Der Inhaber hat die Einbindung auf Staging freigegeben. Die Hero-Bilder der deutschen und englischen Startseite (Contao-Inhalte 2181 und 2297) verwenden jetzt das neue Standbild und die Klassen `hero-media hero-media--industrial`. Ihre übrigen Eigenschaften und Texte bleiben erhalten.
+Die Vorschau liegt im persistenten Dateivolume unter `files/site/hero-white-hand-20261006-layout/`. Das Staging-Seitentemplate lädt sie ausschließlich auf `/`, `/en` und `/en/`. Sie enthält den aktuellen main samt Abendkorrekturen und diesem statischen Hero. Unterseiten laden weiterhin GitHub Pages.
 
-Die geprüften Frontend-Dateien liegen im persistenten Contao-Dateivolume unter `files/site/hero-industrial/`. Das Staging-Seitentemplate lädt nur auf `/`, `/en` und `/en/` CSS und JavaScript von diesem Pfad. Unterseiten nutzen weiterhin GitHub Pages. Die Vorschau basiert auf dem aktuellen `main` plus dieser Hero-Änderung; sie veröffentlicht keine Änderungen aus dem anderen offenen PR.
+Bei einer neuen Vorschau einen neuen Versionsordner verwenden und CSS, JavaScript sowie die relativ verlinkten Schriften und Bilder gemeinsam hochladen. Beide Pfade im Staging-Seitentemplate auf diesen Ordner setzen. Dadurch lädt auch ein Browser mit zwischengespeicherten CSS-Imports den zusammengehörigen neuen Stand.
 
-`main` und Produktion wurden nicht verändert. Nach einem freigegebenen Merge und erfolgreicher Pages-Veröffentlichung kann das normale versionierte `templates/fe_page.html.twig` wieder nach Staging synchronisiert werden. Die CMS-Bilder und Zusatzklasse bleiben dabei bestehen. Vor der Synchronisierung aktuelle Änderungen am Staging-Template vergleichen und erhalten.
+Die rechte Scroll-Skala gehört weiterhin zu Showreel, Arbeiten und MacBook-Konfigurator. Sie erscheint nur während ihrer tatsächlichen Scrollstrecke auf Desktop; Mobile und reduzierte Bewegung behalten das normale Layout ohne diese Scrollgeschichten. Die Striche sind 2 Pixel dick und bis zu 32 Pixel breit bei Standard-Grundschrift, damit sie auf großen Bildschirmen erkennbar bleiben.
+
+Nach freigegebenem Merge und erfolgreicher Pages-Veröffentlichung die beiden Vorschau-URLs im Staging-Template auf die regulären GitHub-Pages-URLs zurücksetzen. Zwischenzeitliche Template-Änderungen erhalten.
 
 ## Prüfung
 
-CSS-/JavaScript-Prüfungen, JavaScript-Build und 69 Browser-Tests bestanden. Hero-Tests prüfen das echte Video-Scrubbing, denselben mittigen Ausschnitt von Film und Poster, Größen von 360 bis 1920 Pixeln, reduzierte Bewegung und Videofehler. Der lokale Testserver unterstützt dafür HTTP-Teilanfragen wie der Staging-Webserver.
-
-Beide tatsächlichen Staging-Startseiten wurden zusätzlich im Browser geprüft: Film wird geladen und beim Scrollen vorwärts gesucht, mobile/reduzierte Darstellung bleibt mittig und ohne horizontales Überlaufen. Der Webserver liefert Video-Teilanfragen mit HTTP 206. Nach der Korrektur der Überblendung bestanden die sieben Hero-Tests erneut.
+Browser-Tests prüfen, dass keine Hero-Videos angefordert werden, das Bild beim Scrollen seine Position innerhalb des Hero behält, keine Scroll-Fixierung entsteht und der Ausschnitt von 360 bis 1920 Pixeln mittig bleibt. Bestehende Tests sichern die übrigen Scrollgeschichten und das gemeinsame Seitenraster ab.

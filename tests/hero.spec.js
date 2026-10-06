@@ -1,34 +1,37 @@
 import { test, expect } from '@playwright/test';
 
-test('industrial hero seeks the real video while preserving the centered poster crop', async ({ page }) => {
+test('static hero never requests video, pins the page or moves the hand while scrolling', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await page.setViewportSize({ width: 1440, height: 900 });
-  const errors = [];
+  const videos = [], errors = [];
+  page.on('request', request => { if (/hero-(release|industrial-soft)\.mp4/.test(request.url())) videos.push(request.url()); });
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('/tests/fixtures/hero.html');
-  const video = page.locator('.hero-motion-video');
-  await expect(video).toHaveClass(/is-ready/);
-  await expect(video).toHaveCSS('opacity', '1');
-  await expect(video).toHaveAttribute('src', /hero-industrial-soft\.mp4$/);
-  await expect(video).toHaveAttribute('poster', /hero-industrial-soft\.jpg$/);
-  await page.evaluate(() => window.scrollTo({ top: innerHeight * 0.65, behavior: 'instant' }));
-  await expect.poll(() => video.evaluate(el => el.currentTime)).toBeGreaterThan(2);
-  await expect(video).toHaveCSS('opacity', '1');
-  const crop = await video.evaluate(el => {
-    const image = el.parentElement.querySelector('img');
-    const a = el.getBoundingClientRect(), b = image.getBoundingClientRect();
-    return { difference: Math.max(Math.abs(a.left - b.left), Math.abs(a.width - b.width)), position: getComputedStyle(el).objectPosition };
+  const image = page.locator('.hero-media img');
+  await expect(image).toBeVisible();
+  const crop = () => image.evaluate(el => {
+    const rect=el.getBoundingClientRect(),hero=el.closest('.hero').getBoundingClientRect();
+    return { top:rect.top-hero.top, left:rect.left-hero.left, transform:getComputedStyle(el).transform };
   });
-  expect(crop.difference).toBeLessThan(1);
-  expect(crop.position).toBe('50% 50%');
+  const before = await crop();
+  for (const top of [500, 0]) {
+    await page.evaluate(top => scrollTo({ top, behavior: 'instant' }), top);
+    await expect(image).toHaveCSS('transform', 'none');
+    const after = await crop();
+    expect(Math.abs(after.top-before.top)).toBeLessThan(1);
+    expect(Math.abs(after.left-before.left)).toBeLessThan(1);
+  }
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await expect(video).toHaveCount(0);
-  await expect(page.locator('.hero-media img')).toBeVisible();
+  await expect(image).toBeVisible();
+  await expect(page.locator('.hero video')).toHaveCount(0);
+  expect(await page.locator('.hero').evaluate(el => Boolean(el.closest('.pin-spacer')))).toBe(false);
+  await expect(page.getByRole('progressbar', { name: /Startfilm|Opening film/, includeHidden: true })).toHaveCount(0);
+  expect(videos).toEqual([]);
   expect(errors).toEqual([]);
 });
 
 for (const width of [360, 390, 760, 1000, 1920]) {
-  test(`industrial hero at ${width}px keeps its fallback centered and fits the page`, async ({ page }) => {
+  test(`centered original hero at ${width}px keeps its fallback centered and fits the page`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/tests/fixtures/hero.html');
     await expect(page.locator('.hero-media img')).toBeVisible();
@@ -44,12 +47,3 @@ for (const width of [360, 390, 760, 1000, 1920]) {
     expect(geometry.overflow).toBeLessThanOrEqual(1);
   });
 }
-
-test('a failed hero video leaves the poster and releases the scroll pin', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await page.route('**/hero-industrial-soft.mp4', route => route.abort());
-  await page.goto('/tests/fixtures/hero.html');
-  await expect(page.locator('.hero-motion-video')).toHaveCount(0);
-  await expect(page.locator('.hero-media img')).toBeVisible();
-  await expect(page.locator('.hero').locator('..')).not.toHaveClass(/pin-spacer/);
-});

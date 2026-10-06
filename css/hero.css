@@ -6,30 +6,30 @@
   margin: var(--space-md) 0 var(--space-lg);
 }
 
-/* Das mittige Industriemotiv nutzt dieselbe Fläche für Standbild und Film. */
-.hero:has(.hero-media--industrial) .hero-media :is(img, video) {
+/* Das mittige Handmotiv nutzt dieselbe Fläche für Standbild und Film. */
+.hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media :is(img, video) {
   object-position: center;
 }
-.hero:has(.hero-media--industrial) .hero-media img {
+.hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media img {
   position: static;
   top: auto;
 }
 @media (min-width: 761px) {
-  .hero:has(.hero-media--industrial) .hero-message {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-message {
     max-width: min(34%, 28.125rem);
   }
 }
 @media (max-width: 1000px) {
-  .hero:has(.hero-media--industrial) .hero-media {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media {
     inset: var(--space-position-42percent) 0 0;
   }
-  .hero:has(.hero-media--industrial) .hero-inner {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-inner {
     padding-top: var(--space-header-offset);
   }
-  .hero:has(.hero-media--industrial) .hero-message {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-message {
     max-width: 100%;
   }
-  .hero:has(.hero-media--industrial) h1 {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) h1 {
     max-width: 80%;
     margin-top: var(--space-lg);
   }

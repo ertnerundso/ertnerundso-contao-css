@@ -1092,14 +1092,18 @@
     );
     opacity: 0;
   }
-  /* Das weiße Industriemotiv enthält bereits Licht und weiche Bildübergänge. */
-  .hero:has(.hero-media--industrial) .hero-media :is(img, video) {
+  /* Zentrierte Medien nutzen ihren eigenen Bildausschnitt ohne die alten Masken. */
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media :is(img, video) {
     filter: none;
     -webkit-mask-image: none;
     mask-image: none;
   }
+  /* Der helle Hintergrund des Originalmotivs schließt weiß an die Seite an. */
+  .hero:has(.hero-media--centered) .hero-media :is(img, video) {
+    filter: brightness(1.05);
+  }
   /* Fertiger Film ersetzt das Standbild vollständig, ohne Doppelkonturen. */
-  .hero:has(.hero-media--industrial) .hero-motion-video.is-ready {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-motion-video.is-ready {
     opacity: 1;
   }
   .hero-actions > .content-hyperlink a {
