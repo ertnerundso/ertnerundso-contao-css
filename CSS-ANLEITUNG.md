@@ -24,6 +24,7 @@ Die kurze `site.css` lädt alle Dateien in `css/`. Ändere die zuständige Einst
 | Gestrichelte Rahmen / Kreuze | `--color-frame-*` in `base.css`, `--space-frame-marker-half` für die Kreuz-Größe, `--layout-frame-stroke` in `layout.css` für die Strichstärke |
 | Allgemeine responsive Raster | `css/responsive.css` |
 | Scroll-Schwellen, Slider-Verhalten, Formular-/Kalender-Adressen | `src/config.js` |
+| Horizontale Arbeiten-Galerie / Projekt-Detailgalerien | `css/work.css` bei `.work-portfolio` / `css/news.css` bei `.project-gallery`; Inhalte: [WORK-CMS.md](WORK-CMS.md) |
 | Funktion eines JavaScript-Bereichs | Etwa `src/navigation.js`, `src/work.js`, `src/forms.js` |
 
 ## Beispiel: h1 bearbeiten

@@ -1006,6 +1006,28 @@
     }
   }
 }
+@layer sections {
+  .work-portfolio .micro {
+    color: var(--color-primary);
+  }
+  .work-portfolio .portfolio-card h3 {
+    text-shadow: none;
+  }
+  .work-portfolio .portfolio-card h3 a {
+    color: inherit;
+  }
+  .work-portfolio .portfolio-card h3 a:hover {
+    color: var(--color-primary);
+  }
+  .work-portfolio .portfolio-card img,
+  .project-gallery img {
+    border-radius: 0;
+  }
+  .project-gallery video {
+    background: var(--color-video-surface);
+  }
+}
+
 @layer cms {
   /* --- HERO --- */
   .inner-hero {

@@ -511,6 +511,12 @@
     }
   }
 }
+@layer sections {
+  .work-portfolio .portfolio-card h3 {
+    overflow-wrap: anywhere;
+  }
+}
+
 @layer cms {
   /* --- RECHTSTEXTE --- */
   .legal-content a {
