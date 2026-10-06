@@ -1,0 +1,33 @@
+{
+  "note": "Unveränderte Projektbilder der alten Website, vom Inhaber für diese Bereiche ausgewählt. Die Website benennt CGI/3D; kein unabhängiger Nachweis der Herstellungsmethode.",
+  "images": [
+    {
+      "file": "microscope-original.webp",
+      "project_url": "https://ertnerundso.com/arbeiten/digitalmikroskop-produktvisualisierung/",
+      "source_url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering%20des%20Mikroskops%20mit%20Fokus%20auf%20Beleuchtungseinheit%20und%20zylindrisches%20Geh%C3%A4usedesign-1024w.webp",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "3d04c78d688ecd338fe1e641faabe52267b2e7dc9566ef4378ade0af248950b0",
+      "staging_path": "files/site/microscope-original.webp",
+      "content_ids_de_en": [
+        2210,
+        2326
+      ],
+      "section": "Bildwelten / Featured service card"
+    },
+    {
+      "file": "sbc-original.webp",
+      "project_url": "https://ertnerundso.com/arbeiten/sbc-product-rendering/",
+      "source_url": "https://ertnerundso.com/assets/images/optimized/Draufsicht%20auf%20das%20gerenderte%20SBC-Board%20mit%20sichtbaren%20Chip-Komponenten%20und%20goldfarbenen%20Leiterbahnen-1920w.webp",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "a9b57d6397f4067a43eb82df4786b581353565cd640079e0b3d7a3b30eb16576",
+      "staging_path": "files/site/sbc-original.webp",
+      "content_ids_de_en": [
+        2239,
+        2355
+      ],
+      "section": "Präzision / Statement"
+    }
+  ]
+}
