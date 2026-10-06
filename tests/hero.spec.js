@@ -16,7 +16,7 @@ test('static hero never requests video, pins the page or moves the hand while sc
   const before = await crop();
   for (const top of [500, 0]) {
     await page.evaluate(top => scrollTo({ top, behavior: 'instant' }), top);
-    await expect(image).toHaveCSS('transform', 'none');
+    await expect(image).toHaveCSS('transform', 'matrix(0.85, 0, 0, 0.85, 0, 0)');
     const after = await crop();
     expect(Math.abs(after.top-before.top)).toBeLessThan(1);
     expect(Math.abs(after.left-before.left)).toBeLessThan(1);
@@ -43,7 +43,7 @@ for (const width of [360, 390, 760, 1000, 1920]) {
     });
     expect(Math.abs(geometry.center - geometry.expectedCenter)).toBeLessThan(1);
     expect(geometry.position).toBe('50% 50%');
-    expect(geometry.transform).toBe('none');
+    expect(geometry.transform).toBe('matrix(0.85, 0, 0, 0.85, 0, 0)');
     expect(geometry.overflow).toBeLessThanOrEqual(1);
     // Die Zentrierung darf den Verlauf ins Weiß nicht wieder überschreiben.
     await expect(page.locator('.hero-media img')).toHaveCSS('mask-image', /linear-gradient/);

@@ -1,0 +1,1282 @@
+{
+  "source": "https://ertnerundso.com/arbeiten/",
+  "projects": [
+    {
+      "order": 1,
+      "alias": "automotive-product-configurator",
+      "title": "Automotive Produktkonfigurator",
+      "oldUrl": "https://ertnerundso.com/arbeiten/automotive-product-configurator/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht des Fahrzeugs mit sichtbarer Karosserielinie und Proportionen für die Konfigurator-Darstellung-1920w.webp",
+        "alt": "Automotive Produktkonfigurator",
+        "width": "1920",
+        "height": "1080",
+        "asset": "assets/images/projects/01-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht des Fahrzeugs mit sichtbarer Karosserielinie und Proportionen für die Konfigurator-Darstellung-1920w.webp",
+          "alt": "Seitenansicht eines Fahrzeugs im 3D-Produktkonfigurator mit konfigurierbarer Karosserielinie",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/01-00.webp"
+        },
+        {
+          "type": "video",
+          "url": "https://ertnerundso.b-cdn.net/SERVICE_VIDEOS/car_configurator.mp4"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Dreiviertelansicht des 3D-gerenderten Sportwagens mit Fokus auf Frontpartie und Felgendesign-1920w.webp",
+          "alt": "Automotive Produktkonfigurator – Bild 2",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/01-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Frontansicht des gerenderten Fahrzeugs mit klarer Silhouette und weißem Lackfinish auf grauem Hintergrund-1920w.webp",
+          "alt": "Automotive Produktkonfigurator – Bild 3",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/01-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Frontansicht des gerenderten Fahrzeugs mit klarer Silhouette und weißem Lackfinish auf grauem Hintergrund-1920w.webp",
+          "alt": "Automotive Produktkonfigurator – Bild 4",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/01-04.webp"
+        }
+      ],
+      "category": "Visualisierung"
+    },
+    {
+      "order": 2,
+      "alias": "automotive-rim-product-video",
+      "title": "Felgen Produktvideo",
+      "oldUrl": "https://ertnerundso.com/arbeiten/automotive-rim-product-video/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht der gerenderten Felge mit bronzefarbenem Finish und scharfen Speichenkanten im Gegenlicht-1141w.webp",
+        "alt": "Felgen Produktvideo",
+        "width": "1141",
+        "height": "649",
+        "asset": "assets/images/projects/02-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht der gerenderten Felge mit bronzefarbenem Finish und scharfen Speichenkanten im Gegenlicht-1141w.webp",
+          "alt": "Gerenderte Felge mit bronzefarbenem Finish, scharfe Speichenkanten im Gegenlicht, 3D-Produktrendering",
+          "width": "1141",
+          "height": "649",
+          "asset": "assets/images/projects/02-00.webp"
+        },
+        {
+          "type": "video",
+          "url": "https://ertnerundso.b-cdn.net/PROJECT_VIDEOS/xKklrxOfDL4Pfng6SlLNhVFMNk_1.mp4"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Dreiviertelansicht der gerenderten Felge in Silber-Gunmetal mit sichtbarer Felgentiefe und Speichenverlauf-1920w.webp",
+          "alt": "Felgen Produktvideo – Bild 2",
+          "width": "1920",
+          "height": "1920",
+          "asset": "assets/images/projects/02-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Produktvisualisierung einer Felge in Gunmetal-Finish mit dunkler Lichtstimmung-1920w.webp",
+          "alt": "Felgen Produktvideo – Bild 3",
+          "width": "1920",
+          "height": "1920",
+          "asset": "assets/images/projects/02-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering der Felge in warmem Goldton mit Fokus auf Nabenzentrum und Oberflächenreflexionen-1920w.webp",
+          "alt": "Felgen Produktvideo – Bild 4",
+          "width": "1920",
+          "height": "1920",
+          "asset": "assets/images/projects/02-05.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/felgen rendering-1920w.webp",
+          "alt": "Felgen Produktvideo – Bild 5",
+          "width": "1920",
+          "height": "1920",
+          "asset": "assets/images/projects/02-06.webp"
+        }
+      ],
+      "category": "Produktvideo"
+    },
+    {
+      "order": 3,
+      "alias": "bathroom-visualization",
+      "title": "Bathroom Visualization",
+      "oldUrl": "https://ertnerundso.com/arbeiten/bathroom-visualization/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des Badezimmers in der Totalen mit freistehender schwarzer Badewanne, Marmorvertäfelung und Blick durch bodentiefe Fenster ins Grüne-1920w.webp",
+        "alt": "Bathroom Visualization",
+        "width": "1920",
+        "height": "1080",
+        "asset": "assets/images/projects/03-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des Badezimmers in der Totalen mit freistehender schwarzer Badewanne, Marmorvertäfelung und Blick durch bodentiefe Fenster ins Grüne-1920w.webp",
+          "alt": "3D Rendering Badezimmer mit schwarzer freistehender Badewanne, Marmorwand und bodentiefen Fenstern, CGI-Visualisierung",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/03-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Rendering des Badezimmers mit Fokus auf Duschbereich, moderne Armaturen und Materialkontraste zwischen Stein und Glas-1920w.webp",
+          "alt": "Bathroom Visualization – Bild 1",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/03-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Draufsicht auf das gerenderte Badezimmer mit Doppelwaschbecken, dunklen Steinoberflächen und warmem Licht-1920w.webp",
+          "alt": "Bathroom Visualization – Bild 2",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/03-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Visualisierung des Badezimmers mit Blick auf Duschbereich, Holzlamellen und Glastrennwand-1920w.webp",
+          "alt": "Bathroom Visualization – Bild 3",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/03-04.webp"
+        }
+      ],
+      "category": "Visualisierung"
+    },
+    {
+      "order": 4,
+      "alias": "digitalmikroskop-produktvisualisierung",
+      "title": "Digitalmikroskop Produktvisualisierung",
+      "oldUrl": "https://ertnerundso.com/arbeiten/digitalmikroskop-produktvisualisierung/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des Mikroskops mit Fokus auf Beleuchtungseinheit und zylindrisches Gehäusedesign-1024w.webp",
+        "alt": "Digitalmikroskop Produktvisualisierung",
+        "width": "1024",
+        "height": "1024",
+        "asset": "assets/images/projects/04-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des Mikroskops mit Fokus auf Beleuchtungseinheit und zylindrisches Gehäusedesign-1024w.webp",
+          "alt": "3D Rendering Digitalmikroskop mit Beleuchtungseinheit und zylindrischem Gehäusedesign, CGI Produktvisualisierung",
+          "width": "1024",
+          "height": "1024",
+          "asset": "assets/images/projects/04-00.webp"
+        }
+      ],
+      "category": "Rendering"
+    },
+    {
+      "order": 5,
+      "alias": "https-ertnerundso.b-cdn.net-project_videos-miniaturstadt_clip_1.mp4",
+      "title": "Miniature City Rendering",
+      "oldUrl": "https://ertnerundso.com/arbeiten/https-ertnerundso.b-cdn.net-project_videos-miniaturstadt_clip_1.mp4/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Draufsicht auf die gerenderte Miniaturstadt mit sichtbarem Straßenraster, roten Verbindungsleitungen und dunkler Atmosphäre-1600w.webp",
+        "alt": "Miniature City Rendering",
+        "width": "3840",
+        "height": "2560",
+        "asset": "assets/images/projects/05-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Draufsicht auf die gerenderte Miniaturstadt mit sichtbarem Straßenraster, roten Verbindungsleitungen und dunkler Atmosphäre-1600w.webp",
+          "alt": "Draufsicht einer gerenderten Miniaturstadt mit Straßenraster, roten Verbindungsleitungen und cinematischer 3D-Visualisierung",
+          "width": "3840",
+          "height": "2560",
+          "asset": "assets/images/projects/05-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering der Miniaturstadt aus der Seitenansicht mit roten Leitungsstrukturen, leuchtenden Fenstern und technischen Detailkomponenten-1600w.webp",
+          "alt": "Miniature City Rendering – Bild 1",
+          "width": "3840",
+          "height": "2560",
+          "asset": "assets/images/projects/05-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme der gerenderten Stadtstruktur mit Fokus auf Materialkontraste zwischen Glas, Metall und Licht-1600w.webp",
+          "alt": "Miniature City Rendering – Bild 2",
+          "width": "3840",
+          "height": "2560",
+          "asset": "assets/images/projects/05-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Visualisierung der Miniaturstadt aus der Vogelperspektive mit leuchtenden Straßenzügen und transparenten Gebäudemodulen-1600w.webp",
+          "alt": "Miniature City Rendering – Bild 3",
+          "width": "3840",
+          "height": "2560",
+          "asset": "assets/images/projects/05-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht der gerenderten Miniaturstadt mit sichtbaren elektronischen Komponenten und Neonbeleuchtung-1600w.webp",
+          "alt": "Miniature City Rendering – Bild 4",
+          "width": "3840",
+          "height": "2560",
+          "asset": "assets/images/projects/05-05.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering einer leuchtenden Miniaturstadt mit transparenten Gebäudestrukturen und blauem Lichtschein-1600w.webp",
+          "alt": "Miniature City Rendering – Bild 5",
+          "width": "3840",
+          "height": "2560",
+          "asset": "assets/images/projects/05-06.webp"
+        }
+      ],
+      "category": "Keyvisual"
+    },
+    {
+      "order": 6,
+      "alias": "knitting-simulation-rendering",
+      "title": "Knitting Simulation Rendering",
+      "oldUrl": "https://ertnerundso.com/arbeiten/knitting-simulation-rendering/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Weitwinkelansicht der gerenderten Strickstruktur mit gleichmäßigem Muster und neutralem Hintergrund-1920w.webp",
+        "alt": "Knitting Simulation Rendering",
+        "width": "1920",
+        "height": "1080",
+        "asset": "assets/images/projects/06-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Weitwinkelansicht der gerenderten Strickstruktur mit gleichmäßigem Muster und neutralem Hintergrund-1920w.webp",
+          "alt": "Fotorealistische 3D-Rendering einer Strickstruktur mit gleichmäßigem Maschenbild und detailliertem Faserverlauf",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/06-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering einer Strickstruktur in der Schrägansicht mit sichtbarer Oberflächentextur und Materialverhalten-1920w.webp",
+          "alt": "Knitting Simulation Rendering – Bild 1",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/06-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme der simulierten Textiloberfläche mit Fokus auf Faserverflechtung und Strukturtiefe-1920w.webp",
+          "alt": "Knitting Simulation Rendering – Bild 2",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/06-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht einer gerenderten Strickstruktur mit parallelen Faserverläufen und gleichmäßigem Maschenraster-1920w.webp",
+          "alt": "Knitting Simulation Rendering – Bild 3",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/06-04.webp"
+        }
+      ],
+      "category": "Keyvisual"
+    },
+    {
+      "order": 7,
+      "alias": "living-room-visualization",
+      "title": "Living Room Visualization",
+      "oldUrl": "https://ertnerundso.com/arbeiten/living-room-visualization/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistische Visualisierung eines Essbereichs mit rundem Holztisch, Designerstühlen und natürlichem Lichteinfall-1920w.webp",
+        "alt": "Living Room Visualization",
+        "width": "1920",
+        "height": "1080",
+        "asset": "assets/images/projects/07-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistische Visualisierung eines Essbereichs mit rundem Holztisch, Designerstühlen und natürlichem Lichteinfall-1920w.webp",
+          "alt": "Fotorealistische 3D-Visualisierung eines Wohnzimmers mit rundem Holztisch, Designerstühlen und natürlichem Lichteinfall",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/07-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Rendering eines minimalistischen Bettkopfteils mit Kissen in Beigetönen und moderner Wandleuchte-1920w.webp",
+          "alt": "Living Room Visualization – Bild 1",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/07-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Visualisierung eines Garderobenbereichs mit Holzhaken, Textilien und warmer Farbpalette-1920w.webp",
+          "alt": "Living Room Visualization – Bild 2",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/07-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht eines gerenderten Wohnbereichs mit dekorativer Holzskulptur und strukturierten Textilien-1920w.webp",
+          "alt": "Living Room Visualization – Bild 3",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/07-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering eines Schlafbereichs mit beigefarbener Bettwäsche, Nachttisch und warmem Seitenlicht-1920w.webp",
+          "alt": "Living Room Visualization – Bild 4",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/07-05.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Rendering eines Schlaf- oder Loungebereichs mit neutraler Farbpalette und strukturierten Kissenstoffen-1920w.webp",
+          "alt": "Living Room Visualization – Bild 5",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/07-06.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering eines modernen Wohnzimmers mit Designermöbeln, warmem Licht und bodentiefen Fenstern-1920w.webp",
+          "alt": "Living Room Visualization – Bild 6",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/07-07.webp"
+        }
+      ],
+      "category": "Visualisierung"
+    },
+    {
+      "order": 8,
+      "alias": "petcare-product-rendering",
+      "title": "Petcare Product Rendering",
+      "oldUrl": "https://ertnerundso.com/arbeiten/petcare-product-rendering/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des magentafarbenen Hundebetts auf rosa Hintergrund mit weichem Licht und sichtbarer Polstertiefe-1000w.webp",
+        "alt": "Petcare Product Rendering",
+        "width": "1000",
+        "height": "600",
+        "asset": "assets/images/projects/08-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des magentafarbenen Hundebetts auf rosa Hintergrund mit weichem Licht und sichtbarer Polstertiefe-1000w.webp",
+          "alt": "3D Rendering magentafarbenes Hundebett mit Polstertiefe und weichem Licht auf rosa Hintergrund",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/08-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht des 3D-Renderings mit Fokus auf die geschwungene Polsterform und samtartige Oberflächenstruktur-1000w.webp",
+          "alt": "Petcare Product Rendering – Bild 1",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/08-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht des gerenderten Hundebetts mit sichtbarer Formgebung und Materialtiefe auf neutralem Hintergrund-1000w.webp",
+          "alt": "Petcare Product Rendering – Bild 2",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/08-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme des Hundebett-Renderings mit Fokus auf Stofftextur und Nahtdetails in warmem Studiolicht-1000w.webp",
+          "alt": "Petcare Product Rendering – Bild 3",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/08-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des magentafarbenen Hundebetts auf rosa Hintergrund mit weichem Licht und sichtbarer Polstertiefe-1000w.webp",
+          "alt": "Petcare Product Rendering – Bild 4",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/08-00.webp"
+        }
+      ],
+      "category": "Produktbilder"
+    },
+    {
+      "order": 9,
+      "alias": "pharma-product-rendering",
+      "title": "Pharma Product Rendering",
+      "oldUrl": "https://ertnerundso.com/arbeiten/pharma-product-rendering/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme einer gerenderten Spritze mit sichtbarer Skalierung und transparentem Flüssigkeitsinhalt-1920w.webp",
+        "alt": "Pharma Product Rendering",
+        "width": "1920",
+        "height": "1080",
+        "asset": "assets/images/projects/09-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme einer gerenderten Spritze mit sichtbarer Skalierung und transparentem Flüssigkeitsinhalt-1920w.webp",
+          "alt": "Gerenderte Spritze mit Skalierung und transparentem Flüssigkeitsinhalt, Pharma CGI Produktvisualisierung",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/09-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Rendering von Spritze und Ampulle in Anwendungsposition mit weichem Licht und klinisch sauberem Hintergrund-1920w.webp",
+          "alt": "Pharma Product Rendering – Bild 1",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/09-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Visualisierung einer medizinischen Spritze in der Seitenansicht mit Fokus auf Nadel und Dosiermarkierungen-1920w.webp",
+          "alt": "Pharma Product Rendering – Bild 2",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/09-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering einer medizinischen Ampulle und Spritze mit metallischen Reflexionen auf hellem Hintergrund-1920w.webp",
+          "alt": "Pharma Product Rendering – Bild 3",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/09-04.webp"
+        }
+      ],
+      "category": "Keyvisual"
+    },
+    {
+      "order": 10,
+      "alias": "pharmaceutical-rendering",
+      "title": "Pharmaceutical Rendering",
+      "oldUrl": "https://ertnerundso.com/arbeiten/pharmaceutical-rendering/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Extreme Nahaufnahme der gerenderten molekularen Strukturen mit Fokus auf Pink- und Blautöne der Proteinoberflächen-1000w.webp",
+        "alt": "Pharmaceutical Rendering",
+        "width": "1000",
+        "height": "600",
+        "asset": "assets/images/projects/10-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Extreme Nahaufnahme der gerenderten molekularen Strukturen mit Fokus auf Pink- und Blautöne der Proteinoberflächen-1000w.webp",
+          "alt": "Extreme Nahaufnahme einer gerenderten Proteinoberfläche mit Pink- und Blautönen, molekulare Struktur in 3D-Animation",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/10-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme der gerenderten Proteinstrukturen mit Fokus auf Farbkodierung und molekulare Detailtiefe-1000w.webp",
+          "alt": "Pharmaceutical Rendering – Bild 1",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/10-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Weitwinkelansicht der molekularen 3D-Visualisierung mit gelbgrünen und blauen Strukturelementen auf hellem Hintergrund-1000w.webp",
+          "alt": "Pharmaceutical Rendering – Bild 2",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/10-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht der gerenderten Zellmembran mit sichtbaren Transmembranproteinen in Pink und blauer Lipiddoppelschicht-1000w.webp",
+          "alt": "Pharmaceutical Rendering – Bild 3",
+          "width": "1000",
+          "height": "600",
+          "asset": "assets/images/projects/10-04.webp"
+        }
+      ],
+      "category": "Keyvisual"
+    },
+    {
+      "order": 11,
+      "alias": "produktvideo-wholey",
+      "title": "Produktvideo Wholey",
+      "oldUrl": "https://ertnerundso.com/arbeiten/produktvideo-wholey/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Frontansicht der Wholey Produktverpackung mit grünem Design und Produktabbildung-1365w.webp",
+        "alt": "Produktvideo Wholey",
+        "width": "1365",
+        "height": "768",
+        "asset": "assets/images/projects/11-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Frontansicht der Wholey Produktverpackung mit grünem Design und Produktabbildung-1365w.webp",
+          "alt": "Wholey Produktverpackung Frontansicht mit grünem Design, CGI Produktvisualisierung",
+          "width": "1365",
+          "height": "768",
+          "asset": "assets/images/projects/11-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Animationsframe mit Wholey Maskottchen und Produktinszenierung auf weißem Hintergrund-1366w.webp",
+          "alt": "Produktvideo Wholey – Bild 1",
+          "width": "1366",
+          "height": "768",
+          "asset": "assets/images/projects/11-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Branded Keyvisual mit Wholey und ERTNER&SO Logo auf lila Hintergrund-1365w.webp",
+          "alt": "Produktvideo Wholey – Bild 2",
+          "width": "1365",
+          "height": "768",
+          "asset": "assets/images/projects/11-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Produktfamilie von Wholey in verschiedenen Varianten auf lilafarbenem Hintergrund-1836w.webp",
+          "alt": "Produktvideo Wholey – Bild 3",
+          "width": "1836",
+          "height": "768",
+          "asset": "assets/images/projects/11-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Animationsframe mit fliegenden Zutaten und Wholey Branding auf dunklem Hintergrund-1365w.webp",
+          "alt": "Produktvideo Wholey – Bild 4",
+          "width": "1365",
+          "height": "768",
+          "asset": "assets/images/projects/11-05.webp"
+        }
+      ],
+      "category": "Produktvideo"
+    },
+    {
+      "order": 12,
+      "alias": "sbc-product-rendering",
+      "title": "SBC Rendering",
+      "oldUrl": "https://ertnerundso.com/arbeiten/sbc-product-rendering/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Draufsicht auf das gerenderte SBC-Board mit sichtbaren Chip-Komponenten und goldfarbenen Leiterbahnen-1920w.webp",
+        "alt": "SBC Rendering",
+        "width": "1920",
+        "height": "1080",
+        "asset": "assets/images/projects/12-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Draufsicht auf das gerenderte SBC-Board mit sichtbaren Chip-Komponenten und goldfarbenen Leiterbahnen-1920w.webp",
+          "alt": "Draufsicht SBC Board mit Chip-Komponenten und goldfarbenen Leiterbahnen in CGI-Rendering",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/12-00.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering eines Single Board Computers mit grüner Leiterplatte, Chips und elektronischen Bauteilen-1920w.webp",
+          "alt": "SBC Rendering – Bild 1",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/12-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht des SBC-Renderings mit Fokus auf Prozessor-Bereich und umliegende Bauteile mit grünen Lichtreflexionen-1920w.webp",
+          "alt": "SBC Rendering – Bild 2",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/12-03.webp"
+        }
+      ],
+      "category": "Produktvideo"
+    },
+    {
+      "order": 13,
+      "alias": "steitz-secura-explainer",
+      "title": "Steitz-Secura Explainer",
+      "oldUrl": "https://ertnerundso.com/arbeiten/steitz-secura-explainer/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme des Sicherheitsschuhs mit sichtbarer Sohlenstruktur und roter Akzentbeleuchtung-1920w.webp",
+        "alt": "Steitz-Secura Explainer",
+        "width": "1920",
+        "height": "1080",
+        "asset": "assets/images/projects/13-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme des Sicherheitsschuhs mit sichtbarer Sohlenstruktur und roter Akzentbeleuchtung-1920w.webp",
+          "alt": "Sicherheitsschuh Nahaufnahme mit Sohlenstruktur, rote CGI-Akzentbeleuchtung, 3D-Rendering",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/13-00.webp"
+        },
+        {
+          "type": "video",
+          "url": "https://ertnerundso.b-cdn.net/PROJECT_VIDEOS/2510-STE-Schuh-Animation-Preview-DE-03.mp4"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des Steitz-Secura Schuhs in der Dreiviertelansicht mit cinematischer Lichtstimmung-1920w.webp",
+          "alt": "Steitz-Secura Explainer – Bild 2",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/13-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht der Schuhspitze mit Fokus auf Schutzkappe und metallische Oberflächenreflexionen-1920w.webp",
+          "alt": "Steitz-Secura Explainer – Bild 3",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/13-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht des gerenderten Steitz-Secura Sicherheitsschuhs mit rotem Lichtschein und dunkler Atmosphäre-1920w.webp",
+          "alt": "Steitz-Secura Explainer – Bild 4",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/13-05.webp"
+        }
+      ],
+      "category": "Erklärvideo"
+    },
+    {
+      "order": 14,
+      "alias": "watch-product-video",
+      "title": "Watch Product Video",
+      "oldUrl": "https://ertnerundso.com/arbeiten/watch-product-video/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht der gerenderten Uhr mit Fokus auf Gehäuse, Krone und metallische Oberflächenreflexionen-1920w.webp",
+        "alt": "Watch Product Video",
+        "width": "1920",
+        "height": "1080",
+        "asset": "assets/images/projects/14-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht der gerenderten Uhr mit Fokus auf Gehäuse, Krone und metallische Oberflächenreflexionen-1920w.webp",
+          "alt": "Gerenderte Luxusuhr Seitenansicht mit Gehäuse, Krone und metallischen Oberflächenreflexionen, CGI Produktvisualisierung",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/14-00.webp"
+        },
+        {
+          "type": "video",
+          "url": "https://ertnerundso.b-cdn.net/SERVICE_VIDEOS/OCTANE-Watch-Rendering-Webseite.mp4"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering der Uhr mit Fokus auf Datumsanzeige und ERTNER&SO Branding auf dem Zifferblatt-1920w.webp",
+          "alt": "Watch Product Video – Bild 2",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/14-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme des gerenderten Uhrenzifferblatts mit sichtbaren Details der Stundenmarkierungen und Zeiger-1920w.webp",
+          "alt": "Watch Product Video – Bild 3",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/14-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering einer Uhr mit Fokus auf Zifferblatt, metallische Reflexionen und grüne Leuchtindizes(1)-1920w.webp",
+          "alt": "Watch Product Video – Bild 4",
+          "width": "1920",
+          "height": "1080",
+          "asset": "assets/images/projects/14-05.webp"
+        }
+      ],
+      "category": "Produktvideo"
+    },
+    {
+      "order": 15,
+      "alias": "woll-group-logo-animation",
+      "title": "Woll Group Logo Animation",
+      "oldUrl": "https://ertnerundso.com/arbeiten/woll-group-logo-animation/",
+      "cover": {
+        "type": "image",
+        "url": "https://ertnerundso.com/assets/images/optimized/ao179sYfa5QaBu0qCP70UCPDC0(1)-960w.webp",
+        "alt": "Woll Group Logo Animation",
+        "width": "960",
+        "height": "540",
+        "asset": "assets/images/projects/15-00.webp"
+      },
+      "media": [
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/ao179sYfa5QaBu0qCP70UCPDC0(1)-960w.webp",
+          "alt": "Woll Group Logo Animation in CGI-Produktion mit modernem Design und technisch präziser Bewegtbild-Inszenierung",
+          "width": "960",
+          "height": "540",
+          "asset": "assets/images/projects/15-00.webp"
+        },
+        {
+          "type": "video",
+          "url": "https://ertnerundso.b-cdn.net/PROJECT_VIDEOS/2605-310-WG-Intro-Outro-H-Draft-08_1.mp4"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/hrX88mqoGDqdzfuE8svnqrotAR0-960w.webp",
+          "alt": "Woll Group Logo Animation – Bild 2",
+          "width": "960",
+          "height": "540",
+          "asset": "assets/images/projects/15-03.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/4m3fVkBGdIicfRQjpEymuRurkw-960w.webp",
+          "alt": "Woll Group Logo Animation – Bild 3",
+          "width": "960",
+          "height": "540",
+          "asset": "assets/images/projects/15-04.webp"
+        },
+        {
+          "type": "image",
+          "url": "https://ertnerundso.com/assets/images/optimized/ao179sYfa5QaBu0qCP70UCPDC0(1)-960w.webp",
+          "alt": "Woll Group Logo Animation – Bild 4",
+          "width": "960",
+          "height": "540",
+          "asset": "assets/images/projects/15-00.webp"
+        }
+      ],
+      "category": "Logo Animation"
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht des Fahrzeugs mit sichtbarer Karosserielinie und Proportionen für die Konfigurator-Darstellung-1920w.webp",
+      "file": "01-00.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 35786,
+      "sha256": "816ccd4e7df2869e8a748e8c1191b75a155d29604bfa0d7a1a30990bf4ff9615"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Dreiviertelansicht des 3D-gerenderten Sportwagens mit Fokus auf Frontpartie und Felgendesign-1920w.webp",
+      "file": "01-03.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 32986,
+      "sha256": "c57ed98b8d1c6ed727461085b4d1ac6eda18817bf8eaa06d9d8a8120889e7d5b"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Frontansicht des gerenderten Fahrzeugs mit klarer Silhouette und weißem Lackfinish auf grauem Hintergrund-1920w.webp",
+      "file": "01-04.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 40376,
+      "sha256": "137fbc1f55ccb4df721ec20c012411465f1cc9a2b5f040f5c4de4e7cee0acc9a"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht der gerenderten Felge mit bronzefarbenem Finish und scharfen Speichenkanten im Gegenlicht-1141w.webp",
+      "file": "02-00.webp",
+      "width": 1141,
+      "height": 649,
+      "bytes": 45298,
+      "sha256": "f71a67a41f7816ef3e4b5ab402ca5e05bdaf9dfedd6e35c3ca3cfc3c75993672"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Dreiviertelansicht der gerenderten Felge in Silber-Gunmetal mit sichtbarer Felgentiefe und Speichenverlauf-1920w.webp",
+      "file": "02-03.webp",
+      "width": 1920,
+      "height": 1920,
+      "bytes": 564096,
+      "sha256": "f366dc0d10eda5a14b4f2fc20019f0d69fe4e7845e20078632f328c80963bb4a"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Produktvisualisierung einer Felge in Gunmetal-Finish mit dunkler Lichtstimmung-1920w.webp",
+      "file": "02-04.webp",
+      "width": 1920,
+      "height": 1920,
+      "bytes": 198238,
+      "sha256": "73f22aee3518d3cb7924f970b2a790bfe07964cc347820a4096f802ecfa5d050"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering der Felge in warmem Goldton mit Fokus auf Nabenzentrum und Oberflächenreflexionen-1920w.webp",
+      "file": "02-05.webp",
+      "width": 1920,
+      "height": 1920,
+      "bytes": 601138,
+      "sha256": "587fcc7fd69aab7ce5225ed1b8ea8ba03ba6fc1f3c840d71b933e8dad5a7d4b1"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/felgen rendering-1920w.webp",
+      "file": "02-06.webp",
+      "width": 1920,
+      "height": 1920,
+      "bytes": 246794,
+      "sha256": "64f4f96a6b9146e465ae82af67f40621dede4324fbb564748c4044b85f524cdb"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des Badezimmers in der Totalen mit freistehender schwarzer Badewanne, Marmorvertäfelung und Blick durch bodentiefe Fenster ins Grüne-1920w.webp",
+      "file": "03-00.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 122116,
+      "sha256": "41710989f9557f6606c5f97da37b2c25d9a3ac913b6bbdca966d917be2518c95"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Rendering des Badezimmers mit Fokus auf Duschbereich, moderne Armaturen und Materialkontraste zwischen Stein und Glas-1920w.webp",
+      "file": "03-02.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 112414,
+      "sha256": "bbc7046bb2b8bf58265b1ede73ccbd6fba57901d2366c33e335b34b9803064b7"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Draufsicht auf das gerenderte Badezimmer mit Doppelwaschbecken, dunklen Steinoberflächen und warmem Licht-1920w.webp",
+      "file": "03-03.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 134496,
+      "sha256": "2d493035f87934a947a19065ee4bc9d670350681baf5e1b445c85f073c9dfaba"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Visualisierung des Badezimmers mit Blick auf Duschbereich, Holzlamellen und Glastrennwand-1920w.webp",
+      "file": "03-04.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 101834,
+      "sha256": "b2f653add33b042fc84ad38be80a3b28a54e19e87d8ccd98efc1becf0d54a3e7"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des Mikroskops mit Fokus auf Beleuchtungseinheit und zylindrisches Gehäusedesign-1024w.webp",
+      "file": "04-00.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 29192,
+      "sha256": "3d04c78d688ecd338fe1e641faabe52267b2e7dc9566ef4378ade0af248950b0"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Draufsicht auf die gerenderte Miniaturstadt mit sichtbarem Straßenraster, roten Verbindungsleitungen und dunkler Atmosphäre-1600w.webp",
+      "file": "05-00.webp",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 70480,
+      "sha256": "c44f5a92bc19e767f977f96afc0e0e5802db8c61fdf0c4967bd27d7da244784f"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering der Miniaturstadt aus der Seitenansicht mit roten Leitungsstrukturen, leuchtenden Fenstern und technischen Detailkomponenten-1600w.webp",
+      "file": "05-02.webp",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 45666,
+      "sha256": "b7628f104570f0fb66febeaa968f562ec451aef29fc12b3705a957ef19bbb755"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme der gerenderten Stadtstruktur mit Fokus auf Materialkontraste zwischen Glas, Metall und Licht-1600w.webp",
+      "file": "05-03.webp",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 61356,
+      "sha256": "7cd72c076e5f46021c21151c6067b348818a1172023c965af34b9b95b3e8a955"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Visualisierung der Miniaturstadt aus der Vogelperspektive mit leuchtenden Straßenzügen und transparenten Gebäudemodulen-1600w.webp",
+      "file": "05-04.webp",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 60998,
+      "sha256": "e34d707526d8a063dc10f0a141dce351b127b1989a94b32e811d38512bb69da0"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht der gerenderten Miniaturstadt mit sichtbaren elektronischen Komponenten und Neonbeleuchtung-1600w.webp",
+      "file": "05-05.webp",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 59548,
+      "sha256": "052fd0c9135b00b9f45cd369893517b0c252e0747438e0f0ad2c94dff83b97d1"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering einer leuchtenden Miniaturstadt mit transparenten Gebäudestrukturen und blauem Lichtschein-1600w.webp",
+      "file": "05-06.webp",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 100392,
+      "sha256": "d5c88da3178f84cc90e9d3f649b50d1d7cb8640a1b8853fe3dbc9db624319e2f"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Weitwinkelansicht der gerenderten Strickstruktur mit gleichmäßigem Muster und neutralem Hintergrund-1920w.webp",
+      "file": "06-00.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 200854,
+      "sha256": "b400d17a976bc9380f86e7951e7d34d6be3aca6057acb28b34856b4123c0c75d"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering einer Strickstruktur in der Schrägansicht mit sichtbarer Oberflächentextur und Materialverhalten-1920w.webp",
+      "file": "06-02.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 261810,
+      "sha256": "f534af1f412bb33d722a7cb25d85bb149237061c4ae12f3582235a34ba8275ce"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme der simulierten Textiloberfläche mit Fokus auf Faserverflechtung und Strukturtiefe-1920w.webp",
+      "file": "06-03.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 233654,
+      "sha256": "9d8095d8f9a264821c988f1b4ebd6a383da1b716353d8ae7bc8305fba2f83ed0"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht einer gerenderten Strickstruktur mit parallelen Faserverläufen und gleichmäßigem Maschenraster-1920w.webp",
+      "file": "06-04.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 229090,
+      "sha256": "7ab1a12a94586931843dd8e6513b955c35c8c02201e0ddffea3bbf28e0966dd0"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistische Visualisierung eines Essbereichs mit rundem Holztisch, Designerstühlen und natürlichem Lichteinfall-1920w.webp",
+      "file": "07-00.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 102040,
+      "sha256": "19602a84190cfffa930d8363b7e58ecd4c72cf93f11fde4dc06fb649868b5bd5"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Rendering eines minimalistischen Bettkopfteils mit Kissen in Beigetönen und moderner Wandleuchte-1920w.webp",
+      "file": "07-02.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 205456,
+      "sha256": "e384e557e8ca5aaafb7b20877e59fad2bd04ee28f85ca6bede2e50aa1ded4e46"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Visualisierung eines Garderobenbereichs mit Holzhaken, Textilien und warmer Farbpalette-1920w.webp",
+      "file": "07-03.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 54318,
+      "sha256": "b470639cf487e1121b7a557fc2bd19bde01036d89f320da88e19b9ca9e015c2c"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht eines gerenderten Wohnbereichs mit dekorativer Holzskulptur und strukturierten Textilien-1920w.webp",
+      "file": "07-04.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 66840,
+      "sha256": "7c47f04dfcfeec422c50a848ef5a932409ba420b884d8965f0377411a4e9915d"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering eines Schlafbereichs mit beigefarbener Bettwäsche, Nachttisch und warmem Seitenlicht-1920w.webp",
+      "file": "07-05.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 91532,
+      "sha256": "85a06ffb8fe43c200b60a44bd92d1d8fbf12aea88e31e529084979e46a68b99f"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Rendering eines Schlaf- oder Loungebereichs mit neutraler Farbpalette und strukturierten Kissenstoffen-1920w.webp",
+      "file": "07-06.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 287650,
+      "sha256": "aca16e8f5e465cd23e9785e67ab8d72f9b089cf58c5a3b445f1e5f3be2cfadad"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering eines modernen Wohnzimmers mit Designermöbeln, warmem Licht und bodentiefen Fenstern-1920w.webp",
+      "file": "07-07.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 180884,
+      "sha256": "449da495d72034cd797744dfd73438a5a99e84fc605527c70be22b111050b6da"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des magentafarbenen Hundebetts auf rosa Hintergrund mit weichem Licht und sichtbarer Polstertiefe-1000w.webp",
+      "file": "08-00.webp",
+      "width": 1000,
+      "height": 600,
+      "bytes": 18500,
+      "sha256": "ddf6f79d3dc6b3d0289d862e1b80b1e6c07607f54d5d95c8ff64e541015f8240"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht des 3D-Renderings mit Fokus auf die geschwungene Polsterform und samtartige Oberflächenstruktur-1000w.webp",
+      "file": "08-02.webp",
+      "width": 1000,
+      "height": 600,
+      "bytes": 19356,
+      "sha256": "091ea42e95f78c0192d5ea2759978c0af5441e900316657778a37c1bfb4e5299"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht des gerenderten Hundebetts mit sichtbarer Formgebung und Materialtiefe auf neutralem Hintergrund-1000w.webp",
+      "file": "08-03.webp",
+      "width": 1000,
+      "height": 600,
+      "bytes": 19722,
+      "sha256": "a059840b347c588f5a95964a156f856f5932c688a5a56483f9bba4bd79a2b653"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme des Hundebett-Renderings mit Fokus auf Stofftextur und Nahtdetails in warmem Studiolicht-1000w.webp",
+      "file": "08-04.webp",
+      "width": 1000,
+      "height": 600,
+      "bytes": 42254,
+      "sha256": "7cf6d12f21dd03d89a27fc6bca8a9e208f0167236c8ba8bb2e17aee353434dc7"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme einer gerenderten Spritze mit sichtbarer Skalierung und transparentem Flüssigkeitsinhalt-1920w.webp",
+      "file": "09-00.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 103906,
+      "sha256": "38f966d5618d56e27878f863f8eeace2b3820b2ae522cfea686359df832efcb9"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Rendering von Spritze und Ampulle in Anwendungsposition mit weichem Licht und klinisch sauberem Hintergrund-1920w.webp",
+      "file": "09-02.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 88008,
+      "sha256": "9cb41a0d283ef3ca61839cf77a56abb84b6d519a0c888747f0b02852af95b633"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Visualisierung einer medizinischen Spritze in der Seitenansicht mit Fokus auf Nadel und Dosiermarkierungen-1920w.webp",
+      "file": "09-03.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 155838,
+      "sha256": "a518527b4b2b5eeb492156d8d554fbed9524880e8a370489801912777208ea49"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering einer medizinischen Ampulle und Spritze mit metallischen Reflexionen auf hellem Hintergrund-1920w.webp",
+      "file": "09-04.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 151842,
+      "sha256": "73a9d686f7f59adafa75822564ae5ac2fb45764504df39c71f3958f5753723ce"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Extreme Nahaufnahme der gerenderten molekularen Strukturen mit Fokus auf Pink- und Blautöne der Proteinoberflächen-1000w.webp",
+      "file": "10-00.webp",
+      "width": 1000,
+      "height": 600,
+      "bytes": 23432,
+      "sha256": "10e820f3d441d803328d8cdad3620292dcf38688f8593dc54e8404d28fe5ad73"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme der gerenderten Proteinstrukturen mit Fokus auf Farbkodierung und molekulare Detailtiefe-1000w.webp",
+      "file": "10-02.webp",
+      "width": 1000,
+      "height": 600,
+      "bytes": 63166,
+      "sha256": "ffade5a90488327f6fae3d67be38857a9ee1a6768798ecd0918b5706889b6968"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Weitwinkelansicht der molekularen 3D-Visualisierung mit gelbgrünen und blauen Strukturelementen auf hellem Hintergrund-1000w.webp",
+      "file": "10-03.webp",
+      "width": 1000,
+      "height": 600,
+      "bytes": 37344,
+      "sha256": "6a322f839c4959fc8beedead7aa727cef67fe3ad77db02fa1fb0c4d828c8acd0"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht der gerenderten Zellmembran mit sichtbaren Transmembranproteinen in Pink und blauer Lipiddoppelschicht-1000w.webp",
+      "file": "10-04.webp",
+      "width": 1000,
+      "height": 600,
+      "bytes": 66456,
+      "sha256": "afcd006b120b0c2a277e908e364026bd721f82f9eac1b61db1ca7efb5235136c"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Frontansicht der Wholey Produktverpackung mit grünem Design und Produktabbildung-1365w.webp",
+      "file": "11-00.webp",
+      "width": 1365,
+      "height": 768,
+      "bytes": 46928,
+      "sha256": "c3cd99af77e069ef4c451307c37ef94b11b54dcc85553b1043912a54235d8c2a"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Animationsframe mit Wholey Maskottchen und Produktinszenierung auf weißem Hintergrund-1366w.webp",
+      "file": "11-02.webp",
+      "width": 1366,
+      "height": 768,
+      "bytes": 41164,
+      "sha256": "6db93830ae60efb9f3d552b4e06381054f87cec594a2c4f8011d86b291b2122d"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Branded Keyvisual mit Wholey und ERTNER&SO Logo auf lila Hintergrund-1365w.webp",
+      "file": "11-03.webp",
+      "width": 1365,
+      "height": 768,
+      "bytes": 26614,
+      "sha256": "b7a341afd68051d32ad3d353760d3eb609e101b237a9edbaf52a75447085df4d"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Produktfamilie von Wholey in verschiedenen Varianten auf lilafarbenem Hintergrund-1836w.webp",
+      "file": "11-04.webp",
+      "width": 1836,
+      "height": 768,
+      "bytes": 59204,
+      "sha256": "320a3ce42994d6d1f36dfbb991db49a4659c36b635330b1c7d60c1200bd8944a"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Animationsframe mit fliegenden Zutaten und Wholey Branding auf dunklem Hintergrund-1365w.webp",
+      "file": "11-05.webp",
+      "width": 1365,
+      "height": 768,
+      "bytes": 69566,
+      "sha256": "dc8f48426997fa9019955d86297732c7c6b663d82cda89bda0c616f5a9a1e2e4"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Draufsicht auf das gerenderte SBC-Board mit sichtbaren Chip-Komponenten und goldfarbenen Leiterbahnen-1920w.webp",
+      "file": "12-00.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 303720,
+      "sha256": "a9b57d6397f4067a43eb82df4786b581353565cd640079e0b3d7a3b30eb16576"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering eines Single Board Computers mit grüner Leiterplatte, Chips und elektronischen Bauteilen-1920w.webp",
+      "file": "12-02.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 288928,
+      "sha256": "55e99951d7adbaa03eeba2676b4f84965dd94dce87490833b8b43810c4b4ac9c"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht des SBC-Renderings mit Fokus auf Prozessor-Bereich und umliegende Bauteile mit grünen Lichtreflexionen-1920w.webp",
+      "file": "12-03.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 91348,
+      "sha256": "fcdcfdc21a1b6b10ee8b33eb4b7bcc5372305443abbbca19584627d703d6389e"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme des Sicherheitsschuhs mit sichtbarer Sohlenstruktur und roter Akzentbeleuchtung-1920w.webp",
+      "file": "13-00.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 43660,
+      "sha256": "d5f5bb55b93190d6a56134f00b35eee28e15ad3ce896dd7d6ca766a6565835b9"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering des Steitz-Secura Schuhs in der Dreiviertelansicht mit cinematischer Lichtstimmung-1920w.webp",
+      "file": "13-03.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 54930,
+      "sha256": "0cb7e7af04733720373803eb41665d679bf4ac4d097b443ec444d2f8af15cbd9"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Detailansicht der Schuhspitze mit Fokus auf Schutzkappe und metallische Oberflächenreflexionen-1920w.webp",
+      "file": "13-04.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 40170,
+      "sha256": "48d3ed5d2a3aeefa7860cd91f43a29f8d8158ebe7f084330aa6999751b296b62"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht des gerenderten Steitz-Secura Sicherheitsschuhs mit rotem Lichtschein und dunkler Atmosphäre-1920w.webp",
+      "file": "13-05.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 35998,
+      "sha256": "f4207026efb5a4f12e538ecc0056737f7389fb2a13f3e03afe2cdc2012555d80"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Seitenansicht der gerenderten Uhr mit Fokus auf Gehäuse, Krone und metallische Oberflächenreflexionen-1920w.webp",
+      "file": "14-00.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 50306,
+      "sha256": "9546e0037443d067bc8bbcd53323cc4d16f46a7db622b8cac62bf6ac9883a4a6"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/3D-Rendering der Uhr mit Fokus auf Datumsanzeige und ERTNER&SO Branding auf dem Zifferblatt-1920w.webp",
+      "file": "14-03.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 85216,
+      "sha256": "73ff255acc7eff1dac65970642843d651351915e899db370492f39ca88864b6a"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Nahaufnahme des gerenderten Uhrenzifferblatts mit sichtbaren Details der Stundenmarkierungen und Zeiger-1920w.webp",
+      "file": "14-04.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 89338,
+      "sha256": "24f245f54dd753c70b7b8ea7352edcb673f702ab3c512f91ed38e05c007ad804"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/Fotorealistisches 3D-Rendering einer Uhr mit Fokus auf Zifferblatt, metallische Reflexionen und grüne Leuchtindizes(1)-1920w.webp",
+      "file": "14-05.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 87068,
+      "sha256": "9c5c220eb986883e65251663f953210981db9111aa6250708721a7a032fc4f66"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/ao179sYfa5QaBu0qCP70UCPDC0(1)-960w.webp",
+      "file": "15-00.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 12690,
+      "sha256": "bd5eaaf2919ecbd43f882e4e12459c94ee66e21b3bdbadd8256a4f5ccc9102bd"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/hrX88mqoGDqdzfuE8svnqrotAR0-960w.webp",
+      "file": "15-03.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 11394,
+      "sha256": "f722f78d13119474c234793ad8e5117033c04e0719d62167a00e36c670697f25"
+    },
+    {
+      "url": "https://ertnerundso.com/assets/images/optimized/4m3fVkBGdIicfRQjpEymuRurkw-960w.webp",
+      "file": "15-04.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 7136,
+      "sha256": "5c9d0a9a12693f54a69098447ebfd3193303219a81fa8ac7e75cf0be691a0387"
+    }
+  ]
+}

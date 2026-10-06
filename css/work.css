@@ -295,3 +295,81 @@
     width: 78vw;
   }
 }
+
+/* ARBEITEN-SEITE: große Originalbilder mit H3 und sekundärem Projektlink.
+   Die horizontale Bühne nutzt denselben Scroll-Ablauf wie die Montage auf der Startseite. */
+.work-portfolio .work-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-content-offset);
+  margin-top: 0;
+}
+.work-portfolio.is-work-pinned .work-viewport {
+  overflow: hidden;
+}
+.work-portfolio .work-viewport::-webkit-scrollbar {
+  display: none;
+}
+.work-portfolio .portfolio-card {
+  width: calc(var(--layout-content-max) / 2);
+  max-width: calc((100cqi - 2 * var(--space-gutter)) / 2);
+  height: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  align-content: start;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+}
+.work-portfolio .portfolio-card figure {
+  display: block;
+  min-height: 0;
+  margin: 0;
+}
+.work-portfolio .portfolio-card figure a,
+.work-portfolio .portfolio-card picture {
+  display: block;
+  height: 100%;
+}
+.work-portfolio .portfolio-card h3 {
+  min-height: 2.4em;
+}
+.work-portfolio .portfolio-card .button {
+  justify-self: start;
+}
+.work-portfolio .work-current {
+  min-width: 0;
+}
+.work-portfolio .work-meta > .micro {
+  flex: none;
+}
+@media (max-width: 760px) {
+  .work-portfolio .work-stage {
+    height: auto;
+    min-height: 0;
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-3xl);
+  }
+  .work-portfolio .work-viewport {
+    height: auto;
+    min-height: 0;
+    margin-bottom: var(--space-lg);
+  }
+  .work-portfolio .portfolio-card {
+    width: calc(100cqi - 2 * var(--space-gutter));
+    max-width: none;
+    height: auto;
+    grid-template-rows: auto 1fr auto;
+    padding: var(--space-lg);
+    scroll-snap-align: start;
+  }
+  .work-portfolio .work-track {
+    height: auto;
+    align-items: stretch;
+  }
+  .work-portfolio .portfolio-card figure {
+    aspect-ratio: 4/3;
+  }
+  .work-portfolio .portfolio-card img {
+    object-fit: contain;
+  }
+}

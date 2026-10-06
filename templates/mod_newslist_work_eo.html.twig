@@ -1,0 +1,20 @@
+{% extends '@Contao/block_unsearchable.html.twig' %}
+
+{% block content %}
+    {% if not articles %}
+        <p class="shell empty">{{ empty }}</p>
+    {% else %}
+        <div class="work-stage">
+            <div class="work-viewport">
+                <div class="work-track">{{ articles|join|raw }}</div>
+            </div>
+            <div class="shell">
+                <div class="work-meta">
+                    <span class="work-current"></span>
+                    <span class="micro"><span class="work-count">01</span> / <span class="work-total">{{ '%02d'|format(articles|length) }}</span></span>
+                </div>
+                <div class="work-progress" aria-hidden="true"><i></i></div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
