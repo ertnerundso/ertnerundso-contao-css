@@ -36,9 +36,9 @@ for (const width of [390, 1440]) {
     await expect(page.locator('.page-shell > .site-footer')).toHaveCount(1);
     const before = await page.locator('.page-shell').boundingBox();
     await page.locator('.menu-toggle').click();
-    const buttonColor = await page.locator('.hero-actions > .button')
-      .evaluate((element) => getComputedStyle(element).backgroundColor);
-    await expect(page.locator('.menu-panel')).toHaveCSS('background-color', buttonColor);
+    await expect(page.locator('.menu-panel')).toHaveCSS('background-color', 'rgb(0, 0, 0)');
+    await expect(page.locator('.site-footer')).toHaveCSS('background-color', 'rgb(0, 0, 0)');
+    await expect(page.locator('.hero-actions > .button')).toHaveCSS('background-color', 'rgb(36, 85, 237)');
     await expect(page.locator('.menu-panel')).toHaveAttribute('aria-modal', 'true');
     await expect(page.locator('.page-shell')).toHaveAttribute('inert', '');
     await expect(page.locator('.site-header')).toHaveAttribute('inert', '');
