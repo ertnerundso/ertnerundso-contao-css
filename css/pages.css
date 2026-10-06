@@ -49,7 +49,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.index-card h2 {
+.index-card :is(h2, h3) {
   margin: 0;
 }
 .index-card .text-link {

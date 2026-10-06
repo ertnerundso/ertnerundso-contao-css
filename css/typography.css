@@ -521,7 +521,11 @@
     text-transform: uppercase;
   }
   /* --- NEWS --- */
-  .news-grid .news-card h2 a {
+  .news-grid .news-card h3 {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+  .news-grid .news-card h3 a {
     text-decoration: none;
   }
   /* --- KONTAKT UND FRAGEN --- */

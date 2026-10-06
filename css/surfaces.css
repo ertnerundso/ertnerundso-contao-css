@@ -1052,10 +1052,10 @@
   .news-detail > .project-visual img {
     border-radius: var(--radius-md);
   }
-  .news-grid .news-card h2 a {
+  .news-grid .news-card h3 a {
     color: inherit;
   }
-  .news-grid .news-card h2 a:hover {
+  .news-grid .news-card h3 a:hover {
     color: var(--color-primary);
   }
   .news-detail > .content-section .rte p,
