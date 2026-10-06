@@ -24,10 +24,10 @@
     --color-current: currentColor;
     --color-overlay-subtle: #00000014;
     --color-header-surface: transparent;
-    --color-menu-surface: var(--color-primary);
+    --color-menu-surface: var(--color-black);
     --color-menu-text: var(--color-on-dark);
     --color-menu-muted: var(--color-on-dark);
-    --color-footer-surface: var(--color-primary);
+    --color-footer-surface: var(--color-black);
     --color-footer-text: var(--color-on-dark);
     --color-primary-surface: #f0f4ff;
     --color-transparent: transparent;
