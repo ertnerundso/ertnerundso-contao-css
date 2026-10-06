@@ -1082,6 +1082,16 @@
     );
     opacity: 0;
   }
+  /* Das weiße Industriemotiv enthält bereits Licht und weiche Bildübergänge. */
+  .hero:has(.hero-media--industrial) .hero-media :is(img, video) {
+    filter: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  /* Fertiger Film ersetzt das Standbild vollständig, ohne Doppelkonturen. */
+  .hero:has(.hero-media--industrial) .hero-motion-video.is-ready {
+    opacity: 1;
+  }
   .hero-actions > .content-hyperlink a {
     color: inherit;
   }

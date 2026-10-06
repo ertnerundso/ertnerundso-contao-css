@@ -546,6 +546,10 @@
   }
 }
 @layer cms {
+  /* Neue Aufnahme: keine seitliche Verschiebung oder Skalierung des alten Motivs. */
+  .hero:has(.hero-media--industrial) .hero-media :is(img, video) {
+    transform: none;
+  }
   .hero-motion-video {
     transform: scale(0.84);
     transform-origin: center bottom;
