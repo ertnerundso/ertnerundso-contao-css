@@ -15,6 +15,7 @@ export function initHero(runtime) {
   } = runtime;
   const heroMessage = hero?.querySelector('.hero-message');
   const heroImage = hero?.querySelector('.hero-media img');
+  const industrialHero = Boolean(heroImage?.closest('.hero-media--industrial'));
   const heroActions = hero?.querySelector('.hero-actions');
   if (heroMessage && heroImage && heroActions) {
     gsap
@@ -73,6 +74,7 @@ export function initHero(runtime) {
       video.muted = true;
       video.playsInline = true;
       video.preload = 'auto';
+      video.poster = runtime.asset(config.assets.heroPoster);
       video.tabIndex = -1;
       video.setAttribute('aria-hidden', 'true');
       let lastFrame = 0;
@@ -95,9 +97,11 @@ export function initHero(runtime) {
               self.progress,
           });
           if (!video.classList.contains('is-ready')) return;
-          video.style.opacity = String(
-            Math.min(1, self.progress * motion.number('motion-hero-fade-progress')),
-          );
+          // Film und Poster nicht mischen: unterschiedliche Frames erzeugen Doppelkonturen.
+          if (!industrialHero)
+            video.style.opacity = String(
+              Math.min(1, self.progress * motion.number('motion-hero-fade-progress')),
+            );
           const frame = self.progress * lastFrame;
           if (Math.abs(video.currentTime - frame) > 1 / config.video.frameRate)
             video.currentTime = frame;
