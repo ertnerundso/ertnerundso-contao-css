@@ -259,12 +259,7 @@
   }
   /* --- KONTAKT UND FRAGEN --- */
   .contact-band {
-    background: linear-gradient(
-      112deg,
-      var(--color-surface-dark),
-      var(--color-surface-deep) 68%,
-      var(--color-surface-navy)
-    );
+    background: var(--color-black);
   }
   /* --- HEADER UND MENÜ --- */
   .site-header,
@@ -935,8 +930,8 @@
     color: var(--color-muted);
   }
   .contact-band-image {
-    background: var(--color-surface-dark);
-    border-radius: var(--radius-contact-top);
+    background: var(--color-black);
+    border-radius: 0;
   }
   .site-progress span {
     background: var(--color-primary);
@@ -1073,7 +1068,7 @@
     color: var(--color-muted);
   }
   .contact-band-media img {
-    border-radius: var(--radius-contact-top);
+    border-radius: 0;
   }
   .hero-motion-video {
     filter: brightness(1.08) contrast(1.05);

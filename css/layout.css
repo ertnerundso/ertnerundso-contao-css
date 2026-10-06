@@ -30,7 +30,6 @@
   .shell,
   .container,
   .contact-band-copy,
-  .contact-band-media,
   .showreel-outro,
   .showreel-caption,
   .news-detail > :is(.news-intro, .content-section, .project-visual, .testimonial-feature) {
@@ -41,7 +40,7 @@
   }
   /* Verschachtelte Container nutzen die vorhandenen Seitenränder genau einmal. */
   :is(.shell, .container) :is(
-    .shell, .container, .contact-band-copy, .contact-band-media,
+    .shell, .container, .contact-band-copy,
     .showreel-outro, .showreel-caption,
     .news-detail > :is(.news-intro, .content-section, .project-visual, .testimonial-feature)
   ) {
