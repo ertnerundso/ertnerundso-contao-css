@@ -1,5 +1,8 @@
 {% set currentPath = app.request.pathInfo %}
 {% set staging = app.request.host == 'staging.ertnerundso.de' %}
+{# Bestehendes Tracking samt CookieScript-Zustimmung aus der alten Website; nur auf den Live-Domains. #}
+{% set trackingEnabled = app.request.host in ['ertnerundso.com', 'ertnerundso.de'] %}
+{% set tagManagerId = 'GTM-M2FZPTG2' %}
 {% set english = currentPath == '/en' or currentPath starts with '/en/' %}
 {% set hasTranslation = english or currentPath == '/' or currentPath == '/arbeiten' or currentPath starts with '/arbeiten/' or currentPath == '/journal' or currentPath starts with '/journal/' or currentPath == '/kontakt' or currentPath starts with '/kontakt/' %}
 {% set languageSwitchPath = english ? (currentPath|slice(3)|default('/')) : (hasTranslation ? '/en' ~ currentPath : '/en/') %}
@@ -7,6 +10,15 @@
 <html lang="{{ english ? 'en' : 'de' }}">
 <head>
     <meta charset="{{ charset }}">
+    {% if trackingEnabled %}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ tagManagerId }}');</script>
+    <!-- End Google Tag Manager -->
+    {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="{{ staging ? 'noindex,nofollow' : robots }}">
     <meta name="description" content="{{ description|u.truncate(320, '…') }}">
@@ -25,6 +37,12 @@
     {{ head|raw|insert_tag_html }}
 </head>
 <body id="top" class="{{ app.request.attributes.get('parameters') ? 'is-news-detail' : '' }}">
+{% if trackingEnabled %}
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ tagManagerId }}"
+height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+{% endif %}
 {{ contao_sections('top') }}
 <a class="skip-link" href="#main">{{ english ? 'Skip to content' : 'Zum Inhalt' }}</a>
 <header class="site-header">
@@ -65,7 +83,7 @@
             <nav class="footer-nav" aria-label="Studio"><span class="micro">STUDIO</span><a href="{{ english ? '/en/arbeiten/' : '/arbeiten/' }}">{{ english ? 'Work' : 'Arbeiten' }}</a><a href="{{ english ? '/en/journal/' : '/journal/' }}">Journal</a><a href="{{ english ? '/en/kontakt/' : '/kontakt/' }}">{{ english ? 'Contact' : 'Kontakt' }}</a></nav>
             <nav class="footer-nav" aria-label="{{ english ? 'Contact' : 'Kontakt' }}"><span class="micro">{{ english ? 'CONTACT' : 'KONTAKT' }}</span><a href="mailto:projects@ertnerundso.com">projects@ertnerundso.com</a><a href="https://cal.ertnerundso.de/eunds/30min" target="_blank" rel="noopener">{{ english ? 'Book a call' : 'Termin buchen' }}</a></nav>
         </div>
-        <div class="footer-bottom"><span>© ERTNER&SO · Braunfels, DE</span><span><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/agb/">AGB</a></span></div>
+        <div class="footer-bottom"><span>© ERTNER&SO · Braunfels, DE</span><span><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="/agb/">AGB</a>{% if trackingEnabled %}<a href="#cookie-einstellungen" id="cookie-einstellungen" class="csconsentlink">{{ english ? 'Cookie settings' : 'Cookie-Einstellungen' }}</a>{% endif %}</span></div>
     </div>
 </footer>
 {{ contao_sections('bottom') }}
