@@ -16,6 +16,7 @@ export const STRUCTURE_PROPERTIES = new Set([
   'align-self',
   'aspect-ratio',
   'box-sizing',
+  'container-type',
   'display',
   'flex',
   'flex-basis',
