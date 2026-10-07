@@ -1065,13 +1065,54 @@
     color: var(--color-primary);
   }
   /* --- NEWS --- */
-  .news-detail > .news-intro {
+  .news-detail:not(.news-detail--journal) > .news-intro {
     background: var(--color-surface);
   }
-  .news-detail > .news-intro .rte {
+  .news-detail:not(.news-detail--journal) > .news-intro .rte {
     color: var(--color-text-soft);
   }
-  .news-detail > .project-visual img {
+  .news-detail:not(.news-detail--journal) > .project-visual img {
+    border-radius: var(--radius-md);
+  }
+  .news-detail:not(.news-detail--journal) > .content-section .rte p,
+  .news-detail:not(.news-detail--journal) > .content-section .rte li {
+    color: var(--color-text-soft);
+  }
+  .news-detail-body > .news-intro {
+    background: var(--color-surface);
+  }
+  .news-detail-body > .news-intro .rte {
+    color: var(--color-text-soft);
+  }
+  .news-detail-body > .content-section {
+    border: 0;
+  }
+  .news-detail-body > .content-section::before {
+    content: counter(journal-section, decimal-leading-zero);
+  }
+  .news-detail-masthead .news-detail-back,
+  .news-detail-toc a {
+    color: var(--color-text);
+  }
+  .news-detail-masthead .news-detail-back:hover,
+  .news-detail-toc a:hover {
+    color: var(--color-primary);
+  }
+  .news-detail-toc summary,
+  .news-detail-toc-number,
+  .news-detail-body > .content-section::before {
+    color: var(--color-primary);
+  }
+  .news-detail-toc summary {
+    cursor: pointer;
+  }
+  .news-detail-toc summary::after {
+    content: "+";
+  }
+  .news-detail-toc[open] summary::after {
+    content: "−";
+  }
+  .news-detail-body > .project-visual img {
     border-radius: var(--radius-md);
   }
   .news-grid .news-card h3 a {
@@ -1080,8 +1121,8 @@
   .news-grid .news-card h3 a:hover {
     color: var(--color-primary);
   }
-  .news-detail > .content-section .rte p,
-  .news-detail > .content-section .rte li {
+  .news-detail-body > .content-section .rte p,
+  .news-detail-body > .content-section .rte li {
     color: var(--color-text-soft);
   }
   .contact-band-copy > .content-hyperlink a {

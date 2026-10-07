@@ -1,19 +1,130 @@
 /* KOMPONENTE / STRUKTUR: News.
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
-.news-detail > .news-intro {
+.news-detail--journal {
+  width: 100%;
+  max-width: var(--layout-container-max);
+  margin-inline: auto;
+  padding: var(--space-3xl) var(--space-gutter) var(--space-section);
+}
+.news-detail:not(.news-detail--journal) > .news-intro {
   padding-block: clamp(var(--space-5xl), var(--space-position-14vw), var(--space-7xl))
     var(--space-4xl);
 }
-.news-detail > .news-intro h1 {
+.news-detail:not(.news-detail--journal) > .news-intro h1 {
   max-width: 68.75rem;
   margin: var(--space-md) 0 var(--space-lg);
 }
-.news-detail > .news-intro .rte {
+.news-detail:not(.news-detail--journal) > .news-intro .rte {
   max-width: 48.75rem;
 }
-.news-detail > .news-intro .rte p {
+.news-detail:not(.news-detail--journal) > .news-intro .rte p {
   margin: 0;
+}
+.news-detail:not(.news-detail--journal) > .content-section .rte {
+  max-width: 50rem;
+}
+.news-detail-masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+.news-detail-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.news-detail-masthead .micro {
+  margin: 0;
+}
+.news-detail-body > .news-intro {
+  padding-block: var(--space-5xl) var(--space-4xl);
+}
+.news-detail-body > .news-intro h1 {
+  max-width: 18ch;
+  margin: 0 0 var(--space-2xl);
+}
+.news-detail-body > .news-intro .rte {
+  max-width: 48rem;
+}
+.news-detail-body > .news-intro .rte p {
+  margin: 0;
+}
+.news-detail-toc {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr);
+  gap: var(--space-3xl);
+  margin-block: 0 var(--space-4xl);
+  padding-block: var(--space-xl);
+}
+.news-detail-toc summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+.news-detail-toc ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md) var(--space-2xl);
+  margin: 0;
+  padding: 0;
+}
+.news-detail-toc a {
+  display: flex;
+  align-items: start;
+  gap: var(--space-md);
+  min-width: 0;
+}
+.news-detail-body > .content-section {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr);
+  gap: 0 var(--space-3xl);
+  max-width: none;
+  padding: var(--space-3xl) 0;
+  scroll-margin-top: calc(var(--space-header-offset) + var(--space-lg));
+}
+.news-detail-body > .content-section::before {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+.news-detail-body > .content-section h2,
+.news-detail-body > .content-section .rte {
+  grid-column: 2;
+}
+.news-detail-body > .content-section h2 {
+  max-width: 26ch;
+  margin: 0 0 var(--space-xl);
+}
+.news-detail-body > .content-section .rte {
+  max-width: 48rem;
+  min-width: 0;
+}
+.news-detail-body > .content-section .rte p:first-child {
+  margin-top: 0;
+}
+.news-detail-body > .content-section .rte h3 {
+  margin-block: var(--space-2xl) var(--space-md);
+}
+.news-detail-outro {
+  margin-top: var(--space-4xl);
+  padding-block: var(--space-4xl) 0;
+}
+.news-detail-outro h2 {
+  max-width: 25ch;
+  margin: var(--space-lg) 0 var(--space-2xl);
+}
+.news-detail-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+}
+@media (min-width: 761px) {
+  .news-detail-toc summary::after {
+    display: none;
+  }
 }
 .is-news-detail .mod_article > .inner-hero,
 .is-news-detail .mod_article > .shell,
@@ -38,10 +149,34 @@
   aspect-ratio: 1.5;
   object-fit: cover;
 }
-.news-detail > .content-section .rte {
-  max-width: 50rem;
-}
 @media (max-width: 760px) {
+  .news-detail--journal {
+    padding-block: var(--space-2xl) var(--space-5xl);
+  }
+  .news-detail-body > .news-intro {
+    padding-block: var(--space-4xl) var(--space-3xl);
+  }
+  .news-detail-toc {
+    display: block;
+    margin-bottom: var(--space-3xl);
+  }
+  .news-detail-toc ol {
+    grid-template-columns: 1fr;
+    margin-top: var(--space-lg);
+  }
+  .news-detail-body > .content-section {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    padding-block: var(--space-2xl);
+  }
+  .news-detail-body > .content-section::before,
+  .news-detail-body > .content-section h2,
+  .news-detail-body > .content-section .rte {
+    grid-column: 1;
+  }
+  .news-detail-body > .content-section::before {
+    grid-row: auto;
+  }
   .mod_newslist.news-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
