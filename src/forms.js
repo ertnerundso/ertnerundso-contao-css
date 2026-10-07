@@ -127,6 +127,7 @@ export function initForms(runtime) {
               : 'Danke! Ihre Anfrage ist angekommen.',
           );
           submit.textContent = english ? 'Sent' : 'Gesendet';
+          document.dispatchEvent(new Event('eo:contact-success'));
         } catch {
           window.turnstile?.reset();
           showStatus(

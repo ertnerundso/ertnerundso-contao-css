@@ -88,4 +88,17 @@ export const config = {
     namespace: 'ertner',
     selector: '[data-cal-inline]',
   },
+  // Analytics-Ereignisse nur auf Live-Domains und nach Performance-Einwilligung.
+  analytics: {
+    hosts: ['ertnerundso.de', 'ertnerundso.com'],
+    googleMeasurementId: 'G-BFB4EHKRX2',
+    consentCategory: 'performance',
+    events: {
+      contactIntent: 'contact_intent',
+      contactSuccess: 'contact_submit_success',
+      bookingClick: 'booking_click',
+      emailClick: 'email_click',
+      showreelPlay: 'showreel_play',
+    },
+  },
 };
