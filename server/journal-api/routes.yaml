@@ -9,3 +9,10 @@ journal_api_update:
     methods: [PATCH]
     requirements:
         id: '\d+'
+
+journal_api_publish:
+    path: /_automation/journal/{id}/publish
+    controller: App\JournalApiController::publish
+    methods: [POST]
+    requirements:
+        id: '\d+'

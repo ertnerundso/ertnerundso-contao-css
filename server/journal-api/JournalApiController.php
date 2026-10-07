@@ -19,6 +19,7 @@ final class JournalApiController
         private readonly KernelInterface $kernel,
         private readonly ContaoFramework $framework,
         private readonly string $tokenFile,
+        private readonly string $publishTokenFile,
         private readonly int $archiveDe,
         private readonly int $archiveEn,
     ) {
@@ -139,9 +140,76 @@ final class JournalApiController
         return new JsonResponse(['id' => $id, 'published' => false, 'updated' => true]);
     }
 
-    private function authenticate(Request $request): ?JsonResponse
+    public function publish(Request $request, int $id): JsonResponse
     {
-        $expected = @file_get_contents($this->tokenFile);
+        if ($error = $this->authenticate($request, $this->publishTokenFile)) {
+            return $error;
+        }
+
+        if ($id < 1) {
+            return $this->error('Invalid draft ID.', 400);
+        }
+
+        if (!str_starts_with((string) $request->headers->get('Content-Type'), 'application/json')) {
+            return $this->error('Content-Type must be application/json.', 415);
+        }
+        if (\strlen($request->getContent()) > 1000) {
+            return $this->error('Payload too large.', 413);
+        }
+        try {
+            $data = json_decode($request->getContent(), true, 4, JSON_THROW_ON_ERROR);
+        } catch (\JsonException) {
+            return $this->error('Invalid JSON.', 400);
+        }
+        if ($data !== ['confirm' => true]) {
+            return $this->error('Send {"confirm":true} to publish.', 400);
+        }
+
+        $this->framework->initialize();
+        $news = Database::getInstance()
+            ->prepare('SELECT id, pid, headline, teaser, alias, published, start, stop FROM tl_news WHERE id=?')
+            ->execute($id);
+        if (!$news->numRows || !\in_array((int) $news->pid, [$this->archiveDe, $this->archiveEn], true)) {
+            return $this->error('Journal draft not found.', 404);
+        }
+        if ((int) $news->published === 1) {
+            return new JsonResponse(['id' => $id, 'published' => true, 'already_published' => true]);
+        }
+        if (trim((string) $news->headline) === '' || trim((string) $news->teaser) === ''
+            || trim((string) $news->alias) === '') {
+            return $this->error('Headline, teaser and alias are required before publication.', 409);
+        }
+        if ((string) $news->start !== '' || (string) $news->stop !== '') {
+            return $this->error('Scheduled articles must be reviewed in Contao before publication.', 409);
+        }
+
+        $content = Database::getInstance()
+            ->prepare('SELECT id, type, text, invisible FROM tl_content WHERE pid=? AND ptable=? ORDER BY sorting')
+            ->execute($id, 'tl_news');
+        if ($content->numRows !== 1 || $content->type !== 'text' || (int) $content->invisible !== 0
+            || trim(strip_tags((string) $content->text)) === '') {
+            return $this->error('A visible text element is required before publication.', 409);
+        }
+
+        if (!$this->runCommand('contao:news:update', [
+            'id' => (string) $id,
+            '--operator' => 'n8n-journal-publish',
+            '--set' => ['published=1'],
+        ])) {
+            return $this->error('Could not publish journal article.', 500);
+        }
+
+        return new JsonResponse([
+            'id' => $id,
+            'locale' => (int) $news->pid === $this->archiveDe ? 'de' : 'en',
+            'alias' => (string) $news->alias,
+            'published' => true,
+        ]);
+    }
+
+    private function authenticate(Request $request, ?string $tokenFile = null): ?JsonResponse
+    {
+        $expected = @file_get_contents($tokenFile ?? $this->tokenFile);
         $provided = $request->headers->get('Authorization', '');
         if (!$expected || !preg_match('/^Bearer ([A-Za-z0-9_-]{32,128})$/', $provided, $match)
             || !hash_equals(trim($expected), $match[1])) {

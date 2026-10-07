@@ -13,6 +13,7 @@ return static function (ContainerConfigurator $configurator): void {
         ->autoconfigure()
         ->tag('controller.service_arguments')
         ->arg('$tokenFile', '/run/secrets/journal_api_token')
+        ->arg('$publishTokenFile', '/run/secrets/journal_api_publish_token')
         ->arg('$archiveDe', 3)
         ->arg('$archiveEn', 4)
     ;
