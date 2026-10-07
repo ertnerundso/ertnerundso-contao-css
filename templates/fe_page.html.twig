@@ -1,5 +1,6 @@
 {% set currentPath = app.request.pathInfo %}
 {% set staging = app.request.host == 'staging.ertnerundso.de' %}
+{# Bestehendes Tracking samt CookieScript-Zustimmung aus der alten Website; nur auf den Live-Domains. #}
 {% set trackingEnabled = app.request.host in ['ertnerundso.com', 'ertnerundso.de'] %}
 {% set tagManagerId = 'GTM-M2FZPTG2' %}
 {% set english = currentPath == '/en' or currentPath starts with '/en/' %}
@@ -10,12 +11,13 @@
 <head>
     <meta charset="{{ charset }}">
     {% if trackingEnabled %}
-    <!-- Google Tag Manager: GA4, Umami und CookieScript werden dort verwaltet. -->
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','{{ tagManagerId }}');</script>
+    <!-- End Google Tag Manager -->
     {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="{{ staging ? 'noindex,nofollow' : robots }}">
@@ -24,7 +26,8 @@
     <base href="{{ base }}">
     {% for metaTag in metaTags|default %}<meta{{ metaTag }}>{% endfor %}
     {% for linkTag in linkTags|default %}<link{{ linkTag }}>{% endfor %}
-    {% if canonical|default %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+    {# Beide Live-Domains bleiben erreichbar; Contao erzeugt den Pfad, .com ist die Suchmaschinen-Adresse. #}
+    {% if canonical|default %}<link rel="canonical" href="{{ canonical|replace({'https://ertnerundso.de/': 'https://ertnerundso.com/'}) }}">{% endif %}
     <link rel="icon" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/images/favicon.svg" type="image/svg+xml">
     <link rel="preload" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/fonts/sk-modernist-bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://ertnerundso.github.io/ertnerundso-contao-src/assets/fonts/ibm-plex-sans-variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -35,8 +38,10 @@
 </head>
 <body id="top" class="{{ app.request.attributes.get('parameters') ? 'is-news-detail' : '' }}">
 {% if trackingEnabled %}
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ tagManagerId }}"
 height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 {% endif %}
 {{ contao_sections('top') }}
 <a class="skip-link" href="#main">{{ english ? 'Skip to content' : 'Zum Inhalt' }}</a>

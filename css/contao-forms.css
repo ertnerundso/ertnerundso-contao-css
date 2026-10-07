@@ -6,15 +6,6 @@
 .contact-meta h2 {
   margin: var(--space-sm) 0 var(--space-lg);
 }
-.contact-hero-actions > .content-hyperlink.button {
-  padding: 0;
-}
-.contact-hero-actions > .content-hyperlink.button a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.875rem;
-  padding: 0 var(--space-lg);
-}
 .contact-form {
   margin-top: var(--space-xl);
 }
@@ -41,11 +32,6 @@
 }
 .contact-form .widget-submit.button {
   width: max-content;
-  padding: 0;
-}
-.contact-form .widget-submit.button button {
-  min-height: 2.875rem;
-  padding: 0 var(--space-lg);
 }
 .contact-form .form-status {
   margin: 0;

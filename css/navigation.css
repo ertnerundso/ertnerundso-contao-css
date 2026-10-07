@@ -21,9 +21,6 @@
   height: 1.5px;
   width: 1.5rem;
 }
-.menu-lines i:nth-child(3) {
-  display: none;
-}
 .menu-panel {
   position: fixed;
   inset: 0 0 auto;

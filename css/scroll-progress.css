@@ -1,0 +1,29 @@
+/* SCROLL-SKALA: Nur Anordnung. Farben: surfaces.css; Bewegung: motion.css. */
+.section-scroll-progress {
+  position: fixed;
+  z-index: var(--layout-z-scroll-progress);
+  top: var(--space-center);
+  right: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: var(--layout-scroll-progress-width);
+  height: var(--layout-scroll-progress-height);
+  pointer-events: none;
+}
+.section-scroll-progress[hidden],
+body.menu-open .section-scroll-progress {
+  display: none;
+}
+.section-scroll-progress-tick {
+  display: block;
+  flex: 0 0 auto;
+  width: 100%;
+  height: var(--layout-scroll-progress-stroke);
+}
+@media (max-width: 760px), (prefers-reduced-motion: reduce) {
+  .section-scroll-progress {
+    display: none;
+  }
+}

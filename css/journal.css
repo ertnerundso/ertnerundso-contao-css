@@ -14,12 +14,14 @@
 }
 .journal .journal-list {
   display: flex;
-  gap: var(--space-md);
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--space-xs);
-  padding-block: var(--space-sm) var(--space-lg);
+  /* Platz für die Kreuze innerhalb des Scrollbereichs: keine zusätzliche Überlaufstrecke. */
+  scroll-padding-inline: var(--space-frame-marker-half);
+  padding-inline: var(--space-frame-marker-half);
+  margin-inline: calc(var(--space-frame-marker-half) * -1);
+  padding-block: var(--space-frame-marker-half) var(--space-lg);
 }
 .journal .journal-list::-webkit-scrollbar {
   display: none;
@@ -65,23 +67,54 @@
 }
 .journal-slider-controls {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: var(--space-sm);
-  margin-bottom: var(--space-md);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-xl);
 }
 .journal-slider-controls[hidden] {
   display: none;
 }
-.journal-slider-controls button {
+/* Mit JavaScript wird ohne seitlich vorbeiziehende/angeschnittene Karten geblättert.
+   Ohne JavaScript bleibt die native horizontale Liste vollständig bedienbar. */
+.journal .journal-list.is-journal-paged {
   display: grid;
-  place-items: center;
-  width: 2.625rem;
-  height: 2.625rem;
+  overflow: visible;
   padding: 0;
+  margin: 0;
+}
+.journal .is-journal-paged article.journal-row {
+  min-width: 0;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+}
+.journal .is-journal-paged article.journal-row[hidden] {
+  display: none;
+}
+.journal .is-journal-paged .row-category {
+  margin-bottom: var(--space-md);
+}
+.journal .is-journal-paged h3 {
+  margin: 0;
+}
+.journal .is-journal-paged .row-arrow,
+.journal .is-journal-paged h3 a::after {
+  display: none;
+}
+.journal .journal-read-link {
+  margin-top: auto;
+  align-self: start;
+}
+.journal-slider-status {
+  margin-inline-start: auto;
 }
 @media (max-width: 760px) {
+  .journal .is-journal-paged article.journal-row .row-category {
+    display: block;
+  }
   .journal .journal-list article.journal-row {
-    flex-basis: min(82vw, 22.5rem);
+    flex-basis: min(82vw, 100%, 22.5rem);
     min-height: 21.25rem;
     padding: var(--space-lg);
   }

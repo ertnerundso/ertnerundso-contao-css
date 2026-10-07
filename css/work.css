@@ -59,22 +59,42 @@
   margin: var(--space-lg) 0 0;
 }
 .work-viewport {
+  container-type: inline-size;
   flex: 1;
   min-height: 0;
   display: flex;
   align-items: center;
   overflow: hidden;
+  padding-block: var(--space-frame-marker-half);
   margin-top: clamp(var(--space-xl), var(--space-position-5vh), var(--space-3xl));
   margin-bottom: clamp(var(--space-xl), var(--space-position-5vh), var(--space-3xl));
 }
 .work-track {
   display: flex;
   align-items: center;
-  gap: clamp(var(--space-3xl), var(--space-position-7vw), var(--space-5xl));
+  gap: 0;
   width: max-content;
-  padding-left: var(--space-content-offset);
-  padding-right: var(--space-gutter);
+  /* Beide Enden liegen an derselben Inhaltskante wie die .shell-Bereiche. */
+  padding-inline: var(--space-content-offset);
   height: 100%;
+}
+/* Redaktioneller Abschluss nach den Bildern: rechte Hälfte des gemeinsamen Rasters.
+   100cqi ist die tatsächliche Breite des Viewports, ohne die Browser-Scrollleiste. */
+.work-outro {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: var(--space-lg);
+  width: calc((min(100cqi, var(--layout-container-max)) - 2 * var(--space-gutter)) / 2);
+  padding-inline-start: var(--space-columns);
+}
+.work-outro :is(h3, p) {
+  margin: 0;
+}
+.work-outro .content-hyperlink {
+  margin-top: var(--space-sm);
 }
 .work-card {
   flex-direction: column;
@@ -84,15 +104,9 @@
   width: clamp(20rem, 23vw, 25.625rem);
   height: min(100%, 28.4375rem);
   min-height: 0;
-  padding: 0;
+  padding: var(--space-lg);
   margin: 0;
   display: block;
-}
-.work-card:before {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: none;
 }
 .work .work-card figure {
   display: grid;
@@ -141,12 +155,17 @@
 }
 .manual-book-inner {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
 }
+/* Überschrift und Buch teilen dieselbe Inhaltskante innerhalb der .shell-Seitenränder. */
 .manual-book-header {
-  position: absolute;
+  position: relative;
   z-index: 1;
-  top: clamp(var(--space-md), var(--space-position-4vw), var(--space-3xl));
-  left: 0;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  margin-top: clamp(var(--space-md), var(--space-position-4vw), var(--space-3xl));
   max-width: min(47%, 38.75rem);
 }
 .manual-book-header .micro {
@@ -156,6 +175,8 @@
   margin: 0;
 }
 .manual-book-player {
+  grid-column: 1;
+  grid-row: 1;
   margin: 0;
   padding-top: clamp(var(--space-4xl), var(--space-position-8vw), var(--space-5xl));
 }
@@ -171,6 +192,7 @@
   object-fit: cover;
 }
 .manual-book-copy {
+  grid-column: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(var(--space-xl), var(--space-position-7vw), var(--space-5xl));
@@ -184,15 +206,27 @@
   margin-top: var(--space-md);
 }
 @media (max-width: 760px) {
+  .work-outro {
+    width: calc(100cqi - 2 * var(--space-gutter));
+    padding-inline-start: 0;
+    scroll-snap-align: end;
+  }
+  .work-viewport:has(.work-outro) {
+    height: min(48svh, 28.4375rem);
+    min-height: 22rem;
+  }
   .manual-book-header {
     position: static;
+    grid-row: auto;
     max-width: 100%;
+    margin-top: 0;
     margin-bottom: var(--space-md);
   }
   .manual-book-header .micro {
     margin-bottom: var(--space-md);
   }
   .manual-book-player {
+    grid-row: auto;
     padding-top: 0;
   }
   .manual-book-player video {
@@ -216,7 +250,6 @@
   }
   .work-track {
     height: 100%;
-    gap: var(--space-xl);
   }
   .work .work-card {
     width: min(78vw, 25.625rem);
@@ -249,9 +282,94 @@
     display: none;
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  .work-viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--space-content-offset);
+  }
+}
 @media (max-width: 520px) {
   .work-card {
     height: 26.875rem;
     width: 78vw;
+  }
+}
+
+/* ARBEITEN-SEITE: große Originalbilder mit H3 und sekundärem Projektlink.
+   Die horizontale Bühne nutzt denselben Scroll-Ablauf wie die Montage auf der Startseite. */
+.work-portfolio .work-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-content-offset);
+  margin-top: 0;
+}
+.work-portfolio.is-work-pinned .work-viewport {
+  overflow: hidden;
+}
+.work-portfolio .work-viewport::-webkit-scrollbar {
+  display: none;
+}
+.work-portfolio .portfolio-card {
+  width: calc(var(--layout-content-max) / 2);
+  max-width: calc((100cqi - 2 * var(--space-gutter)) / 2);
+  height: 100%;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  align-content: start;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+}
+.work-portfolio .portfolio-card figure {
+  display: block;
+  min-height: 0;
+  margin: 0;
+}
+.work-portfolio .portfolio-card figure a,
+.work-portfolio .portfolio-card picture {
+  display: block;
+  height: 100%;
+}
+.work-portfolio .portfolio-card h3 {
+  min-height: 2.4em;
+}
+.work-portfolio .portfolio-card .button {
+  justify-self: start;
+}
+.work-portfolio .work-current {
+  min-width: 0;
+}
+.work-portfolio .work-meta > .micro {
+  flex: none;
+}
+@media (max-width: 760px) {
+  .work-portfolio .work-stage {
+    height: auto;
+    min-height: 0;
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-3xl);
+  }
+  .work-portfolio .work-viewport {
+    height: auto;
+    min-height: 0;
+    margin-bottom: var(--space-lg);
+  }
+  .work-portfolio .portfolio-card {
+    width: calc(100cqi - 2 * var(--space-gutter));
+    max-width: none;
+    height: auto;
+    grid-template-rows: auto 1fr auto;
+    padding: var(--space-lg);
+    scroll-snap-align: start;
+  }
+  .work-portfolio .work-track {
+    height: auto;
+    align-items: stretch;
+  }
+  .work-portfolio .portfolio-card figure {
+    aspect-ratio: 4/3;
+  }
+  .work-portfolio .portfolio-card img {
+    object-fit: contain;
   }
 }

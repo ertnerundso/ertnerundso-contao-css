@@ -2,8 +2,8 @@
    Nur Anordnung und Abstände. Text: typography.css; Gestaltung: surfaces.css; Bewegung: motion.css.
    Gemeinsame Werte: base.css. Anleitung: CSS-ANLEITUNG.md. */
 .news-detail > .news-intro {
-  padding: clamp(var(--space-5xl), var(--space-position-14vw), var(--space-7xl))
-    var(--space-content-offset) var(--space-4xl);
+  padding-block: clamp(var(--space-5xl), var(--space-position-14vw), var(--space-7xl))
+    var(--space-4xl);
 }
 .news-detail > .news-intro h1 {
   max-width: 68.75rem;
@@ -15,16 +15,6 @@
 .news-detail > .news-intro .rte p {
   margin: 0;
 }
-.news-detail > .project-visual {
-  max-width: var(--layout-container-max);
-  margin-inline: auto;
-  padding-inline: var(--space-gutter);
-}
-.news-detail > .content-section {
-  max-width: var(--layout-container-max);
-  margin-inline: auto;
-  padding-inline: var(--space-gutter);
-}
 .is-news-detail .mod_article > .inner-hero,
 .is-news-detail .mod_article > .shell,
 .is-news-detail .mod_article > .contact-band {
@@ -33,10 +23,8 @@
 .mod_newslist.news-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-sm);
-  max-width: var(--layout-container-max);
-  margin: 0 auto var(--space-section);
-  padding-inline: var(--space-gutter);
+  gap: 0;
+  margin-block: 0 var(--space-section);
 }
 .news-grid .news-card {
   min-width: 0;
@@ -61,5 +49,41 @@
 @media (max-width: 520px) {
   .mod_newslist.news-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ORIGINALPROJEKTE: redaktionelle Galerien und Videos auf der gemeinsamen Inhaltsbreite. */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-xl);
+  padding-bottom: var(--space-section);
+}
+.project-gallery > * {
+  min-width: 0;
+}
+.project-gallery > :first-child,
+.project-gallery > .project-video {
+  grid-column: 1 / -1;
+}
+.project-gallery figure {
+  margin: 0;
+}
+.project-gallery img {
+  width: 100%;
+  height: auto;
+}
+.project-gallery video {
+  display: block;
+  width: 100%;
+  max-height: 80svh;
+}
+.project-video .text-link {
+  margin-top: var(--space-md);
+}
+@media (max-width: 760px) {
+  .project-gallery {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
   }
 }

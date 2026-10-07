@@ -57,7 +57,6 @@ export function createRuntime() {
         return value.endsWith('rem') ? number * parseFloat(styles.fontSize) : number;
       },
     },
-    hero: document.querySelector('.hero'),
     header: document.querySelector('.site-header'),
     get reduceMotion() {
       return window.matchMedia(config.media.reducedMotion).matches;

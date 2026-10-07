@@ -1,5 +1,6 @@
 /* Showreel-Steuerung und vorhandene Scrollgeschichte.
    Verhalten: config.js; Gestaltung/Zeiten: motion.css und base.css. */
+import { createScrollProgress } from './scroll-progress.js';
 export function initShowreel(runtime) {
   const { gsap, ScrollTrigger, config, motion, listen, media } = runtime;
   const showreelSection = document.querySelector('.showreel-section');
@@ -28,7 +29,7 @@ export function initShowreel(runtime) {
         const filmCopy = showreelStage.querySelector('.showreel-film-copy');
         const phoneOverlay = showreelStage.querySelector('.showreel-phone-overlay');
         const benefitsLead = benefits?.querySelector('.benefits-lead');
-        const benefitsHeading = benefits?.querySelector('.benefits-impact h3');
+        const benefitsHeading = benefits?.querySelector('.benefits-impact h2');
         const benefitsTable = benefits?.querySelector('.benefits-table');
         const benefitColumns = benefits?.querySelectorAll('.benefit-column');
         const phoneWidth = () =>
@@ -48,9 +49,11 @@ export function initShowreel(runtime) {
             y: motion.pixels('motion-showreel-benefit-columns-offset'),
           });
         }
+        const progressIndicator = createScrollProgress(runtime, { de: 'Showreel', en: 'Showreel' });
         const story = gsap
           .timeline({
             scrollTrigger: {
+              ...progressIndicator.callbacks,
               trigger: showreelSection,
               start: config.triggers.showreel.start,
               end: () =>
@@ -212,6 +215,7 @@ export function initShowreel(runtime) {
             )
             .to({}, { duration: motion.number('motion-showreel-pause-duration') });
 
+        progressIndicator.update(story.scrollTrigger);
         let playbackObserver;
         if (!navigator.connection?.saveData) {
           playbackObserver = new IntersectionObserver(
@@ -228,6 +232,7 @@ export function initShowreel(runtime) {
           playbackObserver.observe(showreelStage);
         }
         return () => {
+          progressIndicator.destroy();
           playbackObserver?.disconnect();
           showreelVideo.pause();
           showreelVideo.controls = true;

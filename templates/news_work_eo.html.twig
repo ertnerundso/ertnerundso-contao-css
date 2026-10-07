@@ -1,0 +1,8 @@
+{% set english = archive.id == 2 %}
+<article class="work-card portfolio-card">
+    {% if addImage %}
+        {{ include('@Contao/image.html.twig') }}
+    {% endif %}
+    <h3>{{ linkHeadline|sanitize_html('contao') }}</h3>
+    <a class="button btn--secondary" href="{{ link }}" aria-label="{{ english ? 'View project' : 'Projekt ansehen' }}: {{ headline }}">{{ english ? 'View project' : 'Projekt ansehen' }}</a>
+</article>

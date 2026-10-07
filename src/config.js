@@ -11,13 +11,16 @@ export const config = {
   },
   header: { hideAfter: 160, directionThreshold: 8 },
   scroll: { wheelMultiplier: 0.9, smoothWheel: true },
-  sliders: { edgeTolerance: 2, workScrollPadding: 0.25, minimumProgress: 0.06 },
+  sliders: { edgeTolerance: 2, workScrollPadding: 0.25, minimumProgress: 0.06, journalSwipeThreshold: 50 },
   video: {
     frameRate: 24,
     visibilityThreshold: 0.45,
     preloadMargin: '250px 0px',
   },
-  hero: { scrollRange: 1.25 },
+  // Rechte Scroll-Skala: Anzahl der Striche; Gestaltung in CSS.
+  scrollProgress: { ticks: 52 },
+  // Kundenstimmen: Lesezeit pro Stimme in Millisekunden, nur im sichtbaren Bereich.
+  testimonials: { autoplayDelay: 8000, visibilityThreshold: 0.25 },
   showreel: {
     scrollRange: 5.3,
     scrollRangeWithoutBenefits: 2.8,
@@ -46,10 +49,6 @@ export const config = {
   },
   // ScrollTrigger-Grenzen der bestehenden Effekte.
   triggers: {
-    hero: {
-      parallaxStart: 'top top',
-      parallaxEnd: 'bottom top',
-    },
     showreel: {
       start: 'top top',
     },
@@ -73,7 +72,6 @@ export const config = {
   },
   // Feste Frontend-Dateien kommen aus dem Repository. CMS-Medien bleiben bei Contao.
   assets: {
-    heroVideo: 'videos/hero-release.mp4',
     manualBookPoster: '/files/site/montage-book-poster.jpg',
   },
   contact: {

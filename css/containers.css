@@ -5,15 +5,15 @@
 .work-progress {
   display: none;
 }
-.steps,
-.benefits-table,
-.question-list,
 .journal-list {
-  gap: var(--space-md);
+  gap: 0;
 }
 .journal-list,
 .question-list {
   display: grid;
+}
+.question-list {
+  gap: 0;
 }
 .step,
 .step:first-child,
@@ -28,9 +28,6 @@
 .step h3 {
   min-height: 2.24em;
   margin: 0 0 var(--space-md);
-}
-.benefit-column:before {
-  display: none;
 }
 .benefit-column h4 {
   margin: 0 0 var(--space-md);
@@ -48,10 +45,6 @@
 .question summary {
   padding-block: var(--space-lg);
 }
-.index-grid,
-.mod_newslist.news-grid {
-  gap: var(--space-md);
-}
 .news-grid .news-card figure {
   width: 100%;
   margin: 0 0 var(--space-lg);
@@ -65,7 +58,7 @@
 main table {
   width: 100%;
   border-spacing: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 main th,
 main td {
@@ -73,12 +66,6 @@ main td {
   vertical-align: top;
 }
 @media (max-width: 760px) {
-  .steps,
-  .benefits-table,
-  .question-list,
-  .journal-list {
-    gap: var(--space-sm);
-  }
   .step,
   .step:first-child,
   .step:last-child,

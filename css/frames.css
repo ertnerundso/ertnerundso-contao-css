@@ -1,0 +1,47 @@
+/* KOMPONENTE / LINIENRAHMEN: Gemeinsame Anordnung der gestrichelten Rahmen und Kreuze.
+   Bestehende Raster nutzen ihn automatisch. Optional: .line-frame für neue Bereiche.
+   Farbe/Linien in surfaces.css; Größe der Kreuze in layout.css, Abstand in base.css. */
+:is(
+  .line-frame,
+  .journal-list.is-journal-paged,
+  .service-grid,
+  .benefits-table,
+  .steps,
+  .index-grid,
+  .news-grid,
+  .configurator-scene-cards,
+  .client-references-grid,
+  :is(.grid-2-col, .grid-3-col, .grid-sidebar, .grid-feature):has(> .card),
+  .card,
+  .question-list,
+  .question:not(.question-list .question),
+  .journal-row,
+  .work-card
+) {
+  position: relative;
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    inset-inline: calc(var(--space-frame-marker-half) * -1);
+    height: var(--layout-frame-marker-size);
+    z-index: var(--layout-z-frame);
+    pointer-events: none;
+  }
+  &::before {
+    top: calc(var(--space-frame-marker-half) * -1);
+  }
+  &::after {
+    bottom: calc(var(--space-frame-marker-half) * -1);
+  }
+}
+/* Standard-Raster mit Inhaltskarten: ein Außenrahmen statt Rahmen um jede Zelle. */
+:is(.grid-2-col, .grid-3-col, .grid-sidebar, .grid-feature):has(> .card) {
+  gap: 0;
+  > :is(.card, .service-card, .index-card, .work-card) {
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+}

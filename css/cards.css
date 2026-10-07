@@ -11,6 +11,8 @@
 .service-card.featured {
   grid-row: span 2;
   padding: 0;
+  margin-block: var(--space-lg);
+  margin-inline-end: var(--space-md);
 }
 .service-card.featured img {
   width: 100%;
@@ -40,7 +42,7 @@
   margin-bottom: auto;
 }
 .index-card:has(img) > .micro,
-.index-card:has(img) > h2,
+.index-card:has(img) > :is(h2, h3),
 .index-card:has(img) > .text-link {
   margin-inline: var(--space-lg);
 }
@@ -66,7 +68,8 @@
   display: grid;
   grid-template-columns: 1.32fr 0.82fr 0.82fr;
   grid-template-rows: minmax(18.75rem, auto) minmax(16.25rem, auto);
-  gap: var(--space-md);
+  /* Zusammenhängende Zellen: Trennlinien werden nicht durch Grid-Abstände unterbrochen. */
+  gap: 0;
 }
 .service-card {
   position: relative;
@@ -77,18 +80,10 @@
   justify-content: space-between;
   isolation: isolate;
 }
-.service-card:not(.featured):before {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
 .service-card.featured .card-overlay {
   position: absolute;
   inset: auto 0 0;
   padding: clamp(var(--space-lg), var(--space-position-3-2vw), var(--space-2xl));
-}
-.steps {
-  gap: 0;
 }
 .step {
   padding: var(--space-lg)
@@ -103,9 +98,6 @@
 .card {
   position: relative;
   padding: var(--space-xl);
-}
-.card--plain {
-  padding: 0;
 }
 @media (max-width: 1000px) {
   .service-grid {
@@ -128,7 +120,6 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    gap: var(--space-sm);
   }
   .service-card,
   .service-card.featured {
@@ -137,6 +128,7 @@
   .service-card.featured {
     height: 29.375rem;
     grid-row: auto;
+    margin-inline-end: 0;
   }
 }
 @media (max-width: 520px) {

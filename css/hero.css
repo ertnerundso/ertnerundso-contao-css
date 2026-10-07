@@ -5,6 +5,35 @@
 .display {
   margin: var(--space-md) 0 var(--space-lg);
 }
+
+/* Das mittige Handmotiv nutzt dieselbe Fläche für Standbild und Film. */
+.hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media :is(img, video) {
+  object-position: center;
+}
+.hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media img {
+  position: static;
+  top: auto;
+}
+@media (min-width: 761px) {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-message {
+    max-width: min(34%, 28.125rem);
+  }
+}
+@media (max-width: 1000px) {
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media {
+    inset: var(--space-position-42percent) 0 0;
+  }
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-inner {
+    padding-top: var(--space-header-offset);
+  }
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-message {
+    max-width: 100%;
+  }
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) h1 {
+    max-width: 80%;
+    margin-top: var(--space-lg);
+  }
+}
 .hero .body-copy {
   max-width: 28.125rem;
 }
@@ -56,7 +85,7 @@
   align-self: flex-end;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-lg);
   margin: 0 0 clamp(var(--space-xl), var(--space-position-6vh), var(--space-3xl));
 }
 @media (min-width: 761px) {
@@ -96,7 +125,6 @@
     padding: 0 var(--space-gutter);
   }
   .hero-actions {
-    gap: var(--space-md);
     margin-top: var(--space-lg);
     width: 100%;
     margin-bottom: var(--space-xl);

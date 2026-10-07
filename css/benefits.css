@@ -19,7 +19,7 @@
   width: 100%;
   margin-top: var(--space-4xl);
 }
-.benefits-impact h3 {
+.benefits-impact h2 {
   margin: 0;
 }
 .benefits-table {
@@ -28,24 +28,10 @@
   gap: 0;
   margin-top: clamp(var(--space-xl), var(--space-position-5vh), var(--space-3xl));
 }
+/* Zellabstände stammen gemeinsam aus containers.css. */
 .benefit-column {
   position: relative;
   min-width: 0;
-  padding: var(--space-lg)
-    clamp(var(--space-lg), var(--space-position-3vw), var(--space-2xl)) 0 0;
-}
-.benefit-column + .benefit-column {
-  padding-left: clamp(var(--space-lg), var(--space-position-3vw), var(--space-2xl));
-}
-.benefit-column:before {
-  position: absolute;
-  top: var(--space-negative-hairline);
-  left: 0;
-  width: 2.625rem;
-  height: 2px;
-}
-.benefit-column + .benefit-column:before {
-  left: clamp(var(--space-lg), var(--space-position-3vw), var(--space-2xl));
 }
 .benefit-column .rte p {
   margin: 0;
@@ -62,7 +48,6 @@ html.showreel-motion .benefits-section {
 html.showreel-motion .benefits-stage {
   position: relative;
   height: 100%;
-  max-width: none;
   padding-block: 0;
 }
 html.showreel-motion .benefits-lead,
@@ -79,7 +64,7 @@ html.showreel-motion .benefits-lead .micro {
   right: var(--space-gutter);
 }
 html.showreel-motion .benefits-lead h2,
-html.showreel-motion .benefits-impact h3 {
+html.showreel-motion .benefits-impact h2 {
   position: absolute;
   top: var(--space-position-14percent);
   left: var(--space-gutter);
@@ -100,7 +85,6 @@ html.showreel-motion .benefits-table {
   top: var(--space-position-70percent);
   left: var(--space-gutter);
   right: var(--space-gutter);
-  max-width: 85rem;
   margin: 0 auto;
 }
 @media (max-width: 760px) {
@@ -113,15 +97,7 @@ html.showreel-motion .benefits-table {
   }
   .benefits-table {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
     margin-top: var(--space-xl);
-  }
-  .benefit-column,
-  .benefit-column + .benefit-column {
-    padding: var(--space-md) 0 0;
-  }
-  .benefit-column + .benefit-column:before {
-    left: 0;
   }
   .benefit-column h4 {
     margin-bottom: var(--space-md);

@@ -42,7 +42,7 @@
     /* H3: Familie, Schnitt, Größe und Zeilenhöhe unabhängig editierbar.
      Für die Größe zuerst min/max ändern; die mittlere Größe wächst automatisch. */
     --font-h3-family: "SK Modernist", Arial, sans-serif;
-    --font-h3-weight: 700;
+    --font-h3-weight: 400;
     --font-h3-min: 1.5rem;
     --font-h3-max: var(--font-step-3);
     --font-h3-size: clamp(var(--font-h3-min), var(--font-fluid-3), var(--font-h3-max));
@@ -81,7 +81,7 @@
     --font-label-weight: 400;
     --font-label-line-height: 1.5;
     --font-button-size: 1rem;
-    --font-button-weight: 600;
+    --font-button-weight: 400;
     --font-quote-size: var(--font-h3-size);
     --font-testimonial-size: clamp(1.75rem, calc(1.35rem + 1.6vw), 3.25rem);
     --font-testimonial-weight: 700;
@@ -288,6 +288,10 @@
   }
 }
 @layer layout {
+  .site-footer a:is(:hover, :focus-visible) {
+    text-decoration: underline;
+    text-underline-offset: var(--space-xs);
+  }
   .intro {
     text-align: center;
   }
@@ -313,6 +317,7 @@
     white-space: nowrap;
   }
   /* --- BUTTONS UND LINKS --- */
+  .button--arrow,
   .content-hyperlink.button > a,
   .hero-actions > .content-hyperlink.hero-contact > a,
   .contact-form .widget-submit.button button {
@@ -433,7 +438,8 @@
     text-wrap: balance;
   }
   .testimonial-carousel-label,
-  .testimonial-switch-button {
+  .testimonial-switch-button,
+  .testimonial-playback {
     font-family: var(--font-label-family);
     font-size: var(--font-label-size);
     font-weight: var(--font-label-weight);
@@ -505,6 +511,12 @@
     }
   }
 }
+@layer sections {
+  .work-portfolio .portfolio-card h3 {
+    overflow-wrap: anywhere;
+  }
+}
+
 @layer cms {
   /* --- RECHTSTEXTE --- */
   .legal-content a {
@@ -515,7 +527,11 @@
     text-transform: uppercase;
   }
   /* --- NEWS --- */
-  .news-grid .news-card h2 a {
+  .news-grid .news-card h3 {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+  .news-grid .news-card h3 a {
     text-decoration: none;
   }
   /* --- KONTAKT UND FRAGEN --- */
@@ -555,6 +571,7 @@
     text-underline-offset: var(--space-icon-align);
   }
   .inner-hero h1,
+  .news-detail > .news-intro h1,
   .content-section h2,
   .content-section h3 {
     hyphens: auto;

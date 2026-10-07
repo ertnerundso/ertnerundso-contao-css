@@ -3,6 +3,7 @@
 @layer foundation {
   :root {
     /* FARBEN: Website und vorhandene Medienflächen */
+    --color-scroll-progress: var(--color-on-dark);
     --color-primary: #2455ed;
     --color-primary-hover: #173fc3;
     --color-secondary: #09090b;
@@ -23,9 +24,11 @@
     --color-current: currentColor;
     --color-overlay-subtle: #00000014;
     --color-header-surface: transparent;
-    --color-menu-surface: var(--color-primary);
+    --color-menu-surface: var(--color-black);
     --color-menu-text: var(--color-on-dark);
     --color-menu-muted: var(--color-on-dark);
+    --color-footer-surface: var(--color-black);
+    --color-footer-text: var(--color-on-dark);
     --color-primary-surface: #f0f4ff;
     --color-transparent: transparent;
     --color-link-on-dark: #a9bcff;
@@ -51,9 +54,6 @@
     --color-black: #000;
     --color-ink: #111;
     --color-primary-on-dark: #8199ff;
-    --color-project-blue: #1b2443;
-    --color-project-neutral: #303036;
-    --color-project-teal: #172b3e;
     --color-link-soft: #a9b9ff;
     --color-text-on-dark-muted: #c5c8d0;
     --color-text-on-dark-soft: #b7bdca;
@@ -69,11 +69,16 @@
     --color-control-surface: #e8eeff;
     --color-video-primary: #2b58ee;
     --color-border-logo: #b9c1cb;
+    /* OFFENES RASTER: Gestrichelte Linien und Kreuze aller Karten-/Inhaltsraster. */
+    --color-frame-line: var(--color-border-logo);
+    --color-frame-cross: var(--color-muted);
     --color-border-journal: #d8dae0;
     --color-contact-label: #9eb4ff;
-    --color-shadow-soft: rgba(9, 9, 11, 0.035);
-    --color-shadow-hover: rgba(9, 9, 11, 0.065);
     /* ABSTÄNDE: Kleine Grundskala; gutter und section steuern die gesamte Seite */
+    --space-frame-marker-half: 0.875rem;
+    --space-full: 100%;
+    /* Platz für das quadratische Button-Pfeilfeld. */
+    --space-button-arrow: 2.25rem;
     --space-xxs: 0.125rem;
     --space-xs: 0.25rem;
     --space-sm: 0.5rem;
@@ -92,7 +97,7 @@
     --space-columns: clamp(var(--space-xl), 7vw, var(--space-5xl));
     --space-content-offset: max(
       var(--space-gutter),
-      calc((100vw - var(--layout-container-max)) / 2 + var(--space-gutter))
+      calc((100% - var(--layout-container-max)) / 2 + var(--space-gutter))
     );
     --space-hairline: 1px;
     --space-negative-hairline: -1px;
@@ -131,6 +136,8 @@
     --space-position-6vw: 6vw;
     --space-position-13vh: 13vh;
     /* RADIEN: Einheitliche Rundungen */
+    --radius-button: 0.5rem;
+    --radius-button-arrow: 0.25rem;
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 1rem;
@@ -138,13 +145,11 @@
     --radius-circle: 50%;
     --radius-hero-bottom: 0 0 var(--radius-md) var(--radius-md);
     --radius-contact-top: var(--radius-md) var(--radius-md) 0 0;
-    /* SCHATTEN: Gemeinsame Karten und Bedienelemente */
+    /* SCHATTEN: Bedienelemente und Medien */
     --shadow-button:
       inset 0 1px 0 var(--color-highlight),
       0 0.375rem 1.0625rem var(--color-shadow-primary);
     --shadow-menu: 0 1.25rem 1.875rem var(--color-overlay-subtle);
-    --shadow-card: 0 0.3125rem 1.5rem var(--color-shadow-soft);
-    --shadow-card-hover: 0 0.875rem 2.125rem var(--color-shadow-hover);
     --shadow-input: inset 0 1px 0.1875rem var(--color-shadow-input);
     --shadow-focus: 0 0 0 0.1875rem var(--color-focus-ring);
     --shadow-text: 0 2px 1.5rem var(--color-shadow-text);

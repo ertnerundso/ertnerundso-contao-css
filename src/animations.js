@@ -18,6 +18,10 @@ export function initAnimations(runtime) {
       },
       ...options,
     });
+  // Rahmen bleiben im Raster; nur der Karteninhalt wird nach oben eingeblendet.
+  const cardContents = (card) => [...card.children].filter(
+    element => !element.matches('.card-link-overlay'),
+  );
   const statementImage = document.querySelector('.statement-image');
   if (statementImage) {
     gsap
@@ -60,25 +64,36 @@ export function initAnimations(runtime) {
     .forEach((element) =>
       revealOnce(element, { y: motion.pixels('motion-reveal-card-offset') }),
     );
-  document.querySelectorAll('.index-card,.journal-row,.question').forEach((element) =>
-    revealOnce(element, {
-      y: motion.pixels('motion-reveal-card-offset'),
-      duration: motion.number('motion-reveal-card-duration'),
-    }),
-  );
-  if (document.querySelector('.service-grid'))
-    gsap.from('.service-card', {
+  document.querySelectorAll('.index-card,.journal-row:not(.is-journal-paged > .journal-row),.question').forEach((card) => {
+    const contents = cardContents(card);
+    gsap.from(contents.length ? contents : card, {
       autoAlpha: 0,
-      y: motion.pixels('motion-reveal-services-offset'),
-      duration: motion.number('motion-reveal-duration'),
-      stagger: motion.number('motion-reveal-services-stagger'),
+      y: contents.length ? motion.pixels('motion-reveal-card-offset') : 0,
+      ...(contents.length ? { clearProps: 'transform,opacity,visibility' } : {}),
+      duration: motion.number('motion-reveal-card-duration'),
       ease: motion.value('motion-ease-standard'),
       scrollTrigger: {
-        trigger: '.service-grid',
-        start: config.triggers.animations.servicesStart,
+        trigger: card,
+        start: config.triggers.animations.revealStart,
         once: true,
       },
     });
+  });
+  document.querySelectorAll('.service-grid').forEach((grid) => {
+    const sequence = gsap.timeline({
+      scrollTrigger: { trigger: grid, start: config.triggers.animations.servicesStart, once: true },
+    });
+    [...grid.querySelectorAll('.service-card')].forEach((card, index) => {
+      const contents = cardContents(card);
+      sequence.from(contents.length ? contents : card, {
+        autoAlpha: 0,
+        y: contents.length ? motion.pixels('motion-reveal-services-offset') : 0,
+        ...(contents.length ? { clearProps: 'transform,opacity,visibility' } : {}),
+        duration: motion.number('motion-reveal-duration'),
+        ease: motion.value('motion-ease-standard'),
+      }, index * motion.number('motion-reveal-services-stagger'));
+    });
+  });
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
   document
     .querySelectorAll('.question')

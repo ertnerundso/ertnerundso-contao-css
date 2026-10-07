@@ -7,7 +7,6 @@ import { initHeader } from './header.js';
 import { initNavigation } from './navigation.js';
 import { initJournal } from './journal.js';
 import { initVideo } from './video.js';
-import { initHero } from './hero.js';
 import { initShowreel } from './showreel.js';
 import { initBenefits } from './benefits.js';
 import { initConfigurator } from './configurator.js';
@@ -19,11 +18,11 @@ import { initForms } from './forms.js';
 import { initBooking } from './booking.js';
 import { initTestimonials } from './testimonials.js';
 import { initAnalytics } from './analytics.js';
+import { initButtons } from './buttons.js';
 
 const runtime = createRuntime();
 const motionModules = new Set([
   initScroll,
-  initHero,
   initBenefits,
   initConfigurator,
   initAnimations,
@@ -35,7 +34,6 @@ for (const initialize of [
   initNavigation,
   initJournal,
   initVideo,
-  initHero,
   initShowreel,
   initBenefits,
   initConfigurator,
@@ -43,6 +41,7 @@ for (const initialize of [
   initWork,
   initPointer,
   initScene,
+  initButtons,
   initForms,
   initBooking,
   initTestimonials,

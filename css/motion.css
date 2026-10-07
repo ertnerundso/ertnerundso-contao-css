@@ -2,12 +2,15 @@
    Zeitwerte und Übergänge stehen hier. JavaScript-Zustände und Reduced Motion bleiben erhalten. */
 @layer foundation {
   :root {
+    /* Scroll-Skala: Reichweite und Stärke der wandernden Markierung (keine Nachlaufzeit). */
+    --motion-scroll-progress-radius: 4;
+    --motion-scroll-progress-min-scale: 0.6;
+    --motion-scroll-progress-min-opacity: 0.45;
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHARED: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
-    /* HERO: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHOWREEL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* BENEFITS: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* ANIMATIONS: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
@@ -27,7 +30,6 @@
     /* JOURNAL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* CONTACT: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* FAST: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
-    /* HERO: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHOWREEL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* BENEFITS: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* ANIMATIONS: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
@@ -47,7 +49,6 @@
     /* JOURNAL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* CONTACT: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* FAST: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
-    /* HERO: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHOWREEL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* WORK: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* BENEFITS: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
@@ -67,7 +68,6 @@
     /* JOURNAL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* CONTACT: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* FAST: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
-    /* HERO: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHOWREEL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* WORK: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* BENEFITS: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
@@ -87,7 +87,6 @@
     /* JOURNAL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* CONTACT: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* FAST: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
-    /* HERO: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* SHOWREEL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* WORK: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* BENEFITS: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
@@ -107,19 +106,6 @@
     /* JOURNAL: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* CONTACT: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
     /* FAST: CSS-Übergänge und JavaScript-Effekte; Start-/End-Phasen = Zeitpunkte der Scrollgeschichte */
-    /* HERO: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
-    --motion-hero-actions-start: 0.48s;
-    --motion-hero-message-start: 0.16s;
-    --motion-hero-image-start: 0s;
-    --motion-hero-image-offset: 2.125rem;
-    --motion-hero-image-duration: 1.25s;
-    --motion-hero-message-offset: 2.375rem;
-    --motion-hero-message-duration: 1.1s;
-    --motion-hero-actions-offset: 1.25rem;
-    --motion-hero-actions-duration: 0.8s;
-    --motion-hero-parallax-shift: -3%;
-    --motion-hero-layer-shift: 0.25;
-    --motion-hero-fade-progress: 8;
     /* SHOWREEL: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-showreel-phone-width-ratio: 0.34;
     --motion-showreel-phone-height-ratio: 0.58;
@@ -233,14 +219,15 @@
     --motion-reduced-duration: 0.01ms;
     /* BUTTONS: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-buttons-transition: background 0.2s, border-color 0.2s, color 0.2s;
+    /* BUTTONS: Pfeil und Text gleiten gemeinsam; Werte hier anpassen. */
+    --motion-button-duration: 0.45s;
+    --motion-button-ease: cubic-bezier(0.22, 1, 0.36, 1);
     /* IMAGE: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-image-zoom-transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     /* CARD: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-card-arrow-transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    --motion-card-transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
-    --motion-card-wash-transition: opacity 0.35s;
-    --motion-card-compact-transition:
-      background 0.25s, border-color 0.25s, box-shadow 0.25s;
+    --motion-card-transition: border-color 0.3s, transform 0.3s;
+    --motion-card-compact-transition: border-color 0.25s;
     /* FORMS: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
     --motion-forms-transition: border-color 0.2s, box-shadow 0.2s;
     /* LINK: CSS-Übergänge und JavaScript-Effekte; position = Zeitpunkt in der Scrollgeschichte */
@@ -327,6 +314,13 @@
   }
 }
 @layer components {
+  .section-scroll-progress {
+    transform: translateY(-50%);
+  }
+  .section-scroll-progress-tick {
+    transform-origin: right center;
+  }
+
   .button,
   .btn,
   .hero-contact,
@@ -351,6 +345,20 @@
   .index-card:hover .text-link {
     transform: none;
   }
+  .button--arrow {
+    transition: none;
+  }
+  .button--arrow.is-button-ready {
+    transition:
+      var(--motion-buttons-transition),
+      padding-inline-start var(--motion-button-duration) var(--motion-button-ease),
+      padding-inline-end var(--motion-button-duration) var(--motion-button-ease);
+  }
+  .is-button-ready .button-arrow {
+    transition:
+      var(--motion-buttons-transition),
+      inset-inline-start var(--motion-button-duration) var(--motion-button-ease);
+  }
   .service-card.featured img {
     transition: var(--motion-image-zoom-transition);
   }
@@ -360,9 +368,6 @@
   .service-card {
     transform-style: preserve-3d;
     transition: var(--motion-card-transition);
-  }
-  .service-card:not(.featured):before {
-    transition: var(--motion-card-wash-transition);
   }
   .index-card {
     transition: var(--motion-card-compact-transition);
@@ -392,7 +397,6 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .service-card,
-    .service-card:before,
     .index-card,
     .button {
       transition: none;
@@ -438,14 +442,14 @@
   .testimonial-project-link a {
     transition: var(--motion-link-transition);
   }
-  .testimonial-switch-button,
-  :is(.button, .btn, .hero-contact, .btn--primary, .btn--secondary):not(.content-hyperlink)::after,
-  :is(.content-hyperlink.button, .content-hyperlink.hero-contact) > a::after,
-  .contact-form .widget-submit.button button::after {
+  .testimonial-switch-button {
     transition: var(--motion-buttons-transition);
   }
   .client-reference-logo img {
     transition: var(--motion-logo-transition);
+  }
+  .journal-page-previous .button-arrow::before {
+    transform: rotate(180deg);
   }
   .journal-row {
     transition: var(--motion-journal-row-transition);
@@ -453,7 +457,7 @@
   .journal .journal-list article.journal-row {
     transition: var(--motion-journal-card-transition);
   }
-  .journal .journal-list article.journal-row:hover {
+  .journal .journal-list:not(.is-journal-paged) article.journal-row:hover {
     transform: translateY(-0.25rem);
   }
   .configurator-scene-media > * {
@@ -517,8 +521,8 @@
     }
   }
   @media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
-    .configurator-scene.is-scroll-ready .configurator-scene-cards {
-      transform: translateY(1.5rem);
+    .configurator-scene-card-reveal {
+      transform: translateY(var(--motion-configurator-card-offset));
     }
   }
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -538,6 +542,15 @@
   }
 }
 @layer cms {
+  /* Mittige Motive erhalten keine seitliche Verschiebung. */
+  .hero:has(:is(.hero-media--centered, .hero-media--industrial)) .hero-media :is(img, video) {
+    transform: none;
+  }
+  /* Das statische Handmotiv lässt rundum mehr Weißraum. */
+  .hero:has(.hero-media--centered) .hero-media img {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
   .hero-motion-video {
     transform: scale(0.84);
     transform-origin: center bottom;

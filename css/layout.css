@@ -28,11 +28,32 @@
     top: var(--space-sm);
   }
   .shell,
-  .container {
+  .container,
+  .contact-band-copy,
+  .showreel-outro,
+  .showreel-caption,
+  .news-detail > :is(.news-intro, .content-section, .project-visual, .testimonial-feature) {
     width: 100%;
     max-width: var(--layout-container-max);
     margin-inline: auto;
     padding-inline: var(--space-gutter);
+  }
+  /* Verschachtelte Container nutzen die vorhandenen Seitenränder genau einmal. */
+  :is(.shell, .container) :is(
+    .shell, .container, .contact-band-copy,
+    .showreel-outro, .showreel-caption,
+    .news-detail > :is(.news-intro, .content-section, .project-visual, .testimonial-feature)
+  ) {
+    max-width: none;
+    padding-inline: 0;
+  }
+  /* Contao-Listen ohne .shell: Rahmen liegen an der Inhaltskante, Kreuze im Seitenrand. */
+  .mod_newslist.news-grid {
+    width: min(calc(100% - 2 * var(--space-gutter)), var(--layout-content-max));
+    margin-inline: auto;
+  }
+  :is(.shell, .container) .mod_newslist.news-grid {
+    width: 100%;
   }
   :where(
       .intro,
@@ -65,13 +86,27 @@
     --layout-content-max: calc(var(--layout-container-max) - 2 * var(--space-gutter));
     --layout-header-height: 4.75rem;
     --layout-header-compact-height: 4.25rem;
+    /* Rechte Scroll-Skala: Größe und Stapelreihenfolge unterhalb von Header/Menü. */
+    --layout-scroll-progress-width: 2rem;
+    --layout-scroll-progress-stroke: 0.125rem;
+    --layout-scroll-progress-height: min(42svh, 24rem);
+    --layout-z-scroll-progress: 90;
     --layout-z-header: 100;
     --layout-z-menu: 150;
-    /* MENÜ: Höhe des geöffneten Bereichs und Größe des runden Knopfs. */
+    /* MENÜ: Höhe des geöffneten Bereichs und Größe der Bedienelemente. */
     --layout-menu-height: min(34rem, 72svh);
     --layout-menu-control-size: 3.5rem;
+    /* BUTTONS: Gemeinsame Höhe und Größe des quadratischen Pfeilfelds. */
     --layout-button-height: 3rem;
+    --layout-button-icon-size: 1rem;
     --layout-z-skip: 200;
+    /* JOURNAL: Mindestbreite je Karte; höchstens drei ganze Karten je Ansicht. */
+    --layout-journal-card-min: 20rem;
+    --layout-journal-columns-max: 3;
+    /* LINIENRAHMEN: Strichstärke und gemeinsame Kreuz-Größe. */
+    --layout-frame-stroke: 1px;
+    --layout-frame-marker-size: calc(var(--space-frame-marker-half) * 2);
+    --layout-z-frame: 1;
   }
   [hidden] {
     display: none !important;
