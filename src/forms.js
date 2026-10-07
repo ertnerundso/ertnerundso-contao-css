@@ -128,6 +128,7 @@ export function initForms(runtime) {
               : 'Danke! Ihre Anfrage ist angekommen.',
           );
           setButtonLabel(submit, english ? 'Sent' : 'Gesendet');
+          document.dispatchEvent(new Event('eo:contact-success'));
         } catch {
           window.turnstile?.reset();
           showStatus(

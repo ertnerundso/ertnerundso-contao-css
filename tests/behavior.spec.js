@@ -200,6 +200,10 @@ for (const success of [true, false])
   }) => {
     const errors = await start(page);
     let payload;
+    await page.evaluate(() => {
+      window.contactSuccessEvents = 0;
+      document.addEventListener('eo:contact-success', () => window.contactSuccessEvents++);
+    });
     await page.route('**/api/contact', (route) => {
       payload = route.request().postDataJSON();
       return route.fulfill({
@@ -226,6 +230,7 @@ for (const success of [true, false])
     expect(payload.token).toBe('simulated-token');
     if (success) await expect(page.locator('[name=email]')).toHaveValue('');
     else await expect(page.locator('.widget-submit button')).toBeEnabled();
+    expect(await page.evaluate(() => window.contactSuccessEvents)).toBe(success ? 1 : 0);
     await expect(page.locator('.widget-submit button .button-arrow')).toHaveCount(1);
     await expect(page.locator('.widget-submit button .button-label')).toHaveText(success ? 'Gesendet' : 'Senden');
     expect(errors).toEqual([]);

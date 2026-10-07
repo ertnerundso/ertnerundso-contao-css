@@ -17,6 +17,7 @@ import { initScene } from './scene-loader.js';
 import { initForms } from './forms.js';
 import { initBooking } from './booking.js';
 import { initTestimonials } from './testimonials.js';
+import { initAnalytics } from './analytics.js';
 import { initButtons } from './buttons.js';
 
 const runtime = createRuntime();
@@ -44,6 +45,7 @@ for (const initialize of [
   initForms,
   initBooking,
   initTestimonials,
+  initAnalytics,
 ]) {
   try {
     if (motionModules.has(initialize)) runtime.runResponsive(initialize);
