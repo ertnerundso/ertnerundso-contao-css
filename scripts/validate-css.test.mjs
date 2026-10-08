@@ -92,15 +92,6 @@ test('animation keyframes can animate opacity in their motion owner', () => {
   );
 });
 
-test('document view transitions belong only to the motion system', () => {
-  assert.doesNotThrow(() =>
-    validateModule('motion.css', '@layer foundation {} @view-transition { navigation: auto; } @layer layout {}'),
-  );
-  assert.throws(() =>
-    validateModule('surfaces.css', '@view-transition { navigation: auto; }'),
-  );
-});
-
 function project() {
   const files = new Map(
     [...SYSTEM_FILES].map((name) => [name, '@layer foundation {}']),

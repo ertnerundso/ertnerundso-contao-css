@@ -1213,11 +1213,4 @@
     background: var(--color-on-dark);
     border-radius: var(--radius-md);
   }
-  ::view-transition {
-    background: var(--color-surface-dark);
-  }
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    border-radius: var(--radius-md);
-  }
 }
