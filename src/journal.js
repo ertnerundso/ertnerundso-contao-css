@@ -4,7 +4,7 @@ import { enhanceButton } from './buttons.js';
 
 export function initJournal(runtime) {
   const { config, listen, observer } = runtime;
-  document.querySelectorAll('.journal .journal-list').forEach((list) => {
+  document.querySelectorAll('.journal .journal-list, .journal-related .mod_newslist').forEach((list) => {
     const cards = [...list.querySelectorAll(':scope > .journal-row')];
     if (!cards.length) return;
     const english = document.documentElement.lang === 'en';
@@ -35,6 +35,7 @@ export function initJournal(runtime) {
     list.setAttribute('role', 'region');
     list.setAttribute('aria-label', english ? 'Journal articles' : 'Journalbeiträge');
     list.classList.add('is-journal-paged');
+    list.classList.add('journal-list');
     const addedLinks = [];
     cards.forEach((card, index) => {
       const category = card.querySelector('.row-category');
@@ -106,6 +107,7 @@ export function initJournal(runtime) {
       controls.remove();
       addedLinks.forEach(link => link.remove());
       list.classList.remove('is-journal-paged');
+      if (list.closest('.journal-related')) list.classList.remove('journal-list');
       list.style.removeProperty('grid-template-columns');
       cards.forEach(card => {
         card.hidden = false;

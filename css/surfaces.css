@@ -496,11 +496,11 @@
   .question-list > :not(:first-child) .question {
     border-block-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
   }
-  :is(.journal .journal-list, .work-track) > :is(.journal-row, .work-card) + :is(.journal-row, .work-card) {
+  :is(.journal :is(.journal-list, .mod_newslist), .work-track) > :is(.journal-row, .work-card) + :is(.journal-row, .work-card) {
     border-inline-start: var(--layout-frame-stroke) dashed var(--color-frame-line);
   }
   /* Am gemeinsamen Slider-Rand zeichnet nur die folgende Karte das Kreuz. */
-  :is(.journal .journal-list, .work-track) > :is(.journal-row, .work-card):not(:last-child) {
+  :is(.journal :is(.journal-list, .mod_newslist), .work-track) > :is(.journal-row, .work-card):not(:last-child) {
     &::before,
     &::after {
       background:
@@ -875,10 +875,10 @@
   .journal-row:hover {
     color: var(--color-primary);
   }
-  .journal .journal-list {
+  .journal :is(.journal-list, .mod_newslist) {
     scrollbar-width: none;
   }
-  .journal .journal-list:focus-visible {
+  .journal :is(.journal-list, .mod_newslist):focus-visible {
     outline: 2px solid var(--color-primary);
   }
   .journal .journal-row .row-category {
@@ -1154,44 +1154,6 @@
   .news-detail-body > .content-section .rte p,
   .news-detail-body > .content-section .rte li {
     color: var(--color-text-soft);
-  }
-  .journal-related-link {
-    border: var(--space-hairline) solid var(--color-border);
-    border-radius: var(--radius-md);
-    background: var(--color-surface);
-    color: var(--color-text);
-  }
-  .journal-related-link:hover {
-    border-color: var(--color-border-hover);
-  }
-  .journal-related-link:focus-visible {
-    outline: var(--space-hairline) solid var(--color-primary);
-  }
-  .journal-related-image img {
-    border-radius: var(--radius-md) var(--radius-md) 0 0;
-  }
-  .journal-related-date,
-  .journal-related-status,
-  .journal-related-arrow {
-    color: var(--color-primary);
-  }
-  .journal-related-teaser {
-    color: var(--color-text-soft);
-  }
-  .journal-related-control {
-    border: var(--space-hairline) solid var(--color-border);
-    border-radius: var(--radius-circle);
-    background: var(--color-surface);
-    color: var(--color-text);
-    cursor: pointer;
-  }
-  .journal-related-control:hover:not(:disabled) {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-  }
-  .journal-related-control:disabled {
-    color: var(--color-muted);
-    cursor: default;
   }
   .contact-band-copy > .content-hyperlink a {
     color: inherit;

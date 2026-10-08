@@ -9,6 +9,7 @@ Diese Regeln stammen aus dem Architektur-Interview mit dem Projektinhaber am 05.
 - `main` niemals ohne ausdrückliche Freigabe des Inhabers verändern oder einen PR mergen. Staging-Templates und CMS-Inhalte ebenfalls erst nach Freigabe veröffentlichen. Keine Produktion-Deployments aus dieser Aufgabe ableiten.
 - Grundlagen/Typografie und Layout/Komponenten/JavaScript wurden mit Freigabe des Inhabers über PR #6 und #7 nach `main` gemergt. Für weitere Änderungen gelten weiterhin die obigen Freigaberegeln.
 - Keine zusätzlichen Funktionen, Designexperimente oder Änderungen außerhalb des vereinbarten Umfangs hinzufügen.
+- Vor neuen UI-Komponenten vorhandene Muster auf der Live-Seite und im Repository prüfen. Bestehende Komponenten gezielt anpassen und wiederverwenden; keine parallelen Varianten für dasselbe Verhalten oder denselben Stil anlegen.
 
 ## CSS
 

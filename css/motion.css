@@ -454,10 +454,10 @@
   .journal-row {
     transition: var(--motion-journal-row-transition);
   }
-  .journal .journal-list article.journal-row {
+  .journal :is(.journal-list, .mod_newslist) article.journal-row {
     transition: var(--motion-journal-card-transition);
   }
-  .journal .journal-list:not(.is-journal-paged) article.journal-row:hover {
+  .journal :is(.journal-list, .mod_newslist):not(.is-journal-paged) article.journal-row:hover {
     transform: translateY(-0.25rem);
   }
   .configurator-scene-media > * {
@@ -506,7 +506,7 @@
     .client-reference-logo img {
       transition: none;
     }
-    .journal .journal-list article.journal-row {
+    .journal :is(.journal-list, .mod_newslist) article.journal-row {
       transition: none;
     }
     .hero-message,
