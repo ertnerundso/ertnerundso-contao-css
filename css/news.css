@@ -105,11 +105,84 @@
   max-width: 25ch;
   margin: var(--space-lg) 0 var(--space-2xl);
 }
+.journal-related .mod_newslist {
+  display: flex;
+  gap: var(--space-lg);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--space-hairline);
+  padding-block: var(--space-hairline) var(--space-md);
+}
+.journal-related-card {
+  flex: 0 0 42%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+.journal-related-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: calc(var(--space-6xl) * 2);
+}
+.journal-related-link:focus-visible {
+  outline-offset: var(--space-xs);
+}
+.journal-related-image figure {
+  margin: 0;
+}
+.journal-related-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.6;
+  object-fit: cover;
+}
+.journal-related-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-xl);
+}
+.journal-related-copy :is(h3, p) {
+  margin: 0;
+}
+.journal-related-copy h3 {
+  margin-top: var(--space-2xl);
+}
+.journal-related-copy .journal-related-teaser {
+  margin-top: var(--space-lg);
+}
+.journal-related-arrow {
+  align-self: flex-end;
+  margin-top: auto;
+  padding-top: var(--space-xl);
+}
+.journal-related-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+.journal-related-controls[hidden] {
+  display: none;
+}
+.journal-related-status {
+  margin-right: auto;
+}
+.journal-related-control {
+  display: grid;
+  place-items: center;
+  width: var(--space-2xl);
+  height: var(--space-2xl);
+}
 .news-detail-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--space-xl);
+  margin-top: var(--space-3xl);
 }
 .is-news-detail .mod_article > .inner-hero,
 .is-news-detail .mod_article > .shell,
@@ -274,6 +347,9 @@
     gap: var(--space-lg);
     padding-block: var(--space-2xl);
   }
+  .journal-related-card {
+    flex-basis: 68%;
+  }
   .news-grid .journal-index-item,
   .news-grid .journal-index-item:first-child {
     grid-template-columns: minmax(0, 1fr) minmax(6rem, 10rem);
@@ -303,6 +379,12 @@
   }
 }
 @media (max-width: 520px) {
+  .journal-related-card {
+    flex-basis: 86%;
+  }
+  .journal-related-copy {
+    padding: var(--space-lg);
+  }
   .mod_newslist.news-grid {
     grid-template-columns: 1fr;
   }

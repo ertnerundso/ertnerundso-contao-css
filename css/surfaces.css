@@ -1155,6 +1155,44 @@
   .news-detail-body > .content-section .rte li {
     color: var(--color-text-soft);
   }
+  .journal-related-link {
+    border: var(--space-hairline) solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+  .journal-related-link:hover {
+    border-color: var(--color-border-hover);
+  }
+  .journal-related-link:focus-visible {
+    outline: var(--space-hairline) solid var(--color-primary);
+  }
+  .journal-related-image img {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  .journal-related-date,
+  .journal-related-status,
+  .journal-related-arrow {
+    color: var(--color-primary);
+  }
+  .journal-related-teaser {
+    color: var(--color-text-soft);
+  }
+  .journal-related-control {
+    border: var(--space-hairline) solid var(--color-border);
+    border-radius: var(--radius-circle);
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+  }
+  .journal-related-control:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  .journal-related-control:disabled {
+    color: var(--color-muted);
+    cursor: default;
+  }
   .contact-band-copy > .content-hyperlink a {
     color: inherit;
   }

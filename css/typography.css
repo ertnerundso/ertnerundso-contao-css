@@ -531,7 +531,9 @@
   .news-detail-masthead .micro,
   .news-detail-outro .micro,
   .journal-index-date,
-  .journal-index-toolbar .micro {
+  .journal-index-toolbar .micro,
+  .journal-related-date,
+  .journal-related-status {
     font-family: var(--font-label-family);
     font-size: var(--font-label-size);
     line-height: var(--font-label-line-height);
@@ -564,6 +566,21 @@
   .journal-index-teaser {
     font-size: var(--font-body-size);
     line-height: var(--font-body-line-height);
+  }
+  .journal-related-copy h3 {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+  .journal-related-link {
+    text-decoration: none;
+  }
+  .journal-related-teaser {
+    font-size: var(--font-body-size);
+    line-height: var(--font-body-line-height);
+  }
+  .journal-related-arrow {
+    font-size: var(--font-h4-size);
+    line-height: var(--font-h4-line-height);
   }
   .journal-index-filters button {
     font-family: var(--font-body-family);
