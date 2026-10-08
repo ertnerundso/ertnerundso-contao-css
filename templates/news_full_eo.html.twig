@@ -12,7 +12,7 @@
 
     <div class="news-detail-body">
         {% if date|default('') %}
-            <p class="news-detail-date micro"><time{% if datetime|default('') %} datetime="{{ datetime }}"{% endif %}>{{ date }}</time></p>
+            <p class="news-detail-date micro"><time{% if datetime|default('') %} datetime="{{ datetime }}"{% endif %}>{{ datetime|default('') ? datetime|date('d.m.Y') : date }}</time></p>
         {% endif %}
         {% if addImage|default(false) %}
             <div class="news-detail-hero">{{ include('@Contao/image.html.twig') }}</div>
