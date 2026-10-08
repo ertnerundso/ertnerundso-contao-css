@@ -253,46 +253,6 @@
     scroll-behavior: auto;
   }
 }
-/* Seitenwechsel: die beiden Seiten gleiten wie in der Navigation ueber eine dunkle Buehne. */
-@view-transition {
-  navigation: auto;
-}
-@layer layout {
-@media (prefers-reduced-motion: no-preference) {
-  ::view-transition-old(root) {
-    animation: journal-page-out 0.7s cubic-bezier(0.76, 0, 0.24, 1) both;
-  }
-  ::view-transition-new(root) {
-    animation: journal-page-in 0.7s cubic-bezier(0.76, 0, 0.24, 1) both;
-  }
-  @keyframes journal-page-out {
-    to { transform: translateX(-105%) scale(0.94); }
-  }
-  @keyframes journal-page-in {
-    from { transform: translateX(105%) scale(0.94); }
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: 0.01ms;
-  }
-}
-@media (max-width: 760px) and (prefers-reduced-motion: no-preference) {
-  ::view-transition-old(root) {
-    animation: journal-page-mobile-out 0.5s ease-in both;
-  }
-  ::view-transition-new(root) {
-    animation: journal-page-mobile-in 0.5s ease-out both;
-  }
-  @keyframes journal-page-mobile-out {
-    to { transform: translateY(-105%) scale(0.97); }
-  }
-  @keyframes journal-page-mobile-in {
-    from { transform: translateY(105%) scale(0.97); }
-  }
-}
-}
 @layer layout {
   .header-nav a,
   .footer-nav a {
