@@ -12,6 +12,7 @@ export const config = {
   header: { hideAfter: 160, directionThreshold: 8 },
   scroll: { wheelMultiplier: 0.9, smoothWheel: true },
   sliders: { edgeTolerance: 2, workScrollPadding: 0.25, minimumProgress: 0.06, journalSwipeThreshold: 50 },
+  journalIndex: { pageSize: 6 },
   video: {
     frameRate: 24,
     visibilityThreshold: 0.45,
