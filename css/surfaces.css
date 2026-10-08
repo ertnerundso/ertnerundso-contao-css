@@ -1081,6 +1081,9 @@
   .news-detail-body > .news-intro {
     background: var(--color-surface);
   }
+  .news-detail-hero img {
+    border-radius: var(--radius-md);
+  }
   .news-detail-body > .news-intro .rte {
     color: var(--color-text-soft);
   }
@@ -1208,6 +1211,13 @@
   .booking-frame {
     border: 0;
     background: var(--color-on-dark);
+    border-radius: var(--radius-md);
+  }
+  ::view-transition {
+    background: var(--color-surface-dark);
+  }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
     border-radius: var(--radius-md);
   }
 }

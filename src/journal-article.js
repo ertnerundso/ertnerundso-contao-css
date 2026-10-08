@@ -1,8 +1,6 @@
 /* JOURNAL-ARTIKEL: Inhaltsnavigation aus den bestehenden Contao-Abschnitten. */
 export function initJournalArticle(runtime) {
-  const { config } = runtime;
   const english = document.documentElement.lang === 'en';
-  const desktop = window.matchMedia(config.media.desktop);
 
   document.querySelectorAll('[data-journal-article]').forEach((article) => {
     const intro = article.querySelector('.news-detail-body > .news-intro');
@@ -12,7 +10,6 @@ export function initJournalArticle(runtime) {
 
     const details = document.createElement('details');
     details.className = 'news-detail-toc';
-    details.open = desktop.matches;
 
     const summary = document.createElement('summary');
     summary.textContent = english ? 'In this article' : 'In diesem Artikel';
@@ -38,11 +35,8 @@ export function initJournalArticle(runtime) {
     nav.append(list);
     details.append(summary, nav);
     intro.after(details);
-    runtime.listen(desktop, 'change', (event) => {
-      details.open = event.matches;
-    });
     runtime.listen(nav, 'click', (event) => {
-      if (!desktop.matches && event.target.closest('a')) details.open = false;
+      if (event.target.closest('a')) details.open = false;
     });
     runtime.cleanup(() => details.remove());
   });

@@ -4,13 +4,19 @@
     {% set isEnglish = archive.id == 4 %}
     {% set journalUrl = isEnglish ? '/en/journal/' : '/journal/' %}
     {% set contactUrl = isEnglish ? '/en/kontakt/' : '/kontakt/' %}
-<article class="layout_full news-detail news-detail--journal block" data-journal-article>
+<article class="layout_full news-detail news-detail--journal{{ addImage|default(false) ? ' has-hero-image' : '' }} block" data-journal-article>
     <div class="news-detail-masthead">
         <a class="news-detail-back" href="{{ journalUrl }}"><span aria-hidden="true">←</span> {{ isEnglish ? 'Back to Journal' : 'Zurück zum Journal' }}</a>
         <span class="micro">{{ isEnglish ? 'JOURNAL / ARTICLE' : 'JOURNAL / ARTIKEL' }}</span>
     </div>
 
     <div class="news-detail-body">
+        {% if date|default('') %}
+            <p class="news-detail-date micro"><time{% if datetime|default('') %} datetime="{{ datetime }}"{% endif %}>{{ date }}</time></p>
+        {% endif %}
+        {% if addImage|default(false) %}
+            <div class="news-detail-hero">{{ include('@Contao/image.html.twig') }}</div>
+        {% endif %}
         {{ articleText|raw }}
     </div>
 
