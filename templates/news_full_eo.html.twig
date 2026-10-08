@@ -27,7 +27,7 @@
     <footer class="news-detail-outro">
         <p class="micro">{{ isEnglish ? 'KEEP READING' : 'WEITERLESEN' }}</p>
         <h2>{{ isEnglish ? 'More perspectives on technology.' : 'Mehr Perspektiven auf Technik.' }}</h2>
-        <div class="journal-related" data-journal-related>
+        <div class="journal journal-related">
             {{ frontend_module('newslist', {
                 news_archives: [archive.id],
                 news_template: 'news_related_eo',

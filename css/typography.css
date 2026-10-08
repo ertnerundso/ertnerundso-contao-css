@@ -388,13 +388,13 @@
     text-align: left;
   }
   /* --- JOURNAL --- */
-  .journal-list {
+  :is(.journal-list, .journal-related .mod_newslist) {
     counter-reset: home-journal;
   }
-  .journal-list article.journal-row {
+  :is(.journal-list, .journal-related .mod_newslist) article.journal-row {
     counter-increment: home-journal;
   }
-  .journal-list article.journal-row h3 {
+  :is(.journal-list, .journal-related .mod_newslist) article.journal-row h3 {
     overflow-wrap: anywhere;
   }
   /* --- BUTTONS UND LINKS --- */
@@ -475,7 +475,7 @@
   .journal-row h3 {
     overflow-wrap: anywhere;
   }
-  .journal .journal-list article.journal-row {
+  .journal :is(.journal-list, .mod_newslist) article.journal-row {
     counter-increment: home-journal;
   }
   .journal .journal-row h3 {
@@ -531,9 +531,7 @@
   .news-detail-masthead .micro,
   .news-detail-outro .micro,
   .journal-index-date,
-  .journal-index-toolbar .micro,
-  .journal-related-date,
-  .journal-related-status {
+  .journal-index-toolbar .micro {
     font-family: var(--font-label-family);
     font-size: var(--font-label-size);
     line-height: var(--font-label-line-height);
@@ -566,21 +564,6 @@
   .journal-index-teaser {
     font-size: var(--font-body-size);
     line-height: var(--font-body-line-height);
-  }
-  .journal-related-copy h3 {
-    hyphens: auto;
-    overflow-wrap: anywhere;
-  }
-  .journal-related-link {
-    text-decoration: none;
-  }
-  .journal-related-teaser {
-    font-size: var(--font-body-size);
-    line-height: var(--font-body-line-height);
-  }
-  .journal-related-arrow {
-    font-size: var(--font-h4-size);
-    line-height: var(--font-h4-line-height);
   }
   .journal-index-filters button {
     font-family: var(--font-body-family);

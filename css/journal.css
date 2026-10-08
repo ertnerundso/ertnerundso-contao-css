@@ -12,7 +12,7 @@
   margin: 0;
   min-width: 0;
 }
-.journal .journal-list {
+.journal :is(.journal-list, .mod_newslist) {
   display: flex;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
@@ -23,13 +23,13 @@
   margin-inline: calc(var(--space-frame-marker-half) * -1);
   padding-block: var(--space-frame-marker-half) var(--space-lg);
 }
-.journal .journal-list::-webkit-scrollbar {
+.journal :is(.journal-list, .mod_newslist)::-webkit-scrollbar {
   display: none;
 }
-.journal .journal-list:focus-visible {
+.journal :is(.journal-list, .mod_newslist):focus-visible {
   outline-offset: var(--space-xs);
 }
-.journal .journal-list article.journal-row {
+.journal :is(.journal-list, .mod_newslist) article.journal-row {
   position: relative;
   display: flex;
   flex: 0 0 clamp(17.5rem, 30vw, 26.25rem);
@@ -78,7 +78,7 @@
 }
 /* Mit JavaScript wird ohne seitlich vorbeiziehende/angeschnittene Karten geblättert.
    Ohne JavaScript bleibt die native horizontale Liste vollständig bedienbar. */
-.journal .journal-list.is-journal-paged {
+.journal :is(.journal-list, .mod_newslist).is-journal-paged {
   display: grid;
   overflow: visible;
   padding: 0;
@@ -113,7 +113,7 @@
   .journal .is-journal-paged article.journal-row .row-category {
     display: block;
   }
-  .journal .journal-list article.journal-row {
+  .journal :is(.journal-list, .mod_newslist) article.journal-row {
     flex-basis: min(82vw, 100%, 22.5rem);
     min-height: 21.25rem;
     padding: var(--space-lg);
