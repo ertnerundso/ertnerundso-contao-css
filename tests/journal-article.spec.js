@@ -58,3 +58,21 @@ for (const preference of ['no-preference', 'reduce']) {
     }
   });
 }
+
+test('mobile journal transition uses the compact vertical motion', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/tests/fixtures/site.html');
+  await page.evaluate(() => {
+    const link = document.createElement('a');
+    link.id = 'mobile-article-link';
+    link.href = '/tests/fixtures/journal-article.html';
+    link.textContent = 'Artikel';
+    link.style.cssText = 'position:fixed;top:150px;left:100px;z-index:1000';
+    document.body.append(link);
+  });
+  await page.locator('#mobile-article-link').click({ noWaitAfter: true });
+  await page.waitForURL('**/journal-article.html', { waitUntil: 'load' });
+  expect(await page.evaluate(() => document.getAnimations().map((animation) => animation.animationName)))
+    .toContain('journal-page-mobile-in');
+});
