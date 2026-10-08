@@ -1,8 +1,33 @@
-<article class="index-card news-card">
-    {% if addImage %}
-        {{ include('@Contao/image.html.twig') }}
-    {% endif %}
-    <span class="micro">{{ archive.id in [1, 2] ? (archive.id == 2 ? 'WORK' : 'ARBEITEN') : 'JOURNAL' }}</span>
-    <h3>{{ linkHeadline|sanitize_html('contao') }}</h3>
-    <span class="text-link">{{ archive.id in [2, 4] ? 'View' : 'Ansehen' }} <span aria-hidden="true">↗</span></span>
-</article>
+{% if archive.id in [3, 4] %}
+    {% set isEnglish = archive.id == 4 %}
+    <article class="news-card journal-index-item" data-journal-title="{{ headline|e('html_attr') }}">
+        <div class="journal-index-media">
+            {% if addImage %}
+                {{ include('@Contao/image.html.twig') }}
+            {% else %}
+                <div class="journal-index-media-fallback" aria-hidden="true">
+                    <span>ERTNER&SO</span><strong>JOURNAL</strong>
+                </div>
+            {% endif %}
+        </div>
+        <div class="journal-index-copy">
+            {% if date|default('') %}
+                <p class="micro journal-index-date"><time{% if datetime|default('') %} datetime="{{ datetime }}"{% endif %}>{{ datetime|default('') ? datetime|date('d.m.Y') : date }}</time></p>
+            {% endif %}
+            {% if count|default(0) == 1 %}
+                <h1>{{ linkHeadline|sanitize_html('contao') }}</h1>
+            {% else %}
+                <h3>{{ linkHeadline|sanitize_html('contao') }}</h3>
+            {% endif %}
+            {% if teaser|default('') %}<p class="journal-index-teaser">{{ teaser|striptags|u.truncate(220, '…') }}</p>{% endif %}
+            <a class="button btn--secondary journal-index-read" href="{{ link }}" aria-label="{{ isEnglish ? 'Read article' : 'Artikel lesen' }}: {{ headline|e('html_attr') }}">{{ isEnglish ? 'Read article' : 'Artikel lesen' }}</a>
+        </div>
+    </article>
+{% else %}
+    <article class="index-card news-card">
+        {% if addImage %}{{ include('@Contao/image.html.twig') }}{% endif %}
+        <span class="micro">{{ archive.id == 2 ? 'WORK' : 'ARBEITEN' }}</span>
+        <h3>{{ linkHeadline|sanitize_html('contao') }}</h3>
+        <span class="text-link">{{ archive.id == 2 ? 'View' : 'Ansehen' }} <span aria-hidden="true">↗</span></span>
+    </article>
+{% endif %}

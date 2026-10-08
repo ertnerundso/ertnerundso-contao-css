@@ -528,42 +528,52 @@
     text-transform: uppercase;
   }
   /* --- NEWS --- */
-  .news-detail-body {
-    counter-reset: journal-section;
-  }
-  .news-detail-body > .content-section {
-    counter-increment: journal-section;
-  }
-  .news-detail-toc ol {
-    list-style: none;
-  }
   .news-detail-masthead .micro,
   .news-detail-outro .micro,
-  .news-detail-toc summary,
-  .news-detail-toc-number,
-  .news-detail-body > .content-section::before {
+  .journal-index-date,
+  .journal-index-toolbar .micro {
     font-family: var(--font-label-family);
     font-size: var(--font-label-size);
     line-height: var(--font-label-line-height);
-  }
-  .news-detail-toc summary,
-  .news-detail-body > .content-section::before {
-    text-transform: uppercase;
-  }
-  .news-detail-toc a {
-    font-size: var(--font-small-size);
-    line-height: var(--font-body-line-height);
-    text-decoration: none;
   }
   .news-detail-back {
     font-size: var(--font-small-size);
     text-decoration: none;
   }
+  .journal-index-media-fallback span {
+    font-family: var(--font-label-family);
+    font-size: var(--font-label-size);
+  }
+  .journal-index-media-fallback strong {
+    font-family: var(--font-label-family);
+    font-size: var(--font-label-size);
+    font-weight: var(--font-label-weight);
+    line-height: var(--font-label-line-height);
+  }
+  .news-grid .journal-index-item:first-child .journal-index-media-fallback strong,
+  .news-detail-hero .journal-index-media-fallback strong {
+    font-family: var(--font-h1-family);
+    font-size: var(--font-h1-size);
+    font-weight: var(--font-h1-weight);
+    line-height: var(--font-h1-line-height);
+  }
+  .news-grid .journal-index-copy :is(h1, h3) {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
+  .journal-index-teaser {
+    font-size: var(--font-body-size);
+    line-height: var(--font-body-line-height);
+  }
+  .journal-index-filters button {
+    font-family: var(--font-body-family);
+    font-size: var(--font-small-size);
+  }
   .news-grid .news-card h3 {
     hyphens: auto;
     overflow-wrap: anywhere;
   }
-  .news-grid .news-card h3 a {
+  .news-grid .news-card :is(h1, h3) a {
     text-decoration: none;
   }
   /* --- KONTAKT UND FRAGEN --- */
