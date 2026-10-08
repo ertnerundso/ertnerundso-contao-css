@@ -26,6 +26,7 @@ export function validateModule(name, content, importLayer) {
   let previousLayer = -1;
   for (const node of ast.nodes.filter((n) => n.type !== 'comment')) {
     if (!system) continue;
+    if (name === 'motion.css' && node.type === 'atrule' && node.name === 'view-transition') continue;
     const index =
       node.type === 'atrule' && node.name === 'layer'
         ? LAYERS.indexOf(node.params)
@@ -46,6 +47,7 @@ export function validateModule(name, content, importLayer) {
         '-webkit-keyframes',
         'supports',
         'container',
+        'view-transition',
       ].includes(rule.name)
     )
       throw new Error(`${name}: unsupported at-rule @${rule.name}.`);
@@ -53,6 +55,8 @@ export function validateModule(name, content, importLayer) {
       throw new Error(
         `${name}: only system files may declare top-level layers.`,
       );
+    if (rule.name === 'view-transition' && (name !== 'motion.css' || rule.parent !== ast))
+      throw new Error(`${name}: @view-transition belongs at the top of motion.css.`);
     if (rule.name === 'font-face' && name !== 'typography.css')
       throw new Error(`${name}: @font-face belongs in typography.css.`);
     if (rule.name.includes('keyframes') && name !== 'motion.css')
@@ -73,6 +77,7 @@ export function validateModule(name, content, importLayer) {
     }
   });
   ast.walkDecls((d) => {
+    if (name === 'motion.css' && d.parent.type === 'atrule' && d.parent.name === 'view-transition' && d.prop === 'navigation') return;
     const inFontFace =
       d.parent.type === 'atrule' && d.parent.name === 'font-face';
     let inKeyframes = false;

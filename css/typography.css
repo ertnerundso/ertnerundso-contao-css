@@ -347,7 +347,8 @@
   @media (max-width: 760px) {
     .inner-hero h1,
     .legal-hero-body h1,
-    .news-detail > .news-intro h1 {
+    .news-detail > .news-intro h1,
+    .news-detail-body > .news-intro h1 {
       hyphens: none;
       overflow-wrap: normal;
     }
@@ -527,6 +528,37 @@
     text-transform: uppercase;
   }
   /* --- NEWS --- */
+  .news-detail-body {
+    counter-reset: journal-section;
+  }
+  .news-detail-body > .content-section {
+    counter-increment: journal-section;
+  }
+  .news-detail-toc ol {
+    list-style: none;
+  }
+  .news-detail-masthead .micro,
+  .news-detail-outro .micro,
+  .news-detail-toc summary,
+  .news-detail-toc-number,
+  .news-detail-body > .content-section::before {
+    font-family: var(--font-label-family);
+    font-size: var(--font-label-size);
+    line-height: var(--font-label-line-height);
+  }
+  .news-detail-toc summary,
+  .news-detail-body > .content-section::before {
+    text-transform: uppercase;
+  }
+  .news-detail-toc a {
+    font-size: var(--font-small-size);
+    line-height: var(--font-body-line-height);
+    text-decoration: none;
+  }
+  .news-detail-back {
+    font-size: var(--font-small-size);
+    text-decoration: none;
+  }
   .news-grid .news-card h3 {
     hyphens: auto;
     overflow-wrap: anywhere;
@@ -572,10 +604,14 @@
   }
   .inner-hero h1,
   .news-detail > .news-intro h1,
+  .news-detail-body > .news-intro h1,
   .content-section h2,
   .content-section h3 {
     hyphens: auto;
     overflow-wrap: anywhere;
+  }
+  .news-detail-body > .news-intro h1 {
+    hyphens: none;
   }
   .split-line {
     white-space: normal;

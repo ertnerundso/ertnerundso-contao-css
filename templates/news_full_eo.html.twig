@@ -1,9 +1,42 @@
+{% set articleText = text.invoke() %}
+
+{% if archive.id in [3, 4] %}
+    {% set isEnglish = archive.id == 4 %}
+    {% set journalUrl = isEnglish ? '/en/journal/' : '/journal/' %}
+    {% set contactUrl = isEnglish ? '/en/kontakt/' : '/kontakt/' %}
+<article class="layout_full news-detail news-detail--journal{{ addImage|default(false) ? ' has-hero-image' : '' }} block" data-journal-article>
+    <div class="news-detail-masthead">
+        <a class="news-detail-back" href="{{ journalUrl }}"><span aria-hidden="true">←</span> {{ isEnglish ? 'Back to Journal' : 'Zurück zum Journal' }}</a>
+        <span class="micro">{{ isEnglish ? 'JOURNAL / ARTICLE' : 'JOURNAL / ARTIKEL' }}</span>
+    </div>
+
+    <div class="news-detail-body">
+        {% if date|default('') %}
+            <p class="news-detail-date micro"><time{% if datetime|default('') %} datetime="{{ datetime }}"{% endif %}>{{ date }}</time></p>
+        {% endif %}
+        {% if addImage|default(false) %}
+            <div class="news-detail-hero">{{ include('@Contao/image.html.twig') }}</div>
+        {% endif %}
+        {{ articleText|raw }}
+    </div>
+
+    <footer class="news-detail-outro">
+        <p class="micro">{{ isEnglish ? 'YOUR PROJECT' : 'IHR PROJEKT' }}</p>
+        <h2>{{ isEnglish ? 'Make complexity clear.' : 'Komplexes klar machen.' }}</h2>
+        <div class="news-detail-actions">
+            <a class="button" href="{{ contactUrl }}">{{ isEnglish ? 'Discuss a project' : 'Projekt besprechen' }}</a>
+            <a class="text-link" href="{{ journalUrl }}">{{ isEnglish ? 'All articles' : 'Alle Artikel' }} <span aria-hidden="true">↗</span></a>
+        </div>
+    </footer>
+</article>
+{% else %}
 <div class="layout_full news-detail block">
-    {{ text.invoke()|raw }}
+    {{ articleText|raw }}
 </div>
+{% endif %}
 
 {% set schemaOrg = getSchemaOrgData.invoke() %}
 {% if hasText.invoke() %}
-    {% set schemaOrg = schemaOrg|merge({text: text.invoke()|html_to_plain_text}) %}
+    {% set schemaOrg = schemaOrg|merge({text: articleText|html_to_plain_text}) %}
 {% endif %}
 {% do add_schema_org(schemaOrg) %}

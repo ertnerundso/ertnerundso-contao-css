@@ -6,6 +6,7 @@ import { initScroll } from './scroll.js';
 import { initHeader } from './header.js';
 import { initNavigation } from './navigation.js';
 import { initJournal } from './journal.js';
+import { initJournalArticle } from './journal-article.js';
 import { initVideo } from './video.js';
 import { initShowreel } from './showreel.js';
 import { initBenefits } from './benefits.js';
@@ -33,6 +34,7 @@ for (const initialize of [
   initHeader,
   initNavigation,
   initJournal,
+  initJournalArticle,
   initVideo,
   initShowreel,
   initBenefits,
